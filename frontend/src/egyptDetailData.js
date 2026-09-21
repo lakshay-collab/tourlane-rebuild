@@ -14,6 +14,7 @@ export const detail = {
   transport: 'Private transfer',
   tag: 'Culture',
   price: 144000,
+  tags: ['Culture', 'Honeymoon', 'Luxury'],
   stats: { days: 11, cities: 5, hotels: 4, activities: 12, transfers: 9 },
   gallery: [
     'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=1080&q=75&auto=format&fit=max',
@@ -26,9 +27,10 @@ export const detail = {
   expert: {
     name: 'Ria Banerjee',
     image: '/egypt/expert-ria.webp',
-    role: 'our product head and destination expert for Egypt',
+    role: 'product & destination expert for Egypt',
     createdBy: 'Trip created by',
-    quote: 'Egypt Explorer brings together the great highlights of Egypt in a single journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada. I especially recommend the Temple of Edfu, reached by horse carriage and one of the best-preserved temples in all of Egypt. And my tip: visit the Valley of the Kings early in the morning, when the tombs are still cool and quiet.',
+    quote: 'Pyramids, a relaxed Nile cruise and a Red Sea beach finale, all in one journey.',
+    quoteMore: 'My tip: see the Valley of the Kings early, while the tombs are cool and quiet. I especially recommend the Temple of Edfu, reached by horse carriage and one of the best-preserved temples in all of Egypt, and the Grand Egyptian Museum with the complete Tutankhamun collection.',
     more: 'Read more',
     less: 'Read less'
   }
@@ -40,6 +42,7 @@ export const route = {
   summaryCta: 'View quick summary',
   accommodationHeading: 'Your accommodation',
   accommodationCta: 'Customise this',
+  viewPhotos: 'View photos',
   programHeading: 'Your activities',
   programCta: 'Customise activities',
   optional: 'Optional',
@@ -237,7 +240,9 @@ export const glance = {
   intro: 'Egypt Explorer combines the great highlights of Egypt in one journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada.',
   intro2: 'Along the Nile you discover the most important sites of Upper Egypt at a gentle pace, before swapping ancient temples for the beaches and coral reefs of the Red Sea — the perfect contrast to the cultural first half of the trip.',
   accommodationHeading: 'Your accommodation',
-  highlightsHeading: 'Highlights & activities',
+  highlightsHeading: 'Key highlights & activities',
+  dayHeading: 'Day',
+  routeHeading: 'Route',
   days: [
     { title: 'Day 1–4: Cairo (4 nights)', text: 'Your journey begins in Cairo with the world-famous pyramids, the Grand Egyptian Museum and a flight to Aswan to begin the Nile cruise.', hotel: 'Semiramis InterContinental Cairo', highlights: ['Pyramids of Giza & Sphinx', 'Grand Egyptian Museum', 'Aswan High Dam & felucca'] },
     { title: 'Day 4–7: Nile Cruise Aswan → Edfu → Luxor (3 nights)', text: 'Relaxed cruising on the Nile with visits to the temples of Kom Ombo and Edfu.', hotel: 'M/S Concerto Plus (Nile cruise)', highlights: ['Kom Ombo Temple', 'Edfu Temple by horse carriage'] },

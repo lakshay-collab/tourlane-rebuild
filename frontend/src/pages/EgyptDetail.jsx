@@ -7,10 +7,13 @@ import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
-import { BoxStars, BRAND_BLUE, GoogleLogo, TripAdvisorLogo, TripAdvisorBubbles } from '../components/Rating';
+import { GoogleLogo, TripAdvisorLogo } from '../components/Rating';
 import { CalendarIcon, PinIcon, BedIcon, TicketIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
 import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner, route, reviewsHeading } from '../egyptDetailData';
-import { products, formatInr } from '../egyptListingData';
+import { products, formatInr, styles } from '../egyptListingData';
+import { NavIcon } from '../components/egypt/EgyptNavIcons';
+
+const tagIcon = Object.fromEntries(styles.map((s) => [s.key, s.icon]));
 import { ratings as trustBar } from '../mock';
 
 const stop = (e) => e.preventDefault();
@@ -19,8 +22,8 @@ const Cta = ({ className = '', testId }) => <a href={detail.ctaHref} onClick={st
 
 const Ratings = ({ className = '' }) => (
   <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-2 ${className}`} data-testid="eg-ratings-row">
-    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><GoogleLogo size={18} />Rated {trustBar.google.score} on Google<BoxStars rating={trustBar.google.score} size={16} color={BRAND_BLUE} /></span>
-    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><TripAdvisorLogo size={20} />Rated {trustBar.tripadvisor.score} on TripAdvisor<TripAdvisorBubbles rating={trustBar.tripadvisor.score} size={15} /></span>
+    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><GoogleLogo size={18} />Rated {trustBar.google.score} on Google</span>
+    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><TripAdvisorLogo size={20} />Rated {trustBar.tripadvisor.score} on TripAdvisor</span>
   </div>
 );
 
@@ -33,9 +36,8 @@ const Stat = ({ icon: Icon, value, testId }) => (
 const Stats = () => {
   const s = detail.stats;
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2" data-testid="eg-detail-stats">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2" data-testid="eg-detail-stats">
       <Stat icon={CalendarIcon} value={`${s.days} days`} testId="eg-detail-days" />
-      <Stat icon={PinIcon} value={`${s.cities} cities`} testId="eg-detail-cities" />
       <Stat icon={BedIcon} value={`${s.hotels} hotels`} testId="eg-detail-hotels" />
       <Stat icon={TicketIcon} value={`${s.activities} activities`} testId="eg-detail-activities" />
       <Stat icon={CarIcon} value={`${s.transfers} transfers`} testId="eg-detail-transfers" />
@@ -64,9 +66,12 @@ function Head() {
       <Gallery />
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
-            <h1 className="eg-card-title !text-[16px] !leading-[22px] !tracking-[-0.3px] sm:!text-[26px] sm:!leading-8 sm:!tracking-normal md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
+            <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
             <Stats />
-            <span className="self-start inline-flex items-center gap-2 rounded-full bg-white border border-[#C4CBD0] pl-2 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><TagIcon name={detail.tag} size={20} />{detail.tag}</span>
+            <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
+              <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-cities"><PinIcon size={18} />{detail.stats.cities} cities</span>
+              {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#174358]" />{tag}</span>)}
+            </div>
         </div>
       </div>
     </div>
@@ -103,8 +108,8 @@ const PriceCard = () => (
     <hr className="border-[#E4E3DB]" />
     <div className="flex flex-col gap-3">
       <p className="eg-title-md text-[#002131]" data-testid="eg-price-included-title">{price.included}</p>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4" data-testid="eg-price-services">
-        {detail.services.map(([label, icon]) => <li key={label} className="flex items-start gap-2 eg-body-md text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0 mt-0.5" />{label}</li>)}
+      <ul className="grid grid-cols-2 gap-2" data-testid="eg-price-services">
+        {detail.services.map(([label, icon]) => <li key={label} className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 min-h-[44px] py-1.5 eg-label-lg text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0" /><span className="leading-tight">{label}</span></li>)}
       </ul>
     </div>
     <hr className="border-[#E4E3DB]" />
@@ -120,7 +125,7 @@ const ExpertCard = () => {
       <img src={e.image} alt={e.name} className="w-12 h-12 rounded-full object-cover shrink-0" />
       <div className="flex flex-col gap-2 min-w-0">
         <p className="eg-title-md text-[#002131]" data-testid="eg-expert-title">{e.createdBy} {e.name}, {e.role} <CheckBadge size={18} className="inline text-[#174358] -mt-0.5" /></p>
-        <p className={`eg-quote text-[#002131] ${open ? '' : 'line-clamp-2'}`} data-testid="eg-expert-quote">“{e.quote}”</p>
+        <p className="eg-quote !text-[18px] !leading-[26px] md:!text-[22px] md:!leading-[30px] text-[#002131]" data-testid="eg-expert-quote">“{e.quote}{open ? ` ${e.quoteMore}` : ''}”</p>
         <button type="button" onClick={() => setOpen((v) => !v)} className="self-start inline-flex items-center gap-1 eg-label-lg text-[#174358] underline" data-testid="eg-expert-quote-toggle">{open ? e.less : e.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} /></button>
       </div>
     </div>
@@ -169,23 +174,50 @@ function Glance({ open, setOpen }) {
         {' '}<button type="button" onClick={() => setMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-glance-readmore">{more ? glance.readLess : glance.readMore}</button>
       </p>
       {open ? (
-        <div className="flex flex-col divide-y divide-[#C4CBD0] border-y border-[#C4CBD0]" data-testid="eg-glance-days">
-          {glance.days.map((d, i) => (
-            <div key={d.title} className="py-5 grid gap-4 md:grid-cols-[1fr_260px] md:gap-8" data-testid="eg-glance-day">
-              <div className="flex gap-4">
-                <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
-                <div className="min-w-0">
-                  <h3 className="eg-title-md text-[#002131]">{d.title}</h3>
-                  <p className="mt-1 eg-body-md text-[#002131]">{d.text}</p>
+        <div data-testid="eg-glance-days">
+          <div className="md:hidden flex flex-col divide-y divide-[#C4CBD0] border-y border-[#C4CBD0]">
+            {glance.days.map((d, i) => (
+              <div key={d.title} className="py-5 flex flex-col gap-4" data-testid="eg-glance-day">
+                <div className="flex gap-4">
+                  <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
+                  <div className="min-w-0"><h3 className="eg-title-md text-[#002131]">{d.title}</h3><p className="mt-1 eg-body-md text-[#002131]">{d.text}</p></div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-sm text-[#174358]">{d.hotel}</p></div>
+                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-sm text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:pl-6 md:border-l md:border-[#E4E3DB]">
-                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-sm md:eg-body-md text-[#174358]">{d.hotel}</p></div>
-                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-sm md:eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
-              </div>
-            </div>
-          ))}
-          <button type="button" onClick={() => setOpen(false)} className="self-start inline-flex items-center gap-1 pt-4 eg-label-lg text-[#174358] underline" data-testid="eg-glance-hide">{glance.hide}<ChevronDown size={16} className="rotate-180" /></button>
+            ))}
+          </div>
+          <table className="hidden md:table w-full border-collapse" data-testid="eg-glance-table">
+            <thead>
+              <tr className="text-left eg-label-md uppercase tracking-wide text-[#6F777C] border-b border-[#C4CBD0]">
+                <th className="py-3 pr-4 w-[88px] font-semibold">{glance.dayHeading}</th>
+                <th className="py-3 pr-6 font-semibold">{glance.routeHeading}</th>
+                <th className="py-3 pr-6 w-[220px] font-semibold">{glance.accommodationHeading}</th>
+                <th className="py-3 w-[260px] font-semibold">{glance.highlightsHeading}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#E4E3DB]">
+              {glance.days.map((d, i) => {
+                const [day, rest] = d.title.split(': ');
+                return (
+                  <tr key={d.title} className="align-top" data-testid="eg-glance-day">
+                    <td className="py-5 pr-4"><span className="inline-flex items-center justify-center min-w-[64px] h-8 px-2 rounded-full bg-[#FADDD1] eg-label-lg text-[#002131] whitespace-nowrap">{day.replace('Day ', '')}</span></td>
+                    <td className="py-5 pr-6">
+                      <div className="flex gap-4">
+                        <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
+                        <div className="min-w-0"><h3 className="eg-title-md text-[#002131]">{rest || d.title}</h3><p className="mt-1 eg-body-md text-[#002131]">{d.text}</p></div>
+                      </div>
+                    </td>
+                    <td className="py-5 pr-6 eg-body-md text-[#174358]">{d.hotel}</td>
+                    <td className="py-5"><ul className="eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <button type="button" onClick={() => setOpen(false)} className="inline-flex items-center gap-1 pt-4 eg-label-lg text-[#174358] underline" data-testid="eg-glance-hide">{glance.hide}<ChevronDown size={16} className="rotate-180" /></button>
         </div>
       ) : (
         <button type="button" onClick={() => setOpen(true)} className="self-start eg-btn-outlined eg-label-lg" data-testid="eg-glance-toggle"><ChevronDown size={18} />{glance.h2}</button>
@@ -242,11 +274,6 @@ function StickyBar() {
   return (
     <div className={`fixed bottom-0 inset-x-0 z-30 bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-detail-sticky-bar">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
-        <div className="hidden md:flex items-center gap-2 px-6 py-1 text-[#174358]">
-          <img src={detail.expert.image} alt={detail.expert.name} className="w-10 h-10 rounded-full object-cover" />
-          <span className="eg-label-lg">{price.team}</span>
-        </div>
-        <hr className="hidden md:block w-px h-[52px] border-0 bg-[#C4CBD0]" />
         <div className="px-4 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-3">
           <div className="flex flex-col"><span className="eg-title-md text-[#002131]">{price.from} {inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
           <Cta className="w-auto" testId="eg-sticky-cta" />

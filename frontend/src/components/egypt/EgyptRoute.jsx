@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { detail, route } from '../../egyptDetailData';
-import { ChevronLeft, ChevronRight, ChevronDown, HotelIcon, ExploreIcon } from './EgyptIcons';
+import { X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, HotelIcon, ExploreIcon, GalleryIcon } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
 const HEADER = 120;
@@ -10,7 +11,9 @@ function StopText({ s }) {
   return (
     <div className="md:w-[346px] shrink-0" data-testid="eg-route-stop">
       <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
-      <p className="eg-body-md text-[#174358] pt-1 pb-3">{s.dayLabel}{s.subtitle ? ` · ${s.subtitle}` : ''}</p>
+      <p className="eg-label-lg text-[#174358] pt-1">{s.dayLabel}</p>
+      {s.subtitle && <p className="eg-body-md text-[#6F777C] pt-0.5" data-testid="eg-route-subtitle">{s.subtitle}</p>}
+      <div className="pb-3" />
       <p className={`eg-body-md text-[#002131] whitespace-pre-line ${open ? '' : 'line-clamp-3'}`} data-testid="eg-route-text">{s.text}</p>
       <button type="button" onClick={() => setOpen((v) => !v)} className="inline-flex items-center gap-1 pt-1 eg-body-md text-[#002131] underline" data-testid="eg-route-text-toggle">
         {open ? route.less : route.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} />
@@ -36,21 +39,49 @@ function StopCarousel({ images, name }) {
 const SectionHead = ({ icon: Icon, title, cta, testId, extra }) => (
   <div className="flex items-center justify-between gap-3">
     <div className="flex items-center gap-2 min-w-0"><Icon size={24} className="text-[#174358] shrink-0" /><h4 className="eg-title-md md:eg-title-lg text-[#002131]">{title}</h4>{extra}</div>
-    <a href={detail.ctaHref} onClick={stop} className="eg-label-lg text-[#174358] underline whitespace-nowrap shrink-0" data-testid={testId}>{cta}</a>
+    <a href={detail.ctaHref} onClick={stop} className="inline-flex items-center h-8 px-3 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] eg-label-lg text-[#002131] whitespace-nowrap shrink-0 transition-colors" data-testid={testId}>{cta}</a>
   </div>
 );
 
+function Lightbox({ images, name, onClose }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [onClose]);
+  return (
+    <div className="fixed inset-0 z-[60] bg-[#002131]/90 flex flex-col items-center justify-center p-4" onClick={onClose} role="dialog" aria-modal="true" data-testid="eg-lightbox">
+      <button type="button" onClick={onClose} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 text-[#002131] flex items-center justify-center" aria-label="Close" data-testid="eg-lightbox-close"><X size={20} /></button>
+      <div className="w-full max-w-[960px]" onClick={(e) => e.stopPropagation()}>
+        <div className="relative aspect-[3/2] rounded-xl overflow-hidden bg-black">
+          <img src={images[i]} alt={`${name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" data-testid="eg-lightbox-image" />
+          <div className="absolute inset-0 flex items-center justify-between p-3">
+            <button type="button" onClick={() => setI((v) => (v - 1 + images.length) % images.length)} className="eg-arrow" aria-label="Previous photo" data-testid="eg-lightbox-prev"><ChevronLeft size={24} /></button>
+            <button type="button" onClick={() => setI((v) => (v + 1) % images.length)} className="eg-arrow" aria-label="Next photo" data-testid="eg-lightbox-next"><ChevronRight size={24} /></button>
+          </div>
+        </div>
+        <p className="mt-3 text-center eg-label-lg text-white">{name} · {i + 1}/{images.length}</p>
+      </div>
+    </div>
+  );
+}
+
 function Accommodation({ a }) {
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex flex-col gap-3" data-testid="eg-stop-accommodation">
       <SectionHead icon={HotelIcon} title={route.accommodationHeading} cta={route.accommodationCta} testId="eg-accommodation-cta" />
       <div className="flex bg-[#FBF9F1] border border-[#C4CBD0] rounded-xl overflow-hidden" data-testid="eg-accommodation-card">
-        <div className="relative w-[120px] sm:w-[160px] shrink-0"><img src={a.images[0]} alt={a.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>
+        <button type="button" onClick={() => setOpen(true)} className="relative w-[120px] sm:w-[160px] shrink-0 text-left" aria-label={`${route.viewPhotos}: ${a.name}`}><img src={a.images[0]} alt={a.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>
         <div className="p-4 flex flex-col justify-center gap-1 min-w-0">
           <h5 className="eg-title-md text-[#002131]" data-testid="eg-accommodation-name">{a.name}</h5>
           <p className="eg-body-md text-[#174358] line-clamp-2">{a.description}</p>
+          <button type="button" onClick={() => setOpen(true)} className="self-start inline-flex items-center gap-1 pt-1 eg-label-lg text-[#174358] underline" data-testid="eg-accommodation-photos"><GalleryIcon size={16} />{route.viewPhotos} ({a.images.length})</button>
         </div>
       </div>
+      {open && <Lightbox images={a.images} name={a.name} onClose={() => setOpen(false)} />}
     </div>
   );
 }
