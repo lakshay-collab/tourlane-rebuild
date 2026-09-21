@@ -1,0 +1,36 @@
+{
+  "summary": "Frontend-only regression testing on Hi Tours Egypt package detail page (/afrika/aegypten/luxor-strand-urlaub) at 1440 desktop and 390 mobile emulation. All 11 requested checks passed. No console errors, no horizontal overflow, correct CTA counts, correct ratings placement, correct 'What's included' items, expert title & Instrument Serif quote, stacked itinerary with scroll-spy + sticky header + tab click scroll, accommodation cards + Customise CTAs, Blush summary button revealing 5 glance days with valid photos, reviews heading/summary, sticky bar content, listing page loads cleanly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verified_checks": [
+    "Desktop 1440 & mobile 390: 0 console errors; scrollW == clientW at 390 (no horizontal overflow)",
+    "eg-detail-head has no eg-detail-cta and no 'Plan for free' text",
+    "PriceCard (desktop eg-detail-sidebar and mobile eg-detail-mobile-price) has exactly 1 eg-detail-price-cta 'Plan for free'; mobile first-viewport visible 'Plan for free' count = 1",
+    "eg-sticky-cta appears after scroll (>500px)",
+    "eg-ratings-row is inside eg-detail-price; NOT inside eg-detail-experts/experts-mobile/features; eg-trust-row not present",
+    "eg-price-services has 6 li in correct order (Hotels, Transfers, Activities, Entry tickets, 24/7 support, Holiday expert-led customisation); each has an svg; no eSIM/Flights/app text",
+    "eg-expert-title = 'Trip created by Ria Banerjee, our product head and destination expert for Egypt'; eg-expert-quote font-size=22px, family='Instrument Serif, Georgia, serif'; toggle works (line-clamp-2 removed on open)",
+    "5 stacked eg-route-section-0..4 all in DOM with names Cairo/Nile Cruise/Luxor/Hurghada/Cairo; eg-route-text has webkitLineClamp=3, height≈60px @ 20px line-height; Show more expands to full text",
+    "Scroll-spy: section 2 top ≈130 → tab 2 selected (aria-selected=true, others false); section 4 top ≈100 → tab 4 selected. eg-route-header stays sticky (top=0). Clicking eg-route-tab-1 from top scrolls section 1 top to ~88-120px range and marks tab 1 selected",
+    "5 accommodation cards with correct names (Semiramis, M/S Concerto Plus, Marriott, Marriott, Semiramis); eg-accommodation-cta text 'Customise this'; eg-activities-cta text 'Customise activities'; mobile 'Your accommodation' heading not truncated (scrollW == clientW)",
+    "eg-route-summary-cta background = rgb(250, 221, 209) (Blush); click reveals eg-glance-days with 5 rows; every eg-glance-photo naturalWidth > 0; #summary scrolled to top≈-16px; desktop first column width (836) > accommodation/highlights column (260)",
+    "eg-reviews h2 = 'What customers say about booking Egypt with Hi Tours'; eg-review-summary contains 'Excellent', '4.8 out of 5', 'based on 420 Egypt reviews'; eg-detail-recommended heading 'Other Egypt holidays you may like' follows; footer present",
+    "Sticky bar text: 'Ria Banerjee & our team From ₹1,44,000 per person Plan for free'",
+    "Listing /afrika/aegypten loads with 0 console errors"
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Note: scroll-spy line is HEADER+24=144. Spec described 'section top at ~150px' selects that tab; in practice at exactly 150 the previous tab remains active (150 > 144). At 130 (well under the line) tab activation is correct. Behavior is acceptable and matches the intent when scrolling normally, but if strict 150 boundary is required, consider tightening the offset."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All round-2 requirements for Egypt detail page verified passing on desktop 1440 and mobile 390. Scroll-spy line is HEADER(120)+24=144; use section top < 144 in tests, not exactly 150."
+}

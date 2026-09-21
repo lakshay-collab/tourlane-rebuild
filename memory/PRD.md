@@ -230,3 +230,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - "The route at a glance": short line + Read more; day rows collapsed by default, opened via summary CTA (or eg-glance-toggle), 5 rows with dividers, hierarchy h2 > day h3 (title-md) > uppercase label-md, "Hide summary".
 - "Why plan with our experts?" now also rendered on mobile below itinerary; Google/TripAdvisor ratings row (eg-ratings-row) under it and under "Why book with Hi Tours". Recommended = "Other Egypt holidays you may like". Planner social "4,00,000+ travellers trust Hi Tours". Sticky bar INR + "per person".
 - Tested: iteration_21 – 70/70 assertions pass (1440 + 390), 0 console errors.
+
+## Egypt detail page – round 2 polish (2026-06, latest)
+- Header block has NO CTA (only title, tiles, tag); single "Plan for free" in price card (+ sticky bar). Google/TripAdvisor `Ratings` row lives under the price card only (removed from experts card + features; header trust row removed).
+- What's included = 6 items: Hotels, Transfers, Activities, Entry tickets (new servicePaths key), 24/7 support, Holiday expert-led customisation.
+- Expert one-line title "Trip created by Ria Banerjee, our product head and destination expert for Egypt" + full-size `eg-quote` (22px Instrument Serif italic) clamp-2 + Read more.
+- EgyptRoute: all stops rendered stacked (eg-route-section-0..4) with dividers; sticky header with scroll-spy tabs (HEADER offset 120), tab click scrolls to stop; stop text clamp-3; compact horizontal accommodation card (one featured hotel + board-basis line) with "Customise this"; activities header "Customise activities"; "View quick summary" = Blush pill.
+- Glance rows: photo (route.stops[i].images[0]) + wide text column | narrow bordered accommodation/highlights column (2-col on mobile).
+- Reviews section: h2 'What customers say about booking Egypt with Hi Tours', summary 'Excellent ★ 4.8 out of 5 based on 420 Egypt reviews' (EgyptReviews `h2`/`count` props).
+- Tested: iteration_22 – all 11 checks pass (1440 + 390), 0 console errors.
