@@ -247,3 +247,10 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Route: day label and `subtitle` on separate lines; Blush pill CTAs "Customise this"/"Customise activities"; accommodation "View photos (n)" opens `Lightbox` (Esc/close/prev/next).
 - Route at a glance: desktop = table (Day pill | Route photo+title+text | Your accommodation | Key highlights & activities), mobile = stacked cards. Sticky bar without team block.
 - Tested: iteration_23 – all 9 groups pass (1440 + 390), 0 console errors.
+
+## Egypt detail page – round 4 (2026-06, latest)
+- Header: title + chips row only ("11 days", "5 cities" Deep Water chips + Culture/Honeymoon/Luxury). Value tiles removed from header.
+- Price card What's included = 6 Sand blocks with counts: 4 hotels · 12 activities · 9 transfers · 3 entry tickets · 24/7 support · Customisation (new 'Customise' sliders vector in servicePaths).
+- Itinerary stops: `bullets[]` replace `text` (crisp per-stop list incl. transfers/flights); stop header = name + Blush Day pill on one row, subtitle beneath. Glance highlights include transfers/flights.
+- Desktop sidebar = sticky price card only; "Why plan with our experts?" moved into main column under the itinerary (all breakpoints, max-w 520). Expert line: "Trip created by Ria Banerjee, Egypt expert at Hi Tours".
+- Tested: iteration_24 – all 9 checks pass (1440 + 390).

@@ -1,0 +1,67 @@
+{
+  "summary": "Round-4 frontend verification for /afrika/aegypten/luxor-strand-urlaub at 1440 desktop and 390 real mobile emulation. All 9 required checks pass with 0 console errors and no horizontal overflow.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_results": {
+    "header": {
+      "eg-detail-stats_removed": true,
+      "eg-detail-days": "11 days",
+      "eg-detail-cities": "5 cities",
+      "eg-detail-tag_count": 3,
+      "eg-detail-tag_texts": ["Culture", "Honeymoon", "Luxury"]
+    },
+    "price_services": {
+      "count": 6,
+      "order_texts": ["4 hotels", "12 activities", "9 transfers", "3 entry tickets", "24/7 support", "Customisation"],
+      "each_has_svg": true,
+      "heights_1440_px": [44, 44, 44, 44, 44, 44],
+      "heights_390_px": [44, 44, 44, 44, 44, 44],
+      "all_single_line_under_48px": true
+    },
+    "itinerary": {
+      "bullets_per_section": {"Cairo(0)": 5, "NileCruise(1)": 5, "Luxor(2)": 4, "Hurghada(3)": 5, "Cairo(4)": 3},
+      "eg-route-text_removed": true,
+      "eg-route-text-toggle_removed": true,
+      "sec1_name": "Nile Cruise",
+      "sec1_daylabel": "Day 4–7",
+      "sec1_subtitle": "Aswan → Edfu → Luxor",
+      "sec1_name_daylabel_same_row_topdiff_px": 0,
+      "sec1_subtitle_below": true,
+      "sec1_daylabel_bg": "rgb(250, 221, 209)"
+    },
+    "glance_highlights_all_present": true,
+    "sticky_desktop": {
+      "price_top_at_scroll_900": 24,
+      "price_top_at_scroll_1500": 24,
+      "experts_in_sidebar": false,
+      "experts_top_at_scroll_900": 4298,
+      "experts_top_at_scroll_1500": 3704,
+      "experts_moves_with_scroll": true
+    },
+    "expert_title": "Trip created by Ria Banerjee, Egypt expert at Hi Tours",
+    "why_plan_count_desktop": 1,
+    "why_plan_count_mobile": 1,
+    "experts_visible_mobile": true,
+    "lightbox_open_close": true,
+    "sticky_bar_price_present": "From ₹1,44,000 per person",
+    "listing_page_loads_no_console_errors": true,
+    "console_errors_desktop": [],
+    "console_errors_mobile": [],
+    "horizontal_overflow_1440": false,
+    "horizontal_overflow_390": false,
+    "mobile_scrollWidth_px": 390
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All Round-4 spec items verified pass on desktop 1440 and real mobile 390 emulation (is_mobile, has_touch). Page is stable with 0 console errors."
+}
