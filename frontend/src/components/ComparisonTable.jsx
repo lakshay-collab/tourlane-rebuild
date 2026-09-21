@@ -15,7 +15,7 @@ export default function ComparisonTable() {
       <div className="tl-container flex flex-col gap-8">
         <h2 className="t-section text-center text-onsurface">{comparison.heading}</h2>
         <div className="rounded-xl overflow-hidden" data-testid="comparison-table">
-          <div className={`${cols} bg-onprimary-fixedvariant text-white t-label-lg h-10 items-center`}>
+          <div className={`${cols} bg-deep-water text-white t-label-lg h-10 items-center`}>
             <div />
             <div className="text-center">{comparison.colAlone}</div>
             <div className="text-center">{comparison.colTourlane}</div>

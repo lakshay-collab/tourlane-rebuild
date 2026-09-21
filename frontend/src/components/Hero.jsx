@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="relative z-[2] w-full flex flex-col items-center gap-8 mt-4 lg:mt-10 px-4 sm:px-8 md:px-0">
         <div className="min-w-[328px] sm:w-[536px] md:w-[857px] lg:w-[880px] md:mb-4">
           <h1 className="t-display-sm md:t-display-lg text-center text-onsurface [text-wrap:balance]" data-testid="hero-title">
-            {hero.title}
+            {hero.title[0]}<br className="hidden md:block" /> {hero.title[1]}
           </h1>
         </div>
         <div className="w-full md:w-[552px]">
@@ -30,7 +30,7 @@ export default function Hero() {
             <source srcSet={c.xl} media="(min-width: 1440px)" />
             <img
               src={c.xl}
-              alt={hero.title}
+              alt={hero.title.join(" ")}
               loading="eager"
               decoding="async"
               className="absolute top-0 h-full left-1/2 -translate-x-1/2 object-cover min-w-[599px] sm:min-w-[904px] md:min-w-[1279px] lg:min-w-[1439px] xl:min-w-full"

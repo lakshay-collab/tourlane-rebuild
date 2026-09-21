@@ -40,7 +40,7 @@ export default function Newsletter() {
                   className="flex-1 min-w-0 bg-transparent outline-none px-4 t-body-lg text-onsurface placeholder:text-onsurface-variant"
                   data-testid="newsletter-email-input"
                 />
-                <button type="submit" className="btn-filled" data-testid="newsletter-submit">{newsletter.cta}</button>
+                <button type="submit" className="btn-sunset" data-testid="newsletter-submit">{newsletter.cta}</button>
               </form>
             )}
 

@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="bg-banner text-inverse-on text-center px-4 py-2 t-body-md" data-testid="top-banner">
+      <div className="bg-deep-water text-white text-center px-4 py-2 t-body-md" data-testid="top-banner">
         {nav.banner}
       </div>
 

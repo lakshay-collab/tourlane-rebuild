@@ -15,7 +15,7 @@ export const nav = {
 };
 
 export const hero = {
-  title: 'Discover and book customized honeymoons and holidays',
+  title: ['Exquisitely crafted luxury', 'honeymoons and holidays'],
   searchPlaceholder: 'Where would you like to go?',
   searchPlaceholderMobile: 'Where to?',
   cta: 'Plan for free',

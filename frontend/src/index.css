@@ -23,9 +23,9 @@ body {
   .t-display-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 57px; line-height: 64px; letter-spacing: -0.25px; font-weight: 500; }
   .t-display-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 45px; line-height: 52px; letter-spacing: 0; font-weight: 500; }
   .t-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 36px; line-height: 44px; letter-spacing: 0; font-weight: 500; }
-  .t-headline-lg { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
-  .t-headline-md { font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; }
-  .t-headline-sm { font-size: 24px; line-height: 32px; font-weight: 500; letter-spacing: 0; }
+  .t-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
+  .t-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
+  .t-headline-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.2px; }
   .t-title-lg { font-size: 22px; line-height: 28px; font-weight: 500; }
   .t-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; }
   .t-title-sm { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
@@ -46,6 +46,7 @@ body {
 
   .btn-filled { @apply inline-flex items-center justify-center h-10 px-6 rounded-full bg-primary text-white t-label-lg whitespace-nowrap transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; }
   .btn-outlined { @apply inline-flex items-center justify-center h-10 px-4 gap-2 rounded-full border border-outline text-onsurface t-label-lg whitespace-nowrap transition-colors duration-200 hover:bg-onsurface/[0.08]; }
+  .btn-sunset { @apply inline-flex items-center justify-center h-10 px-6 rounded-full text-white t-label-lg whitespace-nowrap bg-sunset-run bg-[length:160%_100%] bg-left transition-[background-position,box-shadow] duration-300 hover:bg-right hover:shadow-[0_4px_14px_rgba(231,94,38,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40; }
   .btn-text { @apply inline-flex items-center gap-1 t-label-lg text-primary hover:underline; }
 
   .arrow-btn { @apply w-10 h-10 rounded-full bg-secondary-container text-onsurface flex items-center justify-center shadow-sm transition-colors hover:bg-secondary-dim disabled:opacity-0 disabled:pointer-events-none; }

@@ -17,10 +17,10 @@ module.exports = {
         ui: ['"Instrument Sans"', 'Inter', 'sans-serif']
       },
       colors: {
-        primary: { DEFAULT: '#174358', hover: '#113141', container: '#9ACDE5', dim: '#308BB6' },
-        accent: { DEFAULT: '#E75E26', soft: '#FADDD1' },
+        primary: { DEFAULT: '#174358', hover: '#113141', container: '#F4B49A', dim: '#308BB6' },
+        accent: { DEFAULT: '#E75E26', amber: '#FB7F26', terracotta: '#812F0E', rust: '#491B08', soft: '#FADDD1' },
         onprimary: { fixedvariant: '#002131', container: '#002131' },
-        secondary: { DEFAULT: '#308BB6', container: '#E0F7FF', dim: '#9ACDE5' },
+        secondary: { DEFAULT: '#174358', container: '#FADDD1', dim: '#F4B49A' },
         surface: {
           DEFAULT: '#FBF9F1',
           dim: '#DCDAD2',
@@ -29,7 +29,7 @@ module.exports = {
           container: '#F0EEE6',
           high: '#EAE8E0',
           highest: '#E4E3DB',
-          variant: '#E0F7FF'
+          variant: '#FBEADB'
         },
         onsurface: { DEFAULT: '#002131', variant: '#174358' },
         outline: { DEFAULT: '#6F777C', variant: '#C4CBD0' },
@@ -45,6 +45,12 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))'
+      },
+      backgroundImage: {
+        'sunset-run': 'linear-gradient(135deg, #FB7F26 0%, #E75E26 55%, #812F0E 100%)',
+        'sunset-line': 'linear-gradient(90deg, #FB7F26 0%, #E75E26 100%)',
+        'dawn-haze': 'linear-gradient(135deg, #FADDD1 0%, #F4B49A 60%, #FB7F26 100%)',
+        'deep-water': 'linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%)'
       },
       borderRadius: {
         lg: 'var(--radius)',

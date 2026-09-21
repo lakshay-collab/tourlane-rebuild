@@ -32,7 +32,7 @@ export default function TripShowcase() {
                 data-testid={`showcase-tab-${t.tab.toLowerCase().replace(/\s/g, '-')}`}
               >
                 {t.tab}
-                {active === i && <span className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-accent" />}
+                {active === i && <span className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-sunset-line" />}
               </button>
             ))}
           </div>
