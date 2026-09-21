@@ -4,6 +4,17 @@ import { X } from 'lucide-react';
 import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
+
+export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) => (
+  <div className={`flex flex-wrap items-center gap-y-1.5 ${className}`} data-testid={testId}>
+    {cities.map((c, i) => (
+      <React.Fragment key={`${c}-${i}`}>
+        {i > 0 && <ChevronRight size={16} className="text-[#6F777C] mx-0.5 shrink-0" />}
+        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-white border border-[#C4CBD0] eg-label-lg text-[#174358] whitespace-nowrap">{c}</span>
+      </React.Fragment>
+    ))}
+  </div>
+);
 const HEADER = 120;
 
 function StopText({ s }) {
@@ -13,10 +24,10 @@ function StopText({ s }) {
         <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
         <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-[#FADDD1] eg-label-lg text-[#002131] whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
       </div>
-      {s.subtitle && <p className="eg-body-md text-[#6F777C] pt-0.5" data-testid="eg-route-subtitle">{s.subtitle}</p>}
-      <ul className="mt-3 flex flex-col gap-2" data-testid="eg-route-bullets">
+      {s.subtitle && <RouteLine cities={s.subtitle.split(' → ')} className="mt-2" testId="eg-route-subtitle" />}
+      <ul className="mt-4 flex flex-col gap-2.5" data-testid="eg-route-bullets">
         {s.bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2.5 eg-body-md text-[#002131]" data-testid="eg-route-bullet"><span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[#174358] shrink-0" />{b}</li>
+          <li key={b} className="flex items-start gap-2.5 eg-body-lg text-[#002131]" data-testid="eg-route-bullet"><span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-[#174358] shrink-0" />{b}</li>
         ))}
       </ul>
     </div>
@@ -44,8 +55,8 @@ const SectionHead = ({ icon: Icon, title, cta, testId, extra }) => (
   </div>
 );
 
-function Lightbox({ images, name, onClose }) {
-  const [i, setI] = useState(0);
+export function Lightbox({ images, name, onClose, start = 0 }) {
+  const [i, setI] = useState(start);
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
@@ -78,7 +89,7 @@ function Accommodation({ a }) {
         <button type="button" onClick={() => setOpen(true)} className="relative w-[120px] sm:w-[160px] shrink-0 text-left" aria-label={`${route.viewPhotos}: ${a.name}`}><img src={a.images[0]} alt={a.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>
         <div className="p-4 flex flex-col justify-center gap-1 min-w-0">
           <h5 className="eg-title-md text-[#002131]" data-testid="eg-accommodation-name">{a.name}</h5>
-          <p className="eg-body-md text-[#174358] line-clamp-2">{a.description}</p>
+          <p className="eg-body-md text-[#174358]">{a.description}</p>
           <button type="button" onClick={() => setOpen(true)} className="self-start inline-flex items-center gap-1 pt-1 eg-label-lg text-[#174358] underline" data-testid="eg-accommodation-photos"><GalleryIcon size={16} />{route.viewPhotos} ({a.images.length})</button>
         </div>
       </div>
@@ -103,7 +114,7 @@ function Activities({ items }) {
               </div>
               <div className="p-4 flex flex-col gap-1">
                 <h5 className="eg-title-md text-[#002131]" data-testid="eg-activity-name">{a.name}</h5>
-                <p className="eg-body-md text-[#174358] line-clamp-2">{a.description}</p>
+                <p className="eg-body-md text-[#174358]">{a.description}</p>
               </div>
             </div>
           ))}
@@ -149,7 +160,7 @@ export default function EgyptRoute({ onSummary }) {
       <div ref={head} className="sticky top-0 z-20 bg-[#F0EEE6] rounded-t-xl px-4 md:px-10 shadow-[0_6px_12px_-8px_rgba(0,33,49,0.2)]" data-testid="eg-route-header">
         <div className="flex items-center justify-between gap-3 pt-3.5 pb-1.5">
           <h2 className="eg-title-lg md:eg-headline-md !leading-7 text-[#002131]">{route.h2}</h2>
-          <button type="button" onClick={onSummary} className="shrink-0 inline-flex items-center gap-1 h-9 px-4 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] eg-label-lg text-[#002131] transition-colors" data-testid="eg-route-summary-cta"><span className="md:hidden">Summary</span><span className="hidden md:inline">{route.summaryCta}</span></button>
+          <button type="button" onClick={onSummary} className="shrink-0 inline-flex items-center gap-1 h-9 px-4 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] eg-label-lg text-[#002131] transition-colors" data-testid="eg-route-summary-cta"><span className="md:hidden">{route.summaryShort}</span><span className="hidden md:inline">{route.summaryCta}</span></button>
         </div>
         {!stuck && <p className="eg-body-md text-[#174358] pb-3" data-testid="eg-route-sub">{route.sub}</p>}
         <div role="tablist" className="flex overflow-x-auto no-scrollbar border-b border-[#E4E3DB]" data-testid="eg-route-tabs">

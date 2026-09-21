@@ -4,7 +4,7 @@
 export const detail = {
   slug: 'luxor-strand-urlaub',
   ctaHref: '/l/aegypten/enquiry/passengers/',
-  cta: 'Plan for free',
+  cta: 'Customise this trip',
   sub: 'Your travel plan – non-binding & tailor-made',
   banner: 'Worry-free planning: stable flight prices for over a year, plus flexible rebooking and cancellation options.',
   title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
@@ -14,6 +14,10 @@ export const detail = {
   transport: 'Private transfer',
   tag: 'Culture',
   price: 144000,
+  routeCode: 'EG-CAI-ASW-LXR-HRG-CAI · 11D',
+  routeLabel: 'Route',
+  routeCodeLabel: 'Route code',
+  routeCities: ['Cairo', 'Aswan', 'Edfu', 'Luxor', 'Hurghada', 'Cairo'],
   tags: ['Culture', 'Honeymoon', 'Luxury'],
   stats: { days: 11, cities: 5, hotels: 4, activities: 12, transfers: 9 },
   gallery: [
@@ -39,7 +43,8 @@ export const detail = {
 export const route = {
   h2: 'Your suggested itinerary',
   sub: 'Adjustable with your expert at any time',
-  summaryCta: 'View quick summary',
+  summaryCta: 'View tour summary',
+  summaryShort: 'Tour summary',
   accommodationHeading: 'Your accommodation',
   accommodationCta: 'Customise this',
   viewPhotos: 'View photos',
@@ -67,9 +72,9 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F1MR1-wDsVUGDJiIKRYwF_w%2Fistock-2152790069.jpg?w=640&q=75&auto=format&fit=max'
       ],
       activities: [
-        { name: 'Pyramids of Giza & the Sphinx', description: 'Half-day guided tour of Cheops, Chephren and Mykerinos with the Sphinx – the icon of Egypt.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Fbfb9504e-6013-4e1f-8222-eea32df5429f%2Fimage%2Fjpeg%2FyU9CWklfqHs_iUwXLmiygw%2FiStock-2239876304.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Grand Egyptian Museum', description: 'Guided visit incl. the complete Tutankhamun collection and the Royal Mummies Hall.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Old Cairo & Khan el-Khalili', description: 'Coptic Cairo, the Citadel and an evening stroll through the historic bazaar.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
+        { name: 'Pyramids of Giza & the Sphinx', description: 'Half-day guided tour of the three pyramids and the Sphinx.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Fbfb9504e-6013-4e1f-8222-eea32df5429f%2Fimage%2Fjpeg%2FyU9CWklfqHs_iUwXLmiygw%2FiStock-2239876304.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Grand Egyptian Museum', description: 'Guided visit incl. the Tutankhamun collection.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Old Cairo & Khan el-Khalili', description: 'Coptic Cairo, the Citadel and the historic bazaar.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
       ],
 
       accommodation: {
@@ -116,10 +121,10 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max'
       ],
       activities: [
-        { name: 'Kom Ombo Temple', description: 'The unusual dual temple of Sobek and Horus, visited straight from the ship.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Temple of Horus at Edfu', description: 'One of the best-preserved temples in Egypt, reached by horse carriage.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FohpwYLxxL2KcB-CAsMAz7Q%2Fjordi-orts-segales-crq94fdpdw-unsplash.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Philae Temple & High Dam', description: 'Aswan’s island temple of Isis and the engineering marvel of the High Dam.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2Fbq_A8ZGwybnect0xUvJJSQ%2Fistock-2181311638.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Felucca sail at sunset', description: 'A traditional sailing boat ride around Elephantine Island.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
+        { name: 'Kom Ombo Temple', description: 'The twin temple of Sobek and Horus, right by the ship.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Temple of Horus at Edfu', description: 'Best-preserved temple in Egypt, by horse carriage.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FohpwYLxxL2KcB-CAsMAz7Q%2Fjordi-orts-segales-crq94fdpdw-unsplash.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Philae Temple & High Dam', description: 'Aswan’s island temple of Isis and the High Dam.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2Fbq_A8ZGwybnect0xUvJJSQ%2Fistock-2181311638.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Felucca sail at sunset', description: 'Traditional sailing boat ride around Elephantine Island.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
       ],
 
       accommodation: {
@@ -155,8 +160,8 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2F0HsK62Nf0vEfZXkmJalNdw%2FiStock-2151748276.jpg?w=640&q=75&auto=format&fit=max'
       ],
       activities: [
-        { name: 'Valley of the Kings', description: 'Descend into three royal tombs on Luxor’s West Bank.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Karnak Temple', description: 'The vast temple complex with its Great Hypostyle Hall.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Valley of the Kings', description: 'Descend into three royal tombs on the West Bank.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Karnak Temple', description: 'The vast temple complex and its Great Hypostyle Hall.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max' },
         { name: 'Temple of Hatshepsut', description: 'The terraced mortuary temple at Deir el-Bahari.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max' }
       ],
 
@@ -194,9 +199,9 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FEVvpjo1weiKBTfhFN_vgAw%2FiStock-1162326736.jpg?w=640&q=75&auto=format&fit=max'
       ],
       activities: [
-        { name: 'Red Sea snorkelling trip', description: 'Boat trip to Giftun Island reefs with lunch on board.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Desert quad safari', description: 'Late-afternoon quad ride into the Eastern Desert with a Bedouin dinner.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FHg2vOD1So7jldYvue1bl1Q%2FiStock-1202686561+%281%29.jpg?w=640&q=75&auto=format&fit=max' },
-        { name: 'Beach & all-inclusive relaxation', description: 'Pool, beach and water sports at your Red Sea resort.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FOQJ4-2okN8wrB-gP1djj7w%2FiStock-467862934.jpg?w=640&q=75&auto=format&fit=max' }
+        { name: 'Red Sea snorkelling trip', description: 'Boat trip to the Giftun Island reefs with lunch.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Desert quad safari', description: 'Late-afternoon quad ride with a Bedouin dinner.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FHg2vOD1So7jldYvue1bl1Q%2FiStock-1202686561+%281%29.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Beach & all-inclusive relaxation', description: 'Pool, beach and water sports at your resort.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FOQJ4-2okN8wrB-gP1djj7w%2FiStock-467862934.jpg?w=640&q=75&auto=format&fit=max' }
       ],
 
       accommodation: {
@@ -225,7 +230,7 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max'
       ],
       activities: [
-        { name: 'Farewell Nile dinner cruise', description: 'Dinner on the Nile with live music on your last evening in Cairo.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Farewell Nile dinner cruise', description: 'Dinner on the Nile with live music on your last night.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max' },
         { name: 'Departure transfer', description: 'Private transfer to Cairo International Airport.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max' }
       ],
 

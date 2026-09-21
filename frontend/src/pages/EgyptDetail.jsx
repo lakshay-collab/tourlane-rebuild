@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import EgyptRoute from '../components/egypt/EgyptRoute';
+import EgyptRoute, { RouteLine, Lightbox } from '../components/egypt/EgyptRoute';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
@@ -29,15 +29,21 @@ const Ratings = ({ className = '' }) => (
 
 function Gallery() {
   const g = detail.gallery;
+  const [lb, setLb] = useState(null);
   return (
     <div className="relative" data-testid="eg-detail-gallery">
-      <div className="grid grid-cols-2 gap-1 h-[186px] md:h-[328px] rounded-t-2xl overflow-hidden">
-        <div className="relative cursor-pointer"><img src={g[0]} alt={`${detail.alt} - main image`} className="absolute inset-0 w-full h-full object-cover" loading="eager" /></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-1">
-          {g.slice(1, 5).map((src, i) => <div key={i} className={`relative cursor-pointer ${i > 1 ? 'hidden md:block' : ''}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>)}
+      {lb !== null && <Lightbox images={g} name={detail.title} start={lb} onClose={() => setLb(null)} />}
+      <div className="md:hidden flex overflow-x-auto no-scrollbar snap-x snap-mandatory h-[240px] rounded-t-2xl" data-testid="eg-gallery-mobile">
+        {g.map((src, i) => <img key={i} src={src} alt={`${detail.alt} - Image ${i + 1}`} className="w-full h-full object-cover shrink-0 snap-center" loading={i ? 'lazy' : 'eager'} />)}
+      </div>
+      <div className="hidden md:grid grid-cols-2 gap-1 h-[328px] rounded-t-2xl overflow-hidden" data-testid="eg-gallery-desktop">
+        <button type="button" onClick={() => setLb(0)} className="relative cursor-pointer" aria-label="Open photo 1" data-testid="eg-gallery-image-0"><img src={g[0]} alt={`${detail.alt} - main image`} className="absolute inset-0 w-full h-full object-cover" loading="eager" /></button>
+        <div className="grid grid-cols-2 grid-rows-2 gap-1">
+          {g.slice(1, 5).map((src, i) => <button type="button" key={i} onClick={() => setLb(i + 1)} className="relative cursor-pointer" aria-label={`Open photo ${i + 2}`} data-testid={`eg-gallery-image-${i + 1}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>)}
         </div>
       </div>
-      <button type="button" className="absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#FADDD1] text-[#002131] inline-flex items-center justify-center" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} /></button>
+      <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] text-[#002131] items-center gap-2 eg-label-lg" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} />{g.length} photos</button>
+      <span className="md:hidden absolute bottom-3 right-3 z-[2] h-8 px-3 rounded-full bg-[#002131]/70 text-white inline-flex items-center gap-1.5 eg-label-lg pointer-events-none" data-testid="eg-gallery-count"><GalleryIcon size={16} />{g.length}</span>
     </div>
   );
 }
@@ -49,10 +55,19 @@ function Head() {
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
-            <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
+            <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-facts">
               <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-days"><CalendarIcon size={18} />{detail.stats.days} days</span>
               <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-cities"><PinIcon size={18} />{detail.stats.cities} cities</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
               {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#174358]" />{tag}</span>)}
+            </div>
+            <div className="pt-2 border-t border-[#E4E3DB] flex flex-col gap-2" data-testid="eg-detail-route-block">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="eg-label-lg text-[#002131]">{detail.routeLabel}</span>
+                <span className="eg-body-sm text-[#6F777C]" data-testid="eg-detail-route-code">{detail.routeCodeLabel}: <span className="font-mono text-[#174358]">{detail.routeCode}</span></span>
+              </div>
+              <RouteLine cities={detail.routeCities} testId="eg-detail-route-line" />
             </div>
         </div>
       </div>
@@ -61,7 +76,7 @@ function Head() {
 }
 
 const Crumbs = () => (
-  <nav className="eg-wide" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
+  <nav className="eg-wide hidden md:block" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
     <ol className="md:px-5 flex flex-wrap items-center gap-1">
       {crumbs.map((c, i) => (
         <li key={c.label} className="flex items-center gap-1 min-w-0">
@@ -257,8 +272,8 @@ function StickyBar() {
     <div className={`fixed bottom-0 inset-x-0 z-30 bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-detail-sticky-bar">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
         <div className="px-4 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-3">
-          <div className="flex flex-col"><span className="eg-title-md text-[#002131]">{price.from} {inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
-          <Cta className="w-auto" testId="eg-sticky-cta" />
+          <div className="flex flex-col"><span className="eg-body-sm text-[#6F777C]">{price.from}</span><span className="eg-price !text-[20px] !leading-6 md:!text-[22px] text-[#174358]">{inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
+          <Cta className="w-auto !h-14 !px-8 eg-title-lg" testId="eg-sticky-cta" />
         </div>
       </div>
     </div>
@@ -285,7 +300,7 @@ export default function EgyptDetail() {
             <div className="flex-1 min-w-0 flex flex-col gap-8">
               <ExpertCard />
               <EgyptRoute onSummary={showSummary} />
-              <div className="md:max-w-[520px]"><ExpertsCard /></div>
+              <ExpertsCard />
             </div>
             <aside className="hidden md:flex w-[384px] shrink-0 flex-col gap-6" data-testid="eg-detail-sidebar">
               <div className="sticky top-6"><PriceCard /></div>
