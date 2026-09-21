@@ -1,4 +1,5 @@
-// Exact content scraped from https://www.tourlane.de/afrika/aegypten/luxor-strand-urlaub/ (German, unchanged)
+// Product #18 from the uploaded "Tourlane Products Itinerary" (Egypt Explorer — Grand Luxury Edition),
+// mapped onto the /afrika/aegypten/luxor-strand-urlaub detail page. UI labels kept German (Tourlane clone).
 
 export const detail = {
   slug: 'luxor-strand-urlaub',
@@ -6,18 +7,18 @@ export const detail = {
   cta: 'Kostenlos planen',
   sub: 'Ihr Reiseplan – unverbindlich & maßgeschneidert',
   banner: 'Sorglos planen: stabile Flugpreise seit über einem Jahr, sowie flexible Umbuchungs- und Stornierungsoptionen.',
-  title: 'Ägypten Urlaub ab Kairo mit Nilkreuzfahrt und Stop im alten Theben',
-  alt: 'Ägypten Urlaub ab Kairo mit Nilkreuzfahrt und Stop im alten Theben',
-  days: '12 Tage',
-  stations: '6 Stationen',
+  title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
+  alt: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
+  days: '11 Tage',
+  stations: '5 Stationen',
   transport: 'Individualtransfer',
   tag: 'Kultur',
-  price: '2.945 €',
+  price: '1.690 $',
   gallery: [
     'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=1080&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FjI5MNhhx8eaOMbuhVEEtJg%2FiStock-1305840978.jpg?w=640&q=75&auto=format&fit=max',
-    'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FRudhVVpyaS21MwTtLaDafQ%2Fistock-185209709.jpg?w=640&q=75&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
   services: ['Unterkünfte', 'Transport', '24/7 Betreuung', 'Aktivitäten', 'Tourlane App', 'Reiseplan', 'eSim', 'Flüge'],
@@ -26,7 +27,7 @@ export const detail = {
     image: 'https://tourlane-experts.imgix.net/7290O000000YqpN',
     role: 'Aus unserem -Expertenteam',
     createdBy: 'Reise erstellt von',
-    quote: 'Diese Ägypten-Route hat eine Reiseroute, die ich besonders überzeugend finde: Die Pyramiden von Gizeh und das Grand Egyptian Museum als historischer Auftakt, dann die Nilkreuzfahrt zwischen Luxor, Edfu und Assuan als langsames und atmosphärisches Reisen, und schließlich Sharm El Sheikh als vollständiger Gegenentwurf am Roten Meer. Der Tempel von Edfu ist für mich einer der am besten erhaltenen Tempel ganz Ägyptens und verdient mehr Aufmerksamkeit als er auf klassischen Kreuzfahrtrouten bekommt. Was ich immer empfehle: Besuchen Sie das Tal der Könige früh morgens, wenn es bei den Gräbern noch kühl ist und die großen Besuchergruppen noch nicht eingetroffen sind.',
+    quote: 'Egypt Explorer verbindet die großen Höhepunkte Ägyptens in einer einzigen Reise: die Pyramiden von Gizeh und das Grand Egyptian Museum in Kairo, eine entspannte Nilkreuzfahrt zwischen Assuan, Kom Ombo, Edfu und Luxor und zum Abschluss einen Badeaufenthalt am Roten Meer in Hurghada. Besonders empfehle ich den Tempel von Edfu, der per Pferdekutsche erreicht wird und zu den besterhaltenen Tempeln Ägyptens zählt. Und mein Tipp: Besuchen Sie das Tal der Könige früh morgens, wenn es an den Gräbern noch kühl und ruhig ist.',
     more: 'Mehr anzeigen'
   }
 };
@@ -42,9 +43,9 @@ export const route = {
   stops: [
     {
       letter: 'A',
-      name: 'Giza',
-      dayLabel: 'Tag 1 - 2',
-      text: 'Giza, technisch ein separater Verwaltungsbezirk, ist Teil der weitläufigen städtischen Stadt Kairo. Die Gegend ist berühmt als die Lage des Hochplateaus Gizeh: die Stätte einiger der eindrucksvollsten antiken Denkmäler der Welt. Obwohl es über hundert Pyramiden in Ägypten gibt, sind die bei weitem bekanntesten die Gizeh Pyramiden. Während der griechischen und römischen Epoche wurden sie als erste der Sieben Weltwunder bestaunt, und sie üben immer noch eine mächtige Faszination aus, sowohl als außerordentliche technische Leistung als auch als Demonstration der Macht, Macht und Ehrgeiz der pharaonischen Herrscher Ägyptens. Keine Tour durch Ägypten wäre komplett ohne einen Besuch dieser außergewöhnlichen Stätte, die die phantastischsten Legenden seit der Antike inspiriert hat und weiterhin die Besucher fasziniert und inspiriert.',
+      name: 'Cairo',
+      dayLabel: 'Tag 1 - 4',
+      text: 'Arrival at Cairo International Airport with meet & assist through immigration and customs, then transfer to your hotel. Over the following days you explore the Pyramids of Giza (Cheops, Chephren & Mykerinos) and the majestic Sphinx, and visit the Grand Egyptian Museum (GEM) — one of the world\u2019s largest archaeological museums with more than 100,000 artefacts, including the complete Tutankhamun collection. You then fly to Aswan, tour the High Dam with panoramic views over Lake Nasser, embark your Nile cruise ship and enjoy a felucca ride past the Botanical Gardens and the Agha Khan Mausoleum.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max',
@@ -52,8 +53,8 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F1MR1-wDsVUGDJiIKRYwF_w%2Fistock-2152790069.jpg?w=640&q=75&auto=format&fit=max'
       ],
       accommodation: {
-        name: 'Azal Pyramids Hotel',
-        description: 'Azal Pyramids Hotel in Gizeh liegt im historischen Viertel, nur eine 10-minütige Fahrt von Pyramiden von Gizeh und Große Sphinx von Giseh entfernt. Dieses Hotel im luxuriösen Stil ist 6,6 km von Cheops-Pyramide und 7 km von Grand Egyptian Museum entfernt.\n\nGönn dir einen Besuch des Wellnessbereichs, der Massagen, Körperbehandlungen und Gesichtsbehandlungen bietet. Dieses Hotel bietet auch kostenloses WLAN, ein Concierge-Service und ein Souvenirladen/Kiosk.\n\nFühl dich in einem der 402 Zimmer, die Minibar und einen LCD-Fernseher bieten, wie zu Hause. In deinem Zimmer findest du ein Pillowtop-Bett mit Bettwäsche aus ägyptischer Baumwolle vor. Ein WLAN-Internetzugang (kostenlos) ist ebenso verfügbar wie Satellitenempfang. In den Badezimmern finden sich Komfortbadewannen und Regenduschen.',
+        name: 'Semiramis Inter-Continental / Hyatt Centric',
+        description: 'Four nights in Cairo on a half-board basis in a city-view room at the Semiramis Inter-Continental or Hyatt Centric. Both hotels are centrally located and perfectly placed for exploring the Pyramids of Giza, the Grand Egyptian Museum and downtown Cairo, with elegant rooms, on-site dining and river or city views.',
         images: [
           'https://catalog-cdn-production.tlservers.com/images/content_accommodations/3383/a896f1af52b6d5446d9969f0762f735765e60b916794fa037d620c9456c439f5.jpg?w=640&q=75&auto=format&fit=max',
           'https://catalog-cdn-production.tlservers.com/images/content_accommodations/3383/f48a09c5b54f4fa9cbda40bc6686bffc4df51096a18e4003cb12e9335c37a8e7.jpg?w=640&q=75&auto=format&fit=max',
@@ -61,8 +62,8 @@ export const route = {
         ]
       },
       program: {
-        name: 'Besuch des Grand Egyptian Museum',
-        description: 'Erkunden Sie antike Wunder und moderne Meisterwerke im Grand Egyptian Museum bei einem ganztägigen Besuch. Geschichte wird lebendig!',
+        name: 'Pyramids of Giza & Grand Egyptian Museum',
+        description: 'A half-day tour of the Pyramids of Giza and the Sphinx, plus a half-day visit to the Grand Egyptian Museum with its complete Tutankhamun collection. History comes to life!',
         image: 'https://kiwi-cdn.tlservers.com/activities%2Fbfb9504e-6013-4e1f-8222-eea32df5429f%2Fimage%2Fjpeg%2FyU9CWklfqHs_iUwXLmiygw%2FiStock-2239876304.jpg?w=640&q=75&auto=format&fit=max'
       },
       programDetail: {
@@ -72,91 +73,24 @@ export const route = {
           { h: '2. Die Schätze von König Tutanchamun', t: 'Ein Höhepunkt ist die Sammlung, die den Schätzen von König Tutanchamun gewidmet ist. Das Museum zeigt die vollständigste Sammlung von Gegenständen aus seinem Grab, darunter seine berühmte goldene Maske, Streitwagen, Schmuck und die beeindruckende Vielfalt an Gegenständen, die 1922 mit ihm begraben wurden. Dies ist eine einmalige Gelegenheit, diese Schätze in einer hochmodernen Umgebung zu sehen.' },
           { h: '3. Mumienhalle', t: 'Das Museum zeigt auch eine unglaubliche Ausstellung königlicher Mumien, darunter die von Pharaonen wie Ramses II und Sethos I. Diese Ausstellung bietet faszinierende Einblicke in die Bestattungspraktiken des alten Ägypten und die Konservierung von Körpern sowie den Mumifizierungsprozess.' },
           { h: '4. Moderne Architektur und Design', t: 'Das Grand Egyptian Museum selbst ist ein Meisterwerk moderner Architektur mit einem beeindruckenden Design, das sich nahtlos in die Wüstenlandschaft einfügt. Seine weitläufigen, offenen Räume und innovativen Ausstellungstechniken bieten eine atemberaubende Kulisse für die antiken Artefakte und machen es zu einem wirklich immersiven Erlebnis.' },
-          { h: '5. Interaktive und Multimedia-Ausstellungen', t: 'Das Museum nutzt die neueste Technologie, um das alte Ägypten zum Leben zu erwecken. Interaktive Ausstellungen, digitale Rekonstruktionen und Multimedia-Präsentationen ermöglichen es Ihnen, ein tieferes Verständnis des historischen Kontextes hinter jedem Artefakt zu gewinnen und bieten eine ansprechendere Möglichkeit, über die Vergangenheit Ägyptens zu lernen.' }
+          { h: '5. Interaktive und Multimedia-Ausstellungen', t: 'Das Museum nutzt die neueste Technologie, um das alte Ägypten zum Leben zu erwecken. Interaktive Ausstellungen, digitale Rekonstruktionen und Multimedia-Präsentationen ermöglichen es Ihnen, ein tieferes Verständnis des historischen Kontextes hinter jedem Artefakt zu gewinnen.' }
         ]
       }
     },
     {
       letter: 'B',
-      name: 'Luxor',
-      dayLabel: 'Tag 3 - 4',
-      text: 'Luxor, am Ufer des Nils gelegen, ist ein faszinierender Ort voller Geschichte und Magie. Hier befand sich einst das alte Theben, die glanzvolle Hauptstadt des Neuen Reiches. Heute beeindruckt Luxor mit weltberühmten Sehenswürdigkeiten wie dem Tempel von Karnak, dem Luxor-Tempel und dem Tal der Könige, wo viele Pharaonen, darunter Tutanchamun, ihre letzte Ruhe fanden.\n\nEin Spaziergang entlang des Nilufers, eine Fahrt mit der Feluke oder eine Heißluftballonfahrt bei Sonnenaufgang machen den Besuch unvergesslich. Luxor ist ein Muss für alle, die das alte Ägypten hautnah erleben möchten!',
-      images: [
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FEIB8KA0OkA3jO_kZVHnoxA%2FiStock-1390987140.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2F0HsK62Nf0vEfZXkmJalNdw%2FiStock-2151748276.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
-      ],
-      accommodation: {
-        name: 'Steigenberger Resort Achti',
-        description: 'Das Steigenberger Resort Achti liegt ideal in einem ruhigen und abgeschiedenen tropischen Garten am Ostufer des Nils in Luxor. Die Zimmer und Suiten sind modern, geräumig und gut ausgestattet und verfügen jeweils über Klimaanlage, WLAN, TV, Minibar, Tee-/Kaffeetablett und ein eigenes Bad. Sie können in den hoteleigenen Restaurants speisen, die köstliche traditionelle ägyptische, mediterrane und andere internationale Küche servieren, oder entspannen Sie in der komfortablen Lobbybar bei einem erfrischenden Getränk. Zu den weiteren Annehmlichkeiten und Dienstleistungen gehören zwei Swimmingpools, von denen einer beheizt wird, ein Kinderbecken, eine Joggingstrecke, ein Volleyballfeld und Parkplätze vor Ort. In der Nähe des Hotels können Sie verschiedenen Aktivitäten nachgehen, darunter die Erkundung des Tals der Könige, das Schwimmen in einem Heißluftballon über der Stadt und eine Felucca-Fahrt auf dem Nil.',
-        images: [
-          'https://catalog-cdn-production.tlservers.com/images/content_accommodations/295420/1a2d878e984d182d52b0b4abe1778e16ae7ec0c9ffe74e904836f76e40defa4f.jpg?w=640&q=75&auto=format&fit=max',
-          'https://catalog-cdn-production.tlservers.com/images/content_accommodations/295420/83dbdf8cd7694251c9957af7aed95b9b141ef3a484dad604f2553ff6557fb127.jpg?w=640&q=75&auto=format&fit=max',
-          'https://catalog-cdn-production.tlservers.com/images/content_accommodations/295420/5d3f73709155a0db1112d67352c6ec5d6c8091667a4e1efc12fc95aaad66913f.jpg?w=640&q=75&auto=format&fit=max'
-        ]
-      },
-      program: {
-        name: 'Iberotel Crown Empress',
-        description: 'Erleben Sie eine stilvolle Nilkreuzfahrt an Bord der Iberotel Crown Empress, einem eleganten Kreuzfahrtschiff mit 128 komfortabel ausgestatteten Kabinen auf 5 luxuriösen Decks. Genießen Sie Frühstück, Mittag- und Abendessen inklusive in hochwertiger Atmosphäre. An Bord erwarten Sie erstklassige Einrichtungen wie ein stilvolles Restaurant, eine Lounge-Bar, ein Sonnendeck mit Pool, ein Wellnessbereich und ein Fitnessraum – ideal zum Entspannen und Genießen. Die perfekte Kombination aus Komfort, Service und orientalischem Flair macht Ihre Reise auf der Crown Empress zu einem unvergesslichen Erlebnis auf dem Nil.',
-        image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max'
-      }
-    },
-    {
-      letter: 'C',
-      name: 'Edfu',
-      dayLabel: 'Tag 5',
-      text: 'Die historische Stadt Edfu liegt am Westufer des Nils zwischen Esna und Assuan und ist der Ort des berühmten Horus-Tempels. Der Tempel gilt als der am besten reservierte Tempel Ägyptens und stammt aus der ptolemäischen Zeit (237 — 57 v. Chr.) und hat eine dramatische Rolle im heutigen Verständnis des alten Ägypten gespielt, einschließlich unserer Kenntnis seiner Religion, seines Lebensstils und seiner Sprache. Der Tempel ist mit komplizierten und abwechslungsreichen Szenen verziert, die Ehen, Gottheiten und die Geburt seines Namensvetters Gottes darstellen, und zeigt eine Kombination aus ägyptischen und griechischen architektonischen Elementen. Weitere Highlights sind die Ruinen einer von sieben kleinen Provinzschrittpyramiden und zwei Tempel, die als zweiter Platz für den Tempel von Dendera gelten. Das moderne Edfu ist ein geschäftiges Drehkreuz, das renommierte Töpferwaren produziert.',
+      name: 'Nilkreuzfahrt: Aswan → Edfu → Luxor',
+      dayLabel: 'Tag 4 - 7',
+      text: 'Cruise the Nile aboard the M/S Concerto Plus on a full-board basis. Sail to Kom Ombo to visit its rare dual-deity temple dedicated to Sobek the crocodile god and Horus the Elder, then continue to Edfu to see the Temple of Horus — one of the most complete and best-preserved temples in Egypt — reached by horse carriage. From there you sail on to Luxor via Esna, crossing the Esna lock, with relaxed afternoons enjoying the passing scenery. An optional excursion to the temples of Abu Simbel is available.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FRudhVVpyaS21MwTtLaDafQ%2Fistock-185209709.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FohpwYLxxL2KcB-CAsMAz7Q%2Fjordi-orts-segales-crq94fdpdw-unsplash.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2Fbq_A8ZGwybnect0xUvJJSQ%2Fistock-2181311638.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FLb2i95m1Qb-SeWo75ICOoQ%2FiStock-1094945554.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FA9Pm18Dkw2WnvVSnpSt4xw%2Fsamer-khodeir-hx5dpjned14-unsplash.jpg?w=640&q=75&auto=format&fit=max'
-      ],
-      accommodation: null,
-      program: {
-        name: 'Iberotel Crown Empress',
-        description: 'Erleben Sie eine stilvolle Nilkreuzfahrt an Bord der Iberotel Crown Empress, einem eleganten Kreuzfahrtschiff mit 128 komfortabel ausgestatteten Kabinen auf 5 luxuriösen Decks. Genießen Sie Frühstück, Mittag- und Abendessen inklusive in hochwertiger Atmosphäre. An Bord erwarten Sie erstklassige Einrichtungen wie ein stilvolles Restaurant, eine Lounge-Bar, ein Sonnendeck mit Pool, ein Wellnessbereich und ein Fitnessraum – ideal zum Entspannen und Genießen. Die perfekte Kombination aus Komfort, Service und orientalischem Flair macht Ihre Reise auf der Crown Empress zu einem unvergesslichen Erlebnis auf dem Nil.',
-        image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max'
-      }
-    },
-    {
-      letter: 'D',
-      name: 'Luxor',
-      dayLabel: 'Tag 6',
-      text: 'Luxor, am Ufer des Nils gelegen, ist ein faszinierender Ort voller Geschichte und Magie. Hier befand sich einst das alte Theben, die glanzvolle Hauptstadt des Neuen Reiches. Heute beeindruckt Luxor mit weltberühmten Sehenswürdigkeiten wie dem Tempel von Karnak, dem Luxor-Tempel und dem Tal der Könige, wo viele Pharaonen, darunter Tutanchamun, ihre letzte Ruhe fanden.\n\nEin Spaziergang entlang des Nilufers, eine Fahrt mit der Feluke oder eine Heißluftballonfahrt bei Sonnenaufgang machen den Besuch unvergesslich. Luxor ist ein Muss für alle, die das alte Ägypten hautnah erleben möchten!',
-      images: [
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FEIB8KA0OkA3jO_kZVHnoxA%2FiStock-1390987140.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2F0HsK62Nf0vEfZXkmJalNdw%2FiStock-2151748276.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
-      ],
-      accommodation: null,
-      program: {
-        name: 'Iberotel Crown Empress',
-        description: 'Erleben Sie eine stilvolle Nilkreuzfahrt an Bord der Iberotel Crown Empress, einem eleganten Kreuzfahrtschiff mit 128 komfortabel ausgestatteten Kabinen auf 5 luxuriösen Decks. Genießen Sie Frühstück, Mittag- und Abendessen inklusive in hochwertiger Atmosphäre. An Bord erwarten Sie erstklassige Einrichtungen wie ein stilvolles Restaurant, eine Lounge-Bar, ein Sonnendeck mit Pool, ein Wellnessbereich und ein Fitnessraum – ideal zum Entspannen und Genießen. Die perfekte Kombination aus Komfort, Service und orientalischem Flair macht Ihre Reise auf der Crown Empress zu einem unvergesslichen Erlebnis auf dem Nil.',
-        image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max'
-      }
-    },
-    {
-      letter: 'E',
-      name: 'Aswan',
-      dayLabel: 'Tag 7 - 8',
-      text: 'Assuan ist eine ruhige Stadt am Nil im Süden Ägyptens, die für ihr warmes Klima, ihre Flussinseln und ihr starkes nubisches Erbe bekannt ist. Weiter südlich als Luxor bietet es einen ruhigeren Ausgangspunkt für die Erkundung der antiken Stätten Oberägyptens und ist ein beliebter Ausgangspunkt für Nilkreuzfahrten. Reisende können mit einer Feluke den Nil entlang fahren, die Inseltempel von Philae besuchen, den unvollendeten Obelisk erkunden und durch die farbenfrohen Märkte und nubischen Dörfer schlendern. Elephantine Island und die botanischen Gärten auf Kitchener\u2019s Island bieten die Möglichkeit, Assuans Geschichte und Landschaften in einem langsameren Tempo zu erkunden. Die Stadt ist auch ein Ausgangspunkt für Ausflüge nach Abu Simbel. Die Kombination aus antiken Monumenten, Wüstenlandschaften und Ausblicken auf den Nil verleiht ihr eine unverwechselbare Atmosphäre.',
-      images: [
-        'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FZl3wzbEfgQA_IqP1yTNDtw%2Fdmitrii-zhodzishskii-4rxhe9xewa-unsplash.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FHnjzuWs4IQw-AZfu5Vygzg%2FiStock-2103917607.jpg?w=640&q=75&auto=format&fit=max',
-        'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2Fm_Lx1XD2CYgBO9XQ207Xog%2FiStock-1327507461.jpg?w=640&q=75&auto=format&fit=max'
+        'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max'
       ],
       accommodation: {
-        name: 'Mövenpick Resort Aswan',
-        description: 'Das Mövenpick Resort Aswan ist der perfekte Ort, um in einer der schönsten Naturlandschaften Ägyptens zu entspannen. Es befindet sich auf einer Insel in der Mitte des Nils in einer bezaubernden natürlichen Umgebung. Alle Zimmer im nubischen Stil sind geräumig und modern eingerichtet und bieten aus allen Blickwinkeln einen Blick auf den Nil. In den hauseigenen Restaurants und Bars können Sie kulinarische Spezialitäten genießen. Zu den weiteren Dienstleistungen und Einrichtungen gehören 2 Swimmingpools, kostenfreies WLAN, ein Fitnesscenter, ein Wäscheservice und ein Tennisplatz.',
+        name: 'M/S Concerto Plus (Nile Cruise)',
+        description: 'Three nights aboard the M/S Concerto Plus on a full-board basis, cruising between Aswan, Kom Ombo, Edfu and Luxor. Enjoy comfortable cabins, a sun deck with pool and all meals on board while the landscapes of Upper Egypt drift past.',
         images: [
           'https://kiwi-cdn.tlservers.com/items%2Fc81680aa-4f26-42eb-8dcd-426bdf9da122%2Fimage%2Fjpeg%2FYuP38L3SdxQsjK3gydd7Jg%2F1755599865544aswanxxxxxxxxxxxxi13021416by9.jpg?w=640&q=75&auto=format&fit=max',
           'https://kiwi-cdn.tlservers.com/items%2Fc81680aa-4f26-42eb-8dcd-426bdf9da122%2Fimage%2Fjpeg%2FNYBNt1qsL0H17iANQhBDSA%2F1755599865539aswanxxxxxxxxxxxxi1207013by2.jpg?w=640&q=75&auto=format&fit=max',
@@ -164,16 +98,42 @@ export const route = {
         ]
       },
       program: {
-        name: 'Iberotel Crown Empress',
-        description: 'Erleben Sie eine stilvolle Nilkreuzfahrt an Bord der Iberotel Crown Empress, einem eleganten Kreuzfahrtschiff mit 128 komfortabel ausgestatteten Kabinen auf 5 luxuriösen Decks. Genießen Sie Frühstück, Mittag- und Abendessen inklusive in hochwertiger Atmosphäre. An Bord erwarten Sie erstklassige Einrichtungen wie ein stilvolles Restaurant, eine Lounge-Bar, ein Sonnendeck mit Pool, ein Wellnessbereich und ein Fitnessraum – ideal zum Entspannen und Genießen. Die perfekte Kombination aus Komfort, Service und orientalischem Flair macht Ihre Reise auf der Crown Empress zu einem unvergesslichen Erlebnis auf dem Nil.',
+        name: 'Kom Ombo & Edfu Temples',
+        description: 'Visit the dual-deity Kom Ombo Temple of Sobek and Horus, then the beautifully preserved Temple of Horus at Edfu, reached by a traditional horse carriage.',
         image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max'
       }
     },
     {
-      letter: 'F',
-      name: 'Sharm El Sheikh',
-      dayLabel: 'Tag 9 - 12',
-      text: 'Bekannt als „Sharm“, liegt dieser beliebte Badeort zwischen der Wüste der Sinai-Halbinsel und dem warmen Wasser des Roten Meeres. Mit seinen geschützten weißen Sandstränden, kristallklarem Wasser, farbenfrohen Korallenriffen und den legendären Pyramiden von Gizeh nur einen Ausflug entfernt, lockt die Stadt unzählige Touristen, die hier herkommen, um das warme, sonnige Wetter und die unzähligen Aktivitäten zu genießen. Dazu gehören unter anderem: geführte Wüstensafaris, Reiten, Go-Kart, Quad Biking, Windsurfen, Kajak, Kitesurfen, Kameltrekking, Schnorcheln und Tauchen. Zu den Sehenswürdigkeiten gehören: der lebendige Sharm Old Market, die exquisite Naama Bay mit einer palmengesäumten Promenade mit lebhaften Bars und Restaurants sowie der außergewöhnliche Nationalpark Ras Mohammed, der von einigen der beeindruckendsten Tauchplätze der Welt umgeben ist.',
+      letter: 'C',
+      name: 'Luxor → Hurghada',
+      dayLabel: 'Tag 7',
+      text: 'After breakfast and disembarkation you explore Luxor\u2019s West Bank — the Valley of the Kings with the royal tombs of the pharaohs, the Temple of Hatshepsut carved into the limestone cliffs, and the Colossi of Memnon. On the East Bank you visit the vast Karnak Temple with its Great Hypostyle Hall of 134 columns and sacred lakes, and Luxor Temple with its giant statues and obelisks. In the afternoon you transfer by luxury coach to Hurghada on the Red Sea coast.',
+      images: [
+        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FEIB8KA0OkA3jO_kZVHnoxA%2FiStock-1390987140.jpg?w=640&q=75&auto=format&fit=max',
+        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max',
+        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max',
+        'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2F0HsK62Nf0vEfZXkmJalNdw%2FiStock-2151748276.jpg?w=640&q=75&auto=format&fit=max'
+      ],
+      accommodation: {
+        name: 'Marriott Hurghada (or similar)',
+        description: 'Check in to the Marriott Hurghada (or similar) on the Red Sea coast for the beach portion of your journey, with direct beach access, pools and a choice of restaurants.',
+        images: [
+          'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FxqGWBLuhSklGbQiseymcIg%2F1742896601489_Overview-20185216.jpg?w=640&q=75&auto=format&fit=max',
+          'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FiF0wezWLjX_H8D2PFsVc4g%2F1742896601487_Lobby.jpg?w=640&q=75&auto=format&fit=max',
+          'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FYV5oZFtls8PL0Y_oXP8h7A%2F1742896601481_Al-Zaytoun-Main-Restaurant-20185216.jpg?w=640&q=75&auto=format&fit=max'
+        ]
+      },
+      program: {
+        name: 'Valley of the Kings & Karnak Temple',
+        description: 'Guided visits to the Valley of the Kings, the Temple of Hatshepsut, the Colossi of Memnon and the great temples of Karnak and Luxor before transferring to the Red Sea.',
+        image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max'
+      }
+    },
+    {
+      letter: 'D',
+      name: 'Hurghada – Rotes Meer',
+      dayLabel: 'Tag 7 - 10',
+      text: 'Three nights of all-inclusive relaxation on the Red Sea. Enjoy the beach and the warm, crystal-clear water at your own pace, with plenty of optional activities such as water sports, snorkelling and diving among Hurghada\u2019s famous coral reefs. This is the perfect contrast to the cultural first half of your journey.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FHg2vOD1So7jldYvue1bl1Q%2FiStock-1202686561+%281%29.jpg?w=640&q=75&auto=format&fit=max',
@@ -181,12 +141,32 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FEVvpjo1weiKBTfhFN_vgAw%2FiStock-1162326736.jpg?w=640&q=75&auto=format&fit=max'
       ],
       accommodation: {
-        name: 'JAZ Mirabel Beach',
-        description: 'Das Jaz Mirabel Beach Resort bietet einen atemberaubenden Blick auf das Rote Meer in einer luxuriösen, entspannten Umgebung für den idealen Urlaub in Ägypten. Das Resort liegt am Ufer einer Lagune in der Nabq Bay, eine 10-minütige Fahrt vom internationalen Flughafen Sharm El-Sheikh entfernt. Der unverwechselbare Stil des Jaz Mirabel Beach verbindet zeitgenössische toskanische Architektur mit herzlicher ägyptischer Gastfreundschaft. Zu den Einrichtungen des Resorts gehören Restaurants, Bars, unberührte Strände und moderne, stilvolle Zimmer sowie zahlreiche Freizeitmöglichkeiten. Sie können in den Geschäften des Souk Mirabel Souvenirjagd gehen oder bis zum Morgengrauen im angesagten Nachtclub Glow feiern.',
+        name: 'Marriott Hurghada (or similar)',
+        description: 'All-inclusive stay at the Marriott Hurghada (or similar), directly on the Red Sea, with pools, beach access, water-sports options and a range of dining venues.',
         images: [
           'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FxqGWBLuhSklGbQiseymcIg%2F1742896601489_Overview-20185216.jpg?w=640&q=75&auto=format&fit=max',
           'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FiF0wezWLjX_H8D2PFsVc4g%2F1742896601487_Lobby.jpg?w=640&q=75&auto=format&fit=max',
           'https://kiwi-cdn.tlservers.com/items%2F11dab33a-edc9-4a57-9592-4764daaa57be%2Fimage%2Fjpeg%2FYV5oZFtls8PL0Y_oXP8h7A%2F1742896601481_Al-Zaytoun-Main-Restaurant-20185216.jpg?w=640&q=75&auto=format&fit=max'
+        ]
+      },
+      program: null
+    },
+    {
+      letter: 'E',
+      name: 'Cairo',
+      dayLabel: 'Tag 10 - 11',
+      text: 'Fly back to Cairo for a final overnight after your Red Sea stay, with a transfer to your hotel and the evening at leisure. After breakfast on your last day you are transferred to Cairo International Airport for your departure flight home — a balanced journey of culture, Nile cruising and beach time comes to a close.',
+      images: [
+        'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max',
+        'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max',
+        'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max'
+      ],
+      accommodation: {
+        name: 'Semiramis Inter-Continental / Hyatt Centric',
+        description: 'A final overnight in Cairo at the Semiramis Inter-Continental or Hyatt Centric before your departure the next morning.',
+        images: [
+          'https://catalog-cdn-production.tlservers.com/images/content_accommodations/3383/a896f1af52b6d5446d9969f0762f735765e60b916794fa037d620c9456c439f5.jpg?w=640&q=75&auto=format&fit=max',
+          'https://catalog-cdn-production.tlservers.com/images/content_accommodations/3383/f48a09c5b54f4fa9cbda40bc6686bffc4df51096a18e4003cb12e9335c37a8e7.jpg?w=640&q=75&auto=format&fit=max'
         ]
       },
       program: null
@@ -212,21 +192,20 @@ export const experts = {
 
 export const glance = {
   h2: 'Die Route auf einen Blick',
-  intro: 'Ein Strandurlaub in Luxor bietet eine faszinierende Mischung aus Geschichte und Entspannung. Diese einzigartige Destination zieht Reisende an, die sowohl kulturelle Erlebnisse als auch erholsame Stunden am Wasser suchen. Die beeindruckenden Tempel und Gräber von Luxor sind nur einen Steinwurf entfernt und bieten einen tiefen Einblick in die ägyptische Geschichte.',
+  intro: 'Egypt Explorer verbindet die großen Höhepunkte Ägyptens in einer einzigen Reise: die Pyramiden von Gizeh und das Grand Egyptian Museum in Kairo, eine entspannte Nilkreuzfahrt zwischen Assuan, Kom Ombo, Edfu und Luxor sowie zum Abschluss einen Badeaufenthalt am Roten Meer in Hurghada.',
   more: 'Weitere Details anzeigen',
   less: 'Weniger Details anzeigen',
-  intro2: 'Neben den kulturellen Schätzen erleben Sie Ägypten auf dieser Reise besonders intensiv entlang des Nils. Während einer mehrtägigen Nilkreuzfahrt entdecken Sie bedeutende Orte wie Luxor, Edfu und Assuan in entspanntem Tempo und genießen dabei immer wieder ruhige Momente am Wasser. Zum Abschluss Ihrer Reise erwartet Sie mit Sharm El Sheikh ein klassischer Badeaufenthalt am Roten Meer, der perfekte Kontrast zu den kulturellen Eindrücken im Landesinneren.',
+  intro2: 'Entlang des Nils entdecken Sie die bedeutendsten Stätten Oberägyptens in entspanntem Tempo, bevor Sie antike Tempel gegen die Strände und Korallenriffe des Roten Meeres eintauschen – der perfekte Kontrast zur kulturellen ersten Hälfte der Reise.',
   accommodationHeading: 'Ihre Unterkunft',
   highlightsHeading: 'Highlights & Aktivitäten',
   days: [
-    { title: 'Tag 1–2: Giza (2 Nächte)', text: 'Ihr Auftakt mit den weltberühmten Pyramiden und ersten Eindrücken der altägyptischen Hochkultur.', hotel: 'Azal Pyramids Hotel', highlights: ['Pyramiden von Gizeh und Sphinx', 'Besuch des Grand Egyptian Museum'] },
-    { title: 'Tag 3–4: Luxor (1 Nacht Hotel + Beginn Nilkreuzfahrt)', text: 'Luxor bildet das kulturelle Zentrum Ihrer Reise und den Startpunkt Ihrer Nilkreuzfahrt.', hotel: 'Steigenberger Resort Achti / Nilkreuzfahrt', highlights: ['Karnak-Tempel', 'Tal der Könige'] },
-    { title: 'Tag 5: Edfu (1 Nacht, Nilkreuzfahrt)', text: 'Ein eindrucksvoller Zwischenstopp entlang des Nils.', hotel: 'Nilkreuzfahrt M/S Iberotel Crown Empress', highlights: ['Horus-Tempel von Edfu', 'Entspannte Nilfahrt'] },
-    { title: 'Tag 6: Luxor (1 Nacht, Nilkreuzfahrt)', text: 'Weitere kulturelle Höhepunkte erwarten Sie entlang des Flusses.', hotel: 'Nilkreuzfahrt M/S Iberotel Crown Empress', highlights: ['Tempelanlagen von Luxor', 'Leben am Nil beobachten'] },
-    { title: 'Tag 7–8: Aswan (1 Nacht Kreuzfahrt + 1 Nacht Hotel)', text: 'Aswan begeistert mit ruhiger Atmosphäre und beeindruckenden Landschaften.', hotel: 'Nilkreuzfahrt / Mövenpick Resort Aswan', highlights: ['Tempel von Philae', 'Spaziergänge entlang des Nils'] },
-    { title: 'Tag 9–12: Sharm El Sheikh (3 Nächte)', text: 'Zum Abschluss entspannen Sie am Roten Meer und lassen Ihre Reise entspannt ausklingen.', hotel: 'JAZ Mirabel Beach', highlights: ['Badeaufenthalt am Roten Meer', 'Schnorcheln und Tauchen'] }
+    { title: 'Tag 1–4: Cairo (4 Nächte)', text: 'Ihr Auftakt in Kairo mit den weltberühmten Pyramiden, dem Grand Egyptian Museum und dem Flug nach Assuan zum Beginn der Nilkreuzfahrt.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Pyramiden von Gizeh & Sphinx', 'Grand Egyptian Museum', 'Hochdamm von Assuan & Feluke'] },
+    { title: 'Tag 4–7: Nilkreuzfahrt Assuan → Edfu → Luxor (3 Nächte)', text: 'Entspanntes Reisen auf dem Nil mit Besuchen der Tempel von Kom Ombo und Edfu.', hotel: 'M/S Concerto Plus (Nilkreuzfahrt)', highlights: ['Tempel von Kom Ombo', 'Horus-Tempel von Edfu per Pferdekutsche'] },
+    { title: 'Tag 7: Luxor → Hurghada', text: 'West- und Ostufer von Luxor am Vormittag, anschließend Transfer ans Rote Meer.', hotel: 'Marriott Hurghada (o. ä.)', highlights: ['Tal der Könige', 'Karnak- & Luxor-Tempel'] },
+    { title: 'Tag 7–10: Hurghada – Rotes Meer (3 Nächte)', text: 'Erholung am Roten Meer auf All-inclusive-Basis mit Zeit für Strand und Wassersport.', hotel: 'Marriott Hurghada (o. ä.)', highlights: ['Badeaufenthalt am Roten Meer', 'Schnorcheln & Tauchen'] },
+    { title: 'Tag 10–11: Cairo', text: 'Rückflug nach Kairo mit letzter Übernachtung vor Ihrer Abreise.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Rückflug nach Kairo', 'Abreisetransfer'] }
   ],
-  outro: 'Am letzten Tag endet Ihre Ägypten-Reise – eine ausgewogene Kombination aus Kultur, Nil-Erlebnis und Badeurlaub.'
+  outro: 'Am letzten Tag endet Ihre Ägypten-Reise mit einem Abreisetransfer ab Kairo – eine ausgewogene Kombination aus Kultur, Nil-Erlebnis und Badeurlaub am Roten Meer.'
 };
 
 export const brandFeatures = {
@@ -252,7 +231,7 @@ export const crumbs = [
   { label: 'Reiseziele', href: '/reiseziele/' },
   { label: 'Afrika', href: '/afrika/' },
   { label: 'Ägypten', href: '/afrika/aegypten/' },
-  { label: 'Ägypten Urlaub ab Kairo mit Nilkreuzfahrt und Stop im alten Theben' }
+  { label: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition' }
 ];
 
 export const trust = { label: 'Hervorragend', rating: 4.5, score: '4,5 von 5', count: '5.748 Bewertungen' };

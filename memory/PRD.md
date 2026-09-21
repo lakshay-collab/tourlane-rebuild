@@ -104,6 +104,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Known deltas: single full-bleed hero image (not the source 3-image collage); product cards use 3 images each (source shows 6 dots); reviews/FAQ sections omitted (not captured in source crawl); USP icons are lucide (Star/Ticket/MapPinned), not Tourlane's exact SVGs; images hotlinked from ctfassets/kiwi CDNs.
 - Tested: iteration_11 – 100% frontend pass at 1920 + 390, 0 console errors; counts verified products=18/6, countries=14, continents=11, wohin=4, usps=3, Länder=14.
 
+## Egypt detail copy → Itinerary Product #18 (2026-06, latest)
+- User uploaded "Tourlane Products Itinerary.pdf"; requested the Egypt product page copy be changed to PRODUCT #18.
+- egyptDetailData.js updated to Product #18 "Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition": 11 Tage / 5 Stationen / ab 1.690 $. Route rebuilt to 5 stops A–E (Cairo Tag1-4 → Nilkreuzfahrt Aswan→Edfu→Luxor Tag4-7 → Luxor→Hurghada Tag7 → Hurghada/Rotes Meer Tag7-10 → Cairo Tag10-11) with hotels (Semiramis/Hyatt, M/S Concerto Plus, Marriott Hurghada) and programs from the PDF. `glance` day-by-day + intro/outro rewritten to this itinerary; expert quote reworded; crumbs updated. Route/UI labels kept German; itinerary descriptions in English per the PDF. Images reused from existing Egypt CDN set.
+- Matching listing card (egyptListingData product slug `luxor-strand-urlaub`) title/days/stations/price updated for consistency. Slug/route unchanged so all links still work.
+- Verified: compiles clean, detail page renders new title/meta/gallery/breadcrumb, 0 app console errors (smoke screenshot). Kept the expert block (Roman Karin photo) since the PDF provides no expert photo/quote; price shown in USD as per PDF.
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
