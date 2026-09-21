@@ -9,8 +9,8 @@ export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) 
   <div className={`flex flex-wrap items-center gap-y-1.5 ${className}`} data-testid={testId}>
     {cities.map((c, i) => (
       <React.Fragment key={`${c}-${i}`}>
-        {i > 0 && <ChevronRight size={16} className="text-[#6F777C] mx-0.5 shrink-0" />}
-        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-[#E0F7FF] eg-label-lg text-[#174358] whitespace-nowrap"><PinIcon size={14} className="text-[#174358]" />{c}</span>
+        {i > 0 && <ChevronRight size={16} className="text-[#308BB6] mx-0.5 shrink-0" />}
+        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-[#002131] eg-label-lg text-white whitespace-nowrap"><PinIcon size={14} className="text-[#9ACDE5]" />{c}</span>
       </React.Fragment>
     ))}
   </div>
@@ -20,9 +20,9 @@ const HEADER = 120;
 const BulletMark = ({ text }) => {
   const t = text.toLowerCase();
   const cls = 'mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0';
-  if (t.includes('flight')) return <span className={`${cls} eg-grad-harbor text-white`}><Plane size={14} /></span>;
-  if (t.includes('transfer')) return <span className={`${cls} bg-[#174358] text-white`}><Car size={14} /></span>;
-  return <span className={`${cls} bg-[#E0F7FF] text-[#174358]`}><span className="w-1.5 h-1.5 rounded-full bg-[#174358]" /></span>;
+  if (t.includes('flight')) return <span className={`${cls} bg-[#308BB6] text-white`}><Plane size={14} /></span>;
+  if (t.includes('transfer')) return <span className={`${cls} bg-[#FB7F26] text-white`}><Car size={14} /></span>;
+  return <span className={`${cls} bg-[#9ACDE5] text-[#002131]`}><span className="w-1.5 h-1.5 rounded-full bg-[#002131]" /></span>;
 };
 
 function StopText({ s }) {
@@ -30,7 +30,7 @@ function StopText({ s }) {
     <div className="md:w-[346px] shrink-0" data-testid="eg-route-stop">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
-        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-[#E0F7FF] eg-label-lg text-[#174358] whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
+        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-[#308BB6] eg-label-lg text-white whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
       </div>
       {s.subtitle && <RouteLine cities={s.subtitle.split(' → ')} className="mt-2" testId="eg-route-subtitle" />}
       <ul className="mt-4 flex flex-col gap-2.5" data-testid="eg-route-bullets">
@@ -59,7 +59,7 @@ function StopCarousel({ images, name }) {
 const SectionHead = ({ icon: Icon, title, cta, testId, extra }) => (
   <div className="flex items-center justify-between gap-3">
     <div className="flex items-center gap-2 min-w-0"><Icon size={24} className="text-[#174358] shrink-0" /><h4 className="eg-title-md md:eg-title-lg text-[#002131]">{title}</h4>{extra}</div>
-    <a href={detail.ctaHref} onClick={stop} className="inline-flex items-center h-8 px-3 rounded-full bg-[#E0F7FF] hover:bg-[#C6ECF7] eg-label-lg text-[#174358] whitespace-nowrap shrink-0 transition-colors" data-testid={testId}>{cta}</a>
+    <a href={detail.ctaHref} onClick={stop} className="inline-flex items-center h-8 px-3 rounded-full bg-[#E75E26] hover:bg-[#812F0E] eg-label-lg text-white whitespace-nowrap shrink-0 transition-colors" data-testid={testId}>{cta}</a>
   </div>
 );
 
