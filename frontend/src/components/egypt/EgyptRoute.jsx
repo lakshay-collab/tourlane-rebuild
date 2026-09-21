@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { detail, route } from '../../egyptDetailData';
-import { X } from 'lucide-react';
-import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon } from './EgyptIcons';
+import { X, Plane, Car } from 'lucide-react';
+import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon, PinIcon } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
 
@@ -10,12 +10,20 @@ export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) 
     {cities.map((c, i) => (
       <React.Fragment key={`${c}-${i}`}>
         {i > 0 && <ChevronRight size={16} className="text-[#6F777C] mx-0.5 shrink-0" />}
-        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-white border border-[#C4CBD0] eg-label-lg text-[#174358] whitespace-nowrap">{c}</span>
+        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-white border border-[#C4CBD0] eg-label-lg text-[#174358] whitespace-nowrap"><PinIcon size={14} className="text-[#308BB6]" />{c}</span>
       </React.Fragment>
     ))}
   </div>
 );
 const HEADER = 120;
+
+const BulletMark = ({ text }) => {
+  const t = text.toLowerCase();
+  const cls = 'mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0';
+  if (t.includes('flight')) return <span className={`${cls} bg-[#E0F7FF] text-[#174358]`}><Plane size={14} /></span>;
+  if (t.includes('transfer')) return <span className={`${cls} bg-[#FBEADB] text-[#174358]`}><Car size={14} /></span>;
+  return <span className={`${cls} bg-[#FADDD1] text-[#002131]`}><span className="w-1.5 h-1.5 rounded-full bg-[#174358]" /></span>;
+};
 
 function StopText({ s }) {
   return (
@@ -27,7 +35,7 @@ function StopText({ s }) {
       {s.subtitle && <RouteLine cities={s.subtitle.split(' → ')} className="mt-2" testId="eg-route-subtitle" />}
       <ul className="mt-4 flex flex-col gap-2.5" data-testid="eg-route-bullets">
         {s.bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2.5 eg-body-lg text-[#002131]" data-testid="eg-route-bullet"><span className="mt-[10px] w-1.5 h-1.5 rounded-full bg-[#174358] shrink-0" />{b}</li>
+          <li key={b} className="flex items-start gap-2.5 eg-body-lg text-[#002131]" data-testid="eg-route-bullet"><BulletMark text={b} />{b}</li>
         ))}
       </ul>
     </div>

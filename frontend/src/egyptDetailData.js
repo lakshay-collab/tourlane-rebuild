@@ -27,7 +27,7 @@ export const detail = {
     'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
-  services: [['4 hotels', 'Accommodation'], ['12 activities', 'Activities'], ['9 transfers', 'Transport'], ['3 entry tickets', 'Entry tickets'], ['24/7 support', '24/7 Support'], ['Customisation', 'Customise']],
+  services: [['4 hotels', 'Accommodation'], ['12 activities', 'Activities'], ['9 transfers', 'Transport'], ['3 entry tickets', 'Entry tickets'], ['24/7 support', '24/7 Support'], ['Customisation', 'Customise', 'Expert customisation']],
   expert: {
     name: 'Ria Banerjee',
     image: '/egypt/expert-ria.webp',
@@ -264,15 +264,15 @@ export const experts = {
 };
 
 export const glance = {
-  h2: 'The route at a glance',
+  h2: 'Tour summary',
   short: 'Pyramids and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise from Aswan to Luxor and a Red Sea beach finale – 11 days, 5 cities.',
   readMore: 'Read more',
   readLess: 'Read less',
-  hide: 'Hide summary',
+  hide: 'Hide tour summary',
   intro: 'Egypt Explorer combines the great highlights of Egypt in one journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada.',
   intro2: 'Along the Nile you discover the most important sites of Upper Egypt at a gentle pace, before swapping ancient temples for the beaches and coral reefs of the Red Sea — the perfect contrast to the cultural first half of the trip.',
-  accommodationHeading: 'Your accommodation',
-  highlightsHeading: 'Key highlights & activities',
+  accommodationHeading: 'Accommodation',
+  highlightsHeading: 'Key highlights',
   dayHeading: 'Day',
   routeHeading: 'Route',
   days: [

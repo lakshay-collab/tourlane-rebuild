@@ -16,7 +16,7 @@ export const ReviewSummary = ({ className = '', count }) => (
   </div>
 );
 
-export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count }) {
+export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count, cta = reviews.cta }) {
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
       <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{h2}</h2>
@@ -39,7 +39,7 @@ export function EgyptReviews({ centered = false, className = 'eg-container mt-12
         ))}
       </div>
       <div className="mt-8 flex flex-col items-center gap-2">
-        <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{reviews.cta}</a>
+        <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{cta}</a>
         {!centered && <p className="eg-body-sm text-[#002131] text-center">{reviews.sub}</p>}
       </div>
     </section>

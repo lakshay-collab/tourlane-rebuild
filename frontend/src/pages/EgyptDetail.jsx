@@ -30,10 +30,12 @@ const Ratings = ({ className = '' }) => (
 function Gallery() {
   const g = detail.gallery;
   const [lb, setLb] = useState(null);
+  const [gi, setGi] = useState(0);
+  const onScroll = (e) => setGi(Math.round(e.currentTarget.scrollLeft / e.currentTarget.clientWidth));
   return (
     <div className="relative" data-testid="eg-detail-gallery">
       {lb !== null && <Lightbox images={g} name={detail.title} start={lb} onClose={() => setLb(null)} />}
-      <div className="md:hidden flex overflow-x-auto no-scrollbar snap-x snap-mandatory h-[240px] rounded-t-2xl" data-testid="eg-gallery-mobile">
+      <div onScroll={onScroll} className="md:hidden flex overflow-x-auto no-scrollbar snap-x snap-mandatory h-[240px] rounded-t-2xl" data-testid="eg-gallery-mobile">
         {g.map((src, i) => <img key={i} src={src} alt={`${detail.alt} - Image ${i + 1}`} className="w-full h-full object-cover shrink-0 snap-center" loading={i ? 'lazy' : 'eager'} />)}
       </div>
       <div className="hidden md:grid grid-cols-2 gap-1 h-[328px] rounded-t-2xl overflow-hidden" data-testid="eg-gallery-desktop">
@@ -43,7 +45,9 @@ function Gallery() {
         </div>
       </div>
       <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] text-[#002131] items-center gap-2 eg-label-lg" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} />{g.length} photos</button>
-      <span className="md:hidden absolute bottom-3 right-3 z-[2] h-8 px-3 rounded-full bg-[#002131]/70 text-white inline-flex items-center gap-1.5 eg-label-lg pointer-events-none" data-testid="eg-gallery-count"><GalleryIcon size={16} />{g.length}</span>
+      <div className="md:hidden absolute inset-x-0 bottom-3 z-[2] flex justify-center gap-1.5 pointer-events-none" data-testid="eg-gallery-dots">
+        {g.map((_, i) => <span key={i} className={`h-1.5 rounded-full transition-all ${i === gi ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`} data-testid={i === gi ? 'eg-gallery-dot-active' : 'eg-gallery-dot'} />)}
+      </div>
     </div>
   );
 }
@@ -63,10 +67,7 @@ function Head() {
               {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#174358]" />{tag}</span>)}
             </div>
             <div className="pt-2 border-t border-[#E4E3DB] flex flex-col gap-2" data-testid="eg-detail-route-block">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="eg-label-lg text-[#002131]">{detail.routeLabel}</span>
-                <span className="eg-body-sm text-[#6F777C]" data-testid="eg-detail-route-code">{detail.routeCodeLabel}: <span className="font-mono text-[#174358]">{detail.routeCode}</span></span>
-              </div>
+              <span className="eg-label-lg text-[#002131]">{detail.routeLabel}</span>
               <RouteLine cities={detail.routeCities} testId="eg-detail-route-line" />
             </div>
         </div>
@@ -100,13 +101,13 @@ const PriceCard = () => (
         <span className="eg-price text-[#174358]" data-testid="eg-detail-price-value">{inr}</span>
         <span className="eg-body-md text-[#6F777C]">{price.perPerson}</span>
       </div>
-      <Cta className="flex-1" testId="eg-detail-price-cta" />
+      <Cta className="flex-1 !h-14 eg-title-lg" testId="eg-detail-price-cta" />
     </div>
     <hr className="border-[#E4E3DB]" />
     <div className="flex flex-col gap-3">
       <p className="eg-title-md text-[#002131]" data-testid="eg-price-included-title">{price.included}</p>
       <ul className="grid grid-cols-2 gap-2" data-testid="eg-price-services">
-        {detail.services.map(([label, icon]) => <li key={label} className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 min-h-[44px] py-1.5 eg-label-lg text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0" /><span className="leading-tight">{label}</span></li>)}
+        {detail.services.map(([label, icon, long]) => <li key={label} className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 min-h-[44px] py-1.5 eg-label-lg text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0" /><span className="leading-tight"><span className={long ? 'md:hidden' : ''}>{label}</span>{long && <span className="hidden md:inline">{long}</span>}</span></li>)}
       </ul>
     </div>
     <hr className="border-[#E4E3DB]" />
@@ -177,11 +178,15 @@ function Glance({ open, setOpen }) {
               <div key={d.title} className="py-5 flex flex-col gap-4" data-testid="eg-glance-day">
                 <div className="flex gap-4">
                   <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
-                  <div className="min-w-0"><h3 className="eg-title-md text-[#002131]">{d.title}</h3><p className="mt-1 eg-body-md text-[#002131]">{d.text}</p></div>
+                  <div className="min-w-0">
+                    <span className="inline-flex items-center h-6 px-2 rounded-full bg-[#FADDD1] eg-label-md text-[#002131]">{d.title.split(': ')[0]}</span>
+                    <h3 className="mt-1 eg-title-md text-[#002131]">{d.title.split(': ')[1] || d.title}</h3>
+                    <p className="mt-1 eg-body-md text-[#002131]">{d.text}</p>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-sm text-[#174358]">{d.hotel}</p></div>
-                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-sm text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
+                <div className="flex flex-col gap-3 pl-3 border-l-2 border-[#FADDD1]">
+                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#174358]">{d.hotel}</p></div>
+                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
                 </div>
               </div>
             ))}
@@ -309,7 +314,7 @@ export default function EgyptDetail() {
           <Glance open={summaryOpen} setOpen={setSummaryOpen} />
           <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
           <Features />
-          <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} />
+          <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
           <Recommended />
           <Steps />
         </div>
