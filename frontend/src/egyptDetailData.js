@@ -13,7 +13,8 @@ export const detail = {
   stations: '5 stops',
   transport: 'Private transfer',
   tag: 'Culture',
-  price: '$1,690',
+  price: 144000,
+  stats: { days: 11, cities: 5, hotels: 4, activities: 12, transfers: 9 },
   gallery: [
     'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=1080&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
@@ -21,30 +22,33 @@ export const detail = {
     'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
-  services: ['Accommodation', 'Transport', '24/7 Support', 'Activities', 'Tourlane App', 'Travel plan', 'eSIM', 'Flights'],
+  services: [['Hotels', 'Accommodation'], ['Private transfers', 'Transport'], ['Activities & entry tickets', 'Activities'], ['24/7 support', '24/7 Support'], ['Travel customisation by your travel expert', 'Travel plan'], ['Flights', 'Flights'], ['eSIM', 'eSIM'], ['Hi Tours app & digital travel plan', 'Tourlane App']],
   expert: {
-    name: 'Roman Karin',
-    image: 'https://tourlane-experts.imgix.net/7290O000000YqpN',
-    role: 'From our expert team',
+    name: 'Ria Banerjee',
+    image: '/egypt/expert-ria.webp',
+    role: 'Our destination expert for Egypt',
     createdBy: 'Trip created by',
     quote: 'Egypt Explorer brings together the great highlights of Egypt in a single journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada. I especially recommend the Temple of Edfu, reached by horse carriage and one of the best-preserved temples in all of Egypt. And my tip: visit the Valley of the Kings early in the morning, when the tombs are still cool and quiet.',
-    more: 'Show more'
+    more: 'Read more',
+    less: 'Read less'
   }
 };
 
 export const route = {
-  h2: 'Recommended route',
-  sub: 'Adjustable with an expert at any time',
+  h2: 'Your suggested itinerary',
+  sub: 'Adjustable with your expert at any time',
+  summaryCta: 'View quick summary',
   accommodationHeading: 'Your accommodation',
-  accommodationCta: 'Adjust accommodation',
-  programHeading: 'Your programme',
+  accommodationCta: 'Customise this accommodation',
+  programHeading: 'Your activities',
+  optional: 'Optional',
   more: 'Show more',
   less: 'Show less',
   stops: [
     {
       letter: 'A',
       name: 'Cairo',
-      dayLabel: 'Day 1 - 4',
+      dayLabel: 'Day 1–4',
       text: 'Arrival at Cairo International Airport with meet & assist through immigration and customs, then transfer to your hotel. Over the following days you explore the Pyramids of Giza (Cheops, Chephren & Mykerinos) and the majestic Sphinx, and visit the Grand Egyptian Museum (GEM) — one of the world\u2019s largest archaeological museums with more than 100,000 artefacts, including the complete Tutankhamun collection. You then fly to Aswan, tour the High Dam with panoramic views over Lake Nasser, embark your Nile cruise ship and enjoy a felucca ride past the Botanical Gardens and the Agha Khan Mausoleum.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
@@ -52,6 +56,12 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F1MR1-wDsVUGDJiIKRYwF_w%2Fistock-2152790069.jpg?w=640&q=75&auto=format&fit=max'
       ],
+      activities: [
+        { name: 'Pyramids of Giza & the Sphinx', description: 'Half-day guided tour of Cheops, Chephren and Mykerinos with the Sphinx – the icon of Egypt.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Fbfb9504e-6013-4e1f-8222-eea32df5429f%2Fimage%2Fjpeg%2FyU9CWklfqHs_iUwXLmiygw%2FiStock-2239876304.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Grand Egyptian Museum', description: 'Guided visit incl. the complete Tutankhamun collection and the Royal Mummies Hall.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Old Cairo & Khan el-Khalili', description: 'Coptic Cairo, the Citadel and an evening stroll through the historic bazaar.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
+      ],
+
       accommodation: {
         name: 'Semiramis Inter-Continental / Hyatt Centric',
         description: 'Four nights in Cairo on a half-board basis in a city-view room at the Semiramis Inter-Continental or Hyatt Centric. Both hotels are centrally located and perfectly placed for exploring the Pyramids of Giza, the Grand Egyptian Museum and downtown Cairo, with elegant rooms, on-site dining and river or city views.',
@@ -79,8 +89,9 @@ export const route = {
     },
     {
       letter: 'B',
-      name: 'Nile Cruise: Aswan → Edfu → Luxor',
-      dayLabel: 'Day 4 - 7',
+      name: 'Nile Cruise',
+      subtitle: 'Aswan → Edfu → Luxor',
+      dayLabel: 'Day 4–7',
       text: 'Cruise the Nile aboard the M/S Concerto Plus on a full-board basis. Sail to Kom Ombo to visit its rare dual-deity temple dedicated to Sobek the crocodile god and Horus the Elder, then continue to Edfu to see the Temple of Horus — one of the most complete and best-preserved temples in Egypt — reached by horse carriage. From there you sail on to Luxor via Esna, crossing the Esna lock, with relaxed afternoons enjoying the passing scenery. An optional excursion to the temples of Abu Simbel is available.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FRudhVVpyaS21MwTtLaDafQ%2Fistock-185209709.jpg?w=640&q=75&auto=format&fit=max',
@@ -88,6 +99,13 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2Fbq_A8ZGwybnect0xUvJJSQ%2Fistock-2181311638.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max'
       ],
+      activities: [
+        { name: 'Kom Ombo Temple', description: 'The unusual dual temple of Sobek and Horus, visited straight from the ship.', optional: false, image: 'https://kiwi-cdn.tlservers.com/activities%2Faca44a59-64e8-4c93-881a-140714e67535%2Fimage%2Fjpeg%2FyveIgYQwhqu-v7Eje5MSLA%2FIberotel+Empress+3.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Temple of Horus at Edfu', description: 'One of the best-preserved temples in Egypt, reached by horse carriage.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FohpwYLxxL2KcB-CAsMAz7Q%2Fjordi-orts-segales-crq94fdpdw-unsplash.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Philae Temple & High Dam', description: 'Aswan’s island temple of Isis and the engineering marvel of the High Dam.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2Fbq_A8ZGwybnect0xUvJJSQ%2Fistock-2181311638.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Felucca sail at sunset', description: 'A traditional sailing boat ride around Elephantine Island.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F4f1d4380-39d1-4c0d-8e74-4bcae12bc068%2Fimage%2Fjpeg%2FNhB6Y-CMd191icD3i0KMQA%2Fmartijn-vonk-jaqkmulkw2m-unsplash.jpg?w=640&q=75&auto=format&fit=max' }
+      ],
+
       accommodation: {
         name: 'M/S Concerto Plus (Nile Cruise)',
         description: 'Three nights aboard the M/S Concerto Plus on a full-board basis, cruising between Aswan, Kom Ombo, Edfu and Luxor. Enjoy comfortable cabins, a sun deck with pool and all meals on board while the landscapes of Upper Egypt drift past.',
@@ -105,7 +123,8 @@ export const route = {
     },
     {
       letter: 'C',
-      name: 'Luxor → Hurghada',
+      name: 'Luxor',
+      subtitle: 'Luxor → Hurghada',
       dayLabel: 'Day 7',
       text: 'After breakfast and disembarkation you explore Luxor\u2019s West Bank — the Valley of the Kings with the royal tombs of the pharaohs, the Temple of Hatshepsut carved into the limestone cliffs, and the Colossi of Memnon. On the East Bank you visit the vast Karnak Temple with its Great Hypostyle Hall of 134 columns and sacred lakes, and Luxor Temple with its giant statues and obelisks. In the afternoon you transfer by luxury coach to Hurghada on the Red Sea coast.',
       images: [
@@ -114,6 +133,12 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2F0HsK62Nf0vEfZXkmJalNdw%2FiStock-2151748276.jpg?w=640&q=75&auto=format&fit=max'
       ],
+      activities: [
+        { name: 'Valley of the Kings', description: 'Descend into three royal tombs on Luxor’s West Bank.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2Fk5u9iGiUwG7AlAR-dk53cA%2FiStock-511207904.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Karnak Temple', description: 'The vast temple complex with its Great Hypostyle Hall.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Temple of Hatshepsut', description: 'The terraced mortuary temple at Deir el-Bahari.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FpVc-e95iu6acXBaeiBUo5Q%2FiStock-1342806543.jpg?w=640&q=75&auto=format&fit=max' }
+      ],
+
       accommodation: {
         name: 'Marriott Hurghada (or similar)',
         description: 'Check in to the Marriott Hurghada (or similar) on the Red Sea coast for the beach portion of your journey, with direct beach access, pools and a choice of restaurants.',
@@ -131,8 +156,9 @@ export const route = {
     },
     {
       letter: 'D',
-      name: 'Hurghada – Red Sea',
-      dayLabel: 'Day 7 - 10',
+      name: 'Hurghada',
+      subtitle: 'Red Sea',
+      dayLabel: 'Day 7–10',
       text: 'Three nights of all-inclusive relaxation on the Red Sea. Enjoy the beach and the warm, crystal-clear water at your own pace, with plenty of optional activities such as water sports, snorkelling and diving among Hurghada\u2019s famous coral reefs. This is the perfect contrast to the cultural first half of your journey.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
@@ -140,6 +166,12 @@ export const route = {
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FOQJ4-2okN8wrB-gP1djj7w%2FiStock-467862934.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FEVvpjo1weiKBTfhFN_vgAw%2FiStock-1162326736.jpg?w=640&q=75&auto=format&fit=max'
       ],
+      activities: [
+        { name: 'Red Sea snorkelling trip', description: 'Boat trip to Giftun Island reefs with lunch on board.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Desert quad safari', description: 'Late-afternoon quad ride into the Eastern Desert with a Bedouin dinner.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FHg2vOD1So7jldYvue1bl1Q%2FiStock-1202686561+%281%29.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Beach & all-inclusive relaxation', description: 'Pool, beach and water sports at your Red Sea resort.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FOQJ4-2okN8wrB-gP1djj7w%2FiStock-467862934.jpg?w=640&q=75&auto=format&fit=max' }
+      ],
+
       accommodation: {
         name: 'Marriott Hurghada (or similar)',
         description: 'All-inclusive stay at the Marriott Hurghada (or similar), directly on the Red Sea, with pools, beach access, water-sports options and a range of dining venues.',
@@ -154,13 +186,18 @@ export const route = {
     {
       letter: 'E',
       name: 'Cairo',
-      dayLabel: 'Day 10 - 11',
+      dayLabel: 'Day 10–11',
       text: 'Fly back to Cairo for a final overnight after your Red Sea stay, with a transfer to your hotel and the evening at leisure. After breakfast on your last day you are transferred to Cairo International Airport for your departure flight home — a balanced journey of culture, Nile cruising and beach time comes to a close.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2Fz4w2_1pVJSBuOiCrr8Mrkw%2Fricardo-gomez-angel-haw4e-f4kly-unsplash.jpg?w=640&q=75&auto=format&fit=max'
       ],
+      activities: [
+        { name: 'Farewell Nile dinner cruise', description: 'Dinner on the Nile with live music on your last evening in Cairo.', optional: true, image: 'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max' },
+        { name: 'Departure transfer', description: 'Private transfer to Cairo International Airport.', optional: false, image: 'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max' }
+      ],
+
       accommodation: {
         name: 'Semiramis Inter-Continental / Hyatt Centric',
         description: 'A final overnight in Cairo at the Semiramis Inter-Continental or Hyatt Centric before your departure the next morning.',
@@ -192,9 +229,11 @@ export const experts = {
 
 export const glance = {
   h2: 'The route at a glance',
+  short: 'Pyramids and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise from Aswan to Luxor and a Red Sea beach finale – 11 days, 5 cities.',
+  readMore: 'Read more',
+  readLess: 'Read less',
+  hide: 'Hide summary',
   intro: 'Egypt Explorer combines the great highlights of Egypt in one journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada.',
-  more: 'Show more details',
-  less: 'Show fewer details',
   intro2: 'Along the Nile you discover the most important sites of Upper Egypt at a gentle pace, before swapping ancient temples for the beaches and coral reefs of the Red Sea — the perfect contrast to the cultural first half of the trip.',
   accommodationHeading: 'Your accommodation',
   highlightsHeading: 'Highlights & activities',
@@ -209,7 +248,7 @@ export const glance = {
 };
 
 export const brandFeatures = {
-  h2: 'Life is too short for standard travel',
+  h2: 'Why book with Hi Tours',
   items: [
     { icon: '/egypt/StarLike.svg', title: 'Real travel experts', text: 'Benefit from our local expertise and award-winning service.' },
     { icon: '/egypt/Tickets.svg', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your return home.' },
@@ -217,11 +256,11 @@ export const brandFeatures = {
   ]
 };
 
-export const recommended = { h2: 'Plan your Egypt trip now' };
+export const recommended = { h2: 'Other Egypt holidays you may like' };
 
 export const planner = {
   h3: 'Your trip, planned by experts',
-  social: '150,000 travellers trust Tourlane',
+  social: '4,00,000+ travellers trust Hi Tours',
   question: 'How many people are you planning your trip for?',
   next: 'Continue',
   known: 'As seen in:',
@@ -247,9 +286,9 @@ export const crumbs = [
   { label: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition' }
 ];
 
-export const trust = { label: 'Excellent', rating: 4.5, score: '4.5 out of 5', count: '5,748 reviews' };
+export const trust = { label: 'Excellent', rating: 4.9, score: '4.9', count: 'based on 1,400+ Egypt reviews' };
 
-export const price = { from: 'From', perPerson: 'per person', pp: 'p.p.', included: 'What\u2019s included', team: 'Roman Karin & our team' };
+export const price = { from: 'From', perPerson: 'per person', included: 'What\u2019s included', team: 'Ria Banerjee & our team' };
 
 export const steps = {
   h2: 'Step by step to your trip',

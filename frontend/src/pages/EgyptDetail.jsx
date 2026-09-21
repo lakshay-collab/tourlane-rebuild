@@ -7,20 +7,50 @@ import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
-import { BedIcon, PinIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, TpStars, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
+import { BoxStars, BRAND_BLUE, GoogleLogo, TripAdvisorLogo, TripAdvisorBubbles } from '../components/Rating';
+import { CalendarIcon, PinIcon, BedIcon, TicketIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
 import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner } from '../egyptDetailData';
-import { products } from '../egyptListingData';
+import { products, formatInr } from '../egyptListingData';
+import { ratings as trustBar } from '../mock';
 
 const stop = (e) => e.preventDefault();
+const inr = formatInr(detail.price);
 const Cta = ({ className = '', testId }) => <a href={detail.ctaHref} onClick={stop} title={detail.cta} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{detail.cta}</a>;
 
 const Trust = ({ className = '' }) => (
-  <div className={`flex flex-wrap items-center justify-center gap-x-4 gap-y-2 ${className}`} data-testid="eg-trust-row">
-    <p className="eg-label-lg text-[#002131]">{trust.label}</p>
-    <TpStars rating={trust.rating} size={20} />
-    <img src="/trustpilot.svg" alt="Trustpilot" className="h-5 w-20 -mt-0.5" />
+  <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 ${className}`} data-testid="eg-trust-row">
+    <span className="eg-label-lg text-[#002131]">{trust.label}</span>
+    <BoxStars rating={trust.rating} size={18} color={BRAND_BLUE} />
+    <span className="eg-label-lg text-[#002131]">{trust.score}</span>
+    <span className="eg-body-md text-[#174358]">{trust.count}</span>
   </div>
 );
+
+const Ratings = ({ className = '' }) => (
+  <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-2 ${className}`} data-testid="eg-ratings-row">
+    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><GoogleLogo size={18} />Rated {trustBar.google.score} on Google<BoxStars rating={trustBar.google.score} size={16} color={BRAND_BLUE} /></span>
+    <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><TripAdvisorLogo size={20} />Rated {trustBar.tripadvisor.score} on TripAdvisor<TripAdvisorBubbles rating={trustBar.tripadvisor.score} size={15} /></span>
+  </div>
+);
+
+const Stat = ({ icon: Icon, value, testId }) => (
+  <span className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
+    <Icon size={20} className="text-[#174358] shrink-0" /><span className="eg-label-lg">{value}</span>
+  </span>
+);
+
+const Stats = () => {
+  const s = detail.stats;
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2" data-testid="eg-detail-stats">
+      <Stat icon={CalendarIcon} value={`${s.days} days`} testId="eg-detail-days" />
+      <Stat icon={PinIcon} value={`${s.cities} cities`} testId="eg-detail-cities" />
+      <Stat icon={BedIcon} value={`${s.hotels} hotels`} testId="eg-detail-hotels" />
+      <Stat icon={TicketIcon} value={`${s.activities} activities`} testId="eg-detail-activities" />
+      <Stat icon={CarIcon} value={`${s.transfers} transfers`} testId="eg-detail-transfers" />
+    </div>
+  );
+};
 
 function Gallery() {
   const g = detail.gallery;
@@ -41,23 +71,17 @@ function Head() {
   return (
     <div className="eg-wide" data-testid="eg-detail-head">
       <Gallery />
-      <div className="md:hidden bg-[#F0EEE6] rounded-b-2xl px-[9px] py-3"><Trust /></div>
-      <div className="md:bg-[#F0EEE6] md:rounded-b-2xl pt-6 md:p-6">
-        <div className="grid md:grid-cols-[1fr_320px] gap-y-8 gap-x-6 items-center">
-          <div className="flex flex-col gap-6 md:gap-4">
-            <h1 className="eg-headline-lg text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
-            <div className="flex flex-wrap gap-4 text-[#174358]">
-              <span className="flex items-center gap-1"><BedIcon size={24} /><p className="eg-body-lg whitespace-nowrap">{detail.days}</p></span>
-              <span className="flex items-center gap-1"><PinIcon size={24} /><p className="eg-body-lg whitespace-nowrap">{detail.stations}</p></span>
-              <span className="flex items-center gap-1"><CarIcon size={24} /><p className="eg-body-lg whitespace-nowrap">{detail.transport}</p></span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#FADDD1] pl-2 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><TagIcon name={detail.tag} size={20} />{detail.tag}</span>
-            </div>
-          </div>
+      <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
+        <div className="grid md:grid-cols-[1fr_320px] gap-y-6 gap-x-6 items-start">
           <div className="flex flex-col gap-4">
-            <div className="flex flex-col items-center gap-2 w-full"><Cta className="w-full" testId="eg-detail-cta" /><p className="eg-label-md text-[#002131] text-center">{detail.sub}</p></div>
-            <div className="hidden md:flex justify-center"><Trust /></div>
+            <h1 className="eg-card-title !text-[16px] !leading-[22px] !tracking-[-0.3px] sm:!text-[26px] sm:!leading-8 sm:!tracking-normal md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
+            <Stats />
+            <span className="self-start inline-flex items-center gap-2 rounded-full bg-white border border-[#C4CBD0] pl-2 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><TagIcon name={detail.tag} size={20} />{detail.tag}</span>
+          </div>
+          <div className="flex flex-col gap-3 md:pt-1">
+            <Cta className="w-full" testId="eg-detail-cta" />
+            <p className="eg-body-sm text-[#174358] text-center">{detail.sub}</p>
+            <Trust />
           </div>
         </div>
       </div>
@@ -69,139 +93,140 @@ const Crumbs = () => (
   <nav className="eg-wide" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
     <ol className="md:px-5 flex flex-wrap items-center gap-1">
       {crumbs.map((c, i) => (
-        <li key={c.label} className="flex items-center gap-1">
-          {i > 0 && <ChevronRight size={18} className="text-[#6F777C]" />}
+        <li key={c.label} className="flex items-center gap-1 min-w-0">
+          {i > 0 && <ChevronRight size={18} className="text-[#6F777C] shrink-0" />}
           {c.href
             ? (c.href.startsWith('/afrika/aegypten')
                 ? <Link to="/afrika/aegypten" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
                 : <a href={c.href} onClick={stop} className="eg-body-md text-[#174358] hover:underline">{c.label}</a>)
-            : <span className="eg-label-lg text-[#002131]">{c.label}</span>}
+            : <span className="eg-label-lg text-[#002131] truncate max-w-[220px] sm:max-w-none">{c.label}</span>}
         </li>
       ))}
     </ol>
   </nav>
 );
 
-function PriceCard() {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="bg-white rounded-2xl border border-[#C4CBD0] p-6 flex flex-col gap-4" data-testid="eg-detail-price">
-      <div className="flex items-center gap-4">
-        <div className="flex flex-col gap-1 shrink-0">
-          <div className="flex items-baseline gap-1"><span className="eg-title-lg text-[#002131]">{price.from}</span><span className="eg-title-lg text-[#002131]" data-testid="eg-detail-price-value">{detail.price}</span></div>
-          <span className="eg-body-md text-[#174358]">{price.perPerson}</span>
-        </div>
-        <Cta className="flex-1" testId="eg-detail-price-cta" />
+const PriceCard = () => (
+  <div className="bg-white rounded-2xl border border-[#C4CBD0] p-5 md:p-6 flex flex-col gap-4" data-testid="eg-detail-price">
+    <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col shrink-0">
+        <span className="eg-body-md text-[#6F777C]">{price.from}</span>
+        <span className="eg-price text-[#174358]" data-testid="eg-detail-price-value">{inr}</span>
+        <span className="eg-body-md text-[#6F777C]">{price.perPerson}</span>
       </div>
-      <hr className="border-[#C4CBD0]" />
-      <div className="flex flex-col gap-3">
-        <button type="button" onClick={() => setOpen((v) => !v)} className="flex items-center gap-1 eg-label-lg text-[#174358]" data-testid="eg-price-included-toggle">{price.included}<ChevronDown size={20} className={open ? 'rotate-180' : ''} /></button>
-        {open && (
-          <div className="flex flex-wrap gap-y-2 gap-x-4" data-testid="eg-price-services">
-            {detail.services.map((s) => <span key={s} className="flex items-center gap-2 eg-body-md text-[#174358]"><ServiceIcon name={s} size={20} />{s}</span>)}
-          </div>
-        )}
-      </div>
+      <Cta className="flex-1" testId="eg-detail-price-cta" />
     </div>
-  );
-}
+    <hr className="border-[#E4E3DB]" />
+    <div className="flex flex-col gap-3">
+      <p className="eg-title-md text-[#002131]" data-testid="eg-price-included-title">{price.included}</p>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-4" data-testid="eg-price-services">
+        {detail.services.map(([label, icon]) => <li key={label} className="flex items-start gap-2 eg-body-md text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0 mt-0.5" />{label}</li>)}
+      </ul>
+    </div>
+  </div>
+);
 
 const ExpertCard = () => {
   const e = detail.expert;
+  const [open, setOpen] = useState(false);
   return (
-    <div className="flex items-start gap-2" data-testid="eg-detail-expert">
-      <span className="w-12 h-12 rounded-full bg-[#F0EEE6] shrink-0 overflow-hidden"><img src={e.image} alt={e.name} className="w-full h-full object-cover rounded-full" /></span>
-      <div className="flex flex-col gap-3 min-w-0">
-        <div className="h-12">
-          <div className="flex items-center gap-1 eg-title-md text-[#002131]">{e.createdBy} {e.name}<CheckBadge size={20} className="text-[#174358]" /></div>
-          <span className="eg-body-md text-[#174358]">{e.role}</span>
+    <div className="flex items-start gap-3" data-testid="eg-detail-expert">
+      <img src={e.image} alt={e.name} className="w-12 h-12 rounded-full object-cover shrink-0" />
+      <div className="flex flex-col gap-2 min-w-0">
+        <div>
+          <p className="flex items-center gap-1 eg-title-md text-[#002131]">{e.createdBy} {e.name}<CheckBadge size={20} className="text-[#174358]" /></p>
+          <p className="eg-body-md text-[#174358]">{e.role}</p>
         </div>
-        <p className="eg-body-lg text-[#174358]" data-testid="eg-expert-quote">{e.quote}</p>
+        <p className={`eg-quote !text-[19px] !leading-7 text-[#002131] ${open ? '' : 'line-clamp-2'}`} data-testid="eg-expert-quote">“{e.quote}”</p>
+        <button type="button" onClick={() => setOpen((v) => !v)} className="self-start inline-flex items-center gap-1 eg-label-lg text-[#174358] underline" data-testid="eg-expert-quote-toggle">{open ? e.less : e.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} /></button>
       </div>
     </div>
   );
 };
 
 const statIcons = [ClockIcon, CheckCircleIcon, TransfersIcon];
-function ExpertsCard() {
-  return (
-    <div className="flex flex-col gap-4" data-testid="eg-detail-experts">
-      <div className="rounded-2xl border border-[#C4CBD0] py-6 flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <h2 className="eg-headline-md text-[#002131] text-center px-6">{experts.h2}</h2>
-          <div className="px-5 flex flex-col gap-2">
-            <div className="flex items-center gap-4">
-              <hr className="flex-1 border-[#C4CBD0]" />
-              <div className="flex items-center">
-                {experts.avatars.slice(0, 2).map((a, i) => <img key={a} src={a} alt="Tourlane Expert" className={`w-10 h-10 rounded-full border-2 border-white object-cover ${i ? '-ml-2.5' : ''}`} />)}
-                <span className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white bg-white flex items-center justify-center"><CheckBadge size={28} className="text-[#174358]" /></span>
-                <img src={experts.avatars[2]} alt="Tourlane Expert" className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white object-cover" />
-                <span className="relative -ml-2.5"><img src={experts.avatars[3]} alt="Tourlane Expert" className="w-10 h-10 rounded-full border-2 border-white object-cover" /><span className="absolute inset-0.5 rounded-full bg-black/60 flex items-center justify-center text-white text-[11px] font-bold">{experts.count}</span></span>
-              </div>
-              <hr className="flex-1 border-[#C4CBD0]" />
+const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
+  <div className="flex flex-col gap-4" data-testid={testId}>
+    <div className="rounded-2xl border border-[#C4CBD0] bg-[#FBF9F1] py-6 flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
+        <h2 className="eg-headline-md text-[#002131] text-center px-6">{experts.h2}</h2>
+        <div className="px-5 flex flex-col gap-2">
+          <div className="flex items-center gap-4">
+            <hr className="flex-1 border-[#C4CBD0]" />
+            <div className="flex items-center">
+              {experts.avatars.slice(0, 2).map((a, i) => <img key={a} src={a} alt="Hi Tours expert" className={`w-10 h-10 rounded-full border-2 border-white object-cover ${i ? '-ml-2.5' : ''}`} />)}
+              <span className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white bg-white flex items-center justify-center"><CheckBadge size={28} className="text-[#174358]" /></span>
+              <img src={experts.avatars[2]} alt="Hi Tours expert" className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white object-cover" />
+              <span className="relative -ml-2.5"><img src={experts.avatars[3]} alt="Hi Tours expert" className="w-10 h-10 rounded-full border-2 border-white object-cover" /><span className="absolute inset-0.5 rounded-full bg-[#002131]/70 flex items-center justify-center text-white text-[11px] font-bold">{experts.count}</span></span>
             </div>
-            <div className="flex items-center justify-center gap-2 h-12 text-[#002131]"><SparkleLeft /><p className="eg-title-md text-[#002131]">Plan with real travel experts</p><SparkleRight /></div>
+            <hr className="flex-1 border-[#C4CBD0]" />
           </div>
-        </div>
-        <div className="px-6 flex flex-col gap-5">
-          {experts.stats.map((st, i) => { const Icon = statIcons[i]; return (
-            <div key={st.h} className="flex items-center gap-4">
-              <span className="w-11 h-11 rounded-full bg-[#F0EEE6] shrink-0 flex items-center justify-center text-[#002131]"><Icon size={20} /></span>
-              <div className="flex flex-col gap-1"><p className="eg-title-md text-[#002131]">{st.h}</p><p className="eg-body-md text-[#002131]">{st.t}</p></div>
-            </div>
-          ); })}
+          <div className="flex items-center justify-center gap-2 h-12 text-[#002131]"><SparkleLeft /><p className="eg-title-md">Plan with real travel experts</p><SparkleRight /></div>
         </div>
       </div>
-      <Trust />
+      <div className="px-6 flex flex-col gap-5">
+        {experts.stats.map((st, i) => { const Icon = statIcons[i]; return (
+          <div key={st.h} className="flex items-center gap-4">
+            <span className="w-11 h-11 rounded-full bg-[#FBEADB] shrink-0 flex items-center justify-center text-[#174358]"><Icon size={20} /></span>
+            <div className="flex flex-col gap-1"><p className="eg-title-md text-[#002131]">{st.h}</p><p className="eg-body-md text-[#174358]">{st.t}</p></div>
+          </div>
+        ); })}
+      </div>
     </div>
-  );
-}
+    <Ratings />
+  </div>
+);
 
-function Glance() {
-  const [open, setOpen] = useState(true);
+function Glance({ open, setOpen }) {
+  const [more, setMore] = useState(false);
   return (
-    <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-glance">
+    <section className="eg-container flex flex-col gap-6 scroll-mt-4" id="summary" data-testid="eg-detail-glance">
       <h2 className="eg-display-sm text-[#002131]">{glance.h2}</h2>
-      <div>
-        <p className="eg-body-lg text-[#002131]">{glance.intro}</p>
-        <button type="button" onClick={() => setOpen((v) => !v)} className="flex items-center pt-2 pb-4 eg-body-lg font-semibold text-[#174358]" data-testid="eg-glance-toggle">{open ? glance.less : glance.more}<ChevronDown size={24} className={open ? '' : 'rotate-180'} /></button>
-        {open && (
-          <div className="grid gap-6" data-testid="eg-glance-days">
-            <p className="eg-body-lg text-[#002131]">{glance.intro2}</p>
-            {glance.days.map((d) => (
-              <React.Fragment key={d.title}>
-                <div className="flex flex-col gap-4" data-testid="eg-glance-day"><h3 className="eg-headline-md text-[#002131]">{d.title}</h3><p className="eg-body-lg text-[#002131]">{d.text}</p></div>
-                <h4 className="eg-title-lg text-[#002131]">{glance.accommodationHeading}</h4>
-                <p className="eg-body-lg text-[#002131]">{d.hotel}</p>
-                <h4 className="eg-title-lg text-[#002131]">{glance.highlightsHeading}</h4>
-                <ul className="list-disc pl-4 mb-4 eg-body-lg text-[#002131]">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
-              </React.Fragment>
-            ))}
-            <p className="eg-body-lg text-[#002131]">{glance.outro}</p>
-          </div>
-        )}
-      </div>
+      <p className="eg-body-lg text-[#002131]">
+        {glance.short}{more && <> {glance.intro} {glance.intro2}</>}
+        {' '}<button type="button" onClick={() => setMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-glance-readmore">{more ? glance.readLess : glance.readMore}</button>
+      </p>
+      {open ? (
+        <div className="flex flex-col divide-y divide-[#C4CBD0] border-y border-[#C4CBD0]" data-testid="eg-glance-days">
+          {glance.days.map((d) => (
+            <div key={d.title} className="py-5 grid gap-3 md:grid-cols-[220px_1fr] md:gap-8" data-testid="eg-glance-day">
+              <div>
+                <h3 className="eg-title-md text-[#002131]">{d.title}</h3>
+                <p className="mt-1 eg-body-md text-[#174358]">{d.text}</p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#002131]">{d.hotel}</p></div>
+                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#002131] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
+              </div>
+            </div>
+          ))}
+          <button type="button" onClick={() => setOpen(false)} className="self-start inline-flex items-center gap-1 pt-4 eg-label-lg text-[#174358] underline" data-testid="eg-glance-hide">{glance.hide}<ChevronDown size={16} className="rotate-180" /></button>
+        </div>
+      ) : (
+        <button type="button" onClick={() => setOpen(true)} className="self-start eg-btn-outlined eg-label-lg" data-testid="eg-glance-toggle"><ChevronDown size={18} />{glance.h2}</button>
+      )}
     </section>
   );
 }
 
 const Features = () => (
-  <section className="eg-container flex flex-col gap-10" data-testid="eg-detail-features">
-    <h2 className="eg-headline-md text-[#002131] text-center">{brandFeatures.h2}</h2>
+  <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-features">
+    <h2 className="eg-display-sm text-[#002131] text-center">{brandFeatures.h2}</h2>
     <div className="grid gap-8 md:grid-cols-3">
       {brandFeatures.items.map((f) => (
         <div key={f.title} className="flex md:flex-col items-start md:items-center gap-4 text-left md:text-center">
           <img src={f.icon} alt="" className="w-[72px] h-[72px] md:w-[120px] md:h-[120px] shrink-0" />
-          <div className="md:max-w-[270px] flex flex-col gap-2"><h3 className="eg-title-lg text-[#002131]">{f.title}</h3><p className="eg-body-lg text-[#002131]">{f.text}</p></div>
+          <div className="md:max-w-[270px] flex flex-col gap-2"><h3 className="eg-title-lg text-[#002131]">{f.title}</h3><p className="eg-body-lg text-[#174358]">{f.text}</p></div>
         </div>
       ))}
     </div>
+    <Ratings />
   </section>
 );
 
 const Recommended = () => (
   <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
-    <h2 className="eg-headline-md text-[#002131] text-center">{recommended.h2}</h2>
+    <h2 className="eg-display-sm text-[#002131]">{recommended.h2}</h2>
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6" data-testid="eg-recommended-grid">
       {products.filter((p) => p.slug !== detail.slug).slice(0, 6).map((p, i) => <EgyptProductCard key={`${p.slug}-${i}`} p={p} />)}
     </div>
@@ -210,12 +235,12 @@ const Recommended = () => (
 
 const Steps = () => (
   <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-steps">
-    <h2 className="eg-headline-md text-[#002131] text-center">{steps.h2}</h2>
+    <h2 className="eg-display-sm text-[#002131] text-center">{steps.h2}</h2>
     <div className="flex flex-col sm:flex-row gap-4">
       {steps.items.map((st) => (
         <div key={st.n} className="flex-1 bg-[#F0EEE6] rounded-xl px-4 py-6 flex flex-col items-center gap-3" data-testid="eg-step">
-          <span className="w-10 h-10 rounded-full bg-[#FADDD1] eg-title-lg text-black flex items-center justify-center">{st.n}</span>
-          <div className="flex flex-col gap-2 text-center"><div className="eg-title-lg text-[#002131]">{st.title}</div><p className="eg-body-lg font-medium text-[#174358]">{st.text}</p></div>
+          <span className="w-10 h-10 rounded-full bg-[#FADDD1] eg-title-lg text-[#002131] flex items-center justify-center">{st.n}</span>
+          <div className="flex flex-col gap-2 text-center"><div className="eg-title-lg text-[#002131]">{st.title}</div><p className="eg-body-lg text-[#174358]">{st.text}</p></div>
         </div>
       ))}
     </div>
@@ -231,15 +256,15 @@ function StickyBar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return (
-    <div className={`fixed bottom-0 inset-x-0 z-10 bg-white border-t border-[#C4CBD0] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-detail-sticky-bar">
+    <div className={`fixed bottom-0 inset-x-0 z-30 bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-detail-sticky-bar">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
         <div className="hidden md:flex items-center gap-2 px-6 py-1 text-[#174358]">
-          <span className="w-10 h-10 rounded-full overflow-hidden bg-[#E75E26]"><img src={detail.expert.image} alt={detail.expert.name} className="w-full h-full object-cover" /></span>
+          <img src={detail.expert.image} alt={detail.expert.name} className="w-10 h-10 rounded-full object-cover" />
           <span className="eg-label-lg">{price.team}</span>
         </div>
         <hr className="hidden md:block w-px h-[52px] border-0 bg-[#C4CBD0]" />
-        <div className="px-3 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-2">
-          <div className="flex md:flex-col items-center md:items-start gap-1"><span className="eg-title-md text-[#002131]">{price.from} {detail.price}</span><span className="eg-body-sm text-[#6F777C]">{price.pp}</span></div>
+        <div className="px-4 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-3">
+          <div className="flex flex-col"><span className="eg-title-md text-[#002131]">{price.from} {inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
           <Cta className="w-auto" testId="eg-sticky-cta" />
         </div>
       </div>
@@ -249,27 +274,33 @@ function StickyBar() {
 
 export default function EgyptDetail() {
   const { slug } = useParams();
+  const [summaryOpen, setSummaryOpen] = useState(false);
+  const showSummary = () => {
+    setSummaryOpen(true);
+    requestAnimationFrame(() => { const el = document.getElementById('summary'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' }); });
+  };
   if (slug !== detail.slug) return <Navigate to="/afrika/aegypten" replace />;
   return (
     <div className="eg" data-testid="egypt-detail-page">
       <Header />
-      <main className="flex flex-col gap-8 pb-24 md:pb-[100px]">
+      <main className="flex flex-col gap-8 pb-28 md:pb-[100px]">
         <Head />
         <Crumbs />
         <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard /></div>
-        <div className="flex flex-col gap-[72px] mt-0 md:mt-0">
+        <div className="flex flex-col gap-14 md:gap-[72px]">
           <div className="eg-wide flex flex-col md:flex-row gap-8">
             <div className="flex-1 min-w-0 flex flex-col gap-8">
               <ExpertCard />
-              <EgyptRoute />
+              <EgyptRoute onSummary={showSummary} />
+              <div className="md:hidden"><ExpertsCard testId="eg-detail-experts-mobile" /></div>
             </div>
             <aside className="hidden md:flex w-[384px] shrink-0 flex-col gap-6" data-testid="eg-detail-sidebar">
               <PriceCard />
               <div className="sticky top-6"><ExpertsCard /></div>
             </aside>
           </div>
+          <Glance open={summaryOpen} setOpen={setSummaryOpen} />
           <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
-          <Glance />
           <Features />
           <EgyptReviews centered className="eg-container" />
           <Recommended />
@@ -277,7 +308,7 @@ export default function EgyptDetail() {
         </div>
       </main>
       <StickyBar />
-      <ScrollTop className="bottom-[104px] right-10" />
+      <ScrollTop className="bottom-24 right-4 md:bottom-[104px] md:right-10" />
       <Footer />
     </div>
   );
