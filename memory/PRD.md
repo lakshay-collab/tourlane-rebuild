@@ -111,6 +111,19 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Verified: compiles clean, detail page renders new title/meta/gallery/breadcrumb, 0 app console errors (smoke screenshot). Kept the expert block (Roman Karin photo) since the PDF provides no expert photo/quote; price shown in USD as per PDF.
 - Follow-up (user): entire detail page translated to ENGLISH and the Google Maps embed REMOVED. egyptDetailData.js is now all English (route, glance, experts, brandFeatures, recommended, steps, crumbs, trust, price, expert quote + a new English `planner` export reusing the same /egypt asset paths). EgyptPlanner now takes an optional `data` prop (defaults to German listing planner) so the detail page passes the English planner without affecting the German listing. servicePaths keys in EgyptIcons renamed to English (Accommodation/24-7 Support/Activities/Travel plan/Flights/eSIM). Hardcoded German in EgyptDetail ("Galerie"→Gallery, expert strapline) and aria-labels in EgyptRoute/EgyptPlanner translated. Map block removed; mobile price card retained.
 
+## Homepage revamp — video header, ratings, search, reviews, mobile (2026-06, latest)
+- **Announcement bar**: dismiss (X) now persists for the browser session via `sessionStorage('hi-banner-dismissed')` — stays hidden on reload, shows again in a new session.
+- **Login removed** from header (desktop + mobile).
+- **Full-bleed hero video + transparent header**: `Header` gained an `overlay` prop. Home renders `<div class=relative><Header overlay/><Hero/></div>` → uploaded Hi Tours video (`/hero-video.mp4`) full-bleed with a transparent header, **white logo** (`/hitours-white.webp`) and white nav on top. Interior pages (Egypt/Asia/detail) keep the solid header now with a thin bottom border line.
+- **Rating bar** (below hero, `TrustBar` + new `Rating.jsx`): replaced Trustpilot with **Google 4.7 (3,200+)** gold stars + **Tripadvisor 4.9 (2,100+)** green bubbles, brand-styled, same bar height.
+- **TripShowcase**: tabs centered with underline under the active tab; the trip card now shows **days · activities · hotels · transfers** (added counts to `mock.showcase`), removed 'stops/rental car'.
+- **Search** (`SearchBar.jsx`): Tourlane-style dropdown listing ALL destinations **alphabetically with thumbnail photos** (58 built from `destinationsData` + Asia). Egypt→/afrika/aegypten, Asia→/asien navigate; typing filters.
+- **Testimonials**: removed Trustpilot; uses brand **amber stars** (`BrandStars`) and a **user-icon avatar circle** placeholder.
+- **Footer**: socials now Facebook, Instagram, LinkedIn, YouTube, Spotify (inline Spotify SVG); footer badges use brand stars instead of Trustpilot.
+- **Mobile**: Tourlane-style full-screen hamburger menu with accordion sub-menus (Destinations/Trip types/Activities); Egypt/Asia sub-items navigate. No horizontal overflow at 390px.
+- Brand palette (from Hi Tours Brand Kit): Ember #E75E26, Amber #FB7F26, Ink #002131. Stars use Amber #FB7F26.
+- Tested: iteration_12 — 14/14 frontend checks pass at 1920 + 390, 0 console errors. Minor note: footer renders mobile+desktop social variants sharing `footer-social` testid (5 visible per viewport; not a bug).
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
