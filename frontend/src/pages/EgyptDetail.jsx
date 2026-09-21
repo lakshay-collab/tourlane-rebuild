@@ -199,7 +199,7 @@ const Recommended = () => (
   <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
     <h2 className="eg-headline-md text-[#1B1C17] text-center">{recommended.h2}</h2>
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6" data-testid="eg-recommended-grid">
-      {products.filter((p) => p.slug !== detail.slug).slice(0, 6).map((p) => <EgyptProductCard key={p.slug} p={p} />)}
+      {products.filter((p) => p.slug !== detail.slug).slice(0, 6).map((p, i) => <EgyptProductCard key={`${p.slug}-${i}`} p={p} />)}
     </div>
   </section>
 );

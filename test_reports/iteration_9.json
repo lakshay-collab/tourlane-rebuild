@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only testing of the Egypt detail page /afrika/aegypten/luxor-strand-urlaub. Ran comprehensive Playwright checks at 1920x800 and 390x844 covering: page mount + data-testid, nav banner/logo/desktop links/mobile hamburger, hero gallery (5 imgs all loaded, naturalWidth>0), title (renders 80px = 2 lines), meta chips (12 Tage, 6 Stationen, Individualtransfer, Kultur), CTA text 'Kostenlos planen' + preventDefault, breadcrumb (4 items), map iframe, expert card + quote, route tabs A–F with names Giza/Luxor/Edfu/Luxor/Aswan/Sharm El Sheikh, tab-content variants (Giza=acc+prog with Azal+Grand Egyptian, Edfu=prog only with Iberotel Crown Empress, Sharm=acc only with JAZ Mirabel Beach), Mehr/Weniger anzeigen toggle, carousel prev disabled + next changes src, sticky route header hides eg-route-sub when stuck, sidebar price card (Ab 2.945 € pro Person + 8 services in exact order), experts card (Warum...planen?, 200+, Planen Sie..., 33+/12+/9+), planner (Ägypten Reise planen + 'Weiter'), glance (6 days, toggle collapses + label swaps to 'Weitere Details anzeigen'), features 3 items, reviews with 'Kunden über Tourlane', recommended grid = 6 cards (none link to luxor-strand-urlaub), steps 3 items, footer present, sticky bottom bar hidden at 0 + visible after 500px with Roman Karin + 2.945 € + p.P. + CTA, scroll-top button appears after 900px, /afrika/aegypten/nonexistent-slug redirects to /afrika/aegypten (route guard OK), mobile viewport 390 has no horizontal overflow, sidebar hidden, mobile price card rendered under map, hamburger opens mobile menu. All assertions passed. One duplicate React key warning detected in recommended grid.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EgyptDetail Recommended", "issue": "React console warning: 'Encountered two children with the same key, urlaub-am-meer'. The recommended grid renders 6 product cards but two of them share the slug 'urlaub-am-meer' (cards 1 and 4 point to /afrika/aegypten/urlaub-am-meer). This produces a duplicate React key and duplicated content in the grid, and it also means the grid effectively surfaces only 5 unique destinations.", "selector": "[data-testid=\"eg-recommended-grid\"] [data-testid=\"eg-product-card\"]", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Deduplicate recommended products (products.filter(p => p.slug !== detail.slug)) so that .slice(0,6) yields 6 unique slugs — either dedupe the source list in /app/frontend/src/egyptListingData.js (two entries with slug 'urlaub-am-meer'), or apply a uniqueness filter in EgyptDetail.jsx Recommended() before slicing."
+  ],
+  "critical_code_review_comments": [
+    "products list contains duplicate slug 'urlaub-am-meer' — this causes the React key collision and reduces unique recommendations. Add a uniqueness guard.",
+    "eg-nav-logo data-testid is placed on the wrapper <a>, not on the <img>. The visual logo loads correctly (SVG component TourlaneLogo), so this is only a testability nit: tests asserting img naturalWidth on eg-nav-logo will fail because the testid element is an anchor. Consider moving/duplicating the testid onto the inner logo element if img-level assertions are desired.",
+    "EgyptDetail.jsx is ~285 lines and mixes many sub-components (Gallery, Head, Crumbs, PriceCard, ExpertCard, ExpertsCard, Glance, Features, Recommended, Steps, StickyBar). Fine for now but nearing the point where splitting into /components/egypt/detail/* would improve maintainability."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "~98% (all functional assertions pass; 1 duplicate-key console warning)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Detail page /afrika/aegypten/luxor-strand-urlaub is functionally complete and matches the Tourlane spec. Only outstanding item is deduping the products list so the recommended grid has 6 unique slugs (currently 'urlaub-am-meer' duplicated). Listing page /afrika/aegypten was already validated in iteration_8.json — do not retest beyond the redirect guard check.",
+  "rca of the issue": "Duplicate React key warning root cause: /app/frontend/src/egyptListingData.js contains two products with the same slug 'urlaub-am-meer'. EgyptDetail.jsx Recommended() does `products.filter(p => p.slug !== detail.slug).slice(0, 6).map(p => <EgyptProductCard key={p.slug} ...>)` — since the source has duplicate slugs and no dedup step, React sees the same key twice. Fix: dedupe by slug (e.g. `[...new Map(products.map(p => [p.slug, p])).values()]`) before slicing, or remove the duplicate entry from egyptListingData.js."
+}

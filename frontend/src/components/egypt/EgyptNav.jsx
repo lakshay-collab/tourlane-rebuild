@@ -14,7 +14,7 @@ export default function EgyptNav() {
       </div>
       <nav className="relative z-40" data-testid="eg-nav">
         <div className="eg-wide h-[72px] flex items-center justify-between">
-          <a href="/" onClick={stop} aria-label="Tourlane" className="flex items-center h-full" data-testid="eg-nav-logo"><TourlaneLogo className="h-6 w-[139px]" /></a>
+          <a href="/" onClick={stop} aria-label="Tourlane" className="flex items-center h-full" data-testid="eg-nav-logo-link"><TourlaneLogo className="h-6 w-[139px]" data-testid="eg-nav-logo" /></a>
           <div className="hidden lg:flex items-center gap-4 h-full">
             <div className="flex items-center h-full -ml-2">
               {nav.links.map((l) => (
