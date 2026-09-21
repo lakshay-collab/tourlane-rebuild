@@ -185,7 +185,7 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Tested: iteration_16 – 13/13 frontend scenarios pass at 1440 + 390, 0 console errors (card grid re-layout verified by screenshot afterwards).
 
 ## Egypt listing – card hierarchy + mobile sticky CTA (2026-06, latest)
-- Product card: title `eg-card-title` (Bricolage 18/600) → muted "11 days · 5 cities" line → 3 Sand-tinted stat tiles (hotels/activities/transfers, Ember icons) → price row "From **₹1,44,000** per person" (`eg-price` 22/600). No divider lines; card is shorter than before.
+- Product card: title `eg-card-title` (Bricolage 18/600) → muted "5 cities" line → 2×2 Sand-tinted single-line tiles (days, hotels, activities, transfers; Ember icons; h-11) → price row "From **₹1,44,000** per person" (`eg-price` 22/600). No divider lines; card is shorter than before.
 - `MobileStickyCta` (EgyptHero.jsx): fixed bottom bar <lg, slides in after 600px scroll, "Customize this trip" (hero.stickyCta); desktop sticky sub-nav CTA also says "Customize this trip". ScrollTop moved up on mobile (bottom-24).
 - Review summary no longer shows the "5,000+ reviews" count.
 - Verified via screenshots at 1440 + 390 (0 console errors).

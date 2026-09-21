@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TagIcon, BedIcon, TicketIcon, CarIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
+import { TagIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
 import { formatInr } from '../../egyptListingData';
 
-const Stat = ({ icon: Icon, value, label, testId }) => (
-  <span className="flex items-center gap-2 rounded-lg bg-[#FBEADB] px-2.5 py-2 text-[#002131]" data-testid={testId}>
+const Stat = ({ icon: Icon, value, testId }) => (
+  <span className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
     <Icon size={20} className="text-[#E75E26] shrink-0" />
-    <span className="eg-body-sm leading-tight"><span className="block eg-label-lg text-[#002131]">{value}</span>{label}</span>
+    <span className="eg-label-lg">{value}</span>
   </span>
 );
 
@@ -46,16 +46,13 @@ export default function EgyptProductCard({ p }) {
       <Wrap className="block p-4 flex-1" data-testid="eg-product-details-link">
         <div className="flex flex-col h-full">
           <h3 className="eg-card-title text-[#002131] line-clamp-2" data-testid="eg-product-title">{p.title}</h3>
-          <p className="mt-1.5 flex items-center gap-2 eg-body-md text-[#174358]">
-            <span data-testid="eg-product-days">{days}</span>
-            <span className="w-1 h-1 rounded-full bg-[#C4CBD0]" aria-hidden />
-            <span data-testid="eg-product-cities">{cities}</span>
-          </p>
+          <p className="mt-1.5 eg-body-md text-[#174358]" data-testid="eg-product-cities">{cities}</p>
           {p.hotels != null && (
-            <div className="mt-4 grid grid-cols-3 gap-2" data-testid="eg-product-inclusions">
-              <Stat icon={BedIcon} value={p.hotels} label={p.hotels === 1 ? 'hotel' : 'hotels'} testId="eg-product-hotels" />
-              <Stat icon={TicketIcon} value={p.activities} label="activities" testId="eg-product-activities" />
-              <Stat icon={CarIcon} value={p.transfers} label="transfers" testId="eg-product-transfers" />
+            <div className="mt-4 grid grid-cols-2 gap-2" data-testid="eg-product-inclusions">
+              <Stat icon={CalendarIcon} value={days} testId="eg-product-days" />
+              <Stat icon={BedIcon} value={`${p.hotels} ${p.hotels === 1 ? 'hotel' : 'hotels'}`} testId="eg-product-hotels" />
+              <Stat icon={TicketIcon} value={`${p.activities} activities`} testId="eg-product-activities" />
+              <Stat icon={CarIcon} value={`${p.transfers} transfers`} testId="eg-product-transfers" />
             </div>
           )}
           <p className="mt-auto pt-4 flex items-baseline gap-1.5 text-[#6F777C]" data-testid="eg-product-price">
