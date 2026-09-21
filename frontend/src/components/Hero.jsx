@@ -22,7 +22,7 @@ export default function Hero() {
         <source src="/hero-video.webm" type="video/webm" />
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.55)_0%,rgba(0,33,49,0.25)_45%,rgba(0,33,49,0.75)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.30)_0%,rgba(0,33,49,0.10)_40%,rgba(0,33,49,0.55)_100%)] pointer-events-none" />
 
       <div className="relative z-[2] w-full flex flex-col items-center gap-6 md:gap-8 px-4 sm:px-8 md:px-0 -mt-6 md:-mt-8">
         <div className="min-w-[328px] sm:w-[536px] md:w-[857px] lg:w-[880px]">
