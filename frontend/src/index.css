@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,-200..150,27..175,323..603,25..135,649..854,-305..-98,560..788,416..570,528..760&family=Roboto+Serif:opsz,wght@8..144,400&display=swap');
 
 /* Egypt/Asia listing scope: Hi Tours brand tokens (Bricolage Grotesque / Inter / Instrument Sans, Ink + Harbor + Ember) */
@@ -8,7 +8,8 @@
 @media (min-width: 905px) { .eg-display-lg { font-size: 57px; line-height: 64px; letter-spacing: -0.25px; } }
 .eg-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; text-wrap: balance; }
 @media (min-width: 905px) { .eg-display-sm { font-size: 36px; line-height: 44px; } }
-.eg-title-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0; }
+.eg-title-lg { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0; }
+.eg-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; line-height: 30px; }
 .eg-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-label-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }
@@ -29,7 +30,7 @@
 @media (min-width: 905px) { .eg-container { width: 857px; padding: 0; } }
 @media (min-width: 1240px) { .eg-container { width: 1128px; } }
 .eg-grad-harbor { background: linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%); }
-.eg-card-title { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: -0.1px; }
+.eg-card-title { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: -0.1px; }
 .eg-price { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-btn-filled { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9999px; color: #fff; white-space: nowrap; font-family: 'Instrument Sans', Inter, sans-serif; font-weight: 600; background-image: linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%); background-size: 160% 100%; background-position: left; transition: background-position .3s, box-shadow .3s; }
 .eg-btn-filled:hover { background-position: right; box-shadow: 0 6px 18px rgba(0, 33, 49, 0.3); }
@@ -63,10 +64,12 @@ body {
   .t-display-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 57px; line-height: 64px; letter-spacing: -0.25px; font-weight: 500; }
   .t-display-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 45px; line-height: 52px; letter-spacing: 0; font-weight: 500; }
   .t-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 36px; line-height: 44px; letter-spacing: 0; font-weight: 500; }
-  .t-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
-  .t-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
-  .t-headline-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.2px; }
+  .t-headline-lg { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
+  .t-headline-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
+  .t-headline-sm { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.2px; }
   .t-title-lg { font-size: 22px; line-height: 28px; font-weight: 500; }
+  .t-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; line-height: 30px; letter-spacing: 0; }
+  @media (min-width: 905px) { .t-quote { font-size: 26px; line-height: 34px; } }
   .t-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; }
   .t-title-sm { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
   .t-body-lg { font-size: 16px; line-height: 24px; letter-spacing: .5px; }
