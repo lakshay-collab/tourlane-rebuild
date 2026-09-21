@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -31,7 +31,12 @@ function Gallery() {
   const g = detail.gallery;
   const [lb, setLb] = useState(null);
   const [gi, setGi] = useState(0);
-  const onScroll = (e) => setGi(Math.round(e.currentTarget.scrollLeft / e.currentTarget.clientWidth));
+  const scrollTimer = useRef(null);
+  const onScroll = (e) => {
+    const el = e.currentTarget;
+    clearTimeout(scrollTimer.current);
+    scrollTimer.current = setTimeout(() => setGi(Math.min(g.length - 1, Math.round(el.scrollLeft / el.clientWidth))), 80);
+  };
   return (
     <div className="relative" data-testid="eg-detail-gallery">
       {lb !== null && <Lightbox images={g} name={detail.title} start={lb} onClose={() => setLb(null)} />}
@@ -44,7 +49,7 @@ function Gallery() {
           {g.slice(1, 5).map((src, i) => <button type="button" key={i} onClick={() => setLb(i + 1)} className="relative cursor-pointer" aria-label={`Open photo ${i + 2}`} data-testid={`eg-gallery-image-${i + 1}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>)}
         </div>
       </div>
-      <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#FADDD1] hover:bg-[#F4B49A] text-[#002131] items-center gap-2 eg-label-lg" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} />{g.length} photos</button>
+      <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-white/90 hover:bg-white text-[#174358] items-center gap-2 eg-label-lg shadow-sm" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} />{g.length} photos</button>
       <div className="md:hidden absolute inset-x-0 bottom-3 z-[2] flex justify-center gap-1.5 pointer-events-none" data-testid="eg-gallery-dots">
         {g.map((_, i) => <span key={i} className={`h-1.5 rounded-full transition-all ${i === gi ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`} data-testid={i === gi ? 'eg-gallery-dot-active' : 'eg-gallery-dot'} />)}
       </div>
@@ -59,12 +64,14 @@ function Head() {
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
+            <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 md:gap-2">
             <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-facts">
               <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-days"><CalendarIcon size={18} />{detail.stats.days} days</span>
               <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-cities"><PinIcon size={18} />{detail.stats.cities} cities</span>
             </div>
             <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
               {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#174358]" />{tag}</span>)}
+            </div>
             </div>
             <div className="pt-2 border-t border-[#E4E3DB] flex flex-col gap-2" data-testid="eg-detail-route-block">
               <span className="eg-label-lg text-[#002131]">{detail.routeLabel}</span>
@@ -153,7 +160,7 @@ const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
       <div className="px-6 flex flex-col gap-5">
         {experts.stats.map((st, i) => { const Icon = statIcons[i]; return (
           <div key={st.h} className="flex items-center gap-4">
-            <span className="w-11 h-11 rounded-full bg-[#FBEADB] shrink-0 flex items-center justify-center text-[#174358]"><Icon size={20} /></span>
+            <span className="w-11 h-11 rounded-full bg-[#E0F7FF] shrink-0 flex items-center justify-center text-[#174358]"><Icon size={20} /></span>
             <div className="flex flex-col gap-1"><p className="eg-title-md text-[#002131]">{st.h}</p><p className="eg-body-md text-[#174358]">{st.t}</p></div>
           </div>
         ); })}
@@ -179,12 +186,12 @@ function Glance({ open, setOpen }) {
                 <div className="flex gap-4">
                   <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
                   <div className="min-w-0">
-                    <span className="inline-flex items-center h-6 px-2 rounded-full bg-[#FADDD1] eg-label-md text-[#002131]">{d.title.split(': ')[0]}</span>
+                    <span className="inline-flex items-center h-6 px-2 rounded-full bg-[#E0F7FF] eg-label-md text-[#174358]">{d.title.split(': ')[0]}</span>
                     <h3 className="mt-1 eg-title-md text-[#002131]">{d.title.split(': ')[1] || d.title}</h3>
                     <p className="mt-1 eg-body-md text-[#002131]">{d.text}</p>
                   </div>
                 </div>
-                <div className="flex flex-col gap-3 pl-3 border-l-2 border-[#FADDD1]">
+                <div className="flex flex-col gap-3 pl-3 border-l-2 border-[#308BB6]">
                   <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#174358]">{d.hotel}</p></div>
                   <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
                 </div>
@@ -205,7 +212,7 @@ function Glance({ open, setOpen }) {
                 const [day, rest] = d.title.split(': ');
                 return (
                   <tr key={d.title} className="align-top" data-testid="eg-glance-day">
-                    <td className="py-5 pr-4"><span className="inline-flex items-center justify-center min-w-[64px] h-8 px-2 rounded-full bg-[#FADDD1] eg-label-lg text-[#002131] whitespace-nowrap">{day.replace('Day ', '')}</span></td>
+                    <td className="py-5 pr-4"><span className="inline-flex items-center justify-center min-w-[64px] h-8 px-2 rounded-full bg-[#E0F7FF] eg-label-lg text-[#174358] whitespace-nowrap">{day.replace('Day ', '')}</span></td>
                     <td className="py-5 pr-6">
                       <div className="flex gap-4">
                         <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
@@ -257,7 +264,7 @@ const Steps = () => (
     <div className="flex flex-col sm:flex-row gap-4">
       {steps.items.map((st) => (
         <div key={st.n} className="flex-1 bg-[#F0EEE6] rounded-xl px-4 py-6 flex flex-col items-center gap-3" data-testid="eg-step">
-          <span className="w-10 h-10 rounded-full bg-[#FADDD1] eg-title-lg text-[#002131] flex items-center justify-center">{st.n}</span>
+          <span className="w-10 h-10 rounded-full bg-[#E0F7FF] eg-title-lg text-[#174358] flex items-center justify-center">{st.n}</span>
           <div className="flex flex-col gap-2 text-center"><div className="eg-title-lg text-[#002131]">{st.title}</div><p className="eg-body-lg text-[#174358]">{st.text}</p></div>
         </div>
       ))}

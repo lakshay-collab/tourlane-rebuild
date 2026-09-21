@@ -1,0 +1,25 @@
+{
+  "summary": "Frontend-only verification of Egypt detail page (/afrika/aegypten/luxor-strand-urlaub) at 1440 and 390 viewports for Round-6 changes. Nearly all acceptance criteria pass: reviews & price & sticky CTAs read 'Customise this trip', no 'Plan for free' anywhere on detail page, no route-code element/text, RouteLine has 6 pin chips, mobile gallery uses 5 dots (1 active, no photo count), Services 6th block toggles Customisation (mobile) vs Expert customisation (desktop), itinerary bullet markers use the correct colours (flight rgb(224,247,255) with svg, transfer rgb(251,234,219) with svg, default rgb(250,221,209)), price CTA is 56px tall, Tour summary heading renders 'Tour summary' with headers Accommodation/Key highlights (no 'Your'), mobile day rows show Day pill (e.g. 'Day 1–4') and Accommodation stacked above Key highlights, Semiramis line height 20px, hide CTA reads 'Hide tour summary'. Lightbox opens via desktop gallery image, listing /afrika/aegypten loads with 0 console errors, no horizontal overflow at 390 (scrollWidth=390). One minor observation: after scrolling eg-gallery-mobile by exactly clientWidth (358px) the active dot lands at index 2 rather than index 1 — likely caused by snap-mandatory + React onScroll debounce firing on intermediate snap position (functional behaviour: dots update correctly, but off-by-one vs. the strict acceptance rule).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EgyptDetail Gallery (mobile)", "issue": "Scrolling eg-gallery-mobile by scrollLeft = clientWidth results in eg-gallery-dot-active landing at index 2 instead of index 1. onScroll uses Math.round(scrollLeft/clientWidth); when snap-mandatory + programmatic scrollTo interact, an intermediate scroll event appears to set gi=2 even though final scrollLeft=358 (clientWidth). Consider debouncing or using Math.floor / IntersectionObserver-based active index.", "selector": "[data-testid=eg-gallery-mobile]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Optional/low) Make mobile gallery active-dot logic more robust so that scrolling by exactly clientWidth advances active dot by exactly 1 (currently sometimes jumps to +2 under snap-mandatory)."
+  ],
+  "critical_code_review_comments": [
+    "eg-gallery-mobile onScroll handler recomputes gi on every scroll event; combined with CSS scroll-snap-mandatory this can produce off-by-one active-dot updates. Consider Math.round on scrollTimeout-debounced value or IntersectionObserver.",
+    "Two eg-detail-price-cta elements coexist (mobile card + desktop sidebar), both with the same data-testid; only one is visible per viewport but duplicate testids can cause ambiguity in Playwright queries. Recommend suffixing (e.g. eg-detail-price-cta-mobile / -desktop)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "~97% (all Round-6 acceptance items pass except a minor mobile gallery active-dot off-by-one)"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Round-6 changes verified. Only remaining nit: mobile gallery active-dot lands at index 2 when scrollLeft is set exactly to clientWidth via JS. Dots/counts/CTAs/summary all correct. Duplicate eg-detail-price-cta testid exists (mobile + desktop) — Playwright must filter by visibility."
+}
