@@ -5,6 +5,7 @@ import { hero } from '../mock';
 
 const DESTINATIONS = [
   { name: 'Egypt', to: '/afrika/aegypten' },
+  { name: 'Asia', to: '/asien' },
   { name: 'South Africa' },
   { name: 'Iceland' },
   { name: 'Namibia' },

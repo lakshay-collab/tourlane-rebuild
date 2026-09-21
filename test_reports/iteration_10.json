@@ -1,0 +1,31 @@
+{
+  "summary": "Frontend-only testing of the 3-page linkage + listing sub-nav dropdowns + detail-page shared branding. All 8 requested checks pass. No console errors on any of the three routes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "detailed_results": {
+    "desktop_1920_hamburger_hidden": "PASS - mobile-menu-toggle exists but is not visible (lg:hidden works)",
+    "mobile_390_hamburger_visible_and_opens_menu": "PASS - toggle visible, clicking opens mobile menu (Destinations/Trip types/Activities/Deals/About us/Login shown)",
+    "hero_search_egypt_suggestion_navigates": "PASS - focusing hero-search-input shows hero-search-suggestions; hero-search-suggestion-egypt exists and clicking navigates to /afrika/aegypten",
+    "listing_subnav_dropdowns": "PASS - eg-tabs present; eg-tab-1 opens dropdown with 3 items (Reiseführer), eg-tab-2 with 5 (Inspiration), eg-tab-3 with 6 (Orte). Outside click closes all dropdowns.",
+    "listing_to_luxor_detail": "PASS - anchor a[href='/afrika/aegypten/luxor-strand-urlaub'] present on listing; clicking (force) navigates to detail; egypt-detail-page renders. Note: there are 2 matching anchors on the listing (first has 0x0 box, likely a wrapping/hidden anchor around card badge) - not a bug, but see code review.",
+    "detail_breadcrumb_aegypten_link": "PASS - breadcrumb Ägypten <a> has href='/afrika/aegypten' (visible in breadcrumb <ol> inside EgyptDetail)",
+    "detail_header_logo_home": "PASS - header a[href='/'] (Hi Tours logo) navigates to /",
+    "detail_shared_branding": "PASS - detail page renders shared <header> and <footer> (Hi Tours Header/Footer), sub-nav tabs (Ägypten Rundreisen / Reiseführer / Inspiration / Orte) visible at top with Kostenlos Planen CTA",
+    "console_errors": "PASS - 0 console errors/warnings across /, /afrika/aegypten, /afrika/aegypten/luxor-strand-urlaub"
+  },
+  "critical_code_review_comments": [
+    "Two <a href='/afrika/aegypten/luxor-strand-urlaub'> nodes exist for the Luxor card on the listing page; the first has 0x0 bounding box. Consider removing the duplicate wrapper anchor to avoid nested/duplicate links (a11y and SEO) and to make Playwright/CI clicks stable without force=true."
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All 3 routes wired: home hero search->Egypt listing, listing sub-nav dropdowns (Reiseführer 3 / Inspiration 5 / Orte 6, items link to '#' by design), listing card->detail, detail Header logo->home and breadcrumb Ägypten->listing. Shared Header/Footer used on detail. Test at 1920x800 desktop and 390x844 mobile."
+}

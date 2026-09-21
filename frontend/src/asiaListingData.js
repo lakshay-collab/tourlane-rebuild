@@ -1,0 +1,194 @@
+// Data for /asien clone of https://www.tourlane.de/asien/
+const CT = 'https://images.ctfassets.net/bth3mlrehms2';
+
+export const banner = 'Sorglos planen: stabile Flugpreise seit über einem Jahr, sowie flexible Umbuchungs- und Stornierungsoptionen.';
+
+export const hero = {
+  h1: 'Asien Rundreise',
+  sub: 'Der größte Kontinent der Erde',
+  cta: 'Kostenlos Planen',
+  ctaHref: 'https://www.tourlane.de/l/asien/enquiry/passengers/',
+  images: {
+    xs: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=800&q=60&fm=webp`,
+    s: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=1200&q=60&fm=webp`,
+    m: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=1400&q=60&fm=webp`,
+    xl: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=1600&q=60&fm=webp`
+  }
+};
+
+export const trust = { label: 'Hervorragend', rating: 4.5, score: '4,5', outOf: 'von 5', count: '5.748', reviews: 'Bewertungen' };
+
+export const tabs = ['Asien Rundreisen', 'Länder', 'Reiseführer', 'Inspiration'];
+
+export const crumbs = [{ label: 'Startseite', href: '/' }, { label: 'Asien' }];
+
+export const intro = {
+  h2: 'Warum eine Asien Rundreise unternehmen?',
+  text: [
+    'Asien, als größter Kontinent der Welt, lockt mit seiner ',
+    ['reichen kulturellen Vielfalt, spektakulären Landschaften und einer köstlichen kulinarischen Vielfalt.'],
+    ' Von den ',
+    ['glitzernden Wolkenkratzern'],
+    ' in Tokio und Shanghai bis zu den ',
+    ['antiken Tempeln'],
+    ' in Angkor Wat und den ',
+    ['malerischen Stränden'],
+    ' von Bali bietet Asien eine Fülle von Reiseerlebnissen für Abenteurer jeden Alters.'
+  ]
+};
+
+export const tours = {
+  h2: 'Beliebte Asien Rundreisen',
+  more: 'Mehr erfahren',
+  less: 'Weniger anzeigen'
+};
+
+const P = (title, tag, days, stations, price, alt, images) => ({ title, tag, days, stations, price, alt, images });
+
+export const products = [
+  P('Khao Lak Urlaub für Strandliebhaber und Abenteurer', 'Kultur', '22 Tage', '7 Stationen', '1.730 €', 'Khao Lak, Thailand', [
+    `${CT}/5Hm10TrqCIgW8kcP3h2twj/c76291902631d2211aaafd7f4b68c726/Thailand__Khao_Lak__Sandbank.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F456f162b-30ab-422f-ae7e-0c61356b3688%2Fimage%2Fjpeg%2FtXJwHQAMy1VjAu8AtLBqxA%2FiStock-4979663321.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F9b02f743-99b2-4f0d-ba96-01c1728cd48a%2Fimage%2Fjpeg%2Fj8_49pG2qQDO-hvXqlECaw%2Fcolton-duke-pit2v7nje4-unsplash.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('7 Tage Japan Rundreise mit Mount Fuji, Teezeremonie und Kulinarik', 'Kultur', '7 Tage', '3 Stationen', '1.800 €', 'Mount Fuji, Japan', [
+    `${CT}/EXxSQSMyUf6RVGbVy9iGX/136008404c78a72f7e64cdeebbf9b5de/Japon__Mont_Fuji.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2Ff55e330f-2b6a-4374-9afc-d30eb0fc6950%2Fimage%2Fjpeg%2FprHTeic0T2HVSxOYP9E9OA%2Fistock-1567549319.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F611834a9-ed0e-4e61-a246-e672b35204c5%2Fimage%2Fjpeg%2FgivfmkyKSegrskUZO3Qqzg%2FiStock-1798449102.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Indonesien Rundreise 2 Wochen: Bali und Lombok', 'Natururlaub', '15 Tage', '6 Stationen', '2.150 €', 'Nusa Dua, Bali, Indonesien', [
+    `${CT}/18mXctwKz7ZEDco4fUE11a/213ded3b470c83fdd00ffdb1af83c044/Indonesien__Bali__Nusa_Dua.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2Fae2b4c17-20df-464a-a3db-113cfeedd33b%2Fimage%2Fjpeg%2FuIxpXF2xyVn1_bIKDYwUOA%2Fsanur-istock-162420186.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F4129805b-6acf-47c4-9e52-fac81c87c426%2Fimage%2Fjpeg%2FnduOAcia6BSgOw2-_tiDCw%2Fistock-466138248.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Thailandreise mit Bangkok und Inselhopping', 'Inselhopping', '19 Tage', '6 Stationen', '2.330 €', 'Phang Nga Bay, Krabi, Thailand', [
+    `${CT}/2zOFZe2JpEvWVQygwaD3Co/ba319d0063fcffe43731a32a62320c77/Thailand__Krabi__Phang_Nga_Bay.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/52i1rZUn3447oZ0bpYFkAH/f0608f0798e72e9d9a18e5c3429a7e64/Thailand__Khao_Sok_Nationalpark.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/4DohzkIJnFpZM5ssF4ayKp/1121a0f4f9281b6be5a1359c7cfda179/Similan-Inseln__Korallen.jpg?w=1080&q=60&fm=webp`
+  ]),
+  P('Vietnam Rundreise 2 Wochen: ab Hanoi bis Ho-Chi-Minh-Stadt', 'Kultur', '13 Tage', '6 Stationen', '2.430 €', 'Huế, Vietnam', [
+    `${CT}/JDASnNCaoB20TSwhQc4iE/420a9d60e73d9bcb592723cdc22f4abf/Vietnam__Th%E1%BB%ABa_Thi%C3%AAn_Hu%E1%BA%BF__Hu%E1%BA%BF__Kaiserstadt.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/4oRJ8JDJy6fZfVRUgAtjgy/a6e0956ec4af80390b64a389a0c3acf1/Vietnam__Qu%E1%BA%A3ng_Nam__H%E1%BB%99i_An..jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F33ffa874-e537-4476-9ee4-24b879d95262%2Fimage%2Fjpeg%2FETa0z3kdrqBASIH2haKnnQ%2Fspenser-sembrat-xc8W2ZCv4j4-unsplash1.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('12 Tage Malaysia Rundreise mit atemberaubender Natur', 'Natururlaub', '12 Tage', '4 Stationen', '2.460 €', 'Sepilok, Sabah, Malaysia', [
+    `${CT}/75OivhbWUIcq5PlUmpmA1j/30161b201b3fd087f637ed6b5cfb5ecd/Malaysia__Sabah__Sepilok-Orang-Utan-Rehabilitationszentrum.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/24BB1qRdodIYm9e7lbZ9ae/c3e668ed13b3bab687aec1074f2a9d32/Malaysia__Kuching.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F8d42a0ee-4e81-430c-977b-8621d040766a%2Fimage%2Fjpeg%2Fp3qAwjs5IzNhOjUD-5RLwA%2Fhongwei-fan-sTCQTk2fxW0-unsplash.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Familienparadies Malediven mit Spa und sicherem Wasser zum Planschen', 'Familienurlaub', '8 Tage', '1 Station', '2.647 €', 'Baa-Atoll, Malediven', [
+    `${CT}/2C7NC6T1ah4waG9TXEwVH/670bb4a69421853d464482bdbf2a46d3/Malediven__Baa-Atoll.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F6c49f908-903d-4aed-b849-42adefcea8de%2Fimage%2Fjpeg%2FEKJyXwoR6B9-PrUHyRpnwA%2Fistock-1078548856.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F6c49f908-903d-4aed-b849-42adefcea8de%2Fimage%2Fjpeg%2FQwmQRjdN5Ch4bDJSltR56w%2Fistock-2169998845_1.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('17 Tage Malaysia erkunden mit Teeplantagen und Metropolen Flair', 'Roadtrip', '17 Tage', '8 Stationen', '2.800 €', 'Cameron Highlands, Malaysia', [
+    `${CT}/6tQ0fuewJsT1XGyPtk1feM/46e2bf106f4544461abd40528a72610e/Sonnenaufgang_Wolken_Cameron-Highlands_Malaysia.png?w=1080&q=60&fm=webp`,
+    `${CT}/51tkEfILsnNr3oDIU4ElpU/bc3ac3dac83ed5c1f18aa7024e8f1c32/Malaysia__George_Town.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/551fN43gzcrBZuaq1Htm5G/7178fc9e6f18a09d653189847d195f8e/Strand_Malaysia.jpg?w=1080&q=60&fm=webp`
+  ]),
+  P('Sri Lanka Trekking- & Natururlaub', 'Natururlaub', '18 Tage', '10 Stationen', '2.940 €', 'Thabbowa, Puttalam, Sri Lanka', [
+    `${CT}/2vgfHtnlPqqDtNnA56FCwz/397582a65f735796a519d3243e8efd64/Schrein-Thabbowa_Puttalam_Sri-lanka.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F627d62f3-2448-49b2-b5a3-194ed629cf8a%2Fimage%2Fjpeg%2FrrAIeqWT1JnpHjG27kNliA%2Fistock-1254351655.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2Ffcea9ba9-eaf1-41e5-92f8-0380700d00cc%2Fimage%2Fjpeg%2FSDc6VR1wq5Nq1R1bXcYk2g%2Fistock-1282142621.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('14 Tage Luxusurlaub im Ferienparadies Malaysia', 'Luxusreisen', '14 Tage', '7 Stationen', '2.940 €', 'Petronas Towers, Kuala Lumpur, Malaysia', [
+    `${CT}/7v9STD4EzC9uO1vB6vl2SC/2d6be37e8ab85ac375ae2d2ac46ec9b0/Malaysia__Kuala_Lumpur__Petronas_Towers.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F57796d3a-2221-4a2c-955b-91db7a8ad7bc%2Fimage%2Fjpeg%2F3vUdLl06uy-VdMmRVLuDOA%2Fmasrur-rahman-anzr28z-kpc-unsplash.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F4726f216-1502-45a7-9c96-903e16a2a92c%2Fimage%2Fjpeg%2FMdOWiggHrTfhLPVkz1QCyw%2Fshutterstock_1120629275.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Sri Lanka Rundreise mit anschließendem Badeurlaub', 'Natururlaub', '19 Tage', '10 Stationen', '3.070 €', 'Sigiriya, Sri Lanka', [
+    `${CT}/7am9HezUT6UVVuCZDR0XCY/2dd79b0670aa3f7ba1f0a162dba0146b/Sri_Lanka__Sigiriya.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F138842c4-c760-48b6-8f1b-cca03cfb813e%2Fimage%2Fjpeg%2Fo2JBUrHDd3brOVhShMM7ZQ%2Fistock-1292310728.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F3573c190-395f-40c9-b143-db63215b02df%2Fimage%2Fjpeg%2Fs13FKmYYEfQGfp0GvSrCWg%2Fistock-1341744466.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Faszinierende Reise durch Malaysia, Singapur & Indonesien', 'Kombireisen', '15 Tage', '6 Stationen', '3.340 €', 'Singapur', [
+    `${CT}/1S1CFngY8la37r0DqH3xb1/8052b7405ea5431391f2be4fba023227/Jalan_Besar_Singapore_2.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/7ESNSlcaBy677vvS6n9007/e39b7f110e4be76e4a4071d0e7f37973/Kuala_Lumpur_Malaysia.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/63aV7T4NNRJiHUcBpMg6dB/6bb0bb5c42756d2723639e719c28e89c/Indonesien__Bali__Nusa_Dua.jpg?w=1080&q=60&fm=webp`
+  ]),
+  P('Singapur-Sumatra Rundreise mit Vulkanen, Tierwelt und Erholung', 'Natururlaub', '17 Tage', '9 Stationen', '3.600 €', 'Uluwatu, Bali, Indonesien', [
+    `${CT}/4xZbsybJluYGxiKX3WYl12/f3d1823ca4825f3e2914022f492a153e/Indonesien_Uluwatu_Restaurant.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F6c3db7f8-f4b4-4866-933b-b818ac930860%2Fimage%2Fjpeg%2FTvXpNRdlbFPRSyGiE4Xmjw%2Fsingapore_city_-burachet-_shutterstock_175914833.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F4a61056f-b8d3-46fd-a824-77b5160a244c%2Fimage%2Fjpeg%2FAlIBf_c_U5niGYTgPgxZNA%2Fistock-1184824478.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Japan Rundreise 14 Tage: 2 Wochen durch Tokio, Kyoto und Osaka', 'Kultur', '14 Tage', '3 Stationen', '3.660 €', 'Kinkaku-ji, Kyoto, Japan', [
+    `${CT}/4Dpbtbz1Avc7EO5gPwBSoW/5d3830d037809cb2622726a5bebc5d2f/Japan__Kyoto__Kinkaku-ji.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/5mMmoHVpRDHkV3s9Fg6LzQ/16f0cf805c18c96a6660e3d64f531fd7/Japan_Osaka_Schloss.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/1lSMhsRFLihJX0ZGLtroyq/140c6820e05d22b837122238bfe3d61a/Dotonbori_strasse__Osaka__Japan.jpg?w=1080&q=60&fm=webp`
+  ]),
+  P('Kambodscha Entdeckungsreise von Siem Reap nach Koh Rong', 'Kultur', '15 Tage', '5 Stationen', '3.860 €', 'Bokor Hill, Kampot, Kambodscha', [
+    `${CT}/2szQSstIlIuVgLMyuq3PZV/ae3388551cb9ed43c6fe3e8cd695a290/Kambodscha__Kampot__Bokor_Hill.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2Fd817d36a-6336-4d4c-9b0c-69086b127d52%2Fimage%2Fjpeg%2F5HRKllsgrq8_hGEgLPynuA%2Fjames-wheeler-9zXMb-E8pI0-unsplash.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F5737f0fe-86cf-4888-b73d-46d65d863da0%2Fimage%2Fjpeg%2Fot9PMbtye_Yqt-UAUScbzA%2Fbattambang-shutterstock-1876937614.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('China in 2 Wochen mit Bambusfloßfahrt auf dem Li-Fluss', 'Kultur', '15 Tage', '6 Stationen', '3.990 €', 'Verbotene Stadt, Peking, China', [
+    'https://kiwi-cdn.tlservers.com/items%2F13930f98-67c7-47c0-8f3d-9f7f96a60425%2Fimage%2Fjpeg%2FGnS_7vq0pkRAkCyX25TzRg%2Fforbidden_city.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2Fc04a0e0a-435d-4af5-9552-ff4cead7f556%2Fimage%2Fjpeg%2FjhET5TpEb7ERyB8v56_Tdw%2Fshanghai-istock-1201711683.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2F26ada693-a681-4b34-9253-df4d1eb63ea5%2Fimage%2Fjpeg%2FmOt2nfg_0q0v24GaAR0QwQ%2Fyangshuo-istock-1368399386.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Rundreise durch Indien mit Tigern, Teeplantagen & Badeerlebnis', 'Kultur', '16 Tage', '6 Stationen', '4.000 €', 'Taj Mahal, Agra, Indien', [
+    `${CT}/3tMULy2oenWfno0vfK90fE/09021ff48b74c1cda2b618e47ea3b71b/Taj_Mahal__Indien.jpg?w=1080&q=60&fm=webp`,
+    `${CT}/13iNJODjS7Pq5MWh4AeEbN/1be0d980bfe6206ee15d8563824c84bc/Thekkady__Indien.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2F2775752b-d90a-4323-85d2-fd0b238f1c5c%2Fimage%2Fjpeg%2FfZsW6c7_vt_QLNm0wx3ckQ%2Fistock-148427887.jpg?w=1080&q=60&auto=format&fit=max'
+  ]),
+  P('Südkorea Schnapschuss der schönsten Erlebnisse in 7 Tagen', 'Kurztrips', '7 Tage', '3 Stationen', '4.090 €', 'Gamcheon Culture Village, Busan, Südkorea', [
+    `${CT}/5wcHOCUiX8SU0OaPR6m8Ab/3f8d7fc259c2e40c9416849bdfeb8abf/S%C3%83_dkorea_Busan_GamcheonVillage.jpg?w=1080&q=60&fm=webp`,
+    'https://kiwi-cdn.tlservers.com/items%2Fd01430c4-705b-418a-89a1-54d8599b6d6a%2Fimage%2Fjpeg%2F3x3W6d2Yz2PeFZCxbUxSQg%2Fistock-908748356.jpg?w=1080&q=60&auto=format&fit=max',
+    'https://kiwi-cdn.tlservers.com/items%2Fe4667ec3-b5ab-488f-9464-f185b614465e%2Fimage%2Fjpeg%2FtUt1ldZkuwU-0tvsk77cJg%2Fistock-478766664.jpg?w=1080&q=60&auto=format&fit=max'
+  ])
+];
+
+export const countries = {
+  h2: 'Die schönsten Reiseziele entdecken',
+  items: [
+    { title: 'Laos', href: '#', image: `${CT}/730GUSsXgobNqsyerVaagA/c31524b81de30c8805073d4e2cabda93/Laos_Mekong_Boot.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Thailand', href: '#', image: `${CT}/27MnAH4RS1zTSFygAmnq5i/97ec55278a94f2ab56c26847396201ba/Thailand_Natur.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Vietnam', href: '#', image: `${CT}/6KpaBlYiRchxRrYsS84QgO/dfb8fec25316c0c719d2aa7a5794dc31/NinhBinhProvinz_Tempel.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Japan', href: '#', image: `${CT}/5E91LAbIo29xmfzemwDnnu/082cd826dbf9b2744cbcf00015005330/Japan_MtFuji.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Indonesien', href: '#', image: `${CT}/61b5ymnc76Gat5QEm4R7Uv/236a66af31569408e5fba01e2dcb53b1/Kelingking_Beach__Nusa_Penida__Indonesien_NTCG__1_.png?w=1080&q=60&fm=webp` },
+    { title: 'Indien', href: '#', image: `${CT}/1OoLHyQc0wvo7b7ky6kOYi/14f2e12522f80eccc465118fb92f7486/Indien_Ladakh_Landschaft_TCG.png?w=1080&q=60&fm=webp` },
+    { title: 'China', href: '#', image: `${CT}/3FwBvWPMIiVGThJdqClYD1/bb67524f6b951541a23d6950859c4e6f/China_Jinshanling_ChinesischeMauer_TCG.png?w=1080&q=60&fm=webp` },
+    { title: 'Kambodscha', href: '#', image: `${CT}/3zbplvZU8SZYLZqdmaPsZv/c16250ef83321324f10fbf00c9b058a1/Kambodscha_AngkorWat.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Malaysia', href: '#', image: `${CT}/X7b0PdKpWDMzl19jytcJ6/d0aad3d91b3ffaaf161f205c7660fe5f/Malaysia_Ipoh_Tempel.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Malediven', href: '#', image: `${CT}/3hsuR5UvfamJlqKCTM81Ii/b43e484beb8b92c43047174a4a3e7be8/Maldiven__Holzsteg.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Philippinen', href: '#', image: `${CT}/1o2rtINxvG8y4nqhK5Bvgp/d09a493b9ea9c4db223ad37ba237b646/Philippinen_Palawan_Coron_Lagoone_TCG.png?w=1080&q=60&fm=webp` },
+    { title: 'Singapur', href: '#', image: `${CT}/4B5tE96BHxRVFYUVJQibEE/efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Sri Lanka', href: '#', image: `${CT}/6etzBcZlvbOLHqzCOq0NES/764d862634b04fbcd521a3ad01740f1d/iStock-1779897953.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Südkorea', href: '#', image: `${CT}/2eRk3wUlchhuTsWYZUzJVg/8b62f957e2292414759f5afd848a72b1/South_Korea-Roadtrip-1.jpg?w=1080&q=60&fm=webp` }
+  ]
+};
+
+export const wohin = {
+  h2: 'Wohin in Asien reisen?',
+  more: 'Weitere Details anzeigen',
+  less: 'Weniger Details anzeigen',
+  items: [
+    { n: '1', title: 'Vietnam', text: 'Ob Kulturliebhaber, Sonnenanbeter oder Abenteurer – eine Reise nach Vietnam verspricht allen Reisenden ein unvergessliches Erlebnis. Die artenreiche Tier- und Pflanzenwelt Vietnams lässt sich auch auf einer Reise durch die Dschungelgebiete bestaunen.' },
+    { n: '2', title: 'Thailand', text: 'Das Land erwartet Sie mit paradiesischen Stränden, unberührter Natur und einer spannenden Kultur, die es zu entdecken gilt. Thailand ist voller einzigartiger Aussichten und einer vielfältigen Kulinarik, die ihresgleichen sucht.' },
+    { n: '3', title: 'Sri Lanka', text: 'Egal, ob Sie gerne surfen, wandern oder entspannen, Sri Lanka ist ein vielfältiges Land, das Sie garantiert in seinen Bann ziehen wird. Von kulturellen Highlights bis hin zu atemberaubender Natur bietet das Land alles, was das Herz begehrt.' },
+    { n: '4', title: 'Indonesien', text: 'Das Traumziel zieht viele Reisende an, denn hier kann man nicht nur unberührte Natur mit abenteuerlichen Dschungeln und paradiesischen Stränden erleben, sondern auch zahlreiche Aktivitäten an Land und im Wasser unternehmen.' }
+  ]
+};
+
+export const continents = {
+  h2: 'Weitere Reiseziele entdecken',
+  items: [
+    { title: 'Afrika', href: '#', image: `${CT}/110ZGS9QqFmnBB6ni7Ffl0/8845a151716a95eee1dbb9110ffd21e3/Botswana.png?w=1080&q=60&fm=webp` },
+    { title: 'Europa', href: '#', image: `${CT}/3lm2kLm0CEGQUxkkthxbWU/b2bd740f1613d9428a01cac7aa0e044d/Santorin__Kykladen__Griechenland.png?w=1080&q=60&fm=webp` },
+    { title: 'Mittelamerika', href: '#', image: `${CT}/7BK4jfJCokGbukoJk9X2ez/1806327847299f23af0f21ff630ede8a/Tulum__Quintana_Roo__Mexiko.png?w=1080&q=60&fm=webp` },
+    { title: 'Nordamerika', href: '#', image: `${CT}/7JaaC8NKolwJoYTIa75Rpq/75bfec3cdf1925d50f3a9720b4f3cf96/Kluane_National_Park__Yukon__Kanada.png?w=1080&q=60&fm=webp` },
+    { title: 'Ozeanien', href: '#', image: `${CT}/5YRYR3jQ0zwqJHXOJkHFmM/00df957a7053e4f8d25cdc3eec996989/iStock-892407318_NTCG.png?w=1080&q=60&fm=webp` },
+    { title: 'Südamerika', href: '#', image: `${CT}/xT3WA3FdSyfcNS9oPAKG4/1375dafef4668b29f446bebe9652dad8/Copacabana__Rio_de_Janeiro__Brasilien.png?w=1080&q=60&fm=webp` },
+    { title: 'Südsee', href: '#', image: `${CT}/2CaqGyKUYlXrDtcZNhlsqS/f93363f6895f5b91509bc31f48874142/Fidschi_Mamanuca_Islands_NTCG.png?w=1080&q=60&fm=webp` },
+    { title: 'Naher Osten', href: '#', image: `${CT}/15XakXECStVh0gEgbFVZ0f/8a0911338094ba04cbe1df0745131ab0/Maskat__Oman.png?w=1080&q=60&fm=webp` },
+    { title: 'Skandinavien', href: '#', image: `${CT}/6gnWmPBOc8TJcn39VFU072/a471dfd247e202cd4724b6c8f25d4f97/Cabin_aurora_Lappland_Schweden.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Südliches Afrika', href: '#', image: `${CT}/1Aoj5rqx89CGLZKPAO79H8/93c20bd7ba91702375ebcbab182078f4/Maun__Botswana.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Südostasien', href: '#', image: `${CT}/6Nc0kQtRFpF4EoGSJFeqT4/81a42a3805e268f386f5a638c289a5fc/Bali__Indonesien.png?w=1080&q=60&fm=webp` }
+  ]
+};
+
+export const usps = [
+  { icon: 'star', title: 'Echte Reiseexperten', text: 'Profitieren Sie von unserem lokalen Expertenwissen und preisgekröntem Service.' },
+  { icon: 'ticket', title: 'Rundum organisiert', text: 'Wir kümmern uns um jedes Detail – von der Inspiration bis zur Heimkehr.' },
+  { icon: 'map', title: 'Reisen leicht gemacht', text: 'Egal ob Multi-Stopp oder Länder-Kombi, wir lassen Ihre Reisewünsche wahr werden.' }
+];
