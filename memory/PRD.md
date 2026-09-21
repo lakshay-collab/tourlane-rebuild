@@ -215,3 +215,9 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Mobile (<905px): Travel styles + Sort pills moved into the fixed bottom bar above the "Plan your Egypt trip" CTA (`MobileToursBars` in EgyptFilterBar.jsx; dropdowns open upward, pick scrolls to #tours). A fixed top title bar (eg-mobile-tours-title, eg-title-lg 22px) shows "Egypt holidays"/"Egypt <style> holidays" only while the #tours section spans the viewport top. Desktop keeps the sticky top bar (title-when-stuck + pills + CTA). ScrollTop moved to bottom-40 on mobile.
 - Homepage TripShowcase card aligned with listing cards: 2×2 Sand tiles (days/hotels/activities/transfers, Harbor icons); tags moved onto the image mosaic as white chips (scrollable row at top) → panel much shorter on mobile.
 - Card sizing decision (explained to user): adaptive height, not fixed — desktop rows equal-height (grid stretch, title top, price bottom-anchored), mobile natural height.
+
+## Brand typography + showcase redesign (2026-06, latest)
+- Brand Kit typography now applied: Bricolage Grotesque = section/display titles only; Instrument Sans 600 = card/step/sub titles (t-headline-sm/md/lg, eg-card-title, eg-title-lg); Inter = body; Instrument Serif italic = quotes (`.t-quote`, `.eg-quote`). Google Fonts import extended with Instrument Serif.
+- TripShowcase: tags removed entirely; testimonial quote (t-quote) between value tiles and avatar; single-line "Crafted specially for **name**"; titles shortened to one mobile line (Canada road trip, Iceland adventure, Thailand with friends, Wild Namibia, Costa Rica Pura Vida; whitespace-nowrap <905px); tabs render BELOW the card on mobile (thumb reach) and above on desktop (showcase-tabs-mobile / showcase-tabs).
+- Footer logo row: py-8 (equal 32px above/below), stacked logo + socials on mobile.
+- Tested: iteration_18 (footer/showcase), 19 (typography/tabs), 20 (single-line titles) – all pass.
