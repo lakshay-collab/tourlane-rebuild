@@ -44,9 +44,16 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
   - Footer (light, 3 columns, trust badges, country selector + legal bar)
 - Tested: testing agent iteration_1 – 100% pass at 390/905/1440, 0 broken images, 0 console errors.
 
+## Egypt listing + sample product page (2026-06)
+- Routes: `/afrika/aegypten` (EgyptListing.jsx, mirrors tourlane.de/afrika/aegypten/) and `/afrika/aegypten/:slug` (TourDetail.jsx, only `egypt-explorer-grand` = product 18 "Egypt Explorer — Grand Luxury Edition"; other slugs redirect to listing).
+- Data: `src/egyptData.js` – 18 products (6 families × Comfort/Premium/Grand Luxury, prices from PDF), categories, places, planning/FAQ copy, full itinerary for product 18 (stops A–F, inclusions/exclusions, stats, route-at-a-glance). Images reused from Tourlane Contentful CDN.
+- Shared: TourList.jsx (category tabs + cards), Breadcrumb.jsx. Homepage Africa→Egypt card links to the listing.
+- Tested: iteration_5 (Egypt pages) all pass.
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
 - P1: Backend migration – lead/search enquiry persistence, newsletter signups (+ email provider), destinations API. Create `/app/contracts.md` first.
+- P1: Detail pages for the remaining 17 products (data model already supports it – add `stops` per product).
 - P2: Nav dropdown menus (Destinations / Trip types / Activities), destination detail pages, mobile Trustpilot bar variant.
 - P2: Replace hotlinked Tourlane CDN assets with owned storage before production.
