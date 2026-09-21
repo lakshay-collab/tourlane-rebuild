@@ -5,43 +5,46 @@ import { GoogleLogo, TripAdvisorLogo } from './Rating';
 
 const INTERVAL = 5000;
 
-const RatingsSlide = () => (
-  <div className="flex items-center gap-3 sm:gap-6 flex-wrap justify-center">
-    <div className="flex items-center gap-2 whitespace-nowrap" data-testid="rating-google">
-      <GoogleLogo size={18} />
-      <span className="t-label-lg text-onsurface">Rated <span className="font-semibold">{ratings.google.score}</span> on Google</span>
-    </div>
-    <span className="hidden sm:block h-5 w-px bg-outline-variant" />
-    <div className="flex items-center gap-2 whitespace-nowrap" data-testid="rating-tripadvisor">
-      <TripAdvisorLogo size={20} />
-      <span className="t-label-lg text-onsurface">Rated <span className="font-semibold">{ratings.tripadvisor.score}</span> on TripAdvisor</span>
-    </div>
+const Seg = ({ icon: Icon, children, testId }) => (
+  <div className="flex items-center gap-2 whitespace-nowrap" data-testid={testId}>
+    {Icon && <Icon size={18} strokeWidth={1.75} className="text-primary shrink-0" />}
+    <span className="t-label-lg text-onsurface">{children}</span>
   </div>
 );
-
-const TextSlide = ({ icon: Icon, children, testId }) => (
-  <p className="flex items-center gap-2 t-label-lg text-onsurface text-center" data-testid={testId}>
-    <Icon size={18} strokeWidth={1.75} className="text-primary shrink-0 hidden sm:block" />
-    <span>{children}</span>
-  </p>
-);
+const Sep = () => <span className="hidden sm:block h-5 w-px bg-outline-variant" />;
+const Group = ({ children }) => <div className="flex items-center gap-x-3 gap-y-0 sm:gap-6 flex-wrap justify-center">{children}</div>;
 
 const SLIDES = [
-  { key: 'ratings', node: <RatingsSlide /> },
+  {
+    key: 'ratings',
+    node: (
+      <Group>
+        <Seg icon={GoogleLogo} testId="rating-google">Rated <span className="font-semibold">{ratings.google.score}</span> on Google</Seg>
+        <Sep />
+        <Seg icon={TripAdvisorLogo} testId="rating-tripadvisor">Rated <span className="font-semibold">{ratings.tripadvisor.score}</span> on TripAdvisor</Seg>
+      </Group>
+    )
+  },
   {
     key: 'heritage',
     node: (
-      <TextSlide icon={CalendarDays} testId="trust-slide-heritage">
-        Established in 1995. <span className="font-semibold">30+ years</span> of crafting incredible holidays for lakhs of travellers around the globe.
-      </TextSlide>
+      <Group>
+        <Seg icon={CalendarDays} testId="trust-slide-heritage">Established in <span className="font-semibold">1995</span></Seg>
+        <Sep />
+        <Seg><span className="font-semibold">30+</span> years of expertise</Seg>
+        <Sep />
+        <Seg><span className="font-semibold">400,000+</span> happy travellers</Seg>
+      </Group>
     )
   },
   {
     key: 'iso',
     node: (
-      <TextSlide icon={ShieldCheck} testId="trust-slide-iso">
-        Did you know? Hi Tours was the <span className="font-semibold">first travel company in India</span> to earn ISO 45001 health &amp; safety certification.
-      </TextSlide>
+      <Group>
+        <Seg icon={ShieldCheck} testId="trust-slide-iso">Hi Tours is <span className="font-semibold">ISO 45001</span> certified</Seg>
+        <Sep />
+        <Seg>Health &amp; safety is our priority</Seg>
+      </Group>
     )
   }
 ];
@@ -59,7 +62,7 @@ export default function TrustBar() {
   const slide = SLIDES[i];
   return (
     <div
-      className="bg-secondary-container min-h-11 py-2 flex items-center justify-center px-4 overflow-hidden select-none"
+      className="bg-secondary-container h-11 flex items-center justify-center px-4 overflow-hidden select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       data-testid="trust-bar"
