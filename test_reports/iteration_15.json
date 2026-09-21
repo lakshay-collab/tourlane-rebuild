@@ -1,0 +1,26 @@
+{
+  "summary": "Frontend-only comprehensive test of /afrika/aegypten (Egypt listing) at desktop 1440 and mobile 390. All 14 requested feature groups verified: 0 console errors on desktop/mobile/home/asien/detail; hero title/image/heights (453/236) correct; trust bar shows Google/TripAdvisor, no Trustpilot text/img on page, click advances slide (ratings->heritage); sub-nav has all 7 tabs in correct order, no FAQ tab; tours/about scroll and underline; dropdowns guide(3), inspiration(5), places(6), styles(7), sort(4) with svg icons; only-one-dropdown-open enforced; Family filter -> chip + '1 holiday' + 1 card 'Egypt family holiday: adventure for kids' + check icon in dropdown; clear restores 6 cards + Show more; price-asc sort produces ascending prices ₹1,21,500..₹2,49,000 with all 7 cards and hides Show more; price-desc starts at ₹2,49,000; product card fields (11 days, 5 stops, 4 hotels, 5 cities, 12 activities, 9 transfers, From ₹1,44,000 p.p.) and detail-page link works; Show more toggles to Show less with 7 cards; reviews heading 'Customers about Hi Tours', summary 'Excellent 4.8 out of 5 5,000+ reviews', 3 review cards each with brand-stars and NO avatar circle, review track horizontally scrollable at 390 (964>390); tabs strip horizontally scrollable at 390 (876>390); styles dropdown stays within 390 viewport; activities row shows 2 cards side by side and scrollable (528>390); header logo /hitours-dark.webp on Egypt, /hitours-white.webp on home, footer /hitours-logo.webp; FAQ accordion opens, Show more details reveals 6 plan sections, themes more reveals 8, ScrollTop appears and scrolls to top, breadcrumb 'Destinations Africa Egypt'. Homepage and /asien render with 0 console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EgyptTileRow (places)", "issue": "Clicking eg-places-row-next on desktop 1440 does not change scrollLeft (0 -> 0) although arrow is visible and enabled. Row content overflows on mobile (528>390) but arrow-based scroll appears non-functional in this test.", "selector": "[data-testid='eg-places-row-next']", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Investigate eg-places-row-next click behavior — arrow visible but scrollLeft did not change on click at 1440; verify scroll amount / max scroll logic."
+  ],
+  "critical_code_review_comments": [
+    "TrustLine.jsx and mock.js still reference Trustpilot assets. Not rendered on /afrika/aegypten (verified via body.innerText and img alt/src) but still shipped in bundle. Consider removing dead code if brand transition is complete.",
+    "EgyptFooter.jsx also still contains a Trustpilot img (not used on Egypt listing which imports Footer, but present in codebase)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "~99% (1 minor places-row-next scroll issue)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All spec items for iteration 15 passed. Only minor issue: eg-places-row-next on desktop did not update scrollLeft. Consider retesting after any changes. Real mobile emulation was NOT used (only viewport 390x844) but layout still switched to mobile correctly (hero-copy-mobile visible, hero image 236px, activities row scrollable, no horizontal overflow).",
+  "rca of the issue": "Places-row next arrow: likely the scroll delta calculation returns 0 when scrollLeft is already >= (scrollWidth - clientWidth) or the delta is not applied. On 1440 with 6 items ~264px wide = ~1584px content vs viewport, there should be room to scroll, but observed scrollLeft remained 0 after click."
+}

@@ -159,3 +159,16 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Update: TrustBar breakpoint 400px (`useWide`). ≥400px: rotates 3 slides, dividers visible on mobile, copy "Established in 1995 | 30+ years | 400,000+ happy travellers" / "ISO 45001 certified | Health & safety is our priority" (desktop adds "of expertise", "Hi Tours is"). <400px: only the ratings slide, no rotation/tap. Verified widths 375/390/402/440: content ≤ bar width, one line.
 - Update: mobile (<640) heritage slide = "Established in 1995 | 400,000+ travellers in 30+ years" (two segments); desktop keeps 3 segments.
 - Update: heritage slide = "Established in 1995 | {YEARS} years of trust | 400,000+ (happy) travellers", YEARS computed as currentYear-1995 (31 in 2026). Three segments with dividers on both mobile (≥400px) and desktop.
+
+## Egypt listing – Hi Tours migration round (2026-06, latest)
+- User: listing page `/afrika/aegypten` migrates from tourlane.de → Hi Tours (Indian market, 95% mobile). All copy ENGLISH, prices INR (Indian grouping via `formatInr`, converted ~₹90/€, ₹85/$).
+- Data: `egyptListingData.js` rewritten in English; image URLs moved to generated `egyptImages.js`. Products now numeric `days/stops/price` + `hotels/cities/activities/transfers` (placeholders for products 2–7) + `styles[]`. New exports `styles` (Family, Romantic, Culture, Short trips, Beach, Nile cruise, Luxury) and `sorts` (price asc/desc, duration asc/desc).
+- Hero: user-supplied photo `/egypt/hero-egypt.webp`, H1 'Egypt Honeymoons and holidays'. Band heights match source: 236 (xs) / 356 (sm) / 453 (md+). <md: copy stacked above image (like source); md+: white copy overlaid with Ink scrim.
+- Trust bar: homepage rotating `TrustBar` (Google 4.7 / TripAdvisor 4.9 → Established 1995 → ISO 45001) replaces Trustpilot everywhere on the page.
+- Sticky sub-nav (EgyptHero StickyTabs): About Egypt (→#about) · Egypt holidays (→#tours, scroll-spy active state) · Travel guide ▾ (3, icons) · Inspiration ▾ (5, icons) · Places ▾ (6, pin icons) · Travel styles ▾ (filter, check mark + green dot) · Sort ▾ (re-orders). Dropdown = Tourlane style: 280px, #F0EEE6, 8px radius, e2 shadow, 24px icons (lucide, `EgyptNavIcons.jsx`). Picks scroll to #tours. Mobile: strip horizontally scrollable, dropdown clamped inside viewport. No FAQ tab.
+- Listing: filter/sort state in EgyptListing.jsx; chips (eg-filter-chip-style/sort, clear) + result count; 'Show more' hidden while a filter/sort is active.
+- Product card: days/stops row + 2×2 inclusions (hotels, cities, activities, transfers) + 'From ₹x p.p.'.
+- Reviews: 'Customers about Hi Tours', Excellent + brand-blue BoxStars 4.8 + 5,000+ reviews; cards use blue BoxStars, no avatars; swipe row on mobile.
+- Mobile fixes: horizontal overflow removed (tabs strip), activities 2-up swipe row, ScrollTop bottom-right smaller offset.
+- Header logo: `Logo.jsx` default now `/hitours-dark.webp` (no tagline, same framing as white logo); `tagline` prop keeps `/hitours-logo.webp` (used in Footer).
+- Tested: iteration_15 – 100% frontend pass (14 groups) at 1440 + 390, 0 console errors.
