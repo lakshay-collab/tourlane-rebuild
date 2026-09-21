@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { BedDouble, Building2, Car, Baby, Plane, Sparkles, Leaf, TreePalm, Bike, UtensilsCrossed, Binoculars, CalendarDays, Ticket } from 'lucide-react';
+import { BedDouble, Car, CalendarDays, Ticket } from 'lucide-react';
 import { showcase } from '../mock';
-
-const icons = { bed: BedDouble, tower: Building2, car: Car, family: Baby, plane: Plane, aurora: Sparkles, leaf: Leaf, island: TreePalm, bike: Bike, food: UtensilsCrossed, safari: Binoculars };
 
 const Tile = ({ img, className = '' }) => (
   <div className={`relative overflow-hidden ${className}`}>
@@ -50,26 +48,17 @@ export default function TripShowcase() {
                 </span>
               ))}
             </div>
-            <div className="flex items-center gap-4 mt-8 md:mt-auto">
+            <blockquote className="mt-6 t-body-md md:t-body-lg text-onsurface italic" data-testid="showcase-quote">“{trip.quote}”</blockquote>
+            <div className="flex items-center gap-4 mt-6 md:mt-auto">
               <img src={trip.avatar} alt={trip.customer} className="w-[60px] h-[60px] rounded-full object-cover" />
               <div>
                 <div className="t-body-sm text-onsurface-variant">{showcase.createdFor}</div>
-                <div className="t-title-md text-onsurface">{trip.customer}</div>
+                <div className="t-title-md text-onsurface" data-testid="showcase-customer">{trip.customer}</div>
               </div>
             </div>
           </div>
 
-          <div className="relative md:flex-1 flex gap-1 h-[420px] md:h-auto" data-testid="showcase-mosaic">
-            <div className="absolute inset-x-0 top-0 z-10 p-3 flex gap-2 overflow-x-auto no-scrollbar" data-testid="showcase-tags">
-              {trip.tags.map(([k, label]) => {
-                const Icon = icons[k];
-                return (
-                  <span key={label} className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/90 backdrop-blur t-label-lg text-onsurface shadow-sm">
-                    <Icon size={16} strokeWidth={1.75} className="text-primary" />{label}
-                  </span>
-                );
-              })}
-            </div>
+          <div className="md:flex-1 flex gap-1 h-[420px] md:h-auto" data-testid="showcase-mosaic">
             <div className="w-1/3 flex flex-col gap-1">
               <Tile img={a} className="h-[55%]" />
               <Tile img={b} className="flex-1" />

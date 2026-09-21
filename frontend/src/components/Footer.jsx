@@ -55,10 +55,10 @@ export default function Footer() {
     <footer className="bg-surface" data-testid="site-footer">
       <div className="h-px bg-outline-variant/60" data-testid="footer-divider-top" />
 
-      <div className="tl-wide pt-12 pb-6">
-        <div className="flex items-center justify-between">
-          <a href="/" aria-label="Hi Tours"><Logo tagline className="h-12 w-auto" /></a>
-          <div className="flex items-center gap-4"><Socials /></div>
+      <div className="tl-wide py-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <a href="/" aria-label="Hi Tours" className="shrink-0"><Logo tagline className="h-12 w-auto" /></a>
+          <div className="flex items-center gap-3 sm:gap-4"><Socials /></div>
         </div>
       </div>
 
