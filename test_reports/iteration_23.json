@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only round-3 verification on Hi Tours Egypt package detail page (/afrika/aegypten/luxor-strand-urlaub) at desktop 1440 and mobile 390. All 9 grouped requirements from the request passed. No console errors on detail or listing page; no horizontal overflow at 390.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "verified_checks": [
+    "Detail page loads at 1440 and 390 with 0 console errors; scrollWidth==clientWidth==390 (no horizontal overflow)",
+    "Header @390: eg-detail-title font-size=22px; eg-detail-stats has exactly 4 tiles (days, hotels, activities, transfers all present)",
+    "eg-detail-tags: eg-detail-cities='5 cities' + 3 eg-detail-tag chips (Culture, Honeymoon, Luxury) each with exactly 1 svg",
+    "eg-price-services has 6 li with bg rgb(251,234,219) in 2-col grid (li[0] & li[1] share top); no stars/bubbles inside eg-ratings-row (brand-stars elements exist elsewhere on page but NOT inside ratings row; tripadvisor-bubbles absent). Ratings text: 'Rated 4.7 on Google' + 'Rated 4.9 on TripAdvisor'",
+    "Expert: title 'Trip created by Ria Banerjee, product & destination expert for Egypt'; quote 'Pyramids, a relaxed Nile cruise and a Red Sea beach finale, all in one journey.' with height 52px @ line-height 26px (<=2 lines). Read more toggle appends 'Valley of the Kings' text and label becomes 'Read less'",
+    "Itinerary eg-route-section-1: 'Day 4-7' and eg-route-subtitle 'Aswan -> Edfu -> Luxor' on separate y positions (delta 52px); eg-accommodation-cta 'Customise this' and eg-activities-cta 'Customise activities' both rgb(250,221,209)",
+    "Lightbox: 'View photos (3)' opens eg-lightbox with naturalWidth=640; next changes src; counter shows '2/3'; close and Escape both close it; body overflow restored to visible",
+    "Route-at-a-glance: @1440 eg-glance-table visible with headers Day/Route/Your accommodation/Key highlights & activities + 5 body rows each with an eg-glance-photo; eg-glance-hide collapses it. @390 table hidden and 5 eg-glance-day stacked cards visible with 'Key highlights & activities' label",
+    "Sticky bar (post-scroll): contains 'From \u20b91,44,000' and 'per person', does NOT contain 'Ria Banerjee' or 'our team'; exactly 1 eg-sticky-cta",
+    "Regression: scroll-spy selects eg-route-tab-2 (aria-selected=true) when section-2 near top; listing /afrika/aegypten loads with 0 console errors"
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "brand-stars data-testid elements are rendered elsewhere on the page (e.g., in reviews/rating widgets) but not inside eg-ratings-row, which matches the spec. If the intent is that this testid should be globally absent from the detail page, revisit the Rating component usage."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All round-3 refinements verified. Note that brand-stars testid appears in other rating widgets on the page (not inside eg-ratings-row) - spec only forbids it inside eg-ratings-row and that holds."
+}

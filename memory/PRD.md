@@ -239,3 +239,11 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Glance rows: photo (route.stops[i].images[0]) + wide text column | narrow bordered accommodation/highlights column (2-col on mobile).
 - Reviews section: h2 'What customers say about booking Egypt with Hi Tours', summary 'Excellent ★ 4.8 out of 5 based on 420 Egypt reviews' (EgyptReviews `h2`/`count` props).
 - Tested: iteration_22 – all 11 checks pass (1440 + 390), 0 console errors.
+
+## Egypt detail page – round 3 (2026-06, latest)
+- Mobile h1 22px/28px (3 lines ok). 4 value tiles (days/hotels/activities/transfers); chips row: "5 cities" Deep Water chip + tags Culture/Honeymoon/Luxury (`detail.tags`, NavIcon icons).
+- What's included = 6 Sand blocks in 2-col grid. Ratings row = Google/TripAdvisor text + logos only (no stars).
+- Expert: "Trip created by Ria Banerjee, product & destination expert for Egypt"; `quote` = one short sentence (2 mobile lines, 18px mobile / 22px desktop), `quoteMore` appended on Read more.
+- Route: day label and `subtitle` on separate lines; Blush pill CTAs "Customise this"/"Customise activities"; accommodation "View photos (n)" opens `Lightbox` (Esc/close/prev/next).
+- Route at a glance: desktop = table (Day pill | Route photo+title+text | Your accommodation | Key highlights & activities), mobile = stacked cards. Sticky bar without team block.
+- Tested: iteration_23 – all 9 groups pass (1440 + 390), 0 console errors.
