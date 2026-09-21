@@ -50,7 +50,10 @@ module.exports = {
         'sunset-run': 'linear-gradient(135deg, #FB7F26 0%, #E75E26 55%, #812F0E 100%)',
         'sunset-line': 'linear-gradient(90deg, #FB7F26 0%, #E75E26 100%)',
         'dawn-haze': 'linear-gradient(135deg, #FADDD1 0%, #F4B49A 60%, #FB7F26 100%)',
-        'deep-water': 'linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%)'
+        'deep-water': 'linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%)',
+        'harbor-sky': 'linear-gradient(135deg, #174358 0%, #308BB6 100%)',
+        'sky-mist': 'linear-gradient(180deg, #E0F7FF 0%, #FBF9F1 100%)',
+        'warm-mist': 'linear-gradient(135deg, #FBEADB 0%, #FADDD1 100%)'
       },
       borderRadius: {
         lg: 'var(--radius)',

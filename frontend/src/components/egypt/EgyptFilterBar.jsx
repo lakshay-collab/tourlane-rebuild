@@ -50,7 +50,7 @@ export default function EgyptFilterBar({ style, sort, onStyle, onSort }) {
           const isOpen = open === m.key;
           return (
             <button key={m.key} type="button" onClick={(e) => toggle(m.key, e)} aria-expanded={isOpen} aria-haspopup="menu"
-              className={`shrink-0 inline-flex items-center gap-1 h-10 pl-3 sm:pl-4 pr-2 sm:pr-3 rounded-full border whitespace-nowrap eg-label-lg transition-colors ${active || isOpen ? 'border-[#174358] bg-[#174358] text-white' : 'border-[#6F777C] text-[#002131] hover:bg-[rgba(23,67,88,0.08)]'}`}
+              className={`shrink-0 inline-flex items-center gap-1 h-10 pl-3 sm:pl-4 pr-2 sm:pr-3 rounded-full border whitespace-nowrap eg-label-lg transition-colors ${active || isOpen ? 'border-transparent eg-grad-harbor text-white shadow-[0_2px_8px_rgba(23,67,88,0.3)]' : 'border-[#6F777C] text-[#002131] hover:bg-[rgba(23,67,88,0.08)]'}`}
               data-testid={`eg-filter-${m.key}`}>
               {m.label}
               {active && <span className="ml-0.5 w-1.5 h-1.5 rounded-full bg-white" data-testid={`eg-filter-${m.key}-dot`} />}

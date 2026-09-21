@@ -26,7 +26,7 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
       <div className="relative h-[702px] hidden lg:block" style={{ backgroundImage: `url(${data.decoration})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center 444px', backgroundSize: '1200px 258px' }}>
         <div className="relative h-[372px] rounded-2xl overflow-hidden">
           <img src={data.bg} alt="Egypt" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,33,49,0.72)_0%,rgba(23,67,88,0.45)_60%,rgba(48,139,182,0.35)_100%)]" />
           <div className="absolute inset-x-0 top-0 pt-[43px] px-6 flex flex-col items-center gap-1 text-white">
             <h3 className={`${titleClass} text-white text-center`}>{data.h3}</h3>
             <div className="flex items-center gap-2">
@@ -66,7 +66,7 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
       {/* Compact layout below lg */}
       <div className="lg:hidden relative rounded-2xl overflow-hidden">
         <img src={data.bg} alt="Egypt" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,33,49,0.72)_0%,rgba(23,67,88,0.45)_60%,rgba(48,139,182,0.35)_100%)]" />
         <div className="relative p-4 pt-6 flex flex-col items-center gap-4">
           <h3 className="eg-display-sm text-white text-center">{data.h3}</h3>
           <span className="eg-title-md text-white">{data.social}</span>

@@ -4,7 +4,7 @@ import { TagIcon, PinIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLe
 import { formatInr } from '../../egyptListingData';
 
 const Stat = ({ icon: Icon, value, testId }) => (
-  <span className="flex items-center gap-2.5 rounded-lg bg-[#F0EEE6] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
+  <span className="flex items-center gap-2.5 rounded-lg bg-[#E0F7FF] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
     <Icon size={20} className="text-[#174358] shrink-0" />
     <span className="eg-label-lg">{value}</span>
   </span>
@@ -35,7 +35,7 @@ export default function EgyptProductCard({ p }) {
           </div>
         </div>
         <div className="absolute left-3 bottom-3 pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#002131]/70 backdrop-blur-sm px-2.5 py-1.5 eg-label-lg text-white" data-testid="eg-product-cities"><PinIcon size={18} />{cities}</span>
+          <span className="inline-flex items-center gap-1.5 rounded-lg eg-grad-harbor px-2.5 py-1.5 eg-label-lg text-white shadow-[0_2px_6px_rgba(0,33,49,0.3)]" data-testid="eg-product-cities"><PinIcon size={18} />{cities}</span>
         </div>
         {p.tag && (
           <div className="absolute left-0 top-0 p-2">
@@ -59,7 +59,7 @@ export default function EgyptProductCard({ p }) {
           )}
           <p className="mt-auto pt-4 flex items-baseline gap-1.5 text-[#6F777C]" data-testid="eg-product-price">
             <span className="eg-body-md">From</span>
-            <span className="eg-price text-[#002131]">{price}</span>
+            <span className="eg-price text-[#174358]">{price}</span>
             <span className="eg-body-md">per person</span>
           </p>
         </div>

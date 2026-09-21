@@ -127,7 +127,7 @@ export function ScrollTop({ className = 'bottom-10 right-12' }) {
   }, []);
   if (!show) return null;
   return (
-    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className={`fixed ${className} z-40 w-14 h-14 rounded-full bg-[#FEFCF4] shadow-[0_1px_3px_rgba(0,0,0,0.3),0_4px_8px_3px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#002131]`} data-testid="eg-scroll-top">
+    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className={`fixed ${className} z-40 w-14 h-14 rounded-full eg-grad-harbor shadow-[0_4px_12px_rgba(0,33,49,0.3)] flex items-center justify-center text-white`} data-testid="eg-scroll-top">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11 20V7.825l-5.6 5.6L4 12l8-8l8 8l-1.4 1.425l-5.6-5.6V20z" /></svg>
     </button>
   );

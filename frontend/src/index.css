@@ -28,6 +28,10 @@
 @media (min-width: 600px) { .eg-container { padding-left: 32px; padding-right: 32px; } }
 @media (min-width: 905px) { .eg-container { width: 857px; padding: 0; } }
 @media (min-width: 1240px) { .eg-container { width: 1128px; } }
+.eg-eyebrow { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #E75E26; }
+.eg-band-sky { background: linear-gradient(180deg, #E0F7FF 0%, #FBF9F1 100%); }
+.eg-band-warm { background: linear-gradient(135deg, #FBEADB 0%, #FADDD1 100%); }
+.eg-grad-harbor { background: linear-gradient(135deg, #174358 0%, #308BB6 100%); }
 .eg-card-title { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: -0.1px; }
 .eg-price { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-btn-filled { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9999px; color: #fff; white-space: nowrap; font-family: 'Instrument Sans', Inter, sans-serif; font-weight: 600; background-image: linear-gradient(90deg, #002131 0%, #113141 50%, #174358 100%); background-size: 160% 100%; background-position: left; transition: background-position .3s, box-shadow .3s; }
@@ -36,8 +40,8 @@
 .eg-btn-outlined:hover { background: rgba(23, 67, 88, 0.08); }
 .eg-link { color: #174358; font-weight: 600; text-decoration: underline; }
 .eg-card { border: 1px solid #C4CBD0; border-radius: 12px; overflow: hidden; background: #FBF9F1; display: block; }
-.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #FADDD1; color: #002131; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
-.eg-arrow:hover { background: #F4B49A; }
+.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #E0F7FF; color: #174358; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
+.eg-arrow:hover { background: #C6ECF7; }
 
 @tailwind base;
 @tailwind components;
@@ -85,7 +89,7 @@ body {
 
   .btn-filled { @apply inline-flex items-center justify-center h-10 px-6 rounded-full bg-primary text-white t-label-lg whitespace-nowrap transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; }
   .btn-outlined { @apply inline-flex items-center justify-center h-10 px-4 gap-2 rounded-full border border-outline text-onsurface t-label-lg whitespace-nowrap transition-colors duration-200 hover:bg-onsurface/[0.08]; }
-  .btn-sunset { @apply inline-flex items-center justify-center h-10 px-6 rounded-full text-white t-label-lg whitespace-nowrap bg-sunset-run bg-[length:160%_100%] bg-left transition-[background-position,box-shadow] duration-300 hover:bg-right hover:shadow-[0_4px_14px_rgba(231,94,38,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40; }
+  .btn-sunset { @apply inline-flex items-center justify-center h-10 px-6 rounded-full text-white t-label-lg whitespace-nowrap bg-deep-water bg-[length:160%_100%] bg-left transition-[background-position,box-shadow] duration-300 hover:bg-right hover:shadow-[0_6px_18px_rgba(0,33,49,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40; }
   .btn-text { @apply inline-flex items-center gap-1 t-label-lg text-primary hover:underline; }
 
   .arrow-btn { @apply w-10 h-10 rounded-full bg-secondary-container text-onsurface flex items-center justify-center shadow-sm transition-colors hover:bg-secondary-dim disabled:opacity-0 disabled:pointer-events-none; }

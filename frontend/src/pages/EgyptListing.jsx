@@ -108,6 +108,7 @@ export default function EgyptListing() {
         </section>
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="tours" data-testid="eg-tours">
+          <p className="eg-eyebrow mb-3">Handpicked packages</p>
           <h2 className="eg-display-sm text-[#002131]" data-testid="eg-tours-title">{style ? tours.styleH2(style) : tours.h2}</h2>
           <p className="mt-6 eg-body-lg text-[#002131]" data-testid="eg-tours-intro">
             {tours.short.map((x, i) => (Array.isArray(x) ? <b key={i} className="font-semibold">{x[0]}</b> : x))}
@@ -135,7 +136,8 @@ export default function EgyptListing() {
           )}
         </section>
 
-        <section className="eg-container mt-12 md:mt-16 grid gap-6 md:grid-cols-3" data-testid="eg-features">
+        <section className="eg-container mt-12 md:mt-16" data-testid="eg-features">
+          <div className="eg-band-warm rounded-2xl p-6 md:p-10 grid gap-6 md:grid-cols-3">
           {features.map((f) => (
             <div key={f.title} className="flex md:flex-col items-start md:items-center gap-4 text-left md:text-center">
               <img src={f.icon} alt="" className="w-[72px] h-[72px] md:w-[120px] md:h-[120px] shrink-0" />
@@ -145,12 +147,14 @@ export default function EgyptListing() {
               </div>
             </div>
           ))}
+          </div>
         </section>
 
         <EgyptPlanner />
         <EgyptReviews />
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="places" data-testid="eg-places">
+          <p className="eg-eyebrow mb-3">Destinations</p>
           <h2 className="eg-display-sm text-[#002131]">{places.h2}</h2>
           <div className="mt-8"><EgyptTileRow items={places.items} testId="eg-places-row" /></div>
         </section>
@@ -165,6 +169,7 @@ export default function EgyptListing() {
         <EgyptPlan />
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="themes" data-testid="eg-themes">
+          <p className="eg-eyebrow mb-3">Travel guide &amp; inspiration</p>
           <h2 className="eg-display-sm text-[#002131]">{themes.h2}</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-theme-grid">
             {(allThemes ? themes.items : themes.items.slice(0, 3)).map((t) => <EgyptTile key={t.title} item={t} imgClass="aspect-[1.59] h-auto" testId="eg-theme-card" />)}

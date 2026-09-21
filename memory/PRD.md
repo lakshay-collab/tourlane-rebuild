@@ -199,3 +199,9 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Luxury palette: `.eg-btn-filled` = Deep Water gradient (Ink→Deep Harbor→Harbor) with Ink shadow; tiles neutral #F0EEE6 with Harbor icons; underlines/progress/spinner Harbor; orange removed from Egypt components (Ember only remains on homepage accents).
 - CTA copy: sticky bar + mobile bottom bar say "Plan your Egypt trip"; hero keeps "Plan for free".
 - iteration_17 passed the previous state (before this round); this round verified via screenshots at 1440 + 390, 0 console errors, 7 cards lazy-loaded on both.
+
+## Palette mix + homepage alignment (2026-06, latest)
+- New gradients in tailwind: harbor-sky (#174358→#308BB6), sky-mist (#E0F7FF→cream), warm-mist (Sand→Blush); CSS helpers `.eg-grad-harbor`, `.eg-band-sky`, `.eg-band-warm`, `.eg-eyebrow` (Ember caps label).
+- Listing: eyebrows above tours/places/themes/reviews/FAQ; USP section on warm-mist rounded band; FAQ on sky-mist full-width band; card tiles Sky #E0F7FF w/ Harbor icons; cities chip + active filter pill + ScrollTop = harbor-sky gradient; price Harbor; arrows Sky; planner overlay Deep Water tint.
+- Homepage: `.btn-sunset` now Deep Water gradient (aligned with listing CTAs); Blush trust bar, Dawn Haze step circles, Ember accents retained.
+- Cards: equal-height rows on desktop, natural height on mobile, titles never truncated (UX decision explained to user).
