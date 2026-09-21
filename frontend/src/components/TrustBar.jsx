@@ -13,8 +13,8 @@ const Seg = ({ icon: Icon, children, short, testId }) => (
     </span>
   </div>
 );
-const Sep = () => <span className="hidden sm:block h-5 w-px bg-outline-variant" />;
-const Group = ({ children }) => <div className="flex items-center gap-x-3 sm:gap-6 flex-nowrap justify-center">{children}</div>;
+const Sep = () => <span className="block h-4 sm:h-5 w-px bg-outline-variant shrink-0" />;
+const Group = ({ children }) => <div className="flex items-center gap-x-2 sm:gap-6 flex-nowrap justify-center">{children}</div>;
 const B = ({ children }) => <span className="font-semibold">{children}</span>;
 
 const SLIDES = [
@@ -32,11 +32,11 @@ const SLIDES = [
     key: 'heritage',
     node: (
       <Group>
-        <Seg icon={CalendarDays} testId="trust-slide-heritage" short={<>Est. <B>1995</B></>}>Established in <B>1995</B></Seg>
+        <Seg icon={CalendarDays} testId="trust-slide-heritage">Established in <B>1995</B></Seg>
         <Sep />
         <Seg short={<><B>30+</B> years</>}><B>30+</B> years of expertise</Seg>
         <Sep />
-        <Seg short={<><B>400,000+</B> travellers</>}><B>400,000+</B> happy travellers</Seg>
+        <Seg><B>400,000+</B> happy travellers</Seg>
       </Group>
     )
   },
@@ -46,31 +46,43 @@ const SLIDES = [
       <Group>
         <Seg icon={ShieldCheck} testId="trust-slide-iso" short={<><B>ISO 45001</B> certified</>}>Hi Tours is <B>ISO 45001</B> certified</Seg>
         <Sep />
-        <Seg short="Health & safety first">Health &amp; safety is our priority</Seg>
+        <Seg>Health &amp; safety is our priority</Seg>
       </Group>
     )
   }
 ];
 
+const useWide = () => {
+  const [wide, setWide] = useState(() => window.matchMedia('(min-width: 400px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 400px)');
+    const fn = (e) => setWide(e.matches);
+    mq.addEventListener('change', fn);
+    return () => mq.removeEventListener('change', fn);
+  }, []);
+  return wide;
+};
+
 export default function TrustBar() {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
+  const wide = useWide();
 
   useEffect(() => {
-    if (paused) return undefined;
+    if (paused || !wide) return undefined;
     const t = setTimeout(() => setI((v) => (v + 1) % SLIDES.length), INTERVAL);
     return () => clearTimeout(t);
-  }, [paused, i]);
+  }, [paused, i, wide]);
 
-  const next = () => setI((v) => (v + 1) % SLIDES.length);
-  const slide = SLIDES[i];
+  const next = () => { if (wide) setI((v) => (v + 1) % SLIDES.length); };
+  const slide = wide ? SLIDES[i] : SLIDES[0];
   return (
     <div
       role="button"
       tabIndex={0}
       onClick={next}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } }}
-      className="bg-secondary-container h-11 flex items-center justify-center px-4 overflow-hidden select-none cursor-pointer active:bg-secondary-dim transition-colors duration-200 focus-visible:outline-none"
+      className="bg-secondary-container h-11 flex items-center justify-center px-3 sm:px-4 overflow-hidden select-none cursor-pointer active:bg-secondary-dim transition-colors duration-200 focus-visible:outline-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       data-testid="trust-bar"
