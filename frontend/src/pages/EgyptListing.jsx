@@ -2,9 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import Footer from '../components/Footer';
-import EgyptHero, { ScrollTop, MobileStickyCta } from '../components/egypt/EgyptHero';
+import EgyptHero, { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
-import EgyptFilterBar from '../components/egypt/EgyptFilterBar';
+import EgyptFilterBar, { MobileToursBars } from '../components/egypt/EgyptFilterBar';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
 import { EgyptReviews, EgyptPlan, EgyptFaq } from '../components/egypt/EgyptSections';
@@ -179,8 +179,8 @@ export default function EgyptListing() {
           <div className="mt-8"><EgyptTileRow items={africa.items} testId="eg-africa-row" /></div>
         </section>
       </main>
-      <ScrollTop className="bottom-24 right-4 lg:bottom-10 lg:right-12" />
-      <MobileStickyCta />
+      <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
+      <MobileToursBars title={style ? tours.styleH2(style) : tours.h2} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
       <Footer />
     </div>
   );

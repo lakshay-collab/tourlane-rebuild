@@ -43,22 +43,12 @@ export default function TripShowcase() {
         <div className="flex flex-col md:flex-row rounded-xl overflow-hidden md:h-[560px]" data-testid="showcase-card">
           <div className="bg-surface-container md:w-[340px] lg:w-[432px] shrink-0 p-6 md:p-8 flex flex-col">
             <h3 className="t-headline-md md:t-headline-lg text-onsurface" data-testid="showcase-title">{trip.title}</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mt-5" data-testid="showcase-stats">
-              {[[CalendarDays, trip.duration], [Ticket, `${trip.activities} activities`], [BedDouble, `${trip.hotels} hotels`], [Car, `${trip.transfers} transfers`]].map(([Icon, label]) => (
-                <span key={label} className="flex items-center gap-2 t-body-md text-onsurface">
-                  <Icon size={18} strokeWidth={1.75} className="text-primary shrink-0" />{label}
+            <div className="grid grid-cols-2 gap-2 mt-5" data-testid="showcase-stats">
+              {[[CalendarDays, trip.duration], [BedDouble, `${trip.hotels} hotels`], [Ticket, `${trip.activities} activities`], [Car, `${trip.transfers} transfers`]].map(([Icon, label]) => (
+                <span key={label} className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 t-label-lg text-onsurface whitespace-nowrap">
+                  <Icon size={20} strokeWidth={1.75} className="text-primary shrink-0" />{label}
                 </span>
               ))}
-            </div>
-            <div className="flex flex-wrap gap-3 mt-6">
-              {trip.tags.map(([k, label]) => {
-                const Icon = icons[k];
-                return (
-                  <span key={label} className="inline-flex items-center gap-2 h-8 px-3 rounded-full bg-surface-highest t-label-lg text-onsurface">
-                    <Icon size={16} strokeWidth={1.75} className="text-onsurface-variant" />{label}
-                  </span>
-                );
-              })}
             </div>
             <div className="flex items-center gap-4 mt-8 md:mt-auto">
               <img src={trip.avatar} alt={trip.customer} className="w-[60px] h-[60px] rounded-full object-cover" />
@@ -69,7 +59,17 @@ export default function TripShowcase() {
             </div>
           </div>
 
-          <div className="md:flex-1 flex gap-1 h-[420px] md:h-auto" data-testid="showcase-mosaic">
+          <div className="relative md:flex-1 flex gap-1 h-[420px] md:h-auto" data-testid="showcase-mosaic">
+            <div className="absolute inset-x-0 top-0 z-10 p-3 flex gap-2 overflow-x-auto no-scrollbar" data-testid="showcase-tags">
+              {trip.tags.map(([k, label]) => {
+                const Icon = icons[k];
+                return (
+                  <span key={label} className="shrink-0 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-white/90 backdrop-blur t-label-lg text-onsurface shadow-sm">
+                    <Icon size={16} strokeWidth={1.75} className="text-primary" />{label}
+                  </span>
+                );
+              })}
+            </div>
             <div className="w-1/3 flex flex-col gap-1">
               <Tile img={a} className="h-[55%]" />
               <Tile img={b} className="flex-1" />

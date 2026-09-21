@@ -103,21 +103,6 @@ function StickyTabs() {
   );
 }
 
-export function MobileStickyCta() {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 600);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-  return (
-    <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-mobile-cta" aria-hidden={!show}>
-      <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{hero.stickyCta}</a>
-    </div>
-  );
-}
-
 export function ScrollTop({ className = 'bottom-10 right-12' }) {
   const [show, setShow] = useState(false);
   useEffect(() => {

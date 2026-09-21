@@ -210,3 +210,8 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Per user: removed all eyebrow sub-headings and the Sky/warm section bands (user did not ask for them). Listing colours now follow the homepage system only: Deep Water gradient (CTAs, cities chip, active filter pill, ScrollTop), Blush arrows, Sand #FBEADB value tiles with Harbor icons, Ink/Harbor text. No Sky tints (user removed light blues earlier).
 - Sticky filter bar shows the section title ("Egypt holidays" / "Egypt honeymoon holidays") ONLY while stuck (eg-filter-title); on mobile the Travel styles pill shortens to "Styles" while stuck, title wraps to 2 lines at 14px.
 - RULE (user): do not add UI elements/copy that were not requested.
+
+## Thumb-friendly mobile filters + homepage showcase alignment (2026-06, latest)
+- Mobile (<905px): Travel styles + Sort pills moved into the fixed bottom bar above the "Plan your Egypt trip" CTA (`MobileToursBars` in EgyptFilterBar.jsx; dropdowns open upward, pick scrolls to #tours). A fixed top title bar (eg-mobile-tours-title, eg-title-lg 22px) shows "Egypt holidays"/"Egypt <style> holidays" only while the #tours section spans the viewport top. Desktop keeps the sticky top bar (title-when-stuck + pills + CTA). ScrollTop moved to bottom-40 on mobile.
+- Homepage TripShowcase card aligned with listing cards: 2×2 Sand tiles (days/hotels/activities/transfers, Harbor icons); tags moved onto the image mosaic as white chips (scrollable row at top) → panel much shorter on mobile.
+- Card sizing decision (explained to user): adaptive height, not fixed — desktop rows equal-height (grid stretch, title top, price bottom-anchored), mobile natural height.
