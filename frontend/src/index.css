@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #F4EFE6;
+    color: #20211F;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::selection {
+    background: #0F5C3E;
+    color: #fff;
+}
+
+/* Thin scrollbar for horizontal region rows */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@layer base {
+  :root {
+        --background: 40 30% 93%;
+        --foreground: 60 3% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 60 3% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 60 3% 12%;
+        --primary: 154 72% 21%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 40 20% 90%;
+        --secondary-foreground: 60 3% 12%;
+        --muted: 40 20% 90%;
+        --muted-foreground: 60 3% 40%;
+        --accent: 120 15% 88%;
+        --accent-foreground: 60 3% 12%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 40 15% 82%;
+        --input: 40 15% 82%;
+        --ring: 154 72% 21%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    }
+}
