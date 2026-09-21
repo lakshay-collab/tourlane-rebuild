@@ -1,191 +1,98 @@
 import React, { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Features from '../components/Features';
-import TourList from '../components/TourList';
-import Breadcrumb from '../components/Breadcrumb';
-import TrustLine, { TrustpilotStars } from '../components/TrustLine';
-import { egyptImages, listingCopy as c, places, themes, reviewCards } from '../egyptData';
+import EgyptHero, { ScrollTop } from '../components/egypt/EgyptHero';
+import EgyptProductCard from '../components/egypt/EgyptProductCard';
+import EgyptPlanner from '../components/egypt/EgyptPlanner';
+import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
+import { EgyptReviews, EgyptPlan, EgyptFaq } from '../components/egypt/EgyptSections';
+import { ChevronDown } from '../components/egypt/EgyptIcons';
+import { intro, tours, products, features, places, activities, themes, africa } from '../egyptListingData';
 
-const crumbs = [{ label: 'Destinations', to: '/' }, { label: 'Africa', to: '/' }, { label: 'Egypt' }];
+const MoreButton = ({ open, onClick, more, less, testId }) => (
+  <div className="mt-8 flex justify-center">
+    <button type="button" onClick={onClick} className="eg-btn-outlined eg-label-lg" data-testid={testId}>
+      <ChevronDown size={18} className={open ? 'rotate-180' : ''} />{open ? less : more}
+    </button>
+  </div>
+);
 
 export default function EgyptListing() {
-  const [planOpen, setPlanOpen] = useState(false);
+  const [allTours, setAllTours] = useState(false);
+  const [allThemes, setAllThemes] = useState(false);
   return (
-    <div className="bg-surface text-onsurface" data-testid="egypt-listing-page">
+    <div className="eg" data-testid="egypt-listing-page">
       <Header />
       <main>
-        {/* Hero: centered title + CTA, full-width image band, trust bar */}
-        <section className="bg-surface" data-testid="listing-hero">
-          <div className="tl-wide pt-10 md:pt-14 flex flex-col items-center text-center gap-5">
-            <h1 className="t-display-sm md:t-display-lg text-onsurface" data-testid="listing-title">{c.h1}</h1>
-            <button className="btn-sunset" data-testid="listing-cta">{c.cta}</button>
-            <p className="t-body-md text-onsurface-variant -mt-2">{c.sub}</p>
-          </div>
-          <div className="mt-6 md:mt-8">
-            <img src={egyptImages.hero} alt="Egypt" className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-contain" data-testid="listing-hero-image" />
-          </div>
-        </section>
+        <EgyptHero />
 
-        <div className="bg-secondary-container py-3" data-testid="trust-bar">
-          <div className="tl-wide"><TrustLine compact /></div>
-        </div>
-
-        <div className="sticky top-0 z-30 bg-surface/95 backdrop-blur border-b border-outline-variant" data-testid="listing-subnav">
-          <nav className="tl-wide flex gap-8 overflow-x-auto no-scrollbar py-3 t-label-lg text-onsurface">
-            {c.subnav.map((s, i) => (
-              <a key={s} href="#tours" onClick={(e) => e.preventDefault()} className={`whitespace-nowrap pb-1 border-b-2 ${i === 0 ? 'border-primary text-primary' : 'border-transparent hover:text-primary'}`}>{s}</a>
-            ))}
-          </nav>
-        </div>
-
-        <Breadcrumb items={crumbs} />
-
-        {/* Expert intro */}
-        <section className="pt-6 md:pt-10" data-testid="expert-section">
-          <div className="tl-container flex flex-col gap-6">
-            <h2 className="t-section">{c.expertHeading}</h2>
-            <p className="t-body-lg text-onsurface-variant max-w-[860px]">{c.expertIntro}</p>
-            <div className="flex items-center gap-4">
-              <img src={egyptImages.expert} alt={c.expert.name} className="w-16 h-16 rounded-full object-cover" />
-              <div><div className="t-title-md">{c.expert.name}</div><div className="t-body-md text-onsurface-variant">{c.expert.role}</div><div className="t-body-sm text-outline">{c.expert.updated}</div></div>
+        <section className="eg-container mt-12" data-testid="eg-intro">
+          <h2 className="eg-display-sm text-[#1B1C17]">{intro.h2}</h2>
+          <p className="mt-6 eg-body-lg text-[#1B1C17]">{intro.text}</p>
+          <div className="mt-6 flex items-center gap-3 h-[72px]">
+            <img src={intro.expert.image} alt={`${intro.expert.name}, Reiseexpertin`} className="w-14 h-14 rounded-full object-cover" />
+            <div>
+              <p className="eg-title-md text-black">{intro.expert.name}</p>
+              <p className="eg-body-md text-[#1B1C17] mt-1">{intro.expert.role}</p>
+              <p className="eg-body-md text-[#1B1C17] mt-1">{intro.expert.updated}</p>
             </div>
           </div>
         </section>
 
-        {/* Products */}
-        <div id="tours"><TourList heading={c.toursHeading} intro={c.toursIntro} /></div>
-
-        <Features />
-
-        {/* Reviews */}
-        <section className="pt-16 md:pt-20" data-testid="reviews-section">
-          <div className="tl-container flex flex-col gap-8">
-            <div className="flex flex-col items-center gap-4">
-              <h2 className="t-section text-center">{c.reviewsHeading}</h2>
-              <TrustLine compact />
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {reviewCards.map((r) => (
-                <article key={r.name} className="flex flex-col" data-testid="review-card">
-                  <div className="relative h-[200px] rounded-2xl overflow-hidden">
-                    <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#002131]/70 to-transparent" />
-                    <span className="absolute left-4 bottom-4 t-title-md text-white">{r.title}</span>
-                  </div>
-                  <div className="mt-4 flex items-center gap-3">
-                    <span className="w-10 h-10 rounded-full bg-secondary-container text-onsurface t-title-md flex items-center justify-center">{r.initial}</span>
-                    <div><h3 className="t-title-md">{r.name}</h3><TrustpilotStars rating={5} size={15} className="mt-0.5" /></div>
-                  </div>
-                  <p className="t-body-md text-onsurface mt-4">{r.text}</p>
-                  <p className="t-body-md text-onsurface-variant mt-3">{r.date}</p>
-                </article>
-              ))}
-            </div>
-            <div className="flex justify-center"><button className="btn-sunset" data-testid="reviews-cta">Plan now for free</button></div>
+        <section className="eg-container mt-16" id="tours" data-testid="eg-tours">
+          <h2 className="eg-display-sm text-[#1B1C17] whitespace-pre-wrap">{tours.h2}</h2>
+          <p className="mt-6 eg-body-lg text-[#1B1C17]">{tours.intro.map((x, i) => (Array.isArray(x) ? <b key={i} className="font-semibold">{x[0]}</b> : x))}</p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
+            {(allTours ? products : products.slice(0, 6)).map((p) => <EgyptProductCard key={p.title} p={p} />)}
           </div>
+          <MoreButton open={allTours} onClick={() => setAllTours((v) => !v)} more={tours.more} less={tours.less} testId="eg-tours-more" />
         </section>
 
-        {/* Places */}
-        <section className="pt-16 md:pt-20" data-testid="places-section">
-          <div className="tl-container flex flex-col gap-8">
-            <h2 className="t-section text-center">{c.placesHeading}</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-              {places.map((p) => (
-                <a key={p.name} href="#" onClick={(e) => e.preventDefault()} className="group relative block h-[160px] rounded-2xl overflow-hidden" data-testid="place-card">
-                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,33,49,0.75)_0%,rgba(0,33,49,0)_55%)]" />
-                  <span className="absolute left-3 bottom-3 t-title-md text-white">{p.name}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Activities */}
-        <section className="pt-16 md:pt-20" data-testid="activities-section">
-          <div className="tl-container flex flex-col gap-8">
-            <h2 className="t-section text-center">{c.activitiesHeading}</h2>
-            <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-              {c.activities.map((a) => (
-                <a key={a.title} href="#" onClick={(e) => e.preventDefault()} className="group relative h-[260px] rounded-2xl overflow-hidden" data-testid="activity-card">
-                  <img src={a.image} alt={a.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,33,49,0.82)_0%,rgba(0,33,49,0)_55%)]" />
-                  <div className="absolute left-5 bottom-5 text-white"><span className="t-label-md uppercase text-white/80">{a.tag}</span><h3 className="t-headline-sm mt-1">{a.title}</h3></div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How to plan (collapsible) */}
-        <section className="pt-16 md:pt-20" data-testid="plan-section">
-          <div className="tl-container flex flex-col gap-6">
-            <h2 className="t-section text-center">{c.planHeading}</h2>
-            <p className="t-body-lg text-onsurface-variant max-w-[860px] mx-auto text-center">{c.planIntro}</p>
-            {planOpen && (
-              <div className="flex flex-col gap-6 mt-2">
-                {c.plan.map(([h, t, links]) => (
-                  <div key={h}>
-                    <h4 className="t-title-lg mb-2">{h}</h4>
-                    <p className="t-body-lg text-onsurface-variant">{t}</p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2">{links.map((l) => <a key={l} href="#" onClick={(e) => e.preventDefault()} className="btn-text">→ {l}</a>)}</div>
-                  </div>
-                ))}
+        <section className="eg-container mt-16 grid gap-6 md:grid-cols-3" data-testid="eg-features">
+          {features.map((f) => (
+            <div key={f.title} className="flex md:flex-col items-start md:items-center gap-4 text-left md:text-center">
+              <img src={f.icon} alt="" className="w-[72px] h-[72px] md:w-[120px] md:h-[120px] shrink-0" />
+              <div className="md:max-w-[270px] flex flex-col gap-2">
+                <h3 className="eg-title-lg text-[#1B1C17]">{f.title}</h3>
+                <p className="eg-body-lg text-[#1B1C17]">{f.text}</p>
               </div>
-            )}
-            <div className="flex justify-center"><button onClick={() => setPlanOpen((v) => !v)} className="btn-outlined" data-testid="plan-toggle">{planOpen ? 'Show fewer details' : 'Show more details'}</button></div>
+            </div>
+          ))}
+        </section>
+
+        <EgyptPlanner />
+        <EgyptReviews />
+
+        <section className="eg-container mt-16" data-testid="eg-places">
+          <h2 className="eg-display-sm text-[#1B1C17]">{places.h2}</h2>
+          <div className="mt-8"><EgyptTileRow items={places.items} testId="eg-places-row" /></div>
+        </section>
+
+        <section className="eg-container mt-16" data-testid="eg-activities">
+          <h2 className="eg-display-sm text-[#1B1C17]">{activities.h2}</h2>
+          <div className="mt-8 -mx-3 flex flex-wrap">
+            {activities.items.map((a) => <div key={a.title} className="w-[288px] px-3"><EgyptTile item={a} testId="eg-activity-card" /></div>)}
           </div>
         </section>
 
-        {/* Travel themes */}
-        <section className="pt-16 md:pt-20" data-testid="themes-section">
-          <div className="tl-container flex flex-col gap-8">
-            <h2 className="t-section text-center">{c.themesHeading}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {themes.map((t) => (
-                <a key={t.title} href="#" onClick={(e) => e.preventDefault()} className="group block rounded-2xl overflow-hidden bg-surface-lowest border border-outline-variant" data-testid="theme-card">
-                  <div className="h-[150px] overflow-hidden"><img src={t.image} alt={t.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /></div>
-                  <div className="p-4"><span className="t-label-md uppercase text-accent">{t.tag}</span><h3 className="t-title-md mt-1">{t.title}</h3></div>
-                </a>
-              ))}
-            </div>
-            <div className="flex justify-center"><button className="btn-outlined">Learn more</button></div>
+        <EgyptPlan />
+
+        <section className="eg-container mt-16" data-testid="eg-themes">
+          <h2 className="eg-display-sm text-[#1B1C17]">{themes.h2}</h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-theme-grid">
+            {(allThemes ? themes.items : themes.items.slice(0, 3)).map((t) => <EgyptTile key={t.title} item={t} imgClass="aspect-[1.59] h-auto" testId="eg-theme-card" />)}
           </div>
+          <MoreButton open={allThemes} onClick={() => setAllThemes((v) => !v)} more={themes.more} less={themes.less} testId="eg-themes-more" />
         </section>
 
-        {/* FAQ */}
-        <section className="pt-16 md:pt-20" data-testid="faq-section">
-          <div className="tl-container flex flex-col gap-6">
-            <h2 className="t-section text-center">{c.faqHeading}</h2>
-            <div className="divide-y divide-outline-variant border-y border-outline-variant">
-              {c.faq.map(([q, a]) => (
-                <details key={q} className="group py-4" data-testid="faq-item">
-                  <summary className="flex items-center justify-between cursor-pointer list-none t-title-md">{q}<span className="text-primary transition-transform group-open:rotate-45 text-2xl leading-none">+</span></summary>
-                  <p className="t-body-lg text-onsurface-variant mt-3">{a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <EgyptFaq />
 
-        {/* More Africa */}
-        <section className="pt-16 md:pt-20 pb-4" data-testid="africa-section">
-          <div className="tl-container flex flex-col gap-8">
-            <h2 className="t-section text-center">{c.africaHeading}</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-              {c.africa.map((p) => (
-                <a key={p.name} href="#" onClick={(e) => e.preventDefault()} className="group relative block h-[150px] rounded-2xl overflow-hidden" data-testid="africa-card">
-                  <img src={p.image} alt={p.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,33,49,0.75)_0%,rgba(0,33,49,0)_55%)]" />
-                  <span className="absolute left-3 bottom-3 t-title-md text-white flex items-center gap-1">{p.name}<ChevronRight size={16} /></span>
-                </a>
-              ))}
-            </div>
-          </div>
+        <section className="eg-container mt-12 mb-16" data-testid="eg-africa">
+          <h2 className="eg-display-sm text-[#1B1C17]">{africa.h2}</h2>
+          <div className="mt-8"><EgyptTileRow items={africa.items} testId="eg-africa-row" /></div>
         </section>
       </main>
+      <ScrollTop />
       <Footer />
     </div>
   );
