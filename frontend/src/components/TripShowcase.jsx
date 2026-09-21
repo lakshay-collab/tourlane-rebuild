@@ -38,7 +38,7 @@ export default function TripShowcase() {
       <div className="tl-wide mt-8 md:mt-10">
         <div className="flex flex-col md:flex-row rounded-xl overflow-hidden md:h-[560px]" data-testid="showcase-card">
           <div className="bg-surface-container md:w-[340px] lg:w-[432px] shrink-0 p-6 md:p-8 flex flex-col">
-            <h3 className="t-headline-md md:t-headline-lg text-onsurface" data-testid="showcase-title">{trip.title}</h3>
+            <h3 className="t-headline-md md:t-headline-lg text-onsurface whitespace-nowrap md:whitespace-normal" data-testid="showcase-title">{trip.title}</h3>
             <div className="grid grid-cols-2 gap-2 mt-5" data-testid="showcase-stats">
               {[[CalendarDays, trip.duration], [BedDouble, `${trip.hotels} hotels`], [Ticket, `${trip.activities} activities`], [Car, `${trip.transfers} transfers`]].map(([Icon, label]) => (
                 <span key={label} className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 t-label-lg text-onsurface whitespace-nowrap">
