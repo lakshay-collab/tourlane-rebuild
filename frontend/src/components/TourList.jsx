@@ -1,37 +1,47 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { products, categories, featured } from '../egyptData';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { families } from '../egyptData';
+
+function ProductCard({ p }) {
+  const [i, setI] = useState(0);
+  const n = p.images.length;
+  const to = p.detail ? `/afrika/aegypten/${p.slug}` : '/afrika/aegypten';
+  const go = (e, d) => { e.preventDefault(); setI((v) => (v + d + n) % n); };
+  return (
+    <li>
+      <Link to={to} className="group block h-full rounded-2xl bg-surface-lowest border border-outline-variant overflow-hidden hover:shadow-[0_6px_20px_rgba(0,33,49,0.14)] transition-shadow duration-300" data-testid="tour-card">
+        <div className="relative h-[220px] overflow-hidden">
+          <img src={p.images[i]} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
+          <span className="absolute left-3 top-3 h-7 px-3 rounded-full bg-surface/90 backdrop-blur t-label-md text-onsurface inline-flex items-center">{p.category}</span>
+          <button aria-label="Previous image" onClick={(e) => go(e, -1)} className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><ChevronLeft size={18} /></button>
+          <button aria-label="Next image" onClick={(e) => go(e, 1)} className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><ChevronRight size={18} /></button>
+          <div className="absolute left-0 right-0 bottom-3 flex justify-center gap-1.5">
+            {p.images.map((_, di) => <span key={di} className={`h-1.5 rounded-full transition-all ${di === i ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`} />)}
+          </div>
+        </div>
+        <div className="p-5 flex flex-col gap-3">
+          <h3 className="t-title-lg text-onsurface leading-snug">{p.title}</h3>
+          <div className="flex flex-col gap-1 t-body-md text-onsurface-variant">
+            <span>{p.days} days</span>
+            <span>{p.stops} {p.stops === 1 ? 'stop' : 'stops'}</span>
+          </div>
+          <div className="t-title-md text-onsurface pt-1">From <span className="t-headline-sm align-middle">${p.price.toLocaleString()}</span> p.p.</div>
+        </div>
+      </Link>
+    </li>
+  );
+}
 
 export default function TourList({ heading, intro, exclude }) {
-  const [cat, setCat] = useState(categories[0]);
-  const list = products.filter((p) => p.category === cat && p.slug !== exclude);
+  const list = families.filter((p) => p.slug !== exclude);
   return (
     <section className="pt-16 md:pt-20" data-testid="tour-list-section">
       <div className="tl-container flex flex-col gap-6">
         <h2 className="t-section text-center text-onsurface">{heading}</h2>
-        {intro && <p className="t-body-lg text-onsurface-variant text-center max-w-[760px] mx-auto">{intro}</p>}
-        <div className="no-scrollbar flex gap-2 overflow-x-auto md:justify-center pb-1" role="tablist" data-testid="tour-category-tabs">
-          {categories.map((c) => (
-            <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)}
-              className={`h-8 px-3 rounded-lg t-label-lg whitespace-nowrap ${cat === c ? 'bg-surface-variant text-onsurface' : 'border border-outline-variant text-onsurface hover:bg-onsurface/[0.06]'}`}
-              data-testid={`tour-tab-${c.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{c}</button>
-          ))}
-        </div>
-        <ul className="grid gap-4 md:grid-cols-3" data-testid="tour-grid">
-          {list.map((p) => (
-            <li key={p.slug}>
-              <Link to={p.slug === featured.slug ? `/afrika/aegypten/${p.slug}` : '/afrika/aegypten'} className="group block h-full rounded-xl border border-outline-variant bg-surface-lowest overflow-hidden hover:shadow-[0_2px_10px_rgba(0,33,49,0.12)] transition-shadow" data-testid="tour-card">
-                <div className="h-[180px] overflow-hidden"><img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /></div>
-                <div className="p-4 flex flex-col gap-3">
-                  <span className="t-label-md text-accent uppercase">{p.edition} · {p.stars}</span>
-                  <h3 className="t-title-md text-onsurface">{p.title.split(' — ')[0]}</h3>
-                  <div className="flex items-center gap-3 t-body-md text-onsurface-variant"><span>{p.days} days</span><span className="h-3 w-px bg-outline-variant" /><span>{p.stops} {p.stops === 1 ? 'stop' : 'stops'}</span></div>
-                  <div className="flex items-center justify-between mt-1"><span className="t-title-md text-onsurface">From ${p.price.toLocaleString()} p.p.</span><ArrowRight size={18} className="text-primary" /></div>
-                </div>
-              </Link>
-            </li>
-          ))}
+        {intro && <p className="t-body-lg text-onsurface-variant text-center max-w-[820px] mx-auto">{intro}</p>}
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-2" data-testid="tour-grid">
+          {list.map((p) => <ProductCard key={p.slug} p={p} />)}
         </ul>
       </div>
     </section>
