@@ -1,72 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, User, ChevronDown, Menu, X } from 'lucide-react';
+import { Phone, User, Menu, X, ChevronDown } from 'lucide-react';
+import Logo from './Logo';
 import { nav } from '../mock';
 
-const Logo = () => (
-  <div className="flex items-center gap-2 select-none">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="text-forest">
-      <path d="M12 2C7 6 4 10 4 14a8 8 0 0016 0c0-4-3-8-8-12z" fill="currentColor" />
-      <path d="M12 6c-2.5 2.5-4 5-4 8" stroke="#F4EFE6" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>
-    <span className="text-[22px] font-semibold tracking-tight text-ink">{nav.logo}</span>
-  </div>
-);
-
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
   return (
     <>
-      <div className="w-full bg-ink text-cream text-[13px] text-center py-2.5 px-4 font-light">
+      <div className="bg-banner text-inverse-on text-center px-4 py-2 t-body-md" data-testid="top-banner">
         {nav.banner}
       </div>
-      <header className={`sticky top-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-cream/95 backdrop-blur shadow-sm' : 'bg-cream'}`}>
-        <div className="max-w-[1240px] mx-auto px-5 h-[68px] flex items-center justify-between">
-          <Logo />
 
-          <nav className="hidden lg:flex items-center gap-7">
-            {nav.links.map((l) => (
-              <button key={l} className="flex items-center gap-1 text-[15px] text-ink hover:text-forest transition-colors">
-                {l}
-                {(l === 'Destinations' || l === 'Trip Types' || l === 'Activities') && (
-                  <ChevronDown size={15} className="mt-0.5 opacity-70" />
-                )}
-              </button>
+      <header className="relative z-40 bg-surface" data-testid="site-header">
+        <div className="tl-wide h-[72px] flex items-center justify-between">
+          <a href="/" aria-label="Tourlane" className="text-primary" data-testid="logo-link">
+            <Logo className="h-[15px] sm:h-[18px] w-auto" />
+          </a>
+
+          <nav className="hidden lg:flex items-center" data-testid="desktop-nav">
+            {nav.links.map((l, i) => (
+              <React.Fragment key={l.label}>
+                {i >= 3 && <span className="h-6 w-px bg-outline-variant mx-4" />}
+                <button className={`t-body-md text-onsurface hover:text-primary transition-colors whitespace-nowrap ${i < 3 ? 'px-4' : ''}`} data-testid={`nav-${l.label.toLowerCase().replace(/\s/g, '-')}`}>
+                  {l.label}
+                </button>
+              </React.Fragment>
             ))}
-          </nav>
-
-          <div className="hidden lg:flex items-center gap-5">
-            <span className="h-6 w-px bg-black/15" />
-            <button className="flex items-center gap-2 text-[15px] text-ink hover:text-forest transition-colors">
-              <Phone size={17} className="text-forest" />
+            <span className="h-6 w-px bg-outline-variant mx-4" />
+            <button className="flex items-center gap-2 t-body-md text-onsurface hover:text-primary transition-colors" data-testid="nav-phone">
+              <Phone size={18} strokeWidth={1.75} className="text-primary" />
               {nav.phone}
             </button>
-            <span className="h-6 w-px bg-black/15" />
-            <button className="flex items-center gap-2 text-[15px] text-ink border border-black/20 rounded-full pl-3 pr-4 py-1.5 hover:border-forest hover:text-forest transition-colors">
-              <User size={16} />
+            <button className="btn-outlined ml-7" data-testid="nav-login">
+              <User size={18} strokeWidth={1.75} className="text-primary" />
               {nav.login}
             </button>
-          </div>
+          </nav>
 
-          <button className="lg:hidden text-ink" onClick={() => setMobileOpen((v) => !v)}>
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          <button className="lg:hidden text-onsurface p-1" onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
+            {open ? <X size={26} strokeWidth={1.75} /> : <Menu size={26} strokeWidth={1.75} />}
           </button>
         </div>
 
-        {mobileOpen && (
-          <div className="lg:hidden bg-cream border-t border-black/10 px-5 py-4 flex flex-col gap-4">
-            {nav.links.map((l) => (
-              <button key={l} className="text-left text-[16px] text-ink">{l}</button>
-            ))}
-            <button className="flex items-center gap-2 text-[16px] text-forest"><Phone size={18} /> {nav.phone}</button>
-            <button className="flex items-center gap-2 text-[16px] text-ink"><User size={18} /> {nav.login}</button>
+        {open && (
+          <div className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-surface z-50 overflow-y-auto" data-testid="mobile-menu">
+            <ul className="px-4 sm:px-8 py-2">
+              {nav.links.map((l) => (
+                <li key={l.label} className="border-b border-surface-highest">
+                  <button className="w-full flex items-center justify-between py-4 t-body-lg text-onsurface">
+                    {l.label}
+                    {l.menu && <ChevronDown size={20} className="text-onsurface-variant" />}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="px-4 sm:px-8 pt-4 flex flex-col gap-4">
+              <button className="flex items-center gap-3 t-body-lg text-onsurface"><Phone size={20} className="text-primary" /> {nav.phone}</button>
+              <button className="btn-outlined w-fit"><User size={18} className="text-primary" /> {nav.login}</button>
+            </div>
           </div>
         )}
       </header>

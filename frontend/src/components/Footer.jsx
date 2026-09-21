@@ -1,50 +1,87 @@
 import React from 'react';
-import { Phone, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
-import { footer } from '../destinationsData';
+import { Facebook, Instagram, Linkedin, ChevronDown } from 'lucide-react';
+import Logo from './Logo';
+import { footer, trust } from '../mock';
+import { TrustpilotStars, TrustpilotLogo } from './TrustLine';
+
+const Kununu = () => (
+  <svg viewBox="0 0 24 24" className="w-3 h-3" fill="currentColor"><path d="M16 15.163a3.4 3.4 0 00-.948-2.468 3.37 3.37 0 00.921-2.436v-.62c-.033-.143-.157-.254-.31-.254h-1.17a.318.318 0 00-.31.29v.582c0 .87-.712 1.575-1.588 1.575h-.62v-6.52A.315.315 0 0011.664 5H10.42a.318.318 0 00-.313.313v11.86h-.62a1.58 1.58 0 01-1.59-1.575v-.58a.318.318 0 00-.31-.29H6.42a.318.318 0 00-.311.254v.62c0 1.87 1.526 3.385 3.407 3.385h1.243v-2.74h.62c.877 0 1.589.706 1.589 1.575v.58c0 .16.126.29.31.29h1.17c.153 0 .277-.11.31-.254v-.62c0-.03 0-.06-.002-.09H16v-.565z"/></svg>
+);
+
+const Badges = ({ className = '' }) => (
+  <div className={`flex flex-wrap items-start gap-6 ${className}`} data-testid="footer-badges">
+    <div className="flex flex-col gap-2">
+      <TrustpilotStars size={20} />
+      <span className="t-body-md text-onsurface">{trust.score} {trust.outOf}</span>
+      <span className="t-body-md text-onsurface">{trust.count} {trust.reviews}</span>
+      <TrustpilotLogo className="h-5" />
+    </div>
+    <img src="/TopCustomer.svg" alt="Top Kundendienst" className="h-[118px] w-auto" />
+    <img src="/ServicePreis.svg" alt="Deutscher Service-Preis 2026" className="h-[110px] w-auto" />
+    <div className="basis-full"><img src="/FGTV.svg" alt="FGTV Kundengeldabsicherung" className="h-[90px] w-auto" /></div>
+  </div>
+);
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-cream">
-      <div className="max-w-[1240px] mx-auto px-5 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+    <footer className="bg-surface" data-testid="site-footer">
+      <div className="tl-wide pt-12 pb-10 flex flex-col lg:flex-row gap-10 lg:gap-16">
+        <div className="lg:w-[460px] shrink-0">
+          <div className="flex items-center justify-between">
+            <a href="/" aria-label="Tourlane" className="text-primary"><Logo className="h-6 w-auto" /></a>
+            <div className="flex items-center gap-4 lg:hidden"><Socials /></div>
+          </div>
+          <p className="hidden lg:block t-body-md text-onsurface mt-8">{footer.description}</p>
+          <div className="hidden lg:flex items-center gap-4 mt-6"><Socials /></div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-6 flex-1">
           {footer.columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-[15px] font-semibold mb-4">{col.title}</h4>
-              <ul className="space-y-2.5">
+            <div key={col.title} className="sm:w-[220px]">
+              <h4 className="t-title-md text-onsurface">{col.title}</h4>
+              <ul className="mt-5 space-y-2">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <button className="text-[14px] text-cream/70 hover:text-cream transition-colors text-left">{l}</button>
-                  </li>
+                  <li key={l}><button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button></li>
                 ))}
               </ul>
             </div>
           ))}
-
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <h4 className="text-[15px] font-semibold mb-4">{footer.contact.title}</h4>
-            <a href={`tel:${footer.contact.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 text-[16px] font-medium hover:text-forest-light transition-colors">
-              <Phone size={18} className="text-forest-light" /> {footer.contact.phone}
-            </a>
-            <p className="mt-2 text-[13px] text-cream/60">{footer.contact.hours}</p>
-            <div className="flex items-center gap-3 mt-5">
-              {[Facebook, Instagram, Youtube, Linkedin].map((Icon, i) => (
-                <button key={i} className="w-9 h-9 rounded-full border border-cream/25 flex items-center justify-center text-cream/80 hover:bg-forest hover:border-forest hover:text-white transition-colors">
-                  <Icon size={17} />
-                </button>
-              ))}
-            </div>
+          <div className="flex-1">
+            <h4 className="t-title-md text-onsurface">{footer.care.title}</h4>
+            <ul className="mt-5 space-y-2">
+              {footer.care.lines.map((l) => <li key={l} className="t-body-md text-onsurface">{l}</li>)}
+              <li><button className="t-label-lg text-primary hover:underline" data-testid="footer-care-cta">{footer.care.cta}</button></li>
+            </ul>
+            <Badges className="mt-8" />
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 pt-6 border-t border-cream/15 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+      <div className="border-t border-outline-variant">
+        <div className="tl-wide py-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0">
+          <button className="flex items-center gap-2 t-body-md text-onsurface" data-testid="footer-country">
+            <span className="inline-block w-6 h-4 rounded-[2px] overflow-hidden" aria-hidden>
+              <span className="block h-1/3 bg-black" /><span className="block h-1/3 bg-[#DD0000]" /><span className="block h-1/3 bg-[#FFCC00]" />
+            </span>
+            {footer.country}
+            <ChevronDown size={16} />
+          </button>
+          <span className="hidden sm:block h-6 w-px bg-outline-variant mx-6" />
+          <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6">
             {footer.legal.map((l) => (
-              <button key={l} className="text-[13px] text-cream/60 hover:text-cream transition-colors">{l}</button>
+              <li key={l}><button className="t-body-md text-onsurface hover:underline" data-testid="footer-legal-link">{l}</button></li>
             ))}
-          </div>
-          <p className="text-[13px] text-cream/50">{footer.copyright}</p>
+          </ul>
         </div>
       </div>
     </footer>
   );
+}
+
+function Socials() {
+  return [Facebook, Instagram, Linkedin, Kununu].map((Icon, i) => (
+    <button key={i} className="w-6 h-6 rounded-full border border-onsurface flex items-center justify-center text-onsurface hover:bg-onsurface hover:text-surface transition-colors" aria-label="Social" data-testid="footer-social">
+      <Icon size={12} strokeWidth={2} />
+    </button>
+  ));
 }

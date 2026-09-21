@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
+import { Mail, Lightbulb, Percent, Headset, Check } from 'lucide-react';
 import { newsletter } from '../mock';
-import useInView from '../hooks/useInView';
+
+const icons = { idea: Lightbulb, percent: Percent, headset: Headset };
 
 export default function Newsletter() {
-  const [ref, inView] = useInView();
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
 
@@ -14,50 +14,55 @@ export default function Newsletter() {
   };
 
   return (
-    <section ref={ref} className={`bg-creamdark py-16 md:py-24 fade-up ${inView ? 'in-view' : ''}`}>
-      <div className="max-w-[1100px] mx-auto px-5">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="font-serif text-ink text-[30px] md:text-[42px] font-medium">{newsletter.heading}</h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-ink/70 max-w-[460px]">{newsletter.text}</p>
-
-            <ul className="mt-6 space-y-2.5">
-              {newsletter.bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-[15px] text-ink">
-                  <span className="w-6 h-6 rounded-full bg-forest flex items-center justify-center shrink-0">
-                    <Check size={14} className="text-white" strokeWidth={3} />
-                  </span>
-                  {b}
-                </li>
-              ))}
-            </ul>
+    <section className="pt-16 md:pt-24" data-testid="newsletter-section">
+      <div className="relative w-full bg-surface-container md:min-h-[352px] xl:min-h-[376px]">
+        <div className="relative z-[1] w-full max-w-[1440px] mx-auto flex flex-col items-start gap-4 px-4 pr-6 py-8 sm:px-8 md:px-6 md:py-[38px] lg:px-10 xl:py-[50px]">
+          <h2 className="t-section text-left text-onsurface lg:max-w-[845px] xl:max-w-[975px] pr-6">{newsletter.heading}</h2>
+          <div className="flex flex-col gap-8 w-full lg:max-w-[845px] xl:max-w-[975px]">
+            <p className="t-body-md text-onsurface pr-6">
+              {newsletter.text}{' '}
+              <a href="/privacy" onClick={(e) => e.preventDefault()} className="t-label-lg text-outline underline" data-testid="newsletter-privacy-link">{newsletter.privacy}</a>
+            </p>
 
             {done ? (
-              <div className="mt-6 flex items-center gap-2 text-forest font-medium">
-                <Check size={20} /> Thank you! You are subscribed.
+              <div className="flex items-center gap-3 t-body-lg text-primary" data-testid="newsletter-success">
+                <Check size={22} /> {newsletter.success}
               </div>
             ) : (
-              <form onSubmit={submit} className="mt-6 flex flex-col sm:flex-row gap-3 max-w-[480px]">
+              <form onSubmit={submit} className="flex items-center w-full sm:w-[500px] h-14 bg-white rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)] pl-6 pr-2" data-testid="newsletter-form">
+                <Mail size={22} strokeWidth={1.75} className="text-primary shrink-0" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={newsletter.placeholder}
-                  className="flex-1 bg-white rounded-full px-5 py-3.5 text-[15px] outline-none border border-transparent focus:border-forest text-ink placeholder:text-ink/50"
+                  className="flex-1 min-w-0 bg-transparent outline-none px-4 t-body-lg text-onsurface placeholder:text-onsurface-variant"
+                  data-testid="newsletter-email-input"
                 />
-                <button type="submit" className="bg-forest hover:bg-forest-dark text-white rounded-full px-7 py-3.5 text-[15px] font-medium transition-colors">
-                  {newsletter.cta}
-                </button>
+                <button type="submit" className="btn-filled" data-testid="newsletter-submit">{newsletter.cta}</button>
               </form>
             )}
-            <p className="mt-3 text-[12px] text-ink/50">{newsletter.fineprint}</p>
-          </div>
 
-          <div className="img-zoom-wrap rounded-2xl overflow-hidden h-[280px] md:h-[380px]">
-            <img src={newsletter.image} alt="Newsletter" className="img-zoom w-full h-full object-cover" />
+            <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-8">
+              {newsletter.bullets.map((b) => {
+                const Icon = icons[b.icon];
+                return (
+                  <li key={b.text} className="flex items-center gap-3 t-body-lg text-onsurface">
+                    <Icon size={24} strokeWidth={1.5} className="text-primary" />{b.text}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
+        <img
+          src={newsletter.image}
+          alt=""
+          className="hidden lg:block absolute right-0 bottom-0 h-[460px] w-auto pointer-events-none select-none"
+          loading="lazy"
+          data-testid="newsletter-image"
+        />
       </div>
     </section>
   );

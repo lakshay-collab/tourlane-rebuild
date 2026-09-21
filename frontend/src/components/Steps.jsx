@@ -1,24 +1,17 @@
 import React from 'react';
 import { steps } from '../mock';
-import useInView from '../hooks/useInView';
 
 export default function Steps() {
-  const [ref, inView] = useInView();
   return (
-    <section ref={ref} className={`bg-cream py-16 md:py-24 fade-up ${inView ? 'in-view' : ''}`}>
-      <div className="max-w-[1040px] mx-auto px-5">
-        <h2 className="font-serif text-ink text-[30px] md:text-[42px] font-medium text-center mb-14">{steps.heading}</h2>
-        <div className="grid md:grid-cols-3 gap-12 md:gap-10 relative">
-          {steps.items.map((s, i) => (
-            <div key={s.n} className="relative">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="w-11 h-11 rounded-full bg-forest text-white font-serif text-[20px] flex items-center justify-center shrink-0">{s.n}</span>
-                <h3 className="font-serif text-[21px] text-ink">{s.title}</h3>
-              </div>
-              <p className="text-[15px] leading-relaxed text-ink/70">{s.text}</p>
-              {i < steps.items.length - 1 && (
-                <span className="hidden md:block absolute top-5 -right-5 w-10 h-px bg-forest/30" />
-              )}
+    <section className="pt-16 md:pt-20" data-testid="steps-section">
+      <div className="tl-container flex flex-col gap-8">
+        <h2 className="t-section text-center text-onsurface">{steps.heading}</h2>
+        <div className="flex flex-col md:flex-row gap-4">
+          {steps.items.map((s) => (
+            <div key={s.n} className="flex-1 bg-surface-container rounded-xl px-6 py-6 flex flex-col items-center text-center" data-testid="step-card">
+              <span className="w-10 h-10 rounded-full bg-secondary-container text-onsurface t-title-lg flex items-center justify-center">{s.n}</span>
+              <h3 className="t-headline-sm text-onsurface mt-6">{s.title}</h3>
+              <p className="t-body-lg text-onsurface-variant mt-2">{s.text}</p>
             </div>
           ))}
         </div>

@@ -1,33 +1,25 @@
 import React from 'react';
-import { Sparkles, Ticket, MapPin } from 'lucide-react';
 import { features } from '../mock';
-import useInView from '../hooks/useInView';
-
-const iconMap = { Sparkles, Ticket, MapPin };
 
 export default function Features() {
-  const [ref, inView] = useInView();
   return (
-    <section ref={ref} className={`bg-cream py-16 md:py-24 fade-up ${inView ? 'in-view' : ''}`}>
-      <div className="max-w-[1100px] mx-auto px-5 text-center">
-        <h2 className="font-serif text-ink text-[30px] md:text-[42px] font-medium">{features.heading}</h2>
-        <div className="mt-12 grid md:grid-cols-3 gap-10 md:gap-8">
-          {features.items.map((it) => {
-            const Icon = iconMap[it.icon];
-            return (
-              <div key={it.title} className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full border border-forest/25 flex items-center justify-center text-forest">
-                  <Icon size={26} strokeWidth={1.6} />
-                </div>
-                <h3 className="mt-5 font-serif text-[21px] text-ink">{it.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink/70 max-w-[300px]">{it.text}</p>
+    <section className="pt-16 md:pt-20" data-testid="features-section">
+      <div className="tl-container flex flex-col gap-8 md:gap-10">
+        <h2 className="t-section text-center text-onsurface">{features.heading}</h2>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-6">
+          {features.items.map((it) => (
+            <div key={it.title} className="flex-1 flex md:flex-col items-start md:items-center gap-6 md:gap-0" data-testid="feature-item">
+              <img src={it.icon} alt="" className="w-[88px] h-[88px] shrink-0" />
+              <div className="md:text-center md:mt-6">
+                <h3 className="t-headline-sm text-onsurface">{it.title}</h3>
+                <p className="t-body-lg text-onsurface-variant mt-2 md:mt-1 md:max-w-[280px] md:mx-auto">{it.text}</p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
-        <button className="mt-12 bg-forest hover:bg-forest-dark text-white rounded-full px-8 py-3.5 text-[15px] font-medium transition-colors">
-          {features.cta}
-        </button>
+        <div className="flex justify-center mt-2 md:mt-0">
+          <button className="btn-filled" data-testid="features-cta">{features.cta}</button>
+        </div>
       </div>
     </section>
   );

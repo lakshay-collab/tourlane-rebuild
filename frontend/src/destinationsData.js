@@ -1,5 +1,5 @@
 // Regional destinations grid data (images reused from original site CDN).
-const img = (id, path) => `https://images.ctfassets.net/bth3mlrehms2/${id}/${path}?w=500&q=60&fm=webp`;
+const img = (id, path) => `https://images.ctfassets.net/bth3mlrehms2/${id}/${path}?w=520&q=60&fm=webp`;
 
 export const destinationTabs = [
   'Top 10', 'Africa', 'Asia', 'Europe', 'Central America', 'North America', 'Oceania', 'South America', 'South Seas', 'Middle East'
@@ -93,16 +93,4 @@ export const destinations = {
     { name: 'Saudi Arabia', src: img('7hjTmD3GBdC7YGyGCcwwoZ', 'abd0651fca99b0f52b2dc6bf6f7314ec/Al-_Ula__Medina__Saudi-Arabien.png') },
     { name: 'United Arab Emirates', src: img('3EnNa2rJ23mDnHSFxFaXU', 'ad7d721a9a162a0b8d5ef044fce3d7cb/Emirates_Palace_Abu_Dhabi__VAE.jpg') }
   ]
-};
-
-export const footer = {
-  columns: [
-    { title: 'Trip Types', links: ['Road trips', 'Safari trips', 'Beach holidays', 'Hiking trips', 'Family trips', 'Honeymoons'] },
-    { title: 'Top Destinations', links: ['South Africa', 'Canada', 'Namibia', 'Thailand', 'USA', 'New Zealand'] },
-    { title: 'About Tourlane', links: ['About us', 'Careers', 'Press', 'Sustainability', 'Reviews', 'Magazine'] },
-    { title: 'Service', links: ['Help & FAQ', 'Contact', 'Travel safety', 'Booking conditions', 'Payment options'] }
-  ],
-  contact: { title: 'Free expert advice', phone: '+49 30 555 74 70 70', hours: 'Mon–Fri 9am–8pm, Sat 10am–6pm' },
-  legal: ['Imprint', 'Privacy Policy', 'Terms & Conditions', 'Cookie Settings'],
-  copyright: '© 2025 Tourlane GmbH. All rights reserved.'
 };

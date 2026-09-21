@@ -1,25 +1,30 @@
 import React from 'react';
 import { adventure } from '../mock';
-import useInView from '../hooks/useInView';
+import SearchBar from './SearchBar';
 
 export default function AdventureCTA() {
-  const [ref, inView] = useInView();
   return (
-    <section ref={ref} className={`bg-cream py-16 md:py-24 fade-up ${inView ? 'in-view' : ''}`}>
-      <div className="max-w-[1180px] mx-auto px-5">
-        <div className="grid md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-4">
-          <div className="img-zoom-wrap rounded-2xl overflow-hidden h-[200px] md:h-[300px] order-2 md:order-1">
-            <img src={adventure.images[0]} alt="" className="img-zoom w-full h-full object-cover" />
+    <section className="pt-16 md:pt-24" data-testid="adventure-section">
+      <div className="relative w-full bg-surface-container h-auto sm:h-[560px] md:h-[416px] lg:h-[352px] xl:h-[376px] flex flex-col justify-between">
+        <div className="relative z-[1] flex flex-col items-center gap-10 lg:gap-8 xl:gap-12 pt-16 lg:pt-12 xl:pt-[72px] px-[13px] sm:px-8">
+          <h2 className="t-section text-center text-onsurface sm:w-[536px] md:w-full">{adventure.heading}</h2>
+          <div className="w-full sm:w-[536px] md:w-[552px]">
+            <SearchBar id="adventure" />
           </div>
-          <div className="text-center px-2 md:px-6 order-1 md:order-2">
-            <h2 className="font-serif text-ink text-[30px] md:text-[40px] font-medium leading-tight">{adventure.heading}</h2>
-            <button className="mt-6 bg-forest hover:bg-forest-dark text-white rounded-full px-8 py-3.5 text-[15px] font-medium transition-colors">
-              {adventure.cta}
-            </button>
-          </div>
-          <div className="img-zoom-wrap rounded-2xl overflow-hidden h-[200px] md:h-[300px] order-3">
-            <img src={adventure.images[1]} alt="" className="img-zoom w-full h-full object-cover" />
-          </div>
+        </div>
+        <div className="flex items-end justify-between gap-2 mt-6 md:mt-0 md:absolute md:bottom-0 md:left-0 md:w-full pointer-events-none">
+          <img
+            src={adventure.images.left}
+            alt=""
+            className="w-[162px] h-[198px] sm:w-[229px] sm:h-[280px] md:w-[210px] md:h-[256px] lg:w-[341px] lg:h-[416px] xl:w-[373px] xl:h-[456px] object-contain object-left-bottom"
+            loading="lazy"
+          />
+          <img
+            src={adventure.images.right}
+            alt=""
+            className="w-[175px] h-[198px] sm:w-[249px] sm:h-[280px] md:w-[227px] md:h-[256px] lg:w-[369px] lg:h-[416px] xl:w-[405px] xl:h-[456px] object-contain object-right-bottom"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

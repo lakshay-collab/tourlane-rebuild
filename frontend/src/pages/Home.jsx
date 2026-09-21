@@ -3,10 +3,13 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import TrustBar from '../components/TrustBar';
 import Features from '../components/Features';
+import Ambassadors from '../components/Ambassadors';
 import ComparisonTable from '../components/ComparisonTable';
+import Moments from '../components/Moments';
 import Steps from '../components/Steps';
 import TripShowcase from '../components/TripShowcase';
 import AdventureCTA from '../components/AdventureCTA';
+import Experts from '../components/Experts';
 import Testimonials from '../components/Testimonials';
 import Destinations from '../components/Destinations';
 import Newsletter from '../components/Newsletter';
@@ -14,18 +17,23 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="bg-cream">
+    <div className="bg-surface text-onsurface" data-testid="home-page">
       <Header />
-      <Hero />
-      <TrustBar />
-      <Features />
-      <ComparisonTable />
-      <Steps />
-      <TripShowcase />
-      <AdventureCTA />
-      <Testimonials />
-      <Destinations />
-      <Newsletter />
+      <main>
+        <Hero />
+        <TrustBar />
+        <Features />
+        <Ambassadors />
+        <ComparisonTable />
+        <Moments />
+        <Steps />
+        <TripShowcase />
+        <AdventureCTA />
+        <Experts />
+        <Testimonials />
+        <Destinations />
+        <Newsletter />
+      </main>
       <Footer />
     </div>
   );

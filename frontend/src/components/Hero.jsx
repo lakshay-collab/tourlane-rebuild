@@ -1,61 +1,43 @@
 import React from 'react';
-import { MapPin, Search } from 'lucide-react';
 import { hero } from '../mock';
+import SearchBar from './SearchBar';
 
 export default function Hero() {
+  const c = hero.collage;
   return (
-    <section className="relative bg-cream overflow-hidden">
-      <div className="max-w-[1240px] mx-auto px-5 pt-12 md:pt-16 pb-0 text-center relative z-20">
-        <h1 className="font-serif text-ink text-[40px] leading-[1.08] md:text-[62px] md:leading-[1.05] font-medium">
-          {hero.title[0]}<br />{hero.title[1]}
-        </h1>
-
-        <div className="mt-8 md:mt-10 max-w-[560px] mx-auto">
-          <div className="flex items-center bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.10)] p-1.5 pl-5">
-            <MapPin size={20} className="text-forest shrink-0" />
-            <input
-              type="text"
-              placeholder={hero.searchPlaceholder}
-              className="flex-1 bg-transparent outline-none px-3 text-[15px] text-ink placeholder:text-ink/50"
-            />
-            <button className="flex items-center gap-2 bg-forest hover:bg-forest-dark text-white rounded-full px-5 md:px-6 py-3 text-[15px] font-medium transition-colors">
-              <Search size={17} className="md:hidden" />
-              <span className="hidden md:inline">{hero.cta}</span>
-              <span className="md:hidden">Go</span>
-            </button>
-          </div>
+    <section
+      className="relative w-full bg-surface-container flex flex-col items-center h-[566px] sm:h-[800px] md:h-[680px] lg:h-[720px] overflow-hidden"
+      data-testid="hero-section"
+    >
+      <div className="relative z-[2] w-full flex flex-col items-center gap-8 mt-4 lg:mt-10 px-4 sm:px-8 md:px-0">
+        <div className="min-w-[328px] sm:w-[536px] md:w-[857px] lg:w-[880px] md:mb-4">
+          <h1 className="t-display-sm md:t-display-lg text-center text-onsurface [text-wrap:balance]" data-testid="hero-title">
+            {hero.title}
+          </h1>
+        </div>
+        <div className="w-full md:w-[552px]">
+          <SearchBar id="hero" />
         </div>
       </div>
 
-      {/* Collage band */}
-      <div className="relative mt-8 md:-mt-10">
-        <div className="flex items-end justify-center gap-0 max-w-[1400px] mx-auto px-2">
-          {hero.collage.map((c, i) => {
-            const heights = ['h-40 md:h-72', 'h-52 md:h-96', 'h-44 md:h-80', 'h-56 md:h-[26rem]', 'h-40 md:h-72'];
-            return (
-              <div
-                key={i}
-                className={`img-zoom-wrap relative flex-1 ${heights[i]} overflow-hidden ${i === 0 ? 'rounded-tl-[40px]' : ''} ${i === hero.collage.length - 1 ? 'rounded-tr-[40px]' : ''}`}
-                style={{ marginLeft: i === 0 ? 0 : '-2px' }}
-              >
-                <img src={c.src} alt={c.alt} className="img-zoom w-full h-full object-cover" loading="eager" />
-              </div>
-            );
-          })}
+      <div className="absolute bottom-0 left-0 right-0 h-[278px] sm:h-[452px] md:h-[275px] lg:h-[386px] xl:h-[432px]">
+        <div className="relative h-full w-full max-w-full xl:max-w-[2088px] mx-auto overflow-hidden">
+          <picture>
+            <source srcSet={c.xs} media="(max-width: 599px)" />
+            <source srcSet={c.sm} media="(min-width: 600px) and (max-width: 904px)" />
+            <source srcSet={c.md} media="(min-width: 905px) and (max-width: 1279px)" />
+            <source srcSet={c.lg} media="(min-width: 1280px) and (max-width: 1439px)" />
+            <source srcSet={c.xl} media="(min-width: 1440px)" />
+            <img
+              src={c.xl}
+              alt={hero.title}
+              loading="eager"
+              decoding="async"
+              className="absolute top-0 h-full left-1/2 -translate-x-1/2 object-cover min-w-[599px] sm:min-w-[904px] md:min-w-[1279px] lg:min-w-[1439px] xl:min-w-full"
+              data-testid="hero-collage"
+            />
+          </picture>
         </div>
-
-        {/* Handwritten labels */}
-        {hero.labels.map((lbl, i) => (
-          <span
-            key={i}
-            className="hidden md:block absolute font-hand text-ink text-[26px] rotate-[-6deg] pointer-events-none drop-shadow-sm"
-            style={{ top: lbl.top, left: lbl.left }}
-          >
-            {lbl.text}
-          </span>
-        ))}
-
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-cream to-transparent pointer-events-none" />
       </div>
     </section>
   );
