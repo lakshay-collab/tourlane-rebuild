@@ -18,7 +18,7 @@ export default function ComparisonTable() {
           <div className={`${cols} bg-deep-water text-white t-label-lg h-10 items-center`}>
             <div />
             <div className="text-center">{comparison.colAlone}</div>
-            <div className="text-center">{comparison.colTourlane}</div>
+            <div className="text-center">{comparison.colHiTours}</div>
           </div>
           {comparison.rows.map((row, i) => (
             <div key={i} className={`${cols} items-center min-h-9 ${i % 2 ? 'bg-surface-variant' : 'bg-surface-low'}`} data-testid="comparison-row">

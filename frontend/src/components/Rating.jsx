@@ -33,6 +33,20 @@ export const BrandStars = ({ rating = 5, size = 16, className = '' }) => (
   </span>
 );
 
+// Trustpilot-style boxed stars, coloured blue (no Trustpilot branding)
+const StarTile = ({ fill = 1, size = 20, color }) => (
+  <span className="relative block shrink-0" style={{ width: size, height: size, background: '#DADCE6' }}>
+    <span className="absolute inset-y-0 left-0" style={{ width: `${fill * 100}%`, background: color }} />
+    <svg viewBox="0 0 46 46" className="absolute inset-0 w-full h-full"><path fill="#FFF" d="M39.534 19.711L13.23 38.801l3.838-11.798L7.021 19.71h12.42l3.837-11.798 3.837 11.798h12.419zm-16.255 11.8L30.462 30l2.862 8.8-10.045-7.29z" /></svg>
+  </span>
+);
+
+export const BoxStars = ({ rating = 5, size = 20, color = '#1C6FB8', className = '' }) => (
+  <span className={`inline-flex gap-[3px] ${className}`} data-testid="brand-stars">
+    {[0, 1, 2, 3, 4].map((i) => <StarTile key={i} size={size} color={color} fill={Math.max(0, Math.min(1, rating - i))} />)}
+  </span>
+);
+
 export const GoldStars = ({ rating = 5, size = 15, className = '' }) => (
   <span className={`inline-flex ${className}`}>
     <Row rating={rating} size={size} Shape={Star} on="#FBBC04" off="#DADCE0" />
@@ -54,11 +68,12 @@ export const GoogleLogo = ({ size = 18 }) => (
   </svg>
 );
 
-export const TripAdvisorLogo = ({ size = 18 }) => (
-  <svg viewBox="0 0 40 40" width={size} height={size} aria-label="Tripadvisor">
-    <circle cx="20" cy="20" r="20" fill="#000" />
-    <circle cx="14" cy="21" r="6" fill="#34E0A1" /><circle cx="14" cy="21" r="2.4" fill="#000" />
-    <circle cx="26" cy="21" r="6" fill="#34E0A1" /><circle cx="26" cy="21" r="2.4" fill="#000" />
-    <path d="M20 9c3.6 0 6.9 1 9.4 2.6h4.6l-2.3 2.5A9 9 0 1 1 20 30a9 9 0 1 1-11.7-13.4L6 14h4.6C13.1 10 16.4 9 20 9z" fill="none" stroke="#34E0A1" strokeWidth="0" />
+export const TripAdvisorLogo = ({ size = 20 }) => (
+  <svg viewBox="0 0 68 40" height={size} width={size * 1.7} aria-label="Tripadvisor">
+    <circle cx="20" cy="20" r="14" fill="none" stroke="#34E0A1" strokeWidth="5" />
+    <circle cx="20" cy="20" r="5.5" fill="#000" />
+    <circle cx="48" cy="20" r="14" fill="none" stroke="#34E0A1" strokeWidth="5" />
+    <circle cx="48" cy="20" r="5.5" fill="#000" />
+    <path d="M28 12 L40 12 L34 4 Z" fill="#34E0A1" />
   </svg>
 );

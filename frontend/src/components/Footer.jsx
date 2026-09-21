@@ -9,15 +9,17 @@ const Spotify = (props) => (
 );
 
 const Badges = ({ className = '' }) => (
-  <div className={`flex flex-wrap items-start gap-6 ${className}`} data-testid="footer-badges">
+  <div className={`flex flex-col gap-5 ${className}`} data-testid="footer-badges">
     <div className="flex flex-col gap-2">
       <BrandStars size={20} rating={4.8} />
       <span className="t-body-md text-onsurface">4.8 {trust.outOf}</span>
-      <span className="t-body-md text-onsurface">Based on 5,300+ traveller reviews</span>
+      <span className="t-body-md text-onsurface">Based on 5,000+ travel reviews</span>
     </div>
-    <img src="/TopCustomer.svg" alt="Top Kundendienst" className="h-[118px] w-auto" />
-    <img src="/ServicePreis.svg" alt="Deutscher Service-Preis 2026" className="h-[110px] w-auto" />
-    <div className="basis-full"><img src="/FGTV.svg" alt="FGTV Kundengeldabsicherung" className="h-[90px] w-auto" /></div>
+    <div className="flex flex-wrap items-center gap-5">
+      <img src="/badges/iso45001.png" alt="ISO 45001 certified" className="h-16 w-auto object-contain" />
+      <img src="/badges/cert3.png" alt="ISO 9001 certified" className="h-16 w-auto object-contain" />
+      <img src="/badges/travelife.png" alt="Travelife certified" className="h-16 w-auto object-contain" />
+    </div>
   </div>
 );
 
@@ -60,7 +62,7 @@ export default function Footer() {
         <div className="tl-wide py-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0">
           <button className="flex items-center gap-2 t-body-md text-onsurface" data-testid="footer-country">
             <span className="inline-block w-6 h-4 rounded-[2px] overflow-hidden" aria-hidden>
-              <span className="block h-1/3 bg-black" /><span className="block h-1/3 bg-[#DD0000]" /><span className="block h-1/3 bg-[#FFCC00]" />
+              <span className="block h-1/3 bg-[#FF9933]" /><span className="block h-1/3 bg-white" /><span className="block h-1/3 bg-[#138808]" />
             </span>
             {footer.country}
             <ChevronDown size={16} />
@@ -79,8 +81,8 @@ export default function Footer() {
 
 function Socials() {
   return [Facebook, Instagram, Linkedin, Youtube, Spotify].map((Icon, i) => (
-    <button key={i} className="w-6 h-6 rounded-full border border-onsurface flex items-center justify-center text-onsurface hover:bg-onsurface hover:text-surface transition-colors" aria-label="Social" data-testid="footer-social">
-      <Icon size={12} strokeWidth={2} className="w-3 h-3" />
+    <button key={i} className="w-9 h-9 rounded-full bg-onsurface/[0.06] flex items-center justify-center text-onsurface hover:bg-primary hover:text-white transition-colors" aria-label="Social" data-testid="footer-social">
+      <Icon size={18} strokeWidth={1.9} className="w-[18px] h-[18px]" />
     </button>
   ));
 }

@@ -1,14 +1,9 @@
 import React from 'react';
-import { User } from 'lucide-react';
 import { testimonials } from '../mock';
-import { BrandStars } from './Rating';
+import { BoxStars } from './Rating';
 import Carousel from './Carousel';
 
-const Avatar = () => (
-  <span className="w-10 h-10 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0" aria-hidden data-testid="testimonial-avatar">
-    <User size={20} strokeWidth={1.75} />
-  </span>
-);
+const BLUE = '#1C6FB8';
 
 export default function Testimonials() {
   return (
@@ -16,9 +11,10 @@ export default function Testimonials() {
       <div className="tl-container flex flex-col gap-8 md:gap-10">
         <div className="flex flex-col items-center gap-4">
           <h2 className="t-section text-center text-onsurface">{testimonials.heading}</h2>
-          <div className="flex items-center gap-2">
-            <BrandStars rating={4.9} size={20} />
-            <span className="t-label-lg text-onsurface">4.9 out of 5</span>
+          <div className="flex items-center gap-3 t-label-lg text-onsurface" data-testid="testimonials-rating">
+            <span>Excellent</span>
+            <BoxStars rating={4.9} size={20} color={BLUE} />
+            <span>4.9 out of 5</span>
           </div>
         </div>
 
@@ -31,14 +27,9 @@ export default function Testimonials() {
                 <span className="absolute left-4 bottom-4 t-title-md text-white">{t.trip}</span>
               </div>
               <div className="px-4 mt-4">
-                <div className="flex items-center gap-3">
-                  <Avatar />
-                  <div>
-                    <h3 className="t-title-md text-onsurface">{t.name}</h3>
-                    <BrandStars rating={t.stars} size={16} className="mt-0.5" />
-                  </div>
-                </div>
-                <p className="t-body-md text-onsurface mt-4">{t.text}</p>
+                <BoxStars rating={t.stars} size={18} color={BLUE} />
+                <h3 className="t-title-md text-onsurface mt-3">{t.name}</h3>
+                <p className="t-body-md text-onsurface mt-3">{t.text}</p>
                 <p className="t-body-md text-onsurface-variant mt-4">{t.date}</p>
               </div>
             </article>

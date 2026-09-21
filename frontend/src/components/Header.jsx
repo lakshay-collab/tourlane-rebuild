@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, Menu, X, ChevronDown, Clock } from 'lucide-react';
 import Logo from './Logo';
-import { nav } from '../mock';
+import { nav, expertAdvice } from '../mock';
 
 const BANNER_KEY = 'hi-banner-dismissed';
 
@@ -12,6 +12,18 @@ const menuSub = {
 };
 
 const subHref = (s) => (s === 'Egypt' ? '/afrika/aegypten' : s === 'Asia' ? '/asien' : null);
+
+const AdviceBody = () => (
+  <>
+    <p className="t-title-md text-onsurface">{expertAdvice.title}</p>
+    <p className="t-body-md text-onsurface-variant mt-2">{expertAdvice.note}</p>
+    <a href={expertAdvice.phoneHref} className="flex items-center gap-2 mt-4 t-headline-md text-primary" data-testid="advice-phone">
+      <Phone size={20} className="text-primary" /> {expertAdvice.phone}
+    </a>
+    <p className="flex items-center gap-2 mt-1 t-body-md text-onsurface-variant"><Clock size={16} /> {expertAdvice.hours}</p>
+    <button className="btn-filled w-full mt-4" data-testid="advice-cta">{expertAdvice.cta}</button>
+  </>
+);
 
 function MobileMenu({ open, setOpen }) {
   const [expanded, setExpanded] = useState(null);
@@ -55,9 +67,9 @@ function MobileMenu({ open, setOpen }) {
             );
           })}
         </ul>
-        <a href="#" onClick={(e) => e.preventDefault()} className="flex items-center gap-3 py-6 t-title-md text-onsurface" data-testid="mobile-nav-phone">
-          <Phone size={22} className="text-primary" /> {nav.phone}
-        </a>
+        <div className="mt-6 rounded-2xl bg-secondary-container p-5" data-testid="mobile-advice">
+          <AdviceBody />
+        </div>
       </div>
     </div>
   );
@@ -65,6 +77,8 @@ function MobileMenu({ open, setOpen }) {
 
 export default function Header({ overlay = false }) {
   const [open, setOpen] = useState(false);
+  const [adviceOpen, setAdviceOpen] = useState(false);
+  const adviceRef = useRef(null);
   const [bannerOpen, setBannerOpen] = useState(() => {
     try { return sessionStorage.getItem(BANNER_KEY) !== '1'; } catch { return true; }
   });
@@ -73,6 +87,12 @@ export default function Header({ overlay = false }) {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [open]);
+
+  useEffect(() => {
+    const onDoc = (e) => { if (adviceRef.current && !adviceRef.current.contains(e.target)) setAdviceOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, []);
 
   const dismissBanner = () => {
     try { sessionStorage.setItem(BANNER_KEY, '1'); } catch (e) { /* noop */ }
@@ -94,7 +114,7 @@ export default function Header({ overlay = false }) {
   const bar = (
     <div className="tl-wide h-[72px] flex items-center justify-between">
       <a href="/" aria-label="Hi Tours" data-testid="logo-link">
-        <Logo white={overlay} className="h-9 sm:h-10 w-auto" />
+        <Logo white={overlay} className="h-10 sm:h-11 w-auto" />
       </a>
 
       <nav className="hidden lg:flex items-center" data-testid="desktop-nav">
@@ -107,10 +127,18 @@ export default function Header({ overlay = false }) {
           </React.Fragment>
         ))}
         <span className={`h-6 w-px ${dividerCls} mx-4`} />
-        <button className={`flex items-center gap-2 t-body-md ${textCls} hover:opacity-75 transition-opacity`} data-testid="nav-phone">
-          <Phone size={18} strokeWidth={1.75} className={overlay ? 'text-white' : 'text-primary'} />
-          {nav.phone}
-        </button>
+        <div className="relative" ref={adviceRef}>
+          <button onClick={() => setAdviceOpen((v) => !v)} className={`flex items-center gap-2 t-body-md ${textCls} hover:opacity-75 transition-opacity`} data-testid="nav-phone" aria-expanded={adviceOpen}>
+            <Phone size={18} strokeWidth={1.75} className={overlay ? 'text-white' : 'text-primary'} />
+            {nav.phone}
+            <ChevronDown size={16} className={`transition-transform ${adviceOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {adviceOpen && (
+            <div className="absolute right-0 top-full mt-3 w-[320px] bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.18)] p-5 z-50 text-left" data-testid="advice-popover">
+              <AdviceBody />
+            </div>
+          )}
+        </div>
       </nav>
 
       <button className={`lg:hidden ${textCls} p-1 ml-3`} onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">

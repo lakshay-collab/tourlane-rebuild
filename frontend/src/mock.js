@@ -1,4 +1,4 @@
-// Homepage content (frontend-only mock). Copy in English, assets from the original Tourlane CDNs.
+// Homepage content (frontend-only mock). Copy in English, assets from the original Hi Tours CDNs.
 const cf = (path, q = 'w=800&q=60&fm=webp') => `https://images.ctfassets.net/bth3mlrehms2/${path}?${q}`;
 
 export const nav = {
@@ -14,13 +14,22 @@ export const nav = {
   login: 'Login'
 };
 
+export const expertAdvice = {
+  title: 'Free expert advice',
+  note: 'Talk to a Hi Tours travel expert and start planning your tailor-made trip — no obligation.',
+  phone: '+91 22 6140 1500',
+  phoneHref: 'tel:+912261401500',
+  hours: 'Mon–Sat, 9:00 – 20:00 IST',
+  cta: 'Plan for free'
+};
+
 export const hero = {
   title: ['Exquisitely crafted luxury', 'honeymoons & holidays'],
   searchPlaceholder: 'Where would you like to go?',
   searchPlaceholderMobile: 'Where to?',
   cta: 'Plan for free',
   subtitle:
-    'Tourlane creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
+    'Hi Tours creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
   collage: {
     xs: 'https://tourlane-dm-images.imgix.net/hp/de/header-xs.png?w=640&auto=format&fit=max&bg=FBF9F1',
     sm: 'https://tourlane-dm-images.imgix.net/hp/de/header-sm.png?w=768&auto=format&fit=max&bg=FBF9F1',
@@ -48,10 +57,10 @@ export const features = {
 };
 
 export const ambassadors = {
-  heading: 'On the road with Tourlane',
+  heading: 'On the road with Hi Tours',
   subheading: 'Voices from TV, media and culture',
   text:
-    'Those who travel a lot know what matters. That is why well-known personalities trust Tourlane – to experience extraordinary trips planned individually, personally and down to the last detail.',
+    'Those who travel a lot know what matters. That is why well-known personalities trust Hi Tours – to experience extraordinary trips planned individually, personally and down to the last detail.',
   cta: 'Learn more',
   images: [
     cf('6ukED2YGVhw5AgrnKYAwe6/64dfa5b7f35b779d8b0fe3b8d1355b84/Ambassadors_Homepage_Module_01.png', 'w=1400&q=70&fm=webp'),
@@ -60,9 +69,9 @@ export const ambassadors = {
 };
 
 export const comparison = {
-  heading: 'Why Tourlane is worth it',
+  heading: 'Why Hi Tours is worth it',
   colAlone: 'On your own',
-  colTourlane: 'With Tourlane',
+  colHiTours: 'With Hi Tours',
   rows: [
     { text: 'More than 50 destinations worldwide to discover', alone: true },
     { text: 'All-round travel service (hotel / flight / transfer / activities)', alone: false },
@@ -76,7 +85,7 @@ export const comparison = {
 };
 
 export const moments = {
-  heading: 'Unforgettable Tourlane moments',
+  heading: 'Unforgettable Hi Tours moments',
   subheading: 'More than 150,000 delighted travellers',
   cta: 'Plan your trip',
   avatars: [
@@ -86,16 +95,16 @@ export const moments = {
     cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=64&q=60&fm=webp')
   ],
   items: [
-    { title: 'Riding the train through the tea fields of Sri Lanka', name: 'Sophia and Jonas', image: cf('1dQ7d5CgcY0b4H47L6ZFco/da54c9701bb26be3c0b83cf61efcfa0d/TourlaneMoments2_TGrading_ResizedHQ_10__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Discovering that giraffes have blue-black tongues', name: 'Petra', image: cf('x9b7lqPNy2lQx7yhJjDXi/8f867b8ef57c91370ccfdd0f855dfaca/TourlaneMoments2_TGrading_ResizedHQ__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Travelling alone for the first time to finally see sequoias', name: 'Sven', image: cf('3h3BnZFYsZclZv4Q9y4WEJ/6f77d190f67214e1ce70c367a333d387/TourlaneMoments2_TGrading_ResizedHQ_9__1_.png', 'w=520&q=60&fm=webp') },
+    { title: 'Riding the train through the tea fields of Sri Lanka', name: 'Sophia and Jonas', image: cf('1dQ7d5CgcY0b4H47L6ZFco/da54c9701bb26be3c0b83cf61efcfa0d/Hi ToursMoments2_TGrading_ResizedHQ_10__1_.png', 'w=520&q=60&fm=webp') },
+    { title: 'Discovering that giraffes have blue-black tongues', name: 'Petra', image: cf('x9b7lqPNy2lQx7yhJjDXi/8f867b8ef57c91370ccfdd0f855dfaca/Hi ToursMoments2_TGrading_ResizedHQ__1_.png', 'w=520&q=60&fm=webp') },
+    { title: 'Travelling alone for the first time to finally see sequoias', name: 'Sven', image: cf('3h3BnZFYsZclZv4Q9y4WEJ/6f77d190f67214e1ce70c367a333d387/Hi ToursMoments2_TGrading_ResizedHQ_9__1_.png', 'w=520&q=60&fm=webp') },
     { title: 'Feeding the giant tortoises in the Seychelles', name: 'Josephine', image: cf('6IClyztxwJ0cagUFzZxl72/0d433c2a885d2775596ee0089f7d5ef1/jose_phiiine_Seychelles.png', 'w=520&q=60&fm=webp') },
-    { title: 'Sleeping under the starry sky of Botswana', name: 'Daniel and Laura', image: cf('6z7P0FZ5GShUpT5Z5t9jeV/18757623b9f838bbf9d2d388f618c5c3/TourlaneMoments2_TGrading_ResizedHQ_4.png', 'w=520&q=60&fm=webp') },
+    { title: 'Sleeping under the starry sky of Botswana', name: 'Daniel and Laura', image: cf('6z7P0FZ5GShUpT5Z5t9jeV/18757623b9f838bbf9d2d388f618c5c3/Hi ToursMoments2_TGrading_ResizedHQ_4.png', 'w=520&q=60&fm=webp') },
     { title: 'Showing a 6-year-old the Grand Canyon from above', name: 'Miriam, Sebastian and Noah', image: cf('6xpboCcJswsUTdugksbGJP/4a02c2377400555ac65ff3240d4c4e99/Grand_canyon.jpg', 'w=520&q=60&fm=webp') },
-    { title: 'Relaxing with a mud mask in Iceland’s lagoons', name: 'Gauthier', image: cf('2kpFC0Gsi00VzrDASMLD7y/fd37e9928cb47782062fcad51c0ad384/TourlaneMoments2_TGrading_ResizedHQ_8__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Travelling Namibia with three generations', name: 'Karina and her family', image: cf('2qXzDmsIm4yphVesAT7GAH/b91211db32330a966e999146a8a41230/TourlaneMoments2_TGrading_ResizedHQ_5.png', 'w=520&q=60&fm=webp') },
-    { title: 'Celebrating a milestone birthday in the rainforest', name: 'Gregor', image: cf('7qfRHsMsKGbKwqYEJQrHyN/6222ee23dab05d6d251ecf053b1069eb/TourlaneMoments2_TGrading_ResizedHQ_7.png', 'w=520&q=60&fm=webp') },
-    { title: 'Finally seeing the Big Five on safari', name: 'Karl-Heinz, Michael and Susanne', image: cf('6kTfWQ3BBlANQNE9nSHQ3C/773f286b7aa097be5705cd19d2e41be6/TourlaneMoments2_TGrading_ResizedHQ_2.png', 'w=520&q=60&fm=webp') }
+    { title: 'Relaxing with a mud mask in Iceland’s lagoons', name: 'Gauthier', image: cf('2kpFC0Gsi00VzrDASMLD7y/fd37e9928cb47782062fcad51c0ad384/Hi ToursMoments2_TGrading_ResizedHQ_8__1_.png', 'w=520&q=60&fm=webp') },
+    { title: 'Travelling Namibia with three generations', name: 'Karina and her family', image: cf('2qXzDmsIm4yphVesAT7GAH/b91211db32330a966e999146a8a41230/Hi ToursMoments2_TGrading_ResizedHQ_5.png', 'w=520&q=60&fm=webp') },
+    { title: 'Celebrating a milestone birthday in the rainforest', name: 'Gregor', image: cf('7qfRHsMsKGbKwqYEJQrHyN/6222ee23dab05d6d251ecf053b1069eb/Hi ToursMoments2_TGrading_ResizedHQ_7.png', 'w=520&q=60&fm=webp') },
+    { title: 'Finally seeing the Big Five on safari', name: 'Karl-Heinz, Michael and Susanne', image: cf('6kTfWQ3BBlANQNE9nSHQ3C/773f286b7aa097be5705cd19d2e41be6/Hi ToursMoments2_TGrading_ResizedHQ_2.png', 'w=520&q=60&fm=webp') }
   ]
 };
 
@@ -195,7 +204,7 @@ export const adventure = {
 
 export const experts = {
   heading: 'Meet our travel experts',
-  cta: 'Discover the Tourlane experts',
+  cta: 'Discover the Hi Tours experts',
   items: [
     { name: 'Laura Behrens', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: cf('57uKXaXzLj1c75yT6j72F0/2ba3f1e3b4e191cb0b75b7bfed96ffc2/TravelExperts_T3_Final1.png', 'w=720&q=60&fm=webp') },
     { name: 'Karan Malhotra', role: 'Travel expert for New Zealand', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: cf('3VnsobU9pjKBtPbNAr8qYw/0e8af52d777d1801f4cc0f86d2df00bb/TravelExperts_T3_Final2.png', 'w=720&q=60&fm=webp') },
@@ -239,12 +248,12 @@ export const newsletter = {
 };
 
 export const footer = {
-  description: 'Tourlane creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
+  description: 'Hi Tours creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
   columns: [
-    { title: 'Tourlane', links: ['Travel with us', 'Work with us', 'Partnerships', 'Reviews', 'Press', 'App', 'Service portal'] },
+    { title: 'Hi Tours', links: ['Travel with us', 'Work with us', 'Partnerships', 'Reviews', 'Press', 'App', 'Service portal'] },
     { title: 'Destinations', links: ['Costa Rica', 'Iceland', 'South Africa', 'Tanzania', 'Namibia', 'Canada', 'USA', 'Thailand', 'Japan', 'Australia', 'More destinations', 'Travel calendar'] }
   ],
-  care: { title: 'TourlaneCare', lines: ['Book worry-free', 'Flexible rebooking and cancellation'], cta: 'Learn more' },
-  country: 'Germany',
+  care: { title: 'Hi Tours Care', lines: ['Book worry-free', 'Flexible rebooking and cancellation'], cta: 'Learn more' },
+  country: 'India',
   legal: ['Imprint', 'Privacy', 'Terms & Conditions', 'Travel advice', 'Cookie settings']
 };

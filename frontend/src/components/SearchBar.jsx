@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { MapPin, Search } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { hero } from '../mock';
 import { destinations } from '../destinationsData';
@@ -84,8 +84,7 @@ export default function SearchBar({ id = 'hero', className = '' }) {
           className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-3xl shadow-[0_2px_8px_rgba(0,0,0,0.12),0_12px_32px_rgba(0,0,0,0.18)] overflow-hidden"
           data-testid={`${id}-search-suggestions`}
         >
-          <div className="px-6 pt-4 pb-2 t-label-md text-onsurface-variant uppercase tracking-wide">Destinations</div>
-          <div className="max-h-[340px] overflow-y-auto pb-2">
+          <div className="max-h-[360px] overflow-y-auto py-2">
             {matches.length === 0 && (
               <div className="px-6 py-4 t-body-md text-onsurface-variant">No destinations found</div>
             )}
@@ -94,14 +93,11 @@ export default function SearchBar({ id = 'hero', className = '' }) {
                 type="button"
                 key={d.name}
                 onClick={() => pick(d)}
-                className="w-full flex items-center gap-4 px-6 py-2.5 text-left hover:bg-onsurface/[0.05] transition-colors"
+                className="w-full flex items-center gap-4 px-5 py-2.5 text-left hover:bg-onsurface/[0.05] transition-colors"
                 data-testid={`${id}-search-suggestion-${d.name.toLowerCase().replace(/\s/g, '-')}`}
               >
-                <img src={d.src} alt={d.name} loading="lazy" className="w-14 h-10 rounded-lg object-cover shrink-0 bg-surface-highest" />
-                <span className="flex-1 t-body-lg text-onsurface">{d.name}</span>
-                {d.to
-                  ? <span className="t-label-md text-primary">View trips</span>
-                  : <Search size={18} className="text-onsurface-variant" />}
+                <img src={d.src} alt={d.name} loading="lazy" className="w-12 h-12 rounded-full object-cover shrink-0 bg-surface-highest" />
+                <span className="t-body-lg text-onsurface">{d.name}</span>
               </button>
             ))}
           </div>
