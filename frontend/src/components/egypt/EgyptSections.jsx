@@ -7,10 +7,10 @@ const Rich = ({ parts }) => (Array.isArray(parts)
   ? parts.map((x, i) => (Array.isArray(x) ? <a key={i} href={x[1]} onClick={(e) => e.preventDefault()} className="eg-link">{x[0]}</a> : x))
   : parts);
 
-export function EgyptReviews() {
+export function EgyptReviews({ centered = false, className = 'eg-container mt-16' }) {
   return (
-    <section className="eg-container mt-16" data-testid="eg-reviews">
-      <h2 className="eg-display-sm text-[#1B1C17]">{reviews.h2}</h2>
+    <section className={className} data-testid="eg-reviews">
+      <h2 className={centered ? 'eg-headline-md text-[#1B1C17] text-center' : 'eg-display-sm text-[#1B1C17]'}>{reviews.h2}</h2>
       <a href={reviews.trustpilotHref} target="_blank" rel="noreferrer" className="block mt-8"><TrustRow /></a>
       <div className="mt-8 grid gap-6 md:grid-cols-3">
         {reviews.items.map((r) => (
@@ -33,7 +33,7 @@ export function EgyptReviews() {
       </div>
       <div className="mt-8 flex flex-col items-center gap-2">
         <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{reviews.cta}</a>
-        <p className="eg-body-sm text-[#1B1C17] text-center">{reviews.sub}</p>
+        {!centered && <p className="eg-body-sm text-[#1B1C17] text-center">{reviews.sub}</p>}
       </div>
     </section>
   );

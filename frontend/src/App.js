@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import EgyptListing from './pages/EgyptListing';
-import TourDetail from './pages/TourDetail';
+import EgyptDetail from './pages/EgyptDetail';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/afrika/aegypten" element={<EgyptListing />} />
-          <Route path="/afrika/aegypten/:slug" element={<TourDetail />} />
+          <Route path="/afrika/aegypten/:slug" element={<EgyptDetail />} />
         </Routes>
       </BrowserRouter>
     </div>

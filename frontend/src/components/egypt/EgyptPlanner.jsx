@@ -19,16 +19,16 @@ function CounterRow({ row, value, onChange }) {
   );
 }
 
-export default function EgyptPlanner() {
+export default function EgyptPlanner({ className = 'mt-16 px-4 sm:px-8 lg:px-10', titleClass = 'eg-display-sm' }) {
   const [vals, setVals] = useState(planner.rows.map((r) => r.value));
   return (
-    <section className="mt-16 px-4 sm:px-8 lg:px-10" data-testid="eg-planner">
+    <section className={className} data-testid="eg-planner">
       <div className="relative h-[702px] hidden lg:block" style={{ backgroundImage: `url(${planner.decoration})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center 444px', backgroundSize: '1200px 258px' }}>
         <div className="relative h-[372px] rounded-2xl overflow-hidden">
           <img src={planner.bg} alt="Ägypten" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-x-0 top-0 pt-[43px] px-6 flex flex-col items-center gap-1 text-white">
-            <h3 className="eg-display-sm text-white text-center">{planner.h3}</h3>
+            <h3 className={`${titleClass} text-white text-center`}>{planner.h3}</h3>
             <div className="flex items-center gap-2">
               <div className="flex">
                 {planner.avatars.map((a, i) => <img key={a} src={a} alt={`Tourlaner${i + 1}`} className="w-6 h-6 rounded-full border border-white object-cover" style={{ marginLeft: i ? -4 : 0 }} />)}

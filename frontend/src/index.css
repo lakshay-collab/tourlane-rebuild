@@ -1,17 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400&family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,-200..150,27..175,323..603,25..135,649..854,-305..-98,560..788,416..570,528..760&family=Roboto+Serif:opsz,wght@8..144,400&display=swap');
 
 /* Tourlane clone scope (Egypt listing): exact source tokens */
-.eg { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; color: #1B1C17; background: #FBF9F1; font-size: 16px; line-height: 24px; letter-spacing: .5px; }
+.eg { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; color: #1B1C17; background: #FBF9F1; font-size: 16px; line-height: 24px; letter-spacing: .5px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 500, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
 .eg-serif { font-family: 'Roboto Serif', Georgia, serif; }
 .eg-display-lg { font-family: 'Roboto Serif', Georgia, serif; font-size: 36px; line-height: 44px; font-weight: 400; letter-spacing: 0; }
 @media (min-width: 905px) { .eg-display-lg { font-size: 57px; line-height: 64px; letter-spacing: -0.25px; } }
 .eg-display-sm { font-family: 'Roboto Serif', Georgia, serif; font-size: 28px; line-height: 36px; font-weight: 400; letter-spacing: 0; text-wrap: balance; }
 @media (min-width: 905px) { .eg-display-sm { font-size: 36px; line-height: 44px; } }
 .eg-title-lg { font-size: 22px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
-.eg-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; }
+.eg-headline-lg { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 505, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
+.eg-headline-md { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; }
+.eg-label-md { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }
+.eg-wide { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; padding-left: 16px; padding-right: 16px; }
+@media (min-width: 600px) { .eg-wide { padding-left: 32px; padding-right: 32px; } }
+@media (min-width: 905px) { .eg-wide { padding-left: 24px; padding-right: 24px; } }
+@media (min-width: 1240px) { .eg-wide { padding-left: 40px; padding-right: 40px; } }
+.eg-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.eg-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.eg-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+.eg-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 470, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
 .eg-label-lg { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
-.eg-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: .5px; }
+.eg-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: .5px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 470, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
 .eg-body-md { font-size: 14px; line-height: 20px; font-weight: 400; letter-spacing: .25px; }
 .eg-body-sm { font-size: 12px; line-height: 16px; font-weight: 400; letter-spacing: .4px; }
 .eg-container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 16px; padding-right: 16px; }

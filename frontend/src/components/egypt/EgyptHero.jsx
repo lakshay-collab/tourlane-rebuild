@@ -32,7 +32,7 @@ function StickyTabs() {
   );
 }
 
-export function ScrollTop() {
+export function ScrollTop({ className = 'bottom-10 right-12' }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 900);
@@ -41,7 +41,7 @@ export function ScrollTop() {
   }, []);
   if (!show) return null;
   return (
-    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Nach oben" className="fixed bottom-10 right-12 z-40 w-14 h-14 rounded-full bg-[#FEFCF4] shadow-[0_1px_3px_rgba(0,0,0,0.3),0_4px_8px_3px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#1B1C17]" data-testid="eg-scroll-top">
+    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Nach oben" className={`fixed ${className} z-40 w-14 h-14 rounded-full bg-[#FEFCF4] shadow-[0_1px_3px_rgba(0,0,0,0.3),0_4px_8px_3px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#1B1C17]`} data-testid="eg-scroll-top">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11 20V7.825l-5.6 5.6L4 12l8-8l8 8l-1.4 1.425l-5.6-5.6V20z" /></svg>
     </button>
   );
