@@ -62,10 +62,11 @@ export default function SearchBar({ id = 'hero', className = '' }) {
     <div ref={wrapRef} className="relative w-full">
       <form
         onSubmit={submit}
-        className={`flex items-center w-full h-14 bg-white rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)] pl-6 pr-2 transition-shadow ${focused ? 'shadow-[0_2px_8px_rgba(0,0,0,0.16),0_12px_32px_rgba(0,0,0,0.18)]' : ''} ${className}`}
+        className={`flex items-center w-full h-14 bg-white rounded-full pl-6 pr-2 transition-[box-shadow,transform] duration-300 ease-out ${focused ? 'shadow-[0_0_0_2px_#FFFFFF,0_0_0_5px_rgba(23,67,88,0.6),0_12px_32px_rgba(0,33,49,0.25)] -translate-y-0.5 scale-[1.01]' : 'shadow-[0_1px_3px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)]'} ${className}`}
+        data-focused={focused}
         data-testid={`${id}-search-form`}
       >
-        <MapPin size={22} strokeWidth={1.75} className="text-accent shrink-0" />
+        <MapPin size={22} strokeWidth={1.75} className={`text-accent shrink-0 transition-transform duration-300 ${focused ? 'animate-[hi-pin-nudge_500ms_ease-out]' : ''}`} />
         <input
           type="text"
           value={value}
@@ -81,19 +82,20 @@ export default function SearchBar({ id = 'hero', className = '' }) {
 
       {focused && (
         <div
-          className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-3xl shadow-[0_2px_8px_rgba(0,0,0,0.12),0_12px_32px_rgba(0,0,0,0.18)] overflow-hidden"
+          className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-3xl shadow-[0_2px_8px_rgba(0,0,0,0.12),0_12px_32px_rgba(0,0,0,0.18)] overflow-hidden origin-top animate-[hi-drop-in_260ms_cubic-bezier(.22,.61,.36,1)]"
           data-testid={`${id}-search-suggestions`}
         >
           <div className="max-h-[360px] overflow-y-auto py-2">
             {matches.length === 0 && (
               <div className="px-6 py-4 t-body-md text-onsurface-variant">No destinations found</div>
             )}
-            {matches.map((d) => (
+            {matches.map((d, idx) => (
               <button
                 type="button"
                 key={d.name}
                 onClick={() => pick(d)}
-                className="w-full flex items-center gap-4 px-5 py-2.5 text-left hover:bg-onsurface/[0.05] transition-colors"
+                style={{ animationDelay: `${Math.min(idx, 8) * 35}ms` }}
+                className="w-full flex items-center gap-4 px-5 py-2.5 text-left hover:bg-onsurface/[0.05] transition-colors opacity-0 animate-[hi-row-in_300ms_ease-out_forwards]"
                 data-testid={`${id}-search-suggestion-${d.name.toLowerCase().replace(/\s/g, '-')}`}
               >
                 <img src={d.src} alt={d.name} loading="lazy" className="w-12 h-12 rounded-full object-cover shrink-0 bg-surface-highest" />
