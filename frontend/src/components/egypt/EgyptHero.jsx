@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Check } from 'lucide-react';
-import { hero, crumbs, places, themes, styles, sorts } from '../../egyptListingData';
+import { hero, crumbs, places, themes } from '../../egyptListingData';
 import { ChevronRight, ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 import TrustBar from '../TrustBar';
@@ -15,23 +14,21 @@ export const scrollToId = (id) => {
 const guide = themes.items.filter((t) => t.tag === 'Travel guide');
 const inspiration = themes.items.filter((t) => t.tag === 'Inspiration');
 
-const buildTabs = ({ style, sort }) => [
+const buildTabs = () => [
   { key: 'about', label: 'About Egypt', target: 'about' },
   { key: 'tours', label: 'Egypt holidays', target: 'tours' },
-  { key: 'styles', label: 'Travel styles', pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
-  { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) },
   { key: 'guide', label: 'Travel guide', items: guide.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
   { key: 'inspiration', label: 'Inspiration', items: inspiration.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
   { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) }
 ];
 
-function StickyTabs({ style, sort, onStyle, onSort }) {
+function StickyTabs() {
   const [stuck, setStuck] = useState(false);
   const [active, setActive] = useState('about');
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(16);
   const wrapRef = useRef(null);
-  const tabs = buildTabs({ style, sort });
+  const tabs = buildTabs();
 
   useEffect(() => {
     const onScroll = () => {
@@ -60,13 +57,6 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
     setLeft(Math.max(8, Math.min(r.left - w.left, w.width - 288)));
     setOpen(key);
   }, [open]);
-
-  const pick = (tab, item) => {
-    if (tab.pick === 'style') onStyle(item.selected ? null : item.id);
-    if (tab.pick === 'sort') onSort(item.selected ? null : item.id);
-    setOpen(null);
-    scrollToId('tours');
-  };
 
   const openTab = tabs.find((t) => t.key === open);
 
@@ -99,7 +89,6 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
         </div>
         {stuck && (
           <div className="hidden lg:flex items-center gap-4 pl-6 shrink-0" data-testid="eg-tabs-cta">
-            <p className="eg-body-sm text-[#002131] text-right whitespace-nowrap">Your travel plan – no obligation<br />&amp; tailor-made</p>
             <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-tabs-cta-button">{hero.stickyCta}</a>
           </div>
         )}
@@ -109,15 +98,6 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
         <div role="menu" style={{ left }} className="absolute top-full mt-0 z-40 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]" data-testid={`eg-tab-dropdown-${openTab.key}`}>
           {openTab.items.map((it) => {
             const cls = 'w-full flex items-center gap-3 px-4 py-3 text-left eg-body-lg text-[#002131] hover:bg-[rgba(64,73,66,0.08)] transition-colors';
-            if (openTab.pick) {
-              return (
-                <button key={it.id} type="button" role="menuitemradio" aria-checked={!!it.selected} onClick={() => pick(openTab, it)} className={cls} data-testid="eg-tab-dropdown-item">
-                  <NavIcon name={it.icon} />
-                  <span className={`flex-1 ${it.selected ? 'font-semibold' : ''}`}>{it.label}</span>
-                  {it.selected && <Check size={20} className="text-[#174358] shrink-0" aria-hidden />}
-                </button>
-              );
-            }
             return (
               <a key={it.id} role="menuitem" href={it.href} onClick={(e) => { e.preventDefault(); setOpen(null); }} className={cls} data-testid="eg-tab-dropdown-item">
                 <NavIcon name={it.icon} /><span>{it.label}</span>
@@ -170,7 +150,7 @@ const HeroCopy = ({ title }) => (
   </>
 );
 
-export default function EgyptHero({ style, sort, onStyle, onSort }) {
+export default function EgyptHero({ style }) {
   const title = style ? hero.styleH1(style) : hero.h1;
   return (
     <>
@@ -185,7 +165,7 @@ export default function EgyptHero({ style, sort, onStyle, onSort }) {
 
       <div data-testid="eg-trust-bar"><TrustBar /></div>
 
-      <StickyTabs style={style} sort={sort} onStyle={onStyle} onSort={onSort} />
+      <StickyTabs />
 
       <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
         {crumbs.map((c, i) => (

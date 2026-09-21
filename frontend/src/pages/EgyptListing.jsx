@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import Footer from '../components/Footer';
 import EgyptHero, { ScrollTop, MobileStickyCta, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
+import EgyptFilterBar from '../components/egypt/EgyptFilterBar';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
 import { EgyptReviews, EgyptPlan, EgyptFaq } from '../components/egypt/EgyptSections';
@@ -92,7 +93,7 @@ export default function EgyptListing() {
   return (
     <div className="eg" data-testid="egypt-listing-page">
       <main>
-        <EgyptHero style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
+        <EgyptHero style={style} />
 
         <section className="eg-container mt-12 scroll-mt-20" id="about" data-testid="eg-intro">
           <h2 className="eg-display-sm text-[#002131]">{intro.h2}</h2>
@@ -113,15 +114,15 @@ export default function EgyptListing() {
             {readMore && tours.intro.map((x, i) => (Array.isArray(x) ? <b key={`m${i}`} className="font-semibold">{x[0]}</b> : x))}
             {' '}<button type="button" onClick={() => setReadMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-tours-readmore">{readMore ? tours.readLess : tours.readMore}</button>
           </p>
+          <EgyptFilterBar title={tours.h2} count={`${list.length} ${list.length === 1 ? 'holiday' : 'holidays'}`} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
           {(style || sort) && (
-            <div className="mt-6 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
+            <div className="mt-2 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
               {style && <Chip label={tours.filterLabel} value={style} onClear={() => setStyle(null)} testId="eg-filter-chip-style" />}
               {sort && <Chip label={tours.sortLabel} value={sortLabel} onClear={() => setSort(null)} testId="eg-filter-chip-sort" />}
-              <span className="eg-body-md text-[#174358] ml-1" data-testid="eg-result-count">{list.length} {list.length === 1 ? 'holiday' : 'holidays'}</span>
             </div>
           )}
           {list.length ? (
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
               {shown.map((p) => <EgyptProductCard key={p.slug} p={p} />)}
             </div>
           ) : (
