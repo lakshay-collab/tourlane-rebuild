@@ -53,11 +53,19 @@ const FooterColumn = ({ title, children }) => {
 export default function Footer() {
   return (
     <footer className="bg-surface" data-testid="site-footer">
-      <div className="tl-wide pt-12">
-        <div className="flex items-center justify-between pb-6 border-b border-onsurface">
+      <div className="h-px bg-outline-variant/60" data-testid="footer-divider-top" />
+
+      <div className="tl-wide pt-12 pb-6">
+        <div className="flex items-center justify-between">
           <a href="/" aria-label="Hi Tours"><Logo className="h-12 w-auto" /></a>
           <div className="flex items-center gap-4"><Socials /></div>
         </div>
+      </div>
+
+      <div className="h-px bg-outline-variant/60" data-testid="footer-divider-logo" />
+
+      <div className="tl-wide pt-6 sm:hidden">
+        <Badges />
       </div>
 
       <div className="tl-wide pt-8 pb-10 flex flex-col lg:flex-row gap-4 sm:gap-10 lg:gap-16">
@@ -78,7 +86,7 @@ export default function Footer() {
               {footer.care.lines.map((l) => <li key={l} className="t-body-md text-onsurface">{l}</li>)}
               <li><button className="t-label-lg text-primary hover:underline" data-testid="footer-care-cta">{footer.care.cta}</button></li>
             </ul>
-            <Badges className="mt-8" />
+            <div className="hidden sm:block mt-8"><Badges /></div>
           </FooterColumn>
         </div>
       </div>
