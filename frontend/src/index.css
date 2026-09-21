@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,-200..150,27..175,323..603,25..135,649..854,-305..-98,560..788,416..570,528..760&family=Roboto+Serif:opsz,wght@8..144,400&display=swap');
 
-/* Tourlane clone scope (Egypt listing): exact source tokens */
-.eg { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; color: #1B1C17; background: #FBF9F1; font-size: 16px; line-height: 24px; letter-spacing: .5px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 500, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
-.eg-serif { font-family: 'Roboto Serif', Georgia, serif; }
-.eg-display-lg { font-family: 'Roboto Serif', Georgia, serif; font-size: 36px; line-height: 44px; font-weight: 400; letter-spacing: 0; }
+/* Egypt/Asia listing scope: Hi Tours brand tokens (Bricolage Grotesque / Inter / Instrument Sans, Ink + Harbor + Ember) */
+.eg { font-family: 'Inter', 'Instrument Sans', Arial, sans-serif; color: #002131; background: #FBF9F1; font-size: 16px; line-height: 24px; letter-spacing: .2px; }
+.eg-serif { font-family: 'Bricolage Grotesque', Inter, sans-serif; }
+.eg-display-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 36px; line-height: 44px; font-weight: 500; letter-spacing: 0; }
 @media (min-width: 905px) { .eg-display-lg { font-size: 57px; line-height: 64px; letter-spacing: -0.25px; } }
-.eg-display-sm { font-family: 'Roboto Serif', Georgia, serif; font-size: 28px; line-height: 36px; font-weight: 400; letter-spacing: 0; text-wrap: balance; }
+.eg-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; text-wrap: balance; }
 @media (min-width: 905px) { .eg-display-sm { font-size: 36px; line-height: 44px; } }
-.eg-title-lg { font-size: 22px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
-.eg-headline-lg { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 505, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
-.eg-headline-md { font-family: 'Roboto Flex', Roboto, Arial, sans-serif; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; }
-.eg-label-md { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }
+.eg-title-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0; }
+.eg-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
+.eg-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
+.eg-label-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }
 .eg-wide { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; padding-left: 16px; padding-right: 16px; }
 @media (min-width: 600px) { .eg-wide { padding-left: 32px; padding-right: 32px; } }
 @media (min-width: 905px) { .eg-wide { padding-left: 24px; padding-right: 24px; } }
@@ -19,23 +19,23 @@
 .eg-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 .eg-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .eg-clamp-6 { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
-.eg-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 470, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
-.eg-label-lg { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
-.eg-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: .5px; font-variation-settings: "GRAD" 0, "XOPQ" 96, "XTRA" 470, "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712; }
-.eg-body-md { font-size: 14px; line-height: 20px; font-weight: 400; letter-spacing: .25px; }
-.eg-body-sm { font-size: 12px; line-height: 16px; font-weight: 400; letter-spacing: .4px; }
+.eg-title-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: .1px; }
+.eg-label-lg { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
+.eg-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: .2px; }
+.eg-body-md { font-size: 14px; line-height: 20px; font-weight: 400; letter-spacing: .2px; }
+.eg-body-sm { font-size: 12px; line-height: 16px; font-weight: 400; letter-spacing: .3px; }
 .eg-container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 16px; padding-right: 16px; }
 @media (min-width: 600px) { .eg-container { padding-left: 32px; padding-right: 32px; } }
 @media (min-width: 905px) { .eg-container { width: 857px; padding: 0; } }
 @media (min-width: 1240px) { .eg-container { width: 1128px; } }
-.eg-btn-filled { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9999px; background: #006D44; color: #fff; white-space: nowrap; transition: background-color .2s; }
-.eg-btn-filled:hover { background: #0B5C3D; }
-.eg-btn-outlined { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 10px 16px; border-radius: 9999px; border: 1px solid #717972; color: #006D44; white-space: nowrap; transition: background-color .2s; }
-.eg-btn-outlined:hover { background: rgba(0, 109, 68, 0.08); }
-.eg-link { color: #006D44; font-weight: 600; text-decoration: underline; }
-.eg-card { border: 1px solid #C0C9C0; border-radius: 12px; overflow: hidden; background: #FBF9F1; display: block; }
-.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #D0E8D6; color: #0B1F14; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
-.eg-arrow:hover { background: #BCDCC5; }
+.eg-btn-filled { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9999px; color: #fff; white-space: nowrap; font-family: 'Instrument Sans', Inter, sans-serif; font-weight: 600; background-image: linear-gradient(90deg, #E75E26 0%, #FB7F26 50%, #E75E26 100%); background-size: 160% 100%; background-position: left; transition: background-position .3s, box-shadow .3s; }
+.eg-btn-filled:hover { background-position: right; box-shadow: 0 4px 14px rgba(231, 94, 38, 0.35); }
+.eg-btn-outlined { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 10px 16px; border-radius: 9999px; border: 1px solid #6F777C; color: #174358; white-space: nowrap; font-family: 'Instrument Sans', Inter, sans-serif; transition: background-color .2s; }
+.eg-btn-outlined:hover { background: rgba(23, 67, 88, 0.08); }
+.eg-link { color: #174358; font-weight: 600; text-decoration: underline; }
+.eg-card { border: 1px solid #C4CBD0; border-radius: 12px; overflow: hidden; background: #FBF9F1; display: block; }
+.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #FADDD1; color: #002131; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
+.eg-arrow:hover { background: #F4B49A; }
 
 @tailwind base;
 @tailwind components;

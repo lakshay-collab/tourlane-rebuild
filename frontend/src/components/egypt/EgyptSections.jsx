@@ -8,18 +8,18 @@ const Rich = ({ parts }) => (Array.isArray(parts)
   : parts);
 
 export const ReviewSummary = ({ className = '' }) => (
-  <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-2 eg-label-lg text-[#1B1C17] ${className}`} data-testid="eg-review-summary">
+  <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-2 eg-label-lg text-[#002131] ${className}`} data-testid="eg-review-summary">
     <span>{trust.label}</span>
     <BoxStars rating={trust.rating} size={20} color={BRAND_BLUE} />
     <span>{trust.score} {trust.outOf}</span>
-    <span className="text-[#404942]">{trust.count} {trust.reviews}</span>
+    <span className="text-[#174358]">{trust.count} {trust.reviews}</span>
   </div>
 );
 
-export function EgyptReviews({ centered = false, className = 'eg-container mt-16' }) {
+export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16' }) {
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
-      <h2 className={centered ? 'eg-headline-md text-[#1B1C17] text-center' : 'eg-display-sm text-[#1B1C17]'}>{reviews.h2}</h2>
+      <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{reviews.h2}</h2>
       <ReviewSummary className="mt-8" />
       <div className="mt-8 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" data-testid="eg-review-track">
         {reviews.items.map((r) => (
@@ -31,16 +31,16 @@ export function EgyptReviews({ centered = false, className = 'eg-container mt-16
             </div>
             <div className="pt-4 px-4">
               <BoxStars rating={r.stars} size={18} color={BRAND_BLUE} />
-              <h3 className="mt-3 eg-title-md text-[#1B1C17]">{r.name}</h3>
-              <p className="mt-3 eg-body-md text-[#1B1C17] line-clamp-5">{r.text}</p>
-              <div className="mt-4 eg-body-md text-[#404942]">{r.date}</div>
+              <h3 className="mt-3 eg-title-md text-[#002131]">{r.name}</h3>
+              <p className="mt-3 eg-body-md text-[#002131] line-clamp-5">{r.text}</p>
+              <div className="mt-4 eg-body-md text-[#174358]">{r.date}</div>
             </div>
           </article>
         ))}
       </div>
       <div className="mt-8 flex flex-col items-center gap-2">
         <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{reviews.cta}</a>
-        {!centered && <p className="eg-body-sm text-[#1B1C17] text-center">{reviews.sub}</p>}
+        {!centered && <p className="eg-body-sm text-[#002131] text-center">{reviews.sub}</p>}
       </div>
     </section>
   );
@@ -49,19 +49,19 @@ export function EgyptReviews({ centered = false, className = 'eg-container mt-16
 export function EgyptPlan() {
   const [open, setOpen] = useState(false);
   return (
-    <section className="eg-container mt-16" data-testid="eg-plan">
-      <h2 className="eg-display-sm text-[#1B1C17]">{plan.h2}</h2>
-      <p className="mt-8 eg-body-lg text-[#1B1C17]">{plan.intro}</p>
+    <section className="eg-container mt-12 md:mt-16" data-testid="eg-plan">
+      <h2 className="eg-display-sm text-[#002131]">{plan.h2}</h2>
+      <p className="mt-8 eg-body-lg text-[#002131]">{plan.intro}</p>
       <div className="pt-2 pb-4">
-        <button type="button" onClick={() => setOpen((v) => !v)} className="flex items-center gap-1 eg-body-lg font-semibold text-[#006D44]" data-testid="eg-plan-toggle">
+        <button type="button" onClick={() => setOpen((v) => !v)} className="flex items-center gap-1 eg-body-lg font-semibold text-[#174358]" data-testid="eg-plan-toggle">
           {open ? plan.less : plan.more}<ChevronRight size={24} className={open ? 'rotate-90' : ''} />
         </button>
       </div>
       {open && plan.sections.map((s) => (
         <div key={s.h4} className="mt-4" data-testid="eg-plan-section">
-          <h4 className="eg-title-lg text-[#1B1C17]">{s.h4}</h4>
-          <p className="mt-6 eg-body-lg text-[#1B1C17]">{s.text}</p>
-          <p className="mt-6 eg-body-lg text-[#1B1C17]">
+          <h4 className="eg-title-lg text-[#002131]">{s.h4}</h4>
+          <p className="mt-6 eg-body-lg text-[#002131]">{s.text}</p>
+          <p className="mt-6 eg-body-lg text-[#002131]">
             ➔ {s.links.map((l, i) => <React.Fragment key={l[0]}>{i > 0 && ' | '}<a href={l[1]} onClick={(e) => e.preventDefault()} className="eg-link">{l[0]}</a></React.Fragment>)}
           </p>
         </div>
@@ -73,16 +73,16 @@ export function EgyptPlan() {
 export function EgyptFaq() {
   const [open, setOpen] = useState(null);
   return (
-    <section className="eg-container mt-16" id="faq" data-testid="eg-faq">
-      <h2 className="eg-display-sm text-[#1B1C17]">{faq.h2}</h2>
-      <div className="mt-8 pb-4 border-t border-[#C0C9C0]">
+    <section className="eg-container mt-12 md:mt-16" id="faq" data-testid="eg-faq">
+      <h2 className="eg-display-sm text-[#002131]">{faq.h2}</h2>
+      <div className="mt-8 pb-4 border-t border-[#C4CBD0]">
         {faq.items.map((it, i) => (
-          <div key={it.q} className="border-b border-[#C0C9C0]" data-testid="eg-faq-item">
-            <button type="button" onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i} className="w-full flex items-center justify-between gap-2 py-4 text-left eg-title-md text-[#1B1C17]" data-testid="eg-faq-question">
+          <div key={it.q} className="border-b border-[#C4CBD0]" data-testid="eg-faq-item">
+            <button type="button" onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i} className="w-full flex items-center justify-between gap-2 py-4 text-left eg-title-md text-[#002131]" data-testid="eg-faq-question">
               {it.q}<ChevronDown size={24} className={`text-black shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} />
             </button>
             {open === i && (
-              <div className="pb-4 flex flex-col gap-6 eg-body-lg text-[#1B1C17]" data-testid="eg-faq-answer">
+              <div className="pb-4 flex flex-col gap-6 eg-body-lg text-[#002131]" data-testid="eg-faq-answer">
                 {it.a.map((p, k) => <p key={k}><Rich parts={p} /></p>)}
               </div>
             )}

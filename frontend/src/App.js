@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/afrika/aegypten" element={<EgyptListing />} />
+          <Route path="/afrika/aegypten/travel-style/:style" element={<EgyptListing />} />
           <Route path="/afrika/aegypten/:slug" element={<EgyptDetail />} />
           <Route path="/asien" element={<AsiaListing />} />
         </Routes>

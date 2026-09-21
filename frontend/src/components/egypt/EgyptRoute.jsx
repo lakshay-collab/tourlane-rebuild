@@ -8,10 +8,10 @@ function StopText({ s }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="md:w-[346px] shrink-0" data-testid="eg-route-stop">
-      <h3 className="eg-title-lg text-[#1B1C17] pb-2" data-testid="eg-route-stop-name">{s.name}</h3>
-      <p className="eg-body-md text-[#404942] pb-3">{s.dayLabel}</p>
-      <p className={`eg-body-md text-[#1B1C17] whitespace-pre-line ${open ? '' : 'eg-clamp-6'}`} data-testid="eg-route-text">{s.text}</p>
-      <button type="button" onClick={() => setOpen((v) => !v)} className="inline-flex items-center gap-1 pt-1 eg-body-md text-[#1B1C17] underline" data-testid="eg-route-text-toggle">
+      <h3 className="eg-title-lg text-[#002131] pb-2" data-testid="eg-route-stop-name">{s.name}</h3>
+      <p className="eg-body-md text-[#174358] pb-3">{s.dayLabel}</p>
+      <p className={`eg-body-md text-[#002131] whitespace-pre-line ${open ? '' : 'eg-clamp-6'}`} data-testid="eg-route-text">{s.text}</p>
+      <button type="button" onClick={() => setOpen((v) => !v)} className="inline-flex items-center gap-1 pt-1 eg-body-md text-[#002131] underline" data-testid="eg-route-text-toggle">
         {open ? route.less : route.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} />
       </button>
     </div>
@@ -35,14 +35,14 @@ function StopCarousel({ images, name }) {
   );
 }
 
-const Card = ({ children, testId }) => <div className="bg-[#FBF9F1] border border-[#C0C9C0] rounded-xl overflow-hidden" data-testid={testId}>{children}</div>;
+const Card = ({ children, testId }) => <div className="bg-[#FBF9F1] border border-[#C4CBD0] rounded-xl overflow-hidden" data-testid={testId}>{children}</div>;
 
 function Accommodation({ a }) {
   return (
     <div className="flex flex-col gap-4 min-w-0" data-testid="eg-stop-accommodation">
       <div className="flex items-center gap-4 h-7">
-        <div className="flex items-center gap-2"><HotelIcon size={24} className="text-[#1B1C17]" /><h3 className="eg-title-lg text-[#1B1C17]">{route.accommodationHeading}</h3></div>
-        <a href={detail.ctaHref} onClick={stop} className="eg-body-lg text-[#006D44] underline whitespace-nowrap" data-testid="eg-accommodation-cta">{route.accommodationCta}</a>
+        <div className="flex items-center gap-2"><HotelIcon size={24} className="text-[#002131]" /><h3 className="eg-title-lg text-[#002131]">{route.accommodationHeading}</h3></div>
+        <a href={detail.ctaHref} onClick={stop} className="eg-body-lg text-[#174358] underline whitespace-nowrap" data-testid="eg-accommodation-cta">{route.accommodationCta}</a>
       </div>
       <Card testId="eg-accommodation-card">
         <div className="grid grid-cols-[3fr_2fr] gap-1 h-[176px]">
@@ -52,8 +52,8 @@ function Accommodation({ a }) {
           </div>
         </div>
         <div className="p-4 flex flex-col gap-2 h-36">
-          <h4 className="eg-title-md text-[#1B1C17] eg-clamp-1">{a.name}</h4>
-          <div className="eg-body-md text-[#1B1C17] eg-clamp-4">{a.description.split('\n\n').map((p, k) => <p key={k}>{p}</p>)}</div>
+          <h4 className="eg-title-md text-[#002131] eg-clamp-1">{a.name}</h4>
+          <div className="eg-body-md text-[#002131] eg-clamp-4">{a.description.split('\n\n').map((p, k) => <p key={k}>{p}</p>)}</div>
         </div>
       </Card>
     </div>
@@ -63,12 +63,12 @@ function Accommodation({ a }) {
 function Program({ p, d }) {
   return (
     <div className="flex flex-col gap-4 min-w-0" data-testid="eg-stop-program">
-      <div className="flex items-center gap-2 h-7"><ExploreIcon size={24} className="text-[#1B1C17]" /><h3 className="eg-title-lg text-[#1B1C17]">{route.programHeading}</h3></div>
+      <div className="flex items-center gap-2 h-7"><ExploreIcon size={24} className="text-[#002131]" /><h3 className="eg-title-lg text-[#002131]">{route.programHeading}</h3></div>
       <Card testId="eg-program-card">
         <div className="h-[176px] bg-[#EAE8E0]"><img src={p.image} alt={p.name} className="w-full h-full object-cover" loading="lazy" /></div>
         <div className="p-4 flex flex-col gap-2 h-36">
-          <h4 className="eg-title-md text-[#1B1C17] eg-clamp-1">{p.name}</h4>
-          <div className="eg-body-md text-[#1B1C17] eg-clamp-4">
+          <h4 className="eg-title-md text-[#002131] eg-clamp-1">{p.name}</h4>
+          <div className="eg-body-md text-[#002131] eg-clamp-4">
             <p>{p.description}</p>
             {d && <><h3 className="eg-body-md">{d.h3}</h3>{d.points.map((pt) => <React.Fragment key={pt.h}><p className="pt-4">{pt.h}</p><p>{pt.t}</p></React.Fragment>)}</>}
           </div>
@@ -91,13 +91,13 @@ export default function EgyptRoute() {
   return (
     <div className="bg-[#F6F4EB] rounded-xl" data-testid="eg-detail-route">
       <div ref={head} className="sticky top-0 z-20 bg-[#F0EEE6] rounded-t-xl px-4 md:px-10" data-testid="eg-route-header">
-        <h2 className="eg-headline-md !leading-7 pt-3.5 pb-1.5 text-[#1B1C17]">{route.h2}</h2>
-        {!stuck && <p className="eg-body-md text-[#1B1C17] py-3" data-testid="eg-route-sub">{route.sub}</p>}
+        <h2 className="eg-headline-md !leading-7 pt-3.5 pb-1.5 text-[#002131]">{route.h2}</h2>
+        {!stuck && <p className="eg-body-md text-[#002131] py-3" data-testid="eg-route-sub">{route.sub}</p>}
         <div role="tablist" className="flex overflow-x-auto no-scrollbar border-b border-[#E4E3DB]" data-testid="eg-route-tabs">
           {route.stops.map((st, i) => (
-            <button key={st.letter} role="tab" aria-selected={active === i} onClick={() => setActive(i)} className={`relative h-12 ${i ? 'pl-2' : 'pl-1'} pr-2 flex items-center gap-2 eg-label-lg whitespace-nowrap ${active === i ? 'text-[#006D44]' : 'text-[#404942]'}`} data-testid={`eg-route-tab-${i}`}>
-              <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#006D44] border-white text-white' : 'bg-white border-[#DCE5DC] text-[#404942]'}`}>{st.letter}</span>{st.name}
-              {active === i && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-[#006D44]" />}
+            <button key={st.letter} role="tab" aria-selected={active === i} onClick={() => setActive(i)} className={`relative h-12 ${i ? 'pl-2' : 'pl-1'} pr-2 flex items-center gap-2 eg-label-lg whitespace-nowrap ${active === i ? 'text-[#174358]' : 'text-[#174358]'}`} data-testid={`eg-route-tab-${i}`}>
+              <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#E75E26] border-white text-white' : 'bg-white border-[#DCE5DC] text-[#174358]'}`}>{st.letter}</span>{st.name}
+              {active === i && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-[#E75E26]" />}
             </button>
           ))}
         </div>

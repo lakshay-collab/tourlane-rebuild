@@ -3,6 +3,7 @@ import { productImages, placeImages, activityImages, themeImages, africaImages, 
 
 export const hero = {
   h1: 'Egypt Honeymoons and holidays',
+  styleH1: (style) => `Egypt ${style.toLowerCase()} holidays`,
   cta: 'Plan for free',
   ctaHref: '/l/egypt/enquiry/passengers/',
   sub: 'Your travel plan – no obligation & tailor-made',
@@ -14,14 +15,16 @@ export const trust = { label: 'Excellent', score: '4.8', outOf: 'out of 5', coun
 export const crumbs = [{ label: 'Destinations', href: '/destinations/' }, { label: 'Africa', href: '/africa/' }, { label: 'Egypt' }];
 
 export const styles = [
-  { key: 'Family', icon: 'family' },
-  { key: 'Romantic', icon: 'heart' },
-  { key: 'Culture', icon: 'culture' },
-  { key: 'Short trips', icon: 'short' },
-  { key: 'Beach', icon: 'beach' },
-  { key: 'Nile cruise', icon: 'boat' },
-  { key: 'Luxury', icon: 'gem' }
+  { key: 'Family', slug: 'family', icon: 'family' },
+  { key: 'Honeymoon', slug: 'honeymoon', icon: 'heart' },
+  { key: 'Culture', slug: 'culture', icon: 'culture' },
+  { key: 'Short trips', slug: 'short-trips', icon: 'short' },
+  { key: 'Beach', slug: 'beach', icon: 'beach' },
+  { key: 'Nile cruise', slug: 'nile-cruise', icon: 'boat' },
+  { key: 'Luxury', slug: 'luxury', icon: 'gem' }
 ];
+export const styleBySlug = (slug) => styles.find((s) => s.slug === slug) || null;
+export const styleLanding = (slug) => `/afrika/aegypten/travel-style/${slug}`;
 
 export const sorts = [
   { key: 'price-asc', label: 'Price: low to high', icon: 'sortAsc' },
@@ -31,16 +34,20 @@ export const sorts = [
 ];
 
 export const intro = {
-  h2: 'Your individual Egypt trip, planned by experts',
+  h2: 'About Egypt – planned by experts',
   text: 'Egypt is synonymous with history. Anyone visiting Cairo should include Saqqara in their itinerary. The Step Pyramid of Djoser is the oldest monumental stone structure in the world, older than Giza, and attracts a fraction of the visitors.',
-  expert: { image: '/egypt/expert.webp', name: 'Camille Mollon', role: 'Travel expert for Egypt', updated: 'Updated on 21 August 2026' }
+  expert: { image: '/egypt/expert-ria.webp', name: 'Ria Banerjee', role: 'Head of Product & Travel Expert for Egypt' }
 };
 
 export const tours = {
-  h2: 'Egypt holidays: plan your trip now',
+  h2: 'Egypt holidays',
+  styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
+  short: ['Embark on an ', ['unforgettable journey of discovery'], ' through a millennia-old culture – every Egypt holiday is tailor-made by our experts.'],
   intro: [
-    'Embark on an ', ['unforgettable journey of discovery'], ' through a ', ['millennia-old culture'], ' with a tailor-made Egypt holiday. Marvel at impressive architecture and enjoy the unique combination of desert and sea. Whether you are looking for a ', ['cultural holiday, a Nile cruise or relaxing days on the beach'], ' – our travel experts will be happy to advise you personally.'
+    ' Marvel at impressive architecture and enjoy the unique combination of desert and sea. Whether you are looking for a ', ['cultural holiday, a Nile cruise or relaxing days on the beach'], ' – our travel experts will be happy to advise you personally.'
   ],
+  readMore: 'Read more',
+  readLess: 'Read less',
   more: 'Show more',
   less: 'Show less',
   filterLabel: 'Travel style:',
@@ -51,10 +58,10 @@ export const tours = {
 
 // Prices in INR (converted at ~₹90/€ and ₹85/$, rounded). hotels/cities/activities/transfers for products 2–7 are placeholders.
 export const products = [
-  { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Romantic'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, price: 144000, images: productImages[0] },
+  { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Honeymoon'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, price: 144000, images: productImages[0] },
   { slug: 'rundreise-7-tage', tag: 'Short trips', styles: ['Short trips', 'Culture'], title: 'Unforgettable holiday in Egypt', days: 7, stops: 1, hotels: 1, cities: 1, activities: 5, transfers: 2, price: 121500, images: productImages[1] },
   { slug: 'urlaub-am-meer', tag: null, styles: ['Culture'], title: 'Egypt round trip: experience fascinating culture', days: 8, stops: 3, hotels: 3, cities: 3, activities: 7, transfers: 6, price: 135000, images: productImages[2] },
-  { slug: 'pyramiden-urlaub', tag: 'Culture', styles: ['Culture', 'Romantic'], title: 'Egypt: experience the fascinating pyramids', days: 9, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 6, price: 157500, images: productImages[3] },
+  { slug: 'pyramiden-urlaub', tag: 'Culture', styles: ['Culture', 'Honeymoon'], title: 'Egypt: experience the fascinating pyramids', days: 9, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 6, price: 157500, images: productImages[3] },
   { slug: 'familienurlaub', tag: 'Family', styles: ['Family', 'Nile cruise'], title: 'Egypt family holiday: adventure for kids', days: 11, stops: 4, hotels: 4, cities: 4, activities: 10, transfers: 8, price: 197000, images: productImages[4] },
   { slug: 'rundreise-badeurlaub', tag: 'Culture', styles: ['Beach', 'Culture', 'Nile cruise'], title: 'Round trip and beach holiday in Egypt', days: 11, stops: 6, hotels: 6, cities: 6, activities: 11, transfers: 10, price: 245500, images: productImages[5] },
   { slug: 'rundreise-10-tage', tag: 'Culture', styles: ['Culture', 'Nile cruise', 'Luxury'], title: 'Egypt round trip: 11 days of adventure', days: 11, stops: 6, hotels: 6, cities: 6, activities: 12, transfers: 10, price: 249000, images: productImages[6] }
@@ -80,11 +87,11 @@ export const planner = {
     { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
   ],
   next: 'Continue',
-  known: 'Certified by:',
+  known: 'As seen in:',
   press: [
-    { src: '/badges/iso45001-t.png', alt: 'ISO 45001', w: 56, h: 40 },
-    { src: '/badges/cert3-t.png', alt: 'IATA', w: 72, h: 32 },
-    { src: '/badges/travelife-t.png', alt: 'Travelife', w: 56, h: 36 }
+    { src: '/egypt/sueddeutsche-zeitung.svg', alt: 'Süddeutsche Zeitung', w: 96, h: 36 },
+    { src: '/egypt/stern.svg', alt: 'Stern', w: 96, h: 33 },
+    { src: '/egypt/die-zeit.svg', alt: 'Die Zeit', w: 123, h: 19 }
   ],
   decoration: '/egypt/L.svg'
 };

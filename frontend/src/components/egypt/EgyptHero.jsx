@@ -4,6 +4,7 @@ import { hero, crumbs, places, themes, styles, sorts } from '../../egyptListingD
 import { ChevronRight, ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 import TrustBar from '../TrustBar';
+import Header from '../Header';
 
 export const scrollToId = (id) => {
   const el = document.getElementById(id);
@@ -17,10 +18,10 @@ const inspiration = themes.items.filter((t) => t.tag === 'Inspiration');
 const buildTabs = ({ style, sort }) => [
   { key: 'about', label: 'About Egypt', target: 'about' },
   { key: 'tours', label: 'Egypt holidays', target: 'tours' },
+  { key: 'styles', label: 'Travel styles', pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
   { key: 'guide', label: 'Travel guide', items: guide.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
   { key: 'inspiration', label: 'Inspiration', items: inspiration.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
   { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) },
-  { key: 'styles', label: 'Travel styles', pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
   { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
 ];
 
@@ -77,28 +78,28 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
             const isOpen = open === t.key;
             const isActive = !t.items && active === t.key;
             const hasPick = t.items && t.items.some((i) => i.selected);
-            const base = `relative h-16 px-4 md:px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg rounded-t-xl transition-colors ${isActive || isOpen || hasPick ? 'text-[#1B1C17]' : 'text-[#404942]'} ${isOpen ? 'bg-[rgba(27,28,23,0.08)]' : 'hover:bg-[rgba(27,28,23,0.08)]'}`;
+            const base = `relative h-16 px-4 md:px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg rounded-t-xl transition-colors ${isActive || isOpen || hasPick ? 'text-[#002131]' : 'text-[#174358]'} ${isOpen ? 'bg-[rgba(27,28,23,0.08)]' : 'hover:bg-[rgba(27,28,23,0.08)]'}`;
             if (!t.items) {
               return (
                 <button key={t.key} type="button" onClick={() => scrollToId(t.target)} className={base} data-testid={`eg-tab-${t.key}`}>
                   {t.label}
-                  {isActive && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                  {isActive && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
                 </button>
               );
             }
             return (
               <button key={t.key} type="button" onClick={(e) => toggle(t.key, e)} aria-expanded={isOpen} aria-haspopup="menu" className={base} data-testid={`eg-tab-${t.key}`}>
                 {t.label}
-                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#006D44]" data-testid={`eg-tab-${t.key}-dot`} />}
+                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#E75E26]" data-testid={`eg-tab-${t.key}-dot`} />}
                 <ChevronDown size={24} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                {hasPick && !isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                {hasPick && !isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
               </button>
             );
           })}
         </div>
         {stuck && (
           <div className="hidden lg:flex items-center gap-4 pl-6 shrink-0" data-testid="eg-tabs-cta">
-            <p className="eg-body-sm text-[#1B1C17] text-right whitespace-nowrap">Your travel plan – no obligation<br />&amp; tailor-made</p>
+            <p className="eg-body-sm text-[#002131] text-right whitespace-nowrap">Your travel plan – no obligation<br />&amp; tailor-made</p>
             <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md">{hero.cta}</a>
           </div>
         )}
@@ -107,13 +108,13 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
       {openTab && (
         <div role="menu" style={{ left }} className="absolute top-full mt-0 z-40 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]" data-testid={`eg-tab-dropdown-${openTab.key}`}>
           {openTab.items.map((it) => {
-            const cls = 'w-full flex items-center gap-3 px-4 py-3 text-left eg-body-lg text-[#1B1C17] hover:bg-[rgba(64,73,66,0.08)] transition-colors';
+            const cls = 'w-full flex items-center gap-3 px-4 py-3 text-left eg-body-lg text-[#002131] hover:bg-[rgba(64,73,66,0.08)] transition-colors';
             if (openTab.pick) {
               return (
                 <button key={it.id} type="button" role="menuitemradio" aria-checked={!!it.selected} onClick={() => pick(openTab, it)} className={cls} data-testid="eg-tab-dropdown-item">
                   <NavIcon name={it.icon} />
                   <span className={`flex-1 ${it.selected ? 'font-semibold' : ''}`}>{it.label}</span>
-                  {it.selected && <Check size={20} className="text-[#006D44] shrink-0" aria-hidden />}
+                  {it.selected && <Check size={20} className="text-[#174358] shrink-0" aria-hidden />}
                 </button>
               );
             }
@@ -138,43 +139,44 @@ export function ScrollTop({ className = 'bottom-10 right-12' }) {
   }, []);
   if (!show) return null;
   return (
-    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className={`fixed ${className} z-40 w-14 h-14 rounded-full bg-[#FEFCF4] shadow-[0_1px_3px_rgba(0,0,0,0.3),0_4px_8px_3px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#1B1C17]`} data-testid="eg-scroll-top">
+    <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className={`fixed ${className} z-40 w-14 h-14 rounded-full bg-[#FEFCF4] shadow-[0_1px_3px_rgba(0,0,0,0.3),0_4px_8px_3px_rgba(0,0,0,0.15)] flex items-center justify-center text-[#002131]`} data-testid="eg-scroll-top">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M11 20V7.825l-5.6 5.6L4 12l8-8l8 8l-1.4 1.425l-5.6-5.6V20z" /></svg>
     </button>
   );
 }
 
-const HeroCopy = ({ light = false }) => (
+const HeroCopy = ({ title }) => (
   <>
-    <h1 className={`eg-display-lg ${light ? 'text-white' : 'text-[#1B1C17]'}`} data-testid="eg-hero-title">{hero.h1}</h1>
+    <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance]" data-testid="eg-hero-title">{title}</h1>
     <div className="flex flex-col items-center gap-2">
       <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-hero-cta">{hero.cta}</a>
-      <p className={`eg-body-sm max-w-[300px] md:max-w-none ${light ? 'text-white/90' : 'text-[#1B1C17]'}`}>{hero.sub}</p>
+      <p className="eg-body-sm text-white/90 max-w-[300px] md:max-w-none">{hero.sub}</p>
     </div>
   </>
 );
 
-export default function EgyptHero(props) {
+export default function EgyptHero({ style, sort, onStyle, onSort }) {
+  const title = style ? hero.styleH1(style) : hero.h1;
   return (
     <>
-      <section className="pt-4 md:pt-10" data-testid="eg-hero">
-        <div className="md:hidden flex flex-col items-center gap-6 px-4 pb-10 text-center" data-testid="eg-hero-copy-mobile"><HeroCopy /></div>
-        <div className="relative h-[236px] sm:h-[356px] md:h-[453px] bg-[#EAE8E0]">
+      <div className="relative">
+        <Header overlay />
+        <section className="relative h-[520px] sm:h-[560px] md:h-[600px] lg:h-[640px] bg-[#EAE8E0]" data-testid="eg-hero">
           <img src={hero.image} alt="Pyramids of Giza, Egypt" className="absolute inset-0 w-full h-full object-cover" loading="eager" data-testid="eg-hero-image" />
-          <div className="hidden md:block absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.55)_0%,rgba(0,33,49,0.2)_50%,rgba(0,33,49,0.45)_100%)]" />
-          <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy light /></div>
-        </div>
-      </section>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.5)_0%,rgba(0,33,49,0.15)_45%,rgba(0,33,49,0.5)_100%)] pointer-events-none" />
+          <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-6 md:gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy title={title} /></div>
+        </section>
+      </div>
 
       <div data-testid="eg-trust-bar"><TrustBar /></div>
 
-      <StickyTabs {...props} />
+      <StickyTabs style={style} sort={sort} onStyle={onStyle} onSort={onSort} />
 
-      <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#404942]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
+      <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
         {crumbs.map((c, i) => (
           <React.Fragment key={c.label}>
-            {i > 0 && <ChevronRight size={20} className="text-[#404942]" />}
-            {c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#1B1C17]">{c.label}</span>}
+            {i > 0 && <ChevronRight size={20} className="text-[#174358]" />}
+            {c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#002131]">{c.label}</span>}
           </React.Fragment>
         ))}
       </nav>

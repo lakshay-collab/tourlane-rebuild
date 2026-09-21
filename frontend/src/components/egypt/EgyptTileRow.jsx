@@ -6,8 +6,8 @@ export function EgyptTile({ item, imgClass = 'h-[287px]', testId = 'eg-tile' }) 
     <a href={item.href} onClick={(e) => e.preventDefault()} className="eg-card h-full" data-testid={testId}>
       <img src={item.image} alt={item.alt || item.title} className={`w-full object-cover ${imgClass}`} loading="lazy" />
       <div className="py-6 px-4">
-        {item.tag && <p className="eg-body-lg text-[#404942]">{item.tag}</p>}
-        <h3 className={`eg-title-md text-[#1B1C17] ${item.tag ? 'mt-1' : ''}`}>{item.title}</h3>
+        {item.tag && <p className="eg-body-lg text-[#174358]">{item.tag}</p>}
+        <h3 className={`eg-title-md text-[#002131] ${item.tag ? 'mt-1' : ''}`}>{item.title}</h3>
       </div>
     </a>
   );

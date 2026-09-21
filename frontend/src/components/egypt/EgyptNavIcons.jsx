@@ -6,7 +6,7 @@ const icons = {
   pin: MapPin, family: Users, heart: Heart, culture: Landmark, short: Timer, boat: Sailboat, gem: Gem, sortAsc: ArrowUpNarrowWide, sortDesc: ArrowDownWideNarrow, clock: Clock
 };
 
-export const NavIcon = ({ name, size = 24, className = 'text-[#4F6354]' }) => {
+export const NavIcon = ({ name, size = 24, className = 'text-[#174358]' }) => {
   const I = icons[name];
   return I ? <I size={size} strokeWidth={1.75} className={`shrink-0 ${className}`} aria-hidden /> : null;
 };

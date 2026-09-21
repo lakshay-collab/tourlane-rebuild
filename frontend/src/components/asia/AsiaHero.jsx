@@ -27,24 +27,24 @@ function StickyTabs() {
             const items = dropdowns[t];
             if (!items) {
               return (
-                <a key={t} href="#" onClick={(e) => e.preventDefault()} className={`relative h-16 px-5 flex items-center whitespace-nowrap eg-label-lg ${i === 0 ? 'text-[#1B1C17]' : 'text-[#404942] hover:text-[#1B1C17]'}`} data-testid={`as-tab-${i}`}>
+                <a key={t} href="#" onClick={(e) => e.preventDefault()} className={`relative h-16 px-5 flex items-center whitespace-nowrap eg-label-lg ${i === 0 ? 'text-[#002131]' : 'text-[#174358] hover:text-[#002131]'}`} data-testid={`as-tab-${i}`}>
                   {t}
-                  {i === 0 && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                  {i === 0 && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
                 </a>
               );
             }
             const isOpen = open === t;
             return (
               <div key={t} className="relative">
-                <button type="button" onClick={() => setOpen(isOpen ? null : t)} aria-expanded={isOpen} className={`relative h-16 px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg ${isOpen ? 'text-[#1B1C17]' : 'text-[#404942] hover:text-[#1B1C17]'}`} data-testid={`as-tab-${i}`}>
+                <button type="button" onClick={() => setOpen(isOpen ? null : t)} aria-expanded={isOpen} className={`relative h-16 px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg ${isOpen ? 'text-[#002131]' : 'text-[#174358] hover:text-[#002131]'}`} data-testid={`as-tab-${i}`}>
                   {t}
                   <ChevronDown size={18} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                  {isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                  {isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
                 </button>
                 {isOpen && (
                   <div className="absolute left-0 top-full z-40 w-[300px] max-h-[70vh] overflow-y-auto rounded-b-xl border border-t-0 border-[#E4E3DB] bg-[#FBF9F1] shadow-[0_4px_16px_rgba(0,0,0,0.15)] py-2" data-testid={`as-tab-dropdown-${i}`}>
                     {items.map((it) => (
-                      <a key={it.title} href={it.href} onClick={(e) => e.preventDefault()} className="block px-5 py-2.5 eg-body-md text-[#404942] hover:bg-[#EFEDE4] hover:text-[#1B1C17] transition-colors" data-testid="as-tab-dropdown-item">{it.title}</a>
+                      <a key={it.title} href={it.href} onClick={(e) => e.preventDefault()} className="block px-5 py-2.5 eg-body-md text-[#174358] hover:bg-[#EFEDE4] hover:text-[#002131] transition-colors" data-testid="as-tab-dropdown-item">{it.title}</a>
                     ))}
                   </div>
                 )}
@@ -54,7 +54,7 @@ function StickyTabs() {
         </div>
         {stuck && (
           <div className="hidden lg:flex items-center gap-4 pr-[65px]" data-testid="as-tabs-cta">
-            <p className="eg-body-sm text-[#1B1C17] text-right whitespace-nowrap">Ihr Reiseplan – unverbindlich<br />&amp; maßgeschneidert</p>
+            <p className="eg-body-sm text-[#002131] text-right whitespace-nowrap">Ihr Reiseplan – unverbindlich<br />&amp; maßgeschneidert</p>
             <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md">{hero.cta}</a>
           </div>
         )}
@@ -64,7 +64,7 @@ function StickyTabs() {
 }
 
 export const AsiaTrustRow = ({ size = 20, className = '', compact = false }) => (
-  <div className={`flex flex-wrap items-center justify-center gap-x-4 gap-y-2 eg-label-lg text-[#1B1C17] ${className}`} data-testid="as-trust-row">
+  <div className={`flex flex-wrap items-center justify-center gap-x-4 gap-y-2 eg-label-lg text-[#002131] ${className}`} data-testid="as-trust-row">
     <span>{trust.label}</span>
     <TpStars rating={trust.rating} size={size} />
     <span className={compact ? 'hidden sm:inline' : ''}><span>{trust.score} </span>{trust.outOf}</span>
@@ -100,11 +100,11 @@ export default function AsiaHero() {
 
       <StickyTabs />
 
-      <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#404942]" aria-label="Breadcrumb" data-testid="as-breadcrumb">
+      <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="as-breadcrumb">
         {crumbs.map((c, i) => (
           <React.Fragment key={c.label}>
-            {i > 0 && <ChevronRight size={20} className="text-[#404942]" />}
-            {c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#1B1C17]">{c.label}</span>}
+            {i > 0 && <ChevronRight size={20} className="text-[#174358]" />}
+            {c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#002131]">{c.label}</span>}
           </React.Fragment>
         ))}
       </nav>
