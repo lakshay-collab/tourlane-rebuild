@@ -1,84 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Phone, Menu, X, ChevronDown, Clock } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import Logo from './Logo';
-import { nav, expertAdvice } from '../mock';
+import { nav } from '../mock';
+import MobileDrawer from './MobileDrawer';
+import ExpertAdvicePanel from './ExpertAdvicePanel';
 
 const BANNER_KEY = 'hi-banner-dismissed';
-
-const menuSub = {
-  'Destinations': ['Africa', 'Egypt', 'Asia', 'Europe', 'North America', 'South America', 'Oceania', 'Middle East'],
-  'Trip types': ['Honeymoons', 'Family holidays', 'Road trips', 'Safari', 'Beach & relaxation', 'Adventure'],
-  'Activities': ['Wildlife safari', 'Hiking & trekking', 'Diving & snorkelling', 'Cultural tours', 'Food & wine']
-};
-
-const subHref = (s) => (s === 'Egypt' ? '/afrika/aegypten' : s === 'Asia' ? '/asien' : null);
-
-const AdviceBody = () => (
-  <>
-    <p className="t-title-md text-onsurface">{expertAdvice.title}</p>
-    <p className="t-body-md text-onsurface-variant mt-2">{expertAdvice.note}</p>
-    <a href={expertAdvice.phoneHref} className="flex items-center gap-2 mt-4 t-headline-md text-primary" data-testid="advice-phone">
-      <Phone size={20} className="text-primary" /> {expertAdvice.phone}
-    </a>
-    <p className="flex items-center gap-2 mt-1 t-body-md text-onsurface-variant"><Clock size={16} /> {expertAdvice.hours}</p>
-    <button className="btn-filled w-full mt-4" data-testid="advice-cta">{expertAdvice.cta}</button>
-  </>
-);
-
-function MobileMenu({ open, setOpen }) {
-  const [expanded, setExpanded] = useState(null);
-  if (!open) return null;
-  return (
-    <div className="lg:hidden fixed inset-0 z-[70] bg-surface flex flex-col" data-testid="mobile-menu">
-      <div className="h-[64px] px-4 flex items-center justify-between border-b border-outline-variant shrink-0">
-        <a href="/" aria-label="Hi Tours"><Logo className="h-9 w-auto" /></a>
-        <button onClick={() => setOpen(false)} aria-label="Close menu" data-testid="mobile-menu-close" className="p-2 -mr-2 text-onsurface"><X size={26} strokeWidth={1.75} /></button>
-      </div>
-      <div className="flex-1 overflow-y-auto px-4 py-1">
-        <ul>
-          {nav.links.map((l) => {
-            const sub = menuSub[l.label];
-            const isOpen = expanded === l.label;
-            return (
-              <li key={l.label} className="border-b border-surface-highest">
-                <button
-                  onClick={() => (sub ? setExpanded(isOpen ? null : l.label) : setOpen(false))}
-                  className="w-full flex items-center justify-between py-4 t-title-md text-onsurface"
-                  data-testid={`mobile-nav-${l.label.toLowerCase().replace(/\s/g, '-')}`}
-                >
-                  {l.label}
-                  {sub && <ChevronDown size={22} className={`text-onsurface-variant transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />}
-                </button>
-                {sub && (
-                  <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[520px]' : 'max-h-0'}`}>
-                    <ul className="pb-3">
-                      {sub.map((s) => {
-                        const to = subHref(s);
-                        return (
-                          <li key={s}>
-                            <a href={to || '#'} onClick={(e) => { if (!to) e.preventDefault(); else setOpen(false); }} className="block py-2.5 pl-3 t-body-lg text-onsurface-variant hover:text-primary transition-colors" data-testid="mobile-subnav-item">{s}</a>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-        <div className="mt-6 rounded-2xl bg-secondary-container p-5" data-testid="mobile-advice">
-          <AdviceBody />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Header({ overlay = false }) {
   const [open, setOpen] = useState(false);
   const [adviceOpen, setAdviceOpen] = useState(false);
   const adviceRef = useRef(null);
+  const hoverTimer = useRef(null);
   const [bannerOpen, setBannerOpen] = useState(() => {
     try { return sessionStorage.getItem(BANNER_KEY) !== '1'; } catch { return true; }
   });
@@ -99,6 +32,9 @@ export default function Header({ overlay = false }) {
     setBannerOpen(false);
   };
 
+  const hoverIn = () => { clearTimeout(hoverTimer.current); setAdviceOpen(true); };
+  const hoverOut = () => { hoverTimer.current = setTimeout(() => setAdviceOpen(false), 120); };
+
   const textCls = overlay ? 'text-white' : 'text-onsurface';
   const dividerCls = overlay ? 'bg-white/30' : 'bg-outline-variant';
 
@@ -117,7 +53,7 @@ export default function Header({ overlay = false }) {
         <Logo white={overlay} className="h-10 sm:h-11 w-auto" />
       </a>
 
-      <nav className="hidden lg:flex items-center" data-testid="desktop-nav">
+      <nav className="hidden lg:flex items-center h-full" data-testid="desktop-nav">
         {nav.links.map((l, i) => (
           <React.Fragment key={l.label}>
             {i >= 3 && <span className={`h-6 w-px ${dividerCls} mx-4`} />}
@@ -127,22 +63,24 @@ export default function Header({ overlay = false }) {
           </React.Fragment>
         ))}
         <span className={`h-6 w-px ${dividerCls} mx-4`} />
-        <div className="relative" ref={adviceRef}>
+        <div className="relative h-full flex items-center" ref={adviceRef} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
           <button onClick={() => setAdviceOpen((v) => !v)} className={`flex items-center gap-2 t-body-md ${textCls} hover:opacity-75 transition-opacity`} data-testid="nav-phone" aria-expanded={adviceOpen}>
-            <Phone size={18} strokeWidth={1.75} className={overlay ? 'text-white' : 'text-primary'} />
+            <Phone size={18} strokeWidth={1.75} />
             {nav.phone}
-            <ChevronDown size={16} className={`transition-transform ${adviceOpen ? 'rotate-180' : ''}`} />
           </button>
+          <span className={`absolute inset-x-[-12px] bottom-0 h-[3px] rounded-t-sm transition-opacity duration-200 ${adviceOpen ? 'opacity-100' : 'opacity-0'} ${overlay ? 'bg-white' : 'bg-primary'}`} />
           {adviceOpen && (
-            <div className="absolute right-0 top-full mt-3 w-[320px] bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.18)] p-5 z-50 text-left" data-testid="advice-popover">
-              <AdviceBody />
+            <div className="absolute right-[-12px] top-full pt-1 z-50" data-testid="advice-popover">
+              <div className="w-[340px] bg-surface-low rounded-2xl shadow-[0_8px_24px_rgba(0,33,49,0.18)] overflow-hidden animate-[hi-fade-in_200ms_ease-out]">
+                <ExpertAdvicePanel />
+              </div>
             </div>
           )}
         </div>
       </nav>
 
-      <button className={`lg:hidden ${textCls} p-1 ml-3`} onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
-        <Menu size={26} strokeWidth={1.75} />
+      <button className={`lg:hidden ${textCls} w-10 h-10 -mr-2 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors`} onClick={() => setOpen(true)} aria-label="Open menu" data-testid="mobile-menu-toggle">
+        <Menu size={24} strokeWidth={1.75} />
       </button>
     </div>
   );
@@ -162,7 +100,7 @@ export default function Header({ overlay = false }) {
           </header>
         </>
       )}
-      <MobileMenu open={open} setOpen={setOpen} />
+      <MobileDrawer open={open} onClose={() => setOpen(false)} />
     </>
   );
 }

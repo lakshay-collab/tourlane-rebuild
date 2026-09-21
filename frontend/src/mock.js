@@ -15,11 +15,16 @@ export const nav = {
 };
 
 export const expertAdvice = {
-  title: 'Free expert advice',
-  note: 'Talk to a Hi Tours travel expert and start planning your tailor-made trip — no obligation.',
+  title: 'Expert advice',
+  openLabel: 'Available now!',
+  closedLabel: 'Outside opening hours.',
+  existing: 'For questions about an existing trip',
+  portal: 'Service portal',
+  planning: 'For planning your next trip',
   phone: '+91 22 6140 1500',
   phoneHref: 'tel:+912261401500',
-  hours: 'Mon–Sat, 9:00 – 20:00 IST',
+  hours: ['Mon – Fri (excl. holidays): 9 am – 8 pm', 'Sat (excl. holidays): 10 am – 6 pm', 'All times IST'],
+  schedule: { 1: [9, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [10, 18] },
   cta: 'Plan for free'
 };
 

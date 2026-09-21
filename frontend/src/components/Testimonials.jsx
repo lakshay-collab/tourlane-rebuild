@@ -1,9 +1,7 @@
 import React from 'react';
 import { testimonials } from '../mock';
-import { BoxStars } from './Rating';
+import { BoxStars, BRAND_BLUE as BLUE } from './Rating';
 import Carousel from './Carousel';
-
-const BLUE = '#1C6FB8';
 
 export default function Testimonials() {
   return (

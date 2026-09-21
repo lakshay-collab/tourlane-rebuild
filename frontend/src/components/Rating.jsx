@@ -33,15 +33,18 @@ export const BrandStars = ({ rating = 5, size = 16, className = '' }) => (
   </span>
 );
 
-// Trustpilot-style boxed stars, coloured blue (no Trustpilot branding)
+// Boxed review stars in Hi Tours brand blue (Harbor). Unfilled tiles are a clearly lighter neutral.
+export const BRAND_BLUE = '#174358';
+const EMPTY_TILE = '#D6DCE0';
+
 const StarTile = ({ fill = 1, size = 20, color }) => (
-  <span className="relative block shrink-0" style={{ width: size, height: size, background: '#DADCE6' }}>
+  <span className="relative block shrink-0" style={{ width: size, height: size, background: EMPTY_TILE }}>
     <span className="absolute inset-y-0 left-0" style={{ width: `${fill * 100}%`, background: color }} />
     <svg viewBox="0 0 46 46" className="absolute inset-0 w-full h-full"><path fill="#FFF" d="M39.534 19.711L13.23 38.801l3.838-11.798L7.021 19.71h12.42l3.837-11.798 3.837 11.798h12.419zm-16.255 11.8L30.462 30l2.862 8.8-10.045-7.29z" /></svg>
   </span>
 );
 
-export const BoxStars = ({ rating = 5, size = 20, color = '#1C6FB8', className = '' }) => (
+export const BoxStars = ({ rating = 5, size = 20, color = BRAND_BLUE, className = '' }) => (
   <span className={`inline-flex gap-[3px] ${className}`} data-testid="brand-stars">
     {[0, 1, 2, 3, 4].map((i) => <StarTile key={i} size={size} color={color} fill={Math.max(0, Math.min(1, rating - i))} />)}
   </span>
@@ -68,6 +71,6 @@ export const GoogleLogo = ({ size = 18 }) => (
   </svg>
 );
 
-export const TripAdvisorLogo = ({ size = 22 }) => (
-  <img src="/badges/tripadvisor.png" alt="Tripadvisor" style={{ height: size }} className="w-auto" />
+export const TripAdvisorLogo = ({ size = 20 }) => (
+  <img src="/badges/tripadvisor-owl.png" alt="TripAdvisor" width={size} height={size} style={{ width: size, height: size }} className="block" />
 );
