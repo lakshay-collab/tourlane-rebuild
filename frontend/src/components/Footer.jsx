@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Facebook, Instagram, Linkedin, Youtube, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { footer, trust } from '../mock';
@@ -29,38 +29,57 @@ const Badges = ({ className = '' }) => (
   </div>
 );
 
+const FooterColumn = ({ title, children }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-outline-variant sm:border-0" data-testid="footer-column">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="w-full flex items-center justify-between py-4 sm:py-0 sm:pointer-events-none"
+        data-testid="footer-column-toggle"
+      >
+        <h4 className="t-title-md text-onsurface">{title}</h4>
+        <ChevronDown size={18} className={`sm:hidden transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      <div className={`${open ? 'block' : 'hidden'} sm:block pb-4 sm:pb-0 sm:mt-5`}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export default function Footer() {
   return (
     <footer className="bg-surface" data-testid="site-footer">
-      <div className="tl-wide pt-12 pb-10 flex flex-col lg:flex-row gap-10 lg:gap-16">
-        <div className="lg:w-[460px] shrink-0">
-          <div className="flex items-center justify-between">
-            <a href="/" aria-label="Hi Tours"><Logo className="h-12 w-auto" /></a>
-            <div className="flex items-center gap-4 lg:hidden"><Socials /></div>
-          </div>
-          <p className="hidden lg:block t-body-md text-onsurface mt-8">{footer.description}</p>
-          <div className="hidden lg:flex items-center gap-4 mt-6"><Socials /></div>
+      <div className="tl-wide pt-12">
+        <div className="flex items-center justify-between pb-6 border-b border-onsurface">
+          <a href="/" aria-label="Hi Tours"><Logo className="h-12 w-auto" /></a>
+          <div className="flex items-center gap-4"><Socials /></div>
         </div>
+      </div>
 
-        <div className="flex flex-col sm:flex-row gap-8 sm:gap-6 flex-1">
+      <div className="tl-wide pt-8 pb-10 flex flex-col lg:flex-row gap-4 sm:gap-10 lg:gap-16">
+        <p className="hidden lg:block lg:w-[340px] shrink-0 t-body-md text-onsurface">{footer.description}</p>
+
+        <div className="flex flex-col sm:flex-row gap-0 sm:gap-6 flex-1">
           {footer.columns.map((col) => (
-            <div key={col.title} className="sm:w-[220px]">
-              <h4 className="t-title-md text-onsurface">{col.title}</h4>
-              <ul className="mt-5 space-y-2">
+            <FooterColumn key={col.title} title={col.title}>
+              <ul className="space-y-2 sm:w-[200px]">
                 {col.links.map((l) => (
                   <li key={l}><button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button></li>
                 ))}
               </ul>
-            </div>
+            </FooterColumn>
           ))}
-          <div className="flex-1">
-            <h4 className="t-title-md text-onsurface">{footer.care.title}</h4>
-            <ul className="mt-5 space-y-2">
+          <FooterColumn title={footer.care.title}>
+            <ul className="space-y-2">
               {footer.care.lines.map((l) => <li key={l} className="t-body-md text-onsurface">{l}</li>)}
               <li><button className="t-label-lg text-primary hover:underline" data-testid="footer-care-cta">{footer.care.cta}</button></li>
             </ul>
             <Badges className="mt-8" />
-          </div>
+          </FooterColumn>
         </div>
       </div>
 
