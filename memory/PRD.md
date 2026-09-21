@@ -10,7 +10,14 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - `src/components/*` – one component per section; `Carousel.jsx`, `SearchBar.jsx`, `TrustLine.jsx`, `Logo.jsx` shared.
 - `public/*.svg` – original Tourlane SVG assets (logo path, feature icons, trust badges, Trustpilot wordmark).
 
-## Design tokens (extracted from tourlane.de CSS)
+## Brand re-skin (Hi Tours brand kit, 2026-06)
+- Layout/backgrounds unchanged (cream surfaces kept per user). Only brand colors, fonts, logos swapped.
+- Colors: primary Ember #E75E26 (hover #C84D1B), Amber #FB7F26, Peach #F4B49A (primary-container), Blush #FADDD1 (secondary-container: trust bar, step circles, arrows), Sand #FBEADB (surface-variant: table rows, active pill), Ink #002131 (text, banner, photo scrims), Harbor #174358 (secondary text, table header).
+- Fonts: Bricolage Grotesque (display, weight 500), Inter (body), Instrument Sans (labels/buttons/tags).
+- Logos: /public/hitours-logo.webp (header + footer), hitours-logo-white.webp (for dark use), Logo.jsx renders <img>.
+- Copy still says "Tourlane" (user asked not to change anything else) – backlog item.
+
+## Original Tourlane design tokens (reference, superseded by brand re-skin)
 - Fonts: Roboto Serif (display) / Roboto Flex (body) via Google Fonts.
 - Colors: primary #006D44, primary-fixed-variant #005232, secondary-container #D0E8D6, surface #FBF9F1, surface-low #F6F4EB, surface-container #F0EEE6, surface-highest #E4E3DB, surface-variant #DCE5DC, on-surface #1B1C17, on-surface-variant #404942, outline #717972, outline-variant #C0C9C0, Trustpilot #00B67A.
 - Type scale utilities `.t-display-*`, `.t-headline-*`, `.t-title-*`, `.t-body-*`, `.t-label-*` in `index.css`.
@@ -35,6 +42,7 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Tested: testing agent iteration_1 – 100% pass at 390/905/1440, 0 broken images, 0 console errors.
 
 ## Backlog
+- P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
 - P1: Backend migration – lead/search enquiry persistence, newsletter signups (+ email provider), destinations API. Create `/app/contracts.md` first.
 - P2: Nav dropdown menus (Destinations / Trip types / Activities), destination detail pages, mobile Trustpilot bar variant.

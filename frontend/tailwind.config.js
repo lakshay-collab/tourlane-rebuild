@@ -12,13 +12,14 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        serif: ['"Roboto Serif"', 'Georgia', 'serif'],
-        sans: ['"Roboto Flex"', 'Roboto', 'Arial', 'sans-serif']
+        serif: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
+        sans: ['Inter', '"Instrument Sans"', 'Arial', 'sans-serif'],
+        ui: ['"Instrument Sans"', 'Inter', 'sans-serif']
       },
       colors: {
-        primary: { DEFAULT: '#006D44', container: '#91F7BD', dim: '#75DAA3' },
-        onprimary: { fixedvariant: '#005232', container: '#002111' },
-        secondary: { DEFAULT: '#4E6355', container: '#D0E8D6', dim: '#B5CCBB' },
+        primary: { DEFAULT: '#E75E26', hover: '#C84D1B', container: '#F4B49A', dim: '#FB7F26' },
+        onprimary: { fixedvariant: '#174358', container: '#002131' },
+        secondary: { DEFAULT: '#174358', container: '#FADDD1', dim: '#F4B49A' },
         surface: {
           DEFAULT: '#FBF9F1',
           dim: '#DCDAD2',
@@ -27,12 +28,12 @@ module.exports = {
           container: '#F0EEE6',
           high: '#EAE8E0',
           highest: '#E4E3DB',
-          variant: '#DCE5DC'
+          variant: '#FBEADB'
         },
-        onsurface: { DEFAULT: '#1B1C17', variant: '#404942' },
-        outline: { DEFAULT: '#717972', variant: '#C0C9C0' },
+        onsurface: { DEFAULT: '#002131', variant: '#174358' },
+        outline: { DEFAULT: '#6F777C', variant: '#C4CBD0' },
         inverse: { DEFAULT: '#30312B', on: '#F3F1E9' },
-        banner: '#0B1810',
+        banner: '#002131',
         trustpilot: '#00B67A',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

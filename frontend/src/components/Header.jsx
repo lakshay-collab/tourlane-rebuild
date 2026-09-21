@@ -19,8 +19,8 @@ export default function Header() {
 
       <header className="relative z-40 bg-surface" data-testid="site-header">
         <div className="tl-wide h-[72px] flex items-center justify-between">
-          <a href="/" aria-label="Tourlane" className="text-primary" data-testid="logo-link">
-            <Logo className="h-[15px] sm:h-[18px] w-auto" />
+          <a href="/" aria-label="Hi Tours" data-testid="logo-link">
+            <Logo className="h-9 sm:h-10 w-auto" />
           </a>
 
           <nav className="hidden lg:flex items-center" data-testid="desktop-nav">

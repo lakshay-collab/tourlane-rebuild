@@ -13,7 +13,7 @@ export default function Experts() {
             <article key={e.name} className="shrink-0 snap-start w-[280px] md:w-[calc((100%-48px)/3)]" data-testid="expert-card">
               <div className="relative h-[360px] md:h-[448px] rounded-xl overflow-hidden">
                 <img src={e.photo} alt={e.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#002131]/75 to-transparent" />
                 <div className="absolute left-4 bottom-4 text-white">
                   <h3 className="t-headline-sm">{e.name}</h3>
                   <p className="t-label-lg font-normal text-white/90">{e.role}</p>

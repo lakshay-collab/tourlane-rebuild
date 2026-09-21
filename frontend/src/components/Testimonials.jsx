@@ -24,7 +24,7 @@ export default function Testimonials() {
             <article key={t.name} className="shrink-0 snap-start w-[300px] md:w-[calc((100%-48px)/3)]" data-testid="testimonial-card">
               <div className="relative h-[220px] rounded-xl overflow-hidden">
                 <img src={t.image} alt={t.trip} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/35 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#002131]/45 to-transparent" />
                 <span className="absolute left-4 bottom-4 t-title-md text-white">{t.trip}</span>
               </div>
               <div className="px-4 mt-4">

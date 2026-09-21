@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="tl-wide pt-12 pb-10 flex flex-col lg:flex-row gap-10 lg:gap-16">
         <div className="lg:w-[460px] shrink-0">
           <div className="flex items-center justify-between">
-            <a href="/" aria-label="Tourlane" className="text-primary"><Logo className="h-6 w-auto" /></a>
+            <a href="/" aria-label="Hi Tours"><Logo className="h-12 w-auto" /></a>
             <div className="flex items-center gap-4 lg:hidden"><Socials /></div>
           </div>
           <p className="hidden lg:block t-body-md text-onsurface mt-8">{footer.description}</p>

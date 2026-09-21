@@ -22,7 +22,7 @@ export default function Moments() {
           {moments.items.map((m) => (
             <article key={m.title} className="relative shrink-0 snap-start w-[256px] h-[328px] rounded-xl overflow-hidden" data-testid="moment-card">
               <img src={m.image} alt={m.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#002131]/80 via-[#002131]/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                 <h3 className="t-title-md">{m.title}</h3>
                 <p className="t-label-sm text-white/80 mt-1 font-normal">{m.name}</p>
