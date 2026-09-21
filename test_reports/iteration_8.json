@@ -1,0 +1,77 @@
+{
+  "summary": "Frontend-only regression on rebuilt Egypt listing (/afrika/aegypten). All 17 requested features verified via Playwright against the public REACT_APP_BACKEND_URL. Zero console errors, no horizontal overflow at 1440x900 or 390x844. All data-testids present and functional.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verifications": {
+    "no_overflow_1440": true,
+    "no_overflow_390": true,
+    "hero": {
+      "h1": "Ägypten Rundreise",
+      "cta": "Kostenlos Planen",
+      "trust_bar": "Hervorragend / 4,5 von 5 / 5.748 Bewertungen / Trustpilot",
+      "tabs": ["Ägypten Rundreisen", "Reiseführer", "Inspiration", "Orte"],
+      "breadcrumb": "Reiseziele > Afrika > Ägypten"
+    },
+    "product_grid": {
+      "initial_cards": 6,
+      "after_more": 7,
+      "collapse_back": 6,
+      "labels": "Mehr erfahren <-> Weniger (verified)",
+      "carousel_next_changes_image": true
+    },
+    "detail_nav": {
+      "first_href": "/afrika/aegypten/luxor-strand-urlaub",
+      "navigated_ok": true,
+      "crashed": false
+    },
+    "planner": {
+      "visible_desktop": true,
+      "initial_values": [2,0,0,2,0,0],
+      "plus_increments": true,
+      "erwachsene_minus_disabled_at_1": true,
+      "kinder_minus_disabled_at_0": true,
+      "kleinkinder_minus_disabled_at_0": true
+    },
+    "sticky_tabs": {
+      "y_at_scroll_2500": 0,
+      "tabs_cta_visible": true,
+      "scroll_top_visible": true,
+      "scroll_top_scrolls_back": true
+    },
+    "reviews": {
+      "count": 3,
+      "names": ["Lysann", "Iris", "anna .f"],
+      "cta": "Jetzt kostenlos planen"
+    },
+    "places_row": {
+      "titles": ["Alexandria","Assuan","Hurghada","Kairo","Luxor","Sharm El-Sheikh"],
+      "next_scrolls": true,
+      "prev_appears_after_scroll": true
+    },
+    "activities": {"count": 2, "titles_present": true},
+    "plan_toggle": {"sections_after_open": 6, "label_toggles": "Weitere Details anzeigen <-> Weniger Details anzeigen"},
+    "themes": {"initial": 3, "after_more": 8, "label_toggles": "Mehr erfahren <-> Weniger"},
+    "faq": {"count": 4, "one_open_at_a_time": true},
+    "africa_row": {"count": 9, "first_four": ["Südafrika","Seychellen","Tansania","Namibia"], "next_present": true},
+    "mobile_390": {"grid_single_column_width": "358px", "no_horizontal_overflow": true},
+    "homepage_loads": true,
+    "console_errors": 0
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "EgyptTileRow.jsx: on unmount, useEffect returns { el.removeEventListener(...) } capturing ref.current which may be null between renders; consider capturing el = ref.current inside effect to avoid a potential runtime error if the row unmounts before ref settles. Non-blocking today.",
+    "EgyptPlanner.jsx: uses fixed h-[702px] and absolute positioning at lg+; safe for current data but any additional counter row would overflow the fixed height card.",
+    "EgyptHero StickyTabs: scroll threshold hardcoded at 560px; may not align with hero height at some breakpoints, but currently visually correct at 1440."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Egypt listing rebuild passes all 17 acceptance criteria. Key data-testids: egypt-listing-page, eg-hero, eg-hero-title, eg-hero-cta, eg-trust-bar, eg-trust-row, eg-tabs, eg-tabs-cta, eg-breadcrumb, eg-product-grid, eg-product-card, eg-tours-more, eg-product-prev/next, eg-product-details-link, eg-planner-card, eg-planner-plus/minus/value, eg-scroll-top, eg-review-card, eg-reviews-cta, eg-places-row(+ -next/-prev), eg-activity-card, eg-plan-toggle, eg-plan-section, eg-theme-grid, eg-themes-more, eg-faq, eg-faq-question, eg-faq-answer, eg-africa-row(+ -next). Detail /afrika/aegypten/luxor-strand-urlaub renders."
+}
