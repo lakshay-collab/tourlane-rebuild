@@ -18,7 +18,6 @@ export const ReviewSummary = ({ className = '' }) => (
 export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16' }) {
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
-      {!centered && <p className="eg-eyebrow mb-3">Traveller stories</p>}
       <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{reviews.h2}</h2>
       <ReviewSummary className="mt-8" />
       <div className="mt-8 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" data-testid="eg-review-track">
@@ -73,9 +72,7 @@ export function EgyptPlan() {
 export function EgyptFaq() {
   const [open, setOpen] = useState(null);
   return (
-    <section className="mt-12 md:mt-16 eg-band-sky py-12 md:py-16" id="faq" data-testid="eg-faq">
-      <div className="eg-container">
-      <p className="eg-eyebrow mb-3">Good to know</p>
+    <section className="eg-container mt-12 md:mt-16" id="faq" data-testid="eg-faq">
       <h2 className="eg-display-sm text-[#002131]">{faq.h2}</h2>
       <div className="mt-8 pb-4 border-t border-[#C4CBD0]">
         {faq.items.map((it, i) => (
@@ -90,7 +87,6 @@ export function EgyptFaq() {
             )}
           </div>
         ))}
-      </div>
       </div>
     </section>
   );

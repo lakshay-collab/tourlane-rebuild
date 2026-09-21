@@ -205,3 +205,8 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Listing: eyebrows above tours/places/themes/reviews/FAQ; USP section on warm-mist rounded band; FAQ on sky-mist full-width band; card tiles Sky #E0F7FF w/ Harbor icons; cities chip + active filter pill + ScrollTop = harbor-sky gradient; price Harbor; arrows Sky; planner overlay Deep Water tint.
 - Homepage: `.btn-sunset` now Deep Water gradient (aligned with listing CTAs); Blush trust bar, Dawn Haze step circles, Ember accents retained.
 - Cards: equal-height rows on desktop, natural height on mobile, titles never truncated (UX decision explained to user).
+
+## Cleanup + sticky title (2026-06, latest)
+- Per user: removed all eyebrow sub-headings and the Sky/warm section bands (user did not ask for them). Listing colours now follow the homepage system only: Deep Water gradient (CTAs, cities chip, active filter pill, ScrollTop), Blush arrows, Sand #FBEADB value tiles with Harbor icons, Ink/Harbor text. No Sky tints (user removed light blues earlier).
+- Sticky filter bar shows the section title ("Egypt holidays" / "Egypt honeymoon holidays") ONLY while stuck (eg-filter-title); on mobile the Travel styles pill shortens to "Styles" while stuck, title wraps to 2 lines at 14px.
+- RULE (user): do not add UI elements/copy that were not requested.

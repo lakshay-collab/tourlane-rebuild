@@ -9,7 +9,7 @@ const menus = (style, sort) => [
   { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
 ];
 
-export default function EgyptFilterBar({ style, sort, onStyle, onSort }) {
+export default function EgyptFilterBar({ title, style, sort, onStyle, onSort }) {
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(0);
   const [stuck, setStuck] = useState(false);
@@ -45,6 +45,7 @@ export default function EgyptFilterBar({ style, sort, onStyle, onSort }) {
   return (
     <div ref={ref} className={`sticky top-0 z-30 mt-6 -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 bg-[#FBF9F1] transition-shadow ${stuck ? 'shadow-[0_6px_12px_-8px_rgba(0,33,49,0.25)]' : ''}`} data-testid="eg-filter-bar">
       <div className="relative flex items-center gap-2 sm:gap-3 h-16">
+        {stuck && <span className="eg-title-md text-[14px] sm:text-[16px] leading-tight text-[#002131] line-clamp-2 min-w-0 flex-1 animate-[hi-fade-in_150ms_ease-out]" data-testid="eg-filter-title">{title}</span>}
         {list.map((m) => {
           const active = m.items.some((i) => i.selected);
           const isOpen = open === m.key;
@@ -52,7 +53,8 @@ export default function EgyptFilterBar({ style, sort, onStyle, onSort }) {
             <button key={m.key} type="button" onClick={(e) => toggle(m.key, e)} aria-expanded={isOpen} aria-haspopup="menu"
               className={`shrink-0 inline-flex items-center gap-1 h-10 pl-3 sm:pl-4 pr-2 sm:pr-3 rounded-full border whitespace-nowrap eg-label-lg transition-colors ${active || isOpen ? 'border-transparent eg-grad-harbor text-white shadow-[0_2px_8px_rgba(23,67,88,0.3)]' : 'border-[#6F777C] text-[#002131] hover:bg-[rgba(23,67,88,0.08)]'}`}
               data-testid={`eg-filter-${m.key}`}>
-              {m.label}
+              <span className={m.key === 'styles' && stuck ? 'sm:hidden' : 'hidden'}>Styles</span>
+              <span className={m.key === 'styles' && stuck ? 'hidden sm:inline' : ''}>{m.label}</span>
               {active && <span className="ml-0.5 w-1.5 h-1.5 rounded-full bg-white" data-testid={`eg-filter-${m.key}-dot`} />}
               <ChevronDown size={20} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>

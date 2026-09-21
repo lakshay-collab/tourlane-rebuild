@@ -4,7 +4,7 @@ import { TagIcon, PinIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLe
 import { formatInr } from '../../egyptListingData';
 
 const Stat = ({ icon: Icon, value, testId }) => (
-  <span className="flex items-center gap-2.5 rounded-lg bg-[#E0F7FF] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
+  <span className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
     <Icon size={20} className="text-[#174358] shrink-0" />
     <span className="eg-label-lg">{value}</span>
   </span>
