@@ -1,0 +1,56 @@
+{
+  "summary": "Frontend-only regression on Egypt listing (/afrika/aegypten), detail (/afrika/aegypten/luxor-strand-urlaub), header (banner + hamburger), and home Egypt link. All required features work as specified; no console errors; no horizontal overflow at 1440 or 390.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verifications": {
+    "listing": {
+      "sections_present": ["top-banner","header","listing-hero","listing-title=Egypt round trip","listing-cta","trust-bar","listing-subnav","tour-grid","plan-toggle"],
+      "tour_card_count": 7,
+      "first_card_href": "/afrika/aegypten/luxor-strand-urlaub",
+      "other_card_hrefs": "6x /afrika/aegypten",
+      "review_cards": 3,
+      "faq_items": 4,
+      "theme_cards": 8,
+      "place_cards": 6,
+      "activity_cards": 2,
+      "africa_cards": 9,
+      "desktop_overflow_1440": false,
+      "mobile_overflow_390": false,
+      "hamburger_visible_desktop_and_mobile": true,
+      "mobile_menu_open_close": "works (X toggles)",
+      "banner_close": "removes top-banner",
+      "plan_toggle": "clickable",
+      "faq_expand": "clickable",
+      "card_carousel_arrows": "Next/Previous change image without navigation",
+      "console_errors": 0
+    },
+    "detail": {
+      "testids_present": ["tour-detail-page","tour-gallery","tour-title","price-card","route-tabs","route-tab-A..F","sticky-cta"],
+      "title": "Egypt holiday from Cairo with Nile cruise and stop in ancient Thebes",
+      "glance_items": 6,
+      "route_tab_switching": "content changes when clicking tab B",
+      "whats_included_excluded_panel": "not present (correct)",
+      "sticky_cta_on_mobile_390": true,
+      "old_slug_redirect": "/afrika/aegypten/egypt-explorer-grand -> /afrika/aegypten (OK)"
+    },
+    "home": {
+      "africa_tab_egypt_card_href": "/afrika/aegypten"
+    }
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Header.jsx: banner uses `bg-deep-water` and text-white — good contrast. banner is not persisted across navigations (bannerOpen state resets on route change); consider localStorage if UX requires persistent dismissal.",
+    "Destinations.jsx: non-Egypt destination cards render as anchors with href='#' and preventDefault — semantically better as buttons; also failing anchors are keyboard focusable but do nothing."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Egypt listing/detail clone fully functional. data-testids used: egypt-listing-page, listing-hero, listing-title, listing-cta, trust-bar, listing-subnav, tour-grid, tour-card, review-card, plan-toggle, faq-item, theme-card, place-card, activity-card, africa-card, tour-detail-page, tour-gallery, tour-title, price-card, route-tabs, route-tab-A..F, route-stop, glance-item, sticky-cta, top-banner, banner-close, mobile-menu-toggle, mobile-menu. Card carousel arrows use aria-label='Next image'/'Previous image'."
+}

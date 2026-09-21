@@ -58,6 +58,16 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - TourList.jsx rebuilt to Tourlane card style (no category tabs); mobile carousel arrows always visible.
 - Tested: iteration_6 – 100% frontend pass, 0 console errors, no overflow at 390/1920, all route tabs + carousels + FAQ + redirects verified.
 
+## Egypt pages – exact clone revision + header edits (2026-06, latest)
+- User feedback: previous version changed card style/content; they want an EXACT clone of source pages, only translated to English (own site migration).
+- egyptData.js rewritten: `families` = the exact 7 source products (translated titles, exact days/stops/€ prices); first product slug `luxor-strand-urlaub` (detail:true, 12 days/6 stops/€2,945) links to detail, other 6 → listing. `reviewCards` = 3 real reviews (Lysann/Iris/anna .f). `featured` = luxor-strand-urlaub product translated (route A-F Giza/Luxor/Edfu/Luxor/Aswan/Sharm El Sheikh, expert Roman Karin, 8 service items, glance day-by-day).
+- EgyptListing.jsx: hero recomposed to match source (centered H1 + CTA + sub, full-width EGYPT image band, Trustpilot trust bar, sticky subnav, breadcrumb), then expert intro → 7 cards → 3 benefits → reviews → places → activities → collapsible how-to-plan (6 subsections) → 8 travel themes → FAQ → 9 more-Africa → footer.
+- TourList.jsx: card restyled to source (category label above image, image w/ dots + arrows, bold title, days/stops/From €price lines). No category tabs.
+- TourDetail.jsx: detail = luxor-strand-urlaub; removed the extra incl/excl panel (source detail has none).
+- Header.jsx: top banner now dismissable (banner-close X); hamburger (mobile-menu-toggle) now visible at ALL breakpoints and opens the full menu panel.
+- Detail URL changed egypt-explorer-grand → luxor-strand-urlaub (matches source URL slug).
+- Tested: iteration_7 – 100% frontend pass, 0 console errors, no overflow at 390/1440, all flows verified.
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
