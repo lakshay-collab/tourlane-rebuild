@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import EgyptNav from '../components/egypt/EgyptNav';
-import EgyptFooter from '../components/egypt/EgyptFooter';
+import { useParams, Navigate, Link } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import EgyptRoute from '../components/egypt/EgyptRoute';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
@@ -71,7 +71,11 @@ const Crumbs = () => (
       {crumbs.map((c, i) => (
         <li key={c.label} className="flex items-center gap-1">
           {i > 0 && <ChevronRight size={18} className="text-[#717972]" />}
-          {c.href ? <a href={c.href} onClick={stop} className="eg-body-md text-[#404942] hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#1B1C17]">{c.label}</span>}
+          {c.href
+            ? (c.href.startsWith('/afrika/aegypten')
+                ? <Link to="/afrika/aegypten" className="eg-body-md text-[#404942] hover:underline">{c.label}</Link>
+                : <a href={c.href} onClick={stop} className="eg-body-md text-[#404942] hover:underline">{c.label}</a>)
+            : <span className="eg-label-lg text-[#1B1C17]">{c.label}</span>}
         </li>
       ))}
     </ol>
@@ -248,7 +252,7 @@ export default function EgyptDetail() {
   if (slug !== detail.slug) return <Navigate to="/afrika/aegypten" replace />;
   return (
     <div className="eg" data-testid="egypt-detail-page">
-      <EgyptNav />
+      <Header />
       <main className="flex flex-col gap-8 pb-24 md:pb-[100px]">
         <Head />
         <Crumbs />
@@ -279,7 +283,7 @@ export default function EgyptDetail() {
       </main>
       <StickyBar />
       <ScrollTop className="bottom-[104px] right-10" />
-      <EgyptFooter />
+      <Footer />
     </div>
   );
 }

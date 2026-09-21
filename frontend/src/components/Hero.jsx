@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 export default function Hero() {
   return (
     <section
-      className="relative w-full overflow-hidden h-[560px] sm:h-[600px] md:h-[620px] lg:h-[680px] flex items-center justify-center"
+      className="relative w-full h-[560px] sm:h-[600px] md:h-[620px] lg:h-[680px] flex items-center justify-center"
       data-testid="hero-section"
     >
       <video

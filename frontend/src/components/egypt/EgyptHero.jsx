@@ -1,25 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import { hero, trust, tabs, crumbs } from '../../egyptListingData';
-import { ChevronRight, TpStars } from './EgyptIcons';
+import React, { useEffect, useState, useRef } from 'react';
+import { hero, trust, tabs, crumbs, places, themes } from '../../egyptListingData';
+import { ChevronRight, ChevronDown, TpStars } from './EgyptIcons';
+
+const dropdowns = {
+  'Reiseführer': themes.items.filter((t) => t.tag === 'Reiseführer'),
+  'Inspiration': themes.items.filter((t) => t.tag === 'Inspiration'),
+  'Orte': places.items
+};
 
 function StickyTabs() {
   const [stuck, setStuck] = useState(false);
+  const [open, setOpen] = useState(null);
+  const wrapRef = useRef(null);
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 560);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  useEffect(() => {
+    const onDoc = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(null); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, []);
   return (
-    <div className={`mt-3 sticky top-0 z-30 bg-[#FBF9F1] border-b border-[#E4E3DB] ${stuck ? 'shadow-[0_1px_2px_rgba(0,0,0,0.3),0_1px_3px_1px_rgba(0,0,0,0.15)]' : ''}`} data-testid="eg-tabs">
+    <div ref={wrapRef} className={`mt-3 sticky top-0 z-30 bg-[#FBF9F1] border-b border-[#E4E3DB] ${stuck ? 'shadow-[0_1px_2px_rgba(0,0,0,0.3),0_1px_3px_1px_rgba(0,0,0,0.15)]' : ''}`} data-testid="eg-tabs">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-10 flex items-center justify-between">
-        <div className="flex overflow-x-auto no-scrollbar">
-          {tabs.map((t, i) => (
-            <a key={t} href="#" onClick={(e) => e.preventDefault()} className={`relative h-16 px-5 flex items-center whitespace-nowrap eg-label-lg ${i === 0 ? 'text-[#1B1C17]' : 'text-[#404942] hover:text-[#1B1C17]'}`} data-testid={`eg-tab-${i}`}>
-              {t}
-              {i === 0 && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
-            </a>
-          ))}
+        <div className="flex overflow-x-visible">
+          {tabs.map((t, i) => {
+            const items = dropdowns[t];
+            if (!items) {
+              return (
+                <a key={t} href="#" onClick={(e) => e.preventDefault()} className={`relative h-16 px-5 flex items-center whitespace-nowrap eg-label-lg ${i === 0 ? 'text-[#1B1C17]' : 'text-[#404942] hover:text-[#1B1C17]'}`} data-testid={`eg-tab-${i}`}>
+                  {t}
+                  {i === 0 && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                </a>
+              );
+            }
+            const isOpen = open === t;
+            return (
+              <div key={t} className="relative">
+                <button type="button" onClick={() => setOpen(isOpen ? null : t)} aria-expanded={isOpen} className={`relative h-16 px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg ${isOpen ? 'text-[#1B1C17]' : 'text-[#404942] hover:text-[#1B1C17]'}`} data-testid={`eg-tab-${i}`}>
+                  {t}
+                  <ChevronDown size={18} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  {isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#006D44]" />}
+                </button>
+                {isOpen && (
+                  <div className="absolute left-0 top-full z-40 w-[300px] max-h-[70vh] overflow-y-auto rounded-b-xl border border-t-0 border-[#E4E3DB] bg-[#FBF9F1] shadow-[0_4px_16px_rgba(0,0,0,0.15)] py-2" data-testid={`eg-tab-dropdown-${i}`}>
+                    {items.map((it) => (
+                      <a key={it.title} href={it.href} onClick={(e) => e.preventDefault()} className="block px-5 py-2.5 eg-body-md text-[#404942] hover:bg-[#EFEDE4] hover:text-[#1B1C17] transition-colors" data-testid="eg-tab-dropdown-item">{it.title}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
         {stuck && (
           <div className="hidden lg:flex items-center gap-4 pr-[65px]" data-testid="eg-tabs-cta">

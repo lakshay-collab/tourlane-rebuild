@@ -49,7 +49,7 @@ export default function Header() {
             </button>
           </nav>
 
-          <button className="text-onsurface p-1 ml-3 lg:ml-6" onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
+          <button className="lg:hidden text-onsurface p-1 ml-3" onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
             {open ? <X size={26} strokeWidth={1.75} /> : <Menu size={26} strokeWidth={1.75} />}
           </button>
         </div>
