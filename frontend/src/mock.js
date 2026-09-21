@@ -32,6 +32,11 @@ export const hero = {
 
 export const trust = { label: 'Excellent', score: '4.5', outOf: 'out of 5', count: '5,748', reviews: 'reviews', rating: 4.5 };
 
+export const ratings = {
+  google: { score: 4.7, count: '3,200+', label: 'Google reviews' },
+  tripadvisor: { score: 4.9, count: '2,100+', label: 'Tripadvisor reviews' }
+};
+
 export const features = {
   heading: 'Your trip, planned by pros',
   cta: 'Get started for free',
@@ -114,7 +119,7 @@ export const showcase = {
   trips: [
     trip({
       tab: 'Canada', title: 'Family road trip through Canada', cta: 'Plan your Canada trip now',
-      duration: '13 days', stops: '7 stops', transport: 'Rental car',
+      duration: '13 days', stops: '7 stops', transport: 'Rental car', activities: 8, hotels: 6, transfers: 5,
       tags: [['bed', 'Boutique hotels'], ['tower', 'CN Tower'], ['car', 'Vintage cars'], ['family', 'Family-friendly'], ['plane', 'Stopover in Iceland']],
       customer: 'Daniel, Laura & Tim', avatar: cf('1W5rwBgpzW3Oknz3zEG8lI/1b40a54517258274685f32a3e9f1bb78/usa_family.jpg', 'w=128&q=60&fm=webp'),
       images: [
@@ -127,7 +132,7 @@ export const showcase = {
     }),
     trip({
       tab: 'Iceland', title: 'Outdoor adventure in Iceland', cta: 'Plan your Iceland trip now',
-      duration: '14 days', stops: '7 stops', transport: 'Rental car',
+      duration: '14 days', stops: '7 stops', transport: 'Rental car', activities: 9, hotels: 6, transfers: 4,
       tags: [['bed', 'Tiny houses'], ['aurora', 'Northern lights'], ['car', 'Electric vehicle'], ['leaf', 'Vegetarian'], ['plane', 'Direct flights']],
       customer: 'Thomas and Frank', avatar: cf('7aiJAepiAkFd0fdEi5mPEX/7634da5cd986ad0e63f91d52a3eb9e8d/iceland_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [
@@ -140,7 +145,7 @@ export const showcase = {
     }),
     trip({
       tab: 'Thailand', title: 'Asian adventure with friends', cta: 'Plan your Thailand trip now',
-      duration: '20 days', stops: '11 stops', transport: 'Transfers',
+      duration: '20 days', stops: '11 stops', transport: 'Transfers', activities: 12, hotels: 7, transfers: 10,
       tags: [['bed', 'Glamping in the jungle'], ['island', 'Island hopping'], ['bike', 'Motorbike'], ['food', 'Local specialities'], ['plane', 'Stopover in Dubai']],
       customer: 'Marc, Sofie, Oskar and Kira', avatar: cf('1KRVeu7Hv6eXMHjrvIwo6h/ad6802af5abb475b1b4f7354c321bba2/thailand_couples.jpg', 'w=128&q=60&fm=webp'),
       images: [
@@ -153,7 +158,7 @@ export const showcase = {
     }),
     trip({
       tab: 'Namibia', title: 'Wonders of nature in Namibia', cta: 'Plan your Namibia trip now',
-      duration: '19 days', stops: '11 stops', transport: 'Rental car',
+      duration: '19 days', stops: '11 stops', transport: 'Rental car', activities: 10, hotels: 7, transfers: 6,
       tags: [['bed', 'Comfortable lodges'], ['safari', 'Wildlife safari'], ['car', '4x4 SUV'], ['leaf', 'Locally grown'], ['plane', 'Premium economy flights']],
       customer: 'Simone and Thomas', avatar: cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [
@@ -166,7 +171,7 @@ export const showcase = {
     }),
     trip({
       tab: 'Costa Rica', title: 'Pura Vida in Costa Rica', cta: 'Plan your Costa Rica trip now',
-      duration: '26 days', stops: '12 stops', transport: 'Rental car',
+      duration: '26 days', stops: '12 stops', transport: 'Rental car', activities: 14, hotels: 9, transfers: 8,
       tags: [['bed', 'Guesthouses'], ['leaf', 'Rainforests'], ['car', 'Round trip'], ['food', 'Gluten-free'], ['plane', 'Business class']],
       customer: 'Mike and Ramona', avatar: cf('1VwYM421DcfxO71gvjf7K0/1349a0615821b755ac5b97b886a5b5dd/tanzania_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [

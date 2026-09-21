@@ -18,9 +18,11 @@ import Footer from '../components/Footer';
 export default function Home() {
   return (
     <div className="bg-surface text-onsurface" data-testid="home-page">
-      <Header />
       <main>
-        <Hero />
+        <div className="relative">
+          <Header overlay />
+          <Hero />
+        </div>
         <TrustBar />
         <Features />
         <Ambassadors />

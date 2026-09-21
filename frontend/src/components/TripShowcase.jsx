@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BedDouble, Building2, Car, Baby, Plane, Sparkles, Leaf, TreePalm, Bike, UtensilsCrossed, Binoculars } from 'lucide-react';
+import { BedDouble, Building2, Car, Baby, Plane, Sparkles, Leaf, TreePalm, Bike, UtensilsCrossed, Binoculars, CalendarDays, Ticket } from 'lucide-react';
 import { showcase } from '../mock';
 
 const icons = { bed: BedDouble, tower: Building2, car: Car, family: Baby, plane: Plane, aurora: Sparkles, leaf: Leaf, island: TreePalm, bike: Bike, food: UtensilsCrossed, safari: Binoculars };
@@ -20,8 +20,8 @@ export default function TripShowcase() {
     <section className="pt-16 md:pt-20" data-testid="showcase-section">
       <div className="tl-container flex flex-col items-center gap-8">
         <h2 className="t-section text-center text-onsurface">{showcase.heading}</h2>
-        <div className="no-scrollbar w-full md:w-auto overflow-x-auto">
-          <div className="flex border-b-2 border-surface-highest min-w-max mx-auto" role="tablist" data-testid="showcase-tabs">
+        <div className="no-scrollbar w-full overflow-x-auto">
+          <div className="flex justify-start md:justify-center border-b-2 border-surface-highest w-max min-w-full md:w-auto md:min-w-0 mx-auto" role="tablist" data-testid="showcase-tabs">
             {showcase.trips.map((t, i) => (
               <button
                 key={t.tab}
@@ -32,7 +32,7 @@ export default function TripShowcase() {
                 data-testid={`showcase-tab-${t.tab.toLowerCase().replace(/\s/g, '-')}`}
               >
                 {t.tab}
-                {active === i && <span className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-sunset-line" />}
+                {active === i && <span className="absolute left-0 right-0 -bottom-[2px] h-[3px] rounded-full bg-sunset-line" />}
               </button>
             ))}
           </div>
@@ -43,10 +43,12 @@ export default function TripShowcase() {
         <div className="flex flex-col md:flex-row rounded-xl overflow-hidden md:h-[560px]" data-testid="showcase-card">
           <div className="bg-surface-container md:w-[340px] lg:w-[432px] shrink-0 p-6 md:p-8 flex flex-col">
             <h3 className="t-headline-md md:t-headline-lg text-onsurface" data-testid="showcase-title">{trip.title}</h3>
-            <div className="flex items-center gap-4 mt-4 t-body-lg text-onsurface-variant">
-              <span>{trip.duration}</span><span className="h-4 w-px bg-outline-variant" />
-              <span>{trip.stops}</span><span className="h-4 w-px bg-outline-variant" />
-              <span>{trip.transport}</span>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 mt-5" data-testid="showcase-stats">
+              {[[CalendarDays, trip.duration], [Ticket, `${trip.activities} activities`], [BedDouble, `${trip.hotels} hotels`], [Car, `${trip.transfers} transfers`]].map(([Icon, label]) => (
+                <span key={label} className="flex items-center gap-2 t-body-md text-onsurface">
+                  <Icon size={18} strokeWidth={1.75} className="text-primary shrink-0" />{label}
+                </span>
+              ))}
             </div>
             <div className="flex flex-wrap gap-3 mt-6">
               {trip.tags.map(([k, label]) => {

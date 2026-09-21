@@ -1,22 +1,25 @@
 import React from 'react';
+import { User } from 'lucide-react';
 import { testimonials } from '../mock';
-import TrustLine, { TrustpilotStars } from './TrustLine';
+import { BrandStars } from './Rating';
 import Carousel from './Carousel';
 
-const Avatar = ({ t }) =>
-  t.avatar ? (
-    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
-  ) : (
-    <span className="w-10 h-10 rounded-full bg-secondary-container text-onsurface t-title-md flex items-center justify-center">{t.name[0]}</span>
-  );
+const Avatar = () => (
+  <span className="w-10 h-10 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0" aria-hidden data-testid="testimonial-avatar">
+    <User size={20} strokeWidth={1.75} />
+  </span>
+);
 
 export default function Testimonials() {
   return (
     <section className="pt-16 md:pt-20" data-testid="testimonials-section">
       <div className="tl-container flex flex-col gap-8 md:gap-10">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-4">
           <h2 className="t-section text-center text-onsurface">{testimonials.heading}</h2>
-          <TrustLine compact />
+          <div className="flex items-center gap-2">
+            <BrandStars rating={4.9} size={20} />
+            <span className="t-label-lg text-onsurface">4.9 out of 5</span>
+          </div>
         </div>
 
         <Carousel step={384} arrowTop="110px" trackClassName="gap-4 md:gap-6 -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" testId="testimonials-carousel">
@@ -29,10 +32,10 @@ export default function Testimonials() {
               </div>
               <div className="px-4 mt-4">
                 <div className="flex items-center gap-3">
-                  <Avatar t={t} />
+                  <Avatar />
                   <div>
                     <h3 className="t-title-md text-onsurface">{t.name}</h3>
-                    <TrustpilotStars rating={t.stars} size={16} className="mt-0.5" />
+                    <BrandStars rating={t.stars} size={16} className="mt-0.5" />
                   </div>
                 </div>
                 <p className="t-body-md text-onsurface mt-4">{t.text}</p>

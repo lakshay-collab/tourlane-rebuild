@@ -1,20 +1,19 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin, ChevronDown } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { footer, trust } from '../mock';
-import { TrustpilotStars, TrustpilotLogo } from './TrustLine';
+import { BrandStars } from './Rating';
 
-export const Kununu = () => (
-  <svg viewBox="0 0 24 24" className="w-3 h-3" fill="currentColor"><path d="M16 15.163a3.4 3.4 0 00-.948-2.468 3.37 3.37 0 00.921-2.436v-.62c-.033-.143-.157-.254-.31-.254h-1.17a.318.318 0 00-.31.29v.582c0 .87-.712 1.575-1.588 1.575h-.62v-6.52A.315.315 0 0011.664 5H10.42a.318.318 0 00-.313.313v11.86h-.62a1.58 1.58 0 01-1.59-1.575v-.58a.318.318 0 00-.31-.29H6.42a.318.318 0 00-.311.254v.62c0 1.87 1.526 3.385 3.407 3.385h1.243v-2.74h.62c.877 0 1.589.706 1.589 1.575v.58c0 .16.126.29.31.29h1.17c.153 0 .277-.11.31-.254v-.62c0-.03 0-.06-.002-.09H16v-.565z"/></svg>
+const Spotify = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M12 2a10 10 0 100 20 10 10 0 000-20m4.586 14.424a.62.62 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.215c3.809-.871 7.077-.496 9.712 1.115a.623.623 0 01.207.857m1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.13-9.965-1.166a.779.779 0 11-.452-1.491c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 01.257 1.071m.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.936.936 0 01-.956 1.61z"/></svg>
 );
 
 const Badges = ({ className = '' }) => (
   <div className={`flex flex-wrap items-start gap-6 ${className}`} data-testid="footer-badges">
     <div className="flex flex-col gap-2">
-      <TrustpilotStars size={20} />
-      <span className="t-body-md text-onsurface">{trust.score} {trust.outOf}</span>
-      <span className="t-body-md text-onsurface">{trust.count} {trust.reviews}</span>
-      <TrustpilotLogo className="h-5" />
+      <BrandStars size={20} rating={4.8} />
+      <span className="t-body-md text-onsurface">4.8 {trust.outOf}</span>
+      <span className="t-body-md text-onsurface">Based on 5,300+ traveller reviews</span>
     </div>
     <img src="/TopCustomer.svg" alt="Top Kundendienst" className="h-[118px] w-auto" />
     <img src="/ServicePreis.svg" alt="Deutscher Service-Preis 2026" className="h-[110px] w-auto" />
@@ -79,9 +78,9 @@ export default function Footer() {
 }
 
 function Socials() {
-  return [Facebook, Instagram, Linkedin, Kununu].map((Icon, i) => (
+  return [Facebook, Instagram, Linkedin, Youtube, Spotify].map((Icon, i) => (
     <button key={i} className="w-6 h-6 rounded-full border border-onsurface flex items-center justify-center text-onsurface hover:bg-onsurface hover:text-surface transition-colors" aria-label="Social" data-testid="footer-social">
-      <Icon size={12} strokeWidth={2} />
+      <Icon size={12} strokeWidth={2} className="w-3 h-3" />
     </button>
   ));
 }

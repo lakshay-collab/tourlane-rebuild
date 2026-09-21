@@ -19,7 +19,6 @@ export default function Hero() {
         aria-label={hero.title.join(' ')}
         data-testid="hero-collage"
       >
-        <source src="/hero-video.webm" type="video/webm" />
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.30)_0%,rgba(0,33,49,0.10)_40%,rgba(0,33,49,0.55)_100%)] pointer-events-none" />
