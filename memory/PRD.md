@@ -87,6 +87,23 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Known deltas: Google Maps iframe (no API key → generic embed, no A–F route markers); Trustpilot/expert images hotlinked from Tourlane CDNs; Tourlane's self-hosted Roboto Flex build renders ~3% wider than Google's at small sizes, so a few 16px lines may wrap differently (e.g. sidebar stat titles).
 - Tested: iteration_9 – frontend ~98% pass (all flows), duplicate-key warning fixed afterwards (recommended grid keys now slug+index), eg-nav-logo testid moved onto the <img>.
 
+## Cross-page linking + listing sub-nav dropdowns + detail branding (2026-06, latest)
+- Listing sub-nav (EgyptHero StickyTabs): 'Reiseführer'/'Inspiration'/'Orte' are now dropdown buttons (chevron + panel, outside-click closes). Reiseführer=3 themes, Inspiration=5 themes, Orte=6 places. Items link to '#' (no pages). 'Ägypten Rundreisen' stays a plain active tab.
+- Header: hamburger (mobile-menu-toggle) now `lg:hidden` (desktop shows nav links only).
+- Home hero search (SearchBar.jsx): added a suggestions dropdown with destinations; 'Egypt'→/afrika/aegypten and 'Asia'→/asien navigate, others are placeholders. Hero `overflow-hidden` removed so the dropdown isn't clipped.
+- EgyptDetail now uses the shared Header/Footer (Hi Tours branding) instead of EgyptNav/EgyptFooter; breadcrumb 'Ägypten' links to /afrika/aegypten. Three pages linked: Home↔Listing↔Detail.
+- Tested: iteration_10 – 100% frontend pass, 0 console errors.
+
+## Asia continent clone – /asien (2026-06, latest)
+- Goal: clone tourlane.de/asien/ at route `/asien` for side-by-side comparison ("shift our tourlane website").
+- Route added in App.js: `/asien` → `pages/AsiaListing.jsx`. Reuses the Egypt design system (shared Hi Tours Header/Footer, `.eg` tokens, green #006D44, EgyptProductCard, EgyptTileRow, ScrollTop).
+- Data: `src/asiaListingData.js` – hero (Mu Cang Chai image, 'Asien Rundreise' / 'Der größte Kontinent der Erde'), trust, tabs, crumbs, intro (bold spans), 18 tour products (tag/days/stations/price/images, NO slug → non-navigating), 14 country tiles, 4 'Wohin in Asien' numbered blurbs, 11 continent tiles, 3 USPs.
+- New components: `components/asia/AsiaHero.jsx` (hero w/ white title + dark gradient overlay for contrast, trust bar, sticky sub-nav: 'Asien Rundreisen' active + 'Länder' dropdown of 14 countries + 'Reiseführer'/'Inspiration' plain, breadcrumb Startseite>Asien).
+- EgyptProductCard refactored: renders non-navigating `<a href=#>` when `p.slug` absent (Asia), keeps `<Link>` for Egypt.
+- Sections: intro 'Warum eine Asien Rundreise unternehmen?' → tours 'Beliebte Asien Rundreisen' (6 shown, 'Mehr erfahren' → 18) → 'Die schönsten Reiseziele entdecken' (14 country row) → 'Wohin in Asien reisen?' (item 1 + 'Weitere Details anzeigen' reveals 2-4) → 'Weitere Reiseziele entdecken' (11 continent row) → 3 USPs (lucide icons) → footer.
+- Known deltas: single full-bleed hero image (not the source 3-image collage); product cards use 3 images each (source shows 6 dots); reviews/FAQ sections omitted (not captured in source crawl); USP icons are lucide (Star/Ticket/MapPinned), not Tourlane's exact SVGs; images hotlinked from ctfassets/kiwi CDNs.
+- Tested: iteration_11 – 100% frontend pass at 1920 + 390, 0 console errors; counts verified products=18/6, countries=14, continents=11, wohin=4, usps=3, Länder=14.
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).
