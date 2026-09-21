@@ -19,10 +19,10 @@ const buildTabs = ({ style, sort }) => [
   { key: 'about', label: 'About Egypt', target: 'about' },
   { key: 'tours', label: 'Egypt holidays', target: 'tours' },
   { key: 'styles', label: 'Travel styles', pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
+  { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) },
   { key: 'guide', label: 'Travel guide', items: guide.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
   { key: 'inspiration', label: 'Inspiration', items: inspiration.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
-  { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) },
-  { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
+  { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) }
 ];
 
 function StickyTabs({ style, sort, onStyle, onSort }) {
@@ -140,10 +140,7 @@ export function MobileStickyCta() {
   }, []);
   return (
     <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-mobile-cta" aria-hidden={!show}>
-      <div className="flex items-center justify-between gap-4">
-        <p className="eg-body-sm text-[#174358] leading-tight">{hero.sub}</p>
-        <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md shrink-0" data-testid="eg-mobile-cta-button">{hero.stickyCta}</a>
-      </div>
+      <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{hero.stickyCta}</a>
     </div>
   );
 }

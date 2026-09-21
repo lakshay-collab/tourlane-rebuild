@@ -189,3 +189,4 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - `MobileStickyCta` (EgyptHero.jsx): fixed bottom bar <lg, slides in after 600px scroll, "Customize this trip" (hero.stickyCta); desktop sticky sub-nav CTA also says "Customize this trip". ScrollTop moved up on mobile (bottom-24).
 - Review summary no longer shows the "5,000+ reviews" count.
 - Verified via screenshots at 1440 + 390 (0 console errors).
+- Follow-up: "5 cities" now an overlay chip (pin icon, Ink/70 blur) bottom-left on the card image; tiles = days/hotels/activities/transfers. Mobile sticky CTA is a single full-width "Customize this trip" button (no sub text). Mobile (<905px) lazy-loads packages: 3 initially, +3 per IntersectionObserver hit with a spinner (eg-lazy-sentinel/eg-lazy-spinner); desktop keeps Show more. Tab order: About Egypt · Egypt holidays · Travel styles · Sort · Travel guide · Inspiration · Places.

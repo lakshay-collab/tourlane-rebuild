@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import Footer from '../components/Footer';
@@ -24,6 +24,17 @@ const Chip = ({ label, value, onClear, testId }) => (
     <button type="button" onClick={onClear} aria-label={`Clear ${label}`} className="ml-1 w-6 h-6 rounded-full flex items-center justify-center hover:bg-black/5" data-testid={`${testId}-clear`}><X size={16} /></button>
   </span>
 );
+
+const useIsMobile = () => {
+  const [m, setM] = useState(() => window.matchMedia('(max-width: 904px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 904px)');
+    const fn = (e) => setM(e.matches);
+    mq.addEventListener('change', fn);
+    return () => mq.removeEventListener('change', fn);
+  }, []);
+  return m;
+};
 
 const sortFns = {
   'price-asc': (a, b) => a.price - b.price,
@@ -60,7 +71,22 @@ export default function EgyptListing() {
     const f = style ? products.filter((p) => p.styles.includes(style)) : products;
     return sort ? [...f].sort(sortFns[sort]) : f;
   }, [style, sort]);
-  const shown = allTours || style || sort ? list : list.slice(0, 6);
+  const mobile = useIsMobile();
+  const [mobileCount, setMobileCount] = useState(3);
+  const [loading, setLoading] = useState(false);
+  const sentinel = useRef(null);
+  useEffect(() => { setMobileCount(3); }, [style, sort]);
+  useEffect(() => {
+    if (!mobile || !sentinel.current || mobileCount >= list.length) return undefined;
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || loading) return;
+      setLoading(true);
+      setTimeout(() => { setMobileCount((c) => Math.min(c + 3, list.length)); setLoading(false); }, 450);
+    }, { rootMargin: '200px 0px' });
+    io.observe(sentinel.current);
+    return () => io.disconnect();
+  }, [mobile, mobileCount, list.length, loading]);
+  const shown = mobile ? list.slice(0, mobileCount) : (allTours || style || sort ? list : list.slice(0, 6));
   const sortLabel = sort && sorts.find((s) => s.key === sort).label;
 
   return (
@@ -101,7 +127,12 @@ export default function EgyptListing() {
           ) : (
             <p className="mt-8 eg-body-lg text-[#174358]" data-testid="eg-empty">{tours.empty}</p>
           )}
-          {!style && !sort && list.length > 6 && (
+          {mobile && mobileCount < list.length && (
+            <div ref={sentinel} className="mt-6 flex justify-center h-10" data-testid="eg-lazy-sentinel">
+              {loading && <span className="w-8 h-8 rounded-full border-[3px] border-[#FADDD1] border-t-[#E75E26] animate-spin" data-testid="eg-lazy-spinner" aria-label="Loading more holidays" />}
+            </div>
+          )}
+          {!mobile && !style && !sort && list.length > 6 && (
             <MoreButton open={allTours} onClick={() => { setAllTours((v) => !v); if (allTours) scrollToId('tours'); }} more={tours.more} less={tours.less} testId="eg-tours-more" />
           )}
         </section>

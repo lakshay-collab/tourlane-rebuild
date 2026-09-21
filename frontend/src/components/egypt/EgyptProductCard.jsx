@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TagIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
+import { TagIcon, PinIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
 import { formatInr } from '../../egyptListingData';
 
 const Stat = ({ icon: Icon, value, testId }) => (
@@ -34,6 +34,9 @@ export default function EgyptProductCard({ p }) {
             <button type="button" onClick={() => go(1)} className="eg-arrow pointer-events-auto" aria-label="Next image" data-testid="eg-product-next"><ChevronRight size={24} /></button>
           </div>
         </div>
+        <div className="absolute left-3 bottom-3 pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 rounded-lg bg-[#002131]/70 backdrop-blur-sm px-2.5 py-1.5 eg-label-lg text-white" data-testid="eg-product-cities"><PinIcon size={18} />{cities}</span>
+        </div>
         {p.tag && (
           <div className="absolute left-0 top-0 p-2">
             <span className="inline-flex items-center gap-1 rounded-lg border border-[#C4CBD0] bg-white px-2 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-product-tag">
@@ -46,7 +49,6 @@ export default function EgyptProductCard({ p }) {
       <Wrap className="block p-4 flex-1" data-testid="eg-product-details-link">
         <div className="flex flex-col h-full">
           <h3 className="eg-card-title text-[#002131] line-clamp-2" data-testid="eg-product-title">{p.title}</h3>
-          <p className="mt-1.5 eg-body-md text-[#174358]" data-testid="eg-product-cities">{cities}</p>
           {p.hotels != null && (
             <div className="mt-4 grid grid-cols-2 gap-2" data-testid="eg-product-inclusions">
               <Stat icon={CalendarIcon} value={days} testId="eg-product-days" />
