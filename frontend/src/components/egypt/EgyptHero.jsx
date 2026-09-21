@@ -23,7 +23,6 @@ const buildTabs = () => [
 ];
 
 function StickyTabs() {
-  const [stuck, setStuck] = useState(false);
   const [active, setActive] = useState('about');
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(16);
@@ -32,7 +31,6 @@ function StickyTabs() {
 
   useEffect(() => {
     const onScroll = () => {
-      setStuck(window.scrollY > 560);
       const t = document.getElementById('tours');
       setActive(t && t.getBoundingClientRect().top <= 120 ? 'tours' : 'about');
     };
@@ -61,7 +59,7 @@ function StickyTabs() {
   const openTab = tabs.find((t) => t.key === open);
 
   return (
-    <div ref={wrapRef} className={`relative sticky top-0 z-30 bg-[#FBF9F1] border-b border-[#E4E3DB] ${stuck ? 'shadow-[0_1px_2px_rgba(0,0,0,0.3),0_1px_3px_1px_rgba(0,0,0,0.15)]' : ''}`} data-testid="eg-tabs">
+    <div ref={wrapRef} className="relative z-20 bg-[#FBF9F1] border-b border-[#E4E3DB]" data-testid="eg-tabs">
       <div className="w-full max-w-[1440px] mx-auto md:px-6 lg:px-10 flex items-center justify-between">
         <div className="flex flex-nowrap overflow-x-auto no-scrollbar px-2 sm:px-4 md:px-0 w-full md:w-auto" data-testid="eg-tabs-strip">
           {tabs.map((t) => {
@@ -73,25 +71,20 @@ function StickyTabs() {
               return (
                 <button key={t.key} type="button" onClick={() => scrollToId(t.target)} className={base} data-testid={`eg-tab-${t.key}`}>
                   {t.label}
-                  {isActive && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
+                  {isActive && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#174358]" />}
                 </button>
               );
             }
             return (
               <button key={t.key} type="button" onClick={(e) => toggle(t.key, e)} aria-expanded={isOpen} aria-haspopup="menu" className={base} data-testid={`eg-tab-${t.key}`}>
                 {t.label}
-                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#E75E26]" data-testid={`eg-tab-${t.key}-dot`} />}
+                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#174358]" data-testid={`eg-tab-${t.key}-dot`} />}
                 <ChevronDown size={24} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                {hasPick && !isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#E75E26]" />}
+                {hasPick && !isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#174358]" />}
               </button>
             );
           })}
         </div>
-        {stuck && (
-          <div className="hidden lg:flex items-center gap-4 pl-6 shrink-0" data-testid="eg-tabs-cta">
-            <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-tabs-cta-button">{hero.stickyCta}</a>
-          </div>
-        )}
       </div>
 
       {openTab && (

@@ -46,7 +46,7 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
             </div>
           </div>
           <div className="px-6 mt-[104px]">
-            <div className="h-[2px] bg-[#E4E3DB] rounded-full"><div className="h-full w-[12.5%] bg-[#E75E26] rounded-full" /></div>
+            <div className="h-[2px] bg-[#E4E3DB] rounded-full"><div className="h-full w-[12.5%] bg-[#174358] rounded-full" /></div>
             <button type="button" className="eg-btn-filled w-full h-10 mt-4 eg-label-lg" data-testid="eg-planner-next">{data.next}</button>
           </div>
           <div className="mt-4 h-16 rounded-b-xl bg-[#F0EEE6] px-8 py-3 flex items-center gap-8">

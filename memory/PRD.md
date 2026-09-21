@@ -190,3 +190,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Review summary no longer shows the "5,000+ reviews" count.
 - Verified via screenshots at 1440 + 390 (0 console errors).
 - Follow-up: "5 cities" now an overlay chip (pin icon, Ink/70 blur) bottom-left on the card image; tiles = days/hotels/activities/transfers. Mobile sticky CTA is a single full-width "Customize this trip" button (no sub text). Mobile (<905px) lazy-loads packages: 3 initially, +3 per IntersectionObserver hit with a spinner (eg-lazy-sentinel/eg-lazy-spinner); desktop keeps Show more. Tab order: About Egypt · Egypt holidays · Travel styles · Sort · Travel guide · Inspiration · Places.
+
+## Egypt listing – luxury palette, single sticky filter bar, lazy load everywhere (2026-06, latest)
+- Top sub-nav (About Egypt · Egypt holidays · Travel guide · Inspiration · Places) is NO LONGER sticky; no CTA in it.
+- `EgyptFilterBar.jsx` (inside #tours, after intro): only [Travel styles ▾] [Sort ▾] pills + desktop-only "Plan your Egypt trip" CTA on the right; sticky top-0 z-30 within the tours section on desktop + mobile (shadow when stuck). No title / count repetition. Active pill = filled Harbor with white dot.
+- Lazy loading on ALL breakpoints (6 per page desktop, 3 mobile; IntersectionObserver + Harbor spinner). 'Show more/less' removed for tours (themes still use it).
+- Product title shows in full (no line clamp).
+- Luxury palette: `.eg-btn-filled` = Deep Water gradient (Ink→Deep Harbor→Harbor) with Ink shadow; tiles neutral #F0EEE6 with Harbor icons; underlines/progress/spinner Harbor; orange removed from Egypt components (Ember only remains on homepage accents).
+- CTA copy: sticky bar + mobile bottom bar say "Plan your Egypt trip"; hero keeps "Plan for free".
+- iteration_17 passed the previous state (before this round); this round verified via screenshots at 1440 + 390, 0 console errors, 7 cards lazy-loaded on both.

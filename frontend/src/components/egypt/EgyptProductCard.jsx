@@ -4,8 +4,8 @@ import { TagIcon, PinIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, ChevronLe
 import { formatInr } from '../../egyptListingData';
 
 const Stat = ({ icon: Icon, value, testId }) => (
-  <span className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
-    <Icon size={20} className="text-[#E75E26] shrink-0" />
+  <span className="flex items-center gap-2.5 rounded-lg bg-[#F0EEE6] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
+    <Icon size={20} className="text-[#174358] shrink-0" />
     <span className="eg-label-lg">{value}</span>
   </span>
 );
@@ -48,7 +48,7 @@ export default function EgyptProductCard({ p }) {
 
       <Wrap className="block p-4 flex-1" data-testid="eg-product-details-link">
         <div className="flex flex-col h-full">
-          <h3 className="eg-card-title text-[#002131] line-clamp-2" data-testid="eg-product-title">{p.title}</h3>
+          <h3 className="eg-card-title text-[#002131]" data-testid="eg-product-title">{p.title}</h3>
           {p.hotels != null && (
             <div className="mt-4 grid grid-cols-2 gap-2" data-testid="eg-product-inclusions">
               <Stat icon={CalendarIcon} value={days} testId="eg-product-days" />

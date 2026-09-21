@@ -96,8 +96,8 @@ export default function EgyptRoute() {
         <div role="tablist" className="flex overflow-x-auto no-scrollbar border-b border-[#E4E3DB]" data-testid="eg-route-tabs">
           {route.stops.map((st, i) => (
             <button key={st.letter} role="tab" aria-selected={active === i} onClick={() => setActive(i)} className={`relative h-12 ${i ? 'pl-2' : 'pl-1'} pr-2 flex items-center gap-2 eg-label-lg whitespace-nowrap ${active === i ? 'text-[#174358]' : 'text-[#174358]'}`} data-testid={`eg-route-tab-${i}`}>
-              <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#E75E26] border-white text-white' : 'bg-white border-[#DCE5DC] text-[#174358]'}`}>{st.letter}</span>{st.name}
-              {active === i && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-[#E75E26]" />}
+              <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#174358] border-white text-white' : 'bg-white border-[#DCE5DC] text-[#174358]'}`}>{st.letter}</span>{st.name}
+              {active === i && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-[#174358]" />}
             </button>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
-import { styles, sorts } from '../../egyptListingData';
+import { styles, sorts, hero } from '../../egyptListingData';
 import { ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 
@@ -9,7 +9,7 @@ const menus = (style, sort) => [
   { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
 ];
 
-export default function EgyptFilterBar({ title, count, style, sort, onStyle, onSort }) {
+export default function EgyptFilterBar({ style, sort, onStyle, onSort }) {
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(0);
   const [stuck, setStuck] = useState(false);
@@ -19,7 +19,7 @@ export default function EgyptFilterBar({ title, count, style, sort, onStyle, onS
   useEffect(() => {
     const onDoc = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(null); };
     const onKey = (e) => { if (e.key === 'Escape') setOpen(null); };
-    const onScroll = () => { if (ref.current) setStuck(ref.current.getBoundingClientRect().top <= 65); };
+    const onScroll = () => { if (ref.current) setStuck(ref.current.getBoundingClientRect().top <= 1); };
     document.addEventListener('mousedown', onDoc);
     document.addEventListener('touchstart', onDoc, { passive: true });
     document.addEventListener('keydown', onKey);
@@ -43,9 +43,8 @@ export default function EgyptFilterBar({ title, count, style, sort, onStyle, onS
   const openMenu = list.find((m) => m.key === open);
 
   return (
-    <div ref={ref} className={`sticky top-16 z-20 mt-4 -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 bg-[#FBF9F1] transition-shadow ${stuck ? 'shadow-[0_6px_12px_-8px_rgba(0,33,49,0.25)]' : ''}`} data-testid="eg-filter-bar">
+    <div ref={ref} className={`sticky top-0 z-30 mt-6 -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 bg-[#FBF9F1] transition-shadow ${stuck ? 'shadow-[0_6px_12px_-8px_rgba(0,33,49,0.25)]' : ''}`} data-testid="eg-filter-bar">
       <div className="relative flex items-center gap-2 sm:gap-3 h-16">
-        <span className="eg-title-md text-[#002131] whitespace-nowrap truncate min-w-0 flex-1" data-testid="eg-filter-title">{title}<span className="hidden sm:inline ml-2 eg-body-md text-[#174358] font-normal" data-testid="eg-result-count">{count}</span></span>
         {list.map((m) => {
           const active = m.items.some((i) => i.selected);
           const isOpen = open === m.key;
@@ -54,11 +53,12 @@ export default function EgyptFilterBar({ title, count, style, sort, onStyle, onS
               className={`shrink-0 inline-flex items-center gap-1 h-10 pl-3 sm:pl-4 pr-2 sm:pr-3 rounded-full border whitespace-nowrap eg-label-lg transition-colors ${active || isOpen ? 'border-[#174358] bg-[#174358] text-white' : 'border-[#6F777C] text-[#002131] hover:bg-[rgba(23,67,88,0.08)]'}`}
               data-testid={`eg-filter-${m.key}`}>
               {m.label}
-              {active && <span className="ml-0.5 w-1.5 h-1.5 rounded-full bg-[#FB7F26]" data-testid={`eg-filter-${m.key}-dot`} />}
+              {active && <span className="ml-0.5 w-1.5 h-1.5 rounded-full bg-white" data-testid={`eg-filter-${m.key}-dot`} />}
               <ChevronDown size={20} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
           );
         })}
+        <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled hidden lg:inline-flex ml-auto h-11 px-6 eg-title-md" data-testid="eg-filter-cta">{hero.stickyCta}</a>
       </div>
       {openMenu && (
         <div role="menu" style={{ left }} className="absolute top-full z-30 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]" data-testid={`eg-filter-dropdown-${openMenu.key}`}>

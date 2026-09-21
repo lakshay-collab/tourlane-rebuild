@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only verification of Hi Tours /afrika/aegypten Egypt listing after refactor: sub-nav reduced to 5 tabs, new sticky eg-filter-bar with Travel styles/Sort, URL-driven filters, updated card layout (cities chip on image, 2x2 tiles), CTA copy 'Plan your Egypt trip', mobile lazy-load (3-at-a-time) vs desktop Show more. All 11 requested feature groups PASS on both 1440 desktop and 390 mobile emulation. 0 console errors on Egypt page, / and /asien.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "detailed_results": {
+    "load_no_overflow": "PASS - 0 console errors at 1440 and 390. documentElement.scrollWidth == 390 on mobile.",
+    "top_subnav_5_tabs": "PASS - eg-tabs-strip buttons: ['About Egypt','Egypt holidays','Travel guide','Inspiration','Places']. No 'Travel styles' or 'Sort' in strip.",
+    "filter_bar_in_tours": "PASS - eg-filter-bar inside #tours; eg-filter-title='Egypt holidays'; eg-result-count='7 holidays' visible at 1440 (display block), hidden at 390 (display=none, offsetW=0); eg-filter-styles + eg-filter-sort present.",
+    "sticky_behaviour": "PASS - After scrolling ~700px within #tours, eg-filter-bar getBoundingClientRect().top === 64 on BOTH 1440 and 390 (directly under 64px sub-nav).",
+    "styles_dropdown_and_url": "PASS - eg-filter-dropdown-styles shows 7 eg-filter-item: Family, Honeymoon, Culture, Short trips, Beach, Nile cruise, Luxury. Click Honeymoon -> URL /afrika/aegypten/travel-style/honeymoon; eg-filter-styles-dot present; eg-filter-chip-style='Travel style: Honeymoon'; 2 eg-product-card; eg-hero-title='Egypt honeymoon holidays'. Clearing chip -> /afrika/aegypten.",
+    "sort_dropdown_and_url": "PASS - 4 items (Price low->high, high->low, Duration short->long, long->short). Price high to low -> URL ?sort=price-desc; first eg-product-price contains '₹2,49,000'; eg-filter-chip-sort visible. Sort dropdown on 390: right edge=390 (within viewport). Escape closes dropdown.",
+    "desktop_show_more": "PASS - Desktop 1440: 6 cards initially; eg-tours-more label 'Show more' -> 7 cards -> 'Show less'. No eg-lazy-sentinel on desktop.",
+    "mobile_lazy_load": "PASS - Mobile 390: 3 cards initially; eg-lazy-sentinel present; scrolling loads 3->6->7 cards; sentinel disappears at 7. No eg-tours-more on mobile.",
+    "card_layout": "PASS - eg-product-cities '5 cities' rect is inside img rect (overlay bottom-left). eg-product-inclusions has 4 children tiles: days='11 days', hotels='4 hotels', activities='12 activities', transfers='9 transfers'. eg-product-price='From ₹1,44,000 per person'.",
+    "cta_copy": "PASS - Desktop sticky sub-nav eg-tabs-cta-button='Plan your Egypt trip'; no 'no obligation' text in tabs strip container. Mobile eg-mobile-cta bar contains only 'Plan your Egypt trip'; eg-mobile-cta-button width=358px (>300). Hero CTA still 'Plan for free'. 'Customize' not present anywhere on page.",
+    "regression": "PASS - eg-tab-tours click scrolls to #tours (tours.top ~80 = 64 sub-nav + 16). Homepage / and /asien load with 0 console errors."
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 11 iteration-17 spec items pass. Key testids: eg-tabs-strip (5 buttons), eg-filter-bar (sticky top:64 within #tours), eg-filter-title, eg-result-count (hidden at 390), eg-filter-styles/-dot, eg-filter-sort, eg-filter-dropdown-styles/-sort, eg-filter-item, eg-filter-chip-style/-clear, eg-filter-chip-sort, eg-lazy-sentinel (mobile only), eg-lazy-spinner, eg-tours-more (desktop only), eg-product-cities (overlaid on image), eg-product-inclusions (4 tiles: days/hotels/activities/transfers), eg-product-price ('From ₹x per person'), eg-tabs-cta-button ('Plan your Egypt trip'), eg-mobile-cta/-button. URL patterns /afrika/aegypten/travel-style/<slug> and ?sort=. Tested with viewport-only mobile (not full is_mobile emulation) but layout switches correctly (3 initial cards, sentinel present, count hidden)."
+}

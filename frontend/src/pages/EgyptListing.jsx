@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import Footer from '../components/Footer';
-import EgyptHero, { ScrollTop, MobileStickyCta, scrollToId } from '../components/egypt/EgyptHero';
+import EgyptHero, { ScrollTop, MobileStickyCta } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptFilterBar from '../components/egypt/EgyptFilterBar';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
@@ -45,7 +45,6 @@ const sortFns = {
 };
 
 export default function EgyptListing() {
-  const [allTours, setAllTours] = useState(false);
   const [allThemes, setAllThemes] = useState(false);
   const [readMore, setReadMore] = useState(false);
   const navigate = useNavigate();
@@ -73,21 +72,22 @@ export default function EgyptListing() {
     return sort ? [...f].sort(sortFns[sort]) : f;
   }, [style, sort]);
   const mobile = useIsMobile();
-  const [mobileCount, setMobileCount] = useState(3);
+  const page = mobile ? 3 : 6;
+  const [count, setCount] = useState(page);
   const [loading, setLoading] = useState(false);
   const sentinel = useRef(null);
-  useEffect(() => { setMobileCount(3); }, [style, sort]);
+  useEffect(() => { setCount(page); }, [style, sort, page]);
   useEffect(() => {
-    if (!mobile || !sentinel.current || mobileCount >= list.length) return undefined;
+    if (!sentinel.current || count >= list.length) return undefined;
     const io = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting || loading) return;
       setLoading(true);
-      setTimeout(() => { setMobileCount((c) => Math.min(c + 3, list.length)); setLoading(false); }, 450);
+      setTimeout(() => { setCount((c) => Math.min(c + page, list.length)); setLoading(false); }, 450);
     }, { rootMargin: '200px 0px' });
     io.observe(sentinel.current);
     return () => io.disconnect();
-  }, [mobile, mobileCount, list.length, loading]);
-  const shown = mobile ? list.slice(0, mobileCount) : (allTours || style || sort ? list : list.slice(0, 6));
+  }, [count, list.length, loading, page]);
+  const shown = list.slice(0, count);
   const sortLabel = sort && sorts.find((s) => s.key === sort).label;
 
   return (
@@ -114,7 +114,7 @@ export default function EgyptListing() {
             {readMore && tours.intro.map((x, i) => (Array.isArray(x) ? <b key={`m${i}`} className="font-semibold">{x[0]}</b> : x))}
             {' '}<button type="button" onClick={() => setReadMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-tours-readmore">{readMore ? tours.readLess : tours.readMore}</button>
           </p>
-          <EgyptFilterBar title={tours.h2} count={`${list.length} ${list.length === 1 ? 'holiday' : 'holidays'}`} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
+          <EgyptFilterBar style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
           {(style || sort) && (
             <div className="mt-2 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
               {style && <Chip label={tours.filterLabel} value={style} onClear={() => setStyle(null)} testId="eg-filter-chip-style" />}
@@ -128,13 +128,10 @@ export default function EgyptListing() {
           ) : (
             <p className="mt-8 eg-body-lg text-[#174358]" data-testid="eg-empty">{tours.empty}</p>
           )}
-          {mobile && mobileCount < list.length && (
+          {count < list.length && (
             <div ref={sentinel} className="mt-6 flex justify-center h-10" data-testid="eg-lazy-sentinel">
-              {loading && <span className="w-8 h-8 rounded-full border-[3px] border-[#FADDD1] border-t-[#E75E26] animate-spin" data-testid="eg-lazy-spinner" aria-label="Loading more holidays" />}
+              {loading && <span className="w-8 h-8 rounded-full border-[3px] border-[#E4E3DB] border-t-[#174358] animate-spin" data-testid="eg-lazy-spinner" aria-label="Loading more holidays" />}
             </div>
-          )}
-          {!mobile && !style && !sort && list.length > 6 && (
-            <MoreButton open={allTours} onClick={() => { setAllTours((v) => !v); if (allTours) scrollToId('tours'); }} more={tours.more} less={tours.less} testId="eg-tours-more" />
           )}
         </section>
 
