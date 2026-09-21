@@ -14,8 +14,8 @@ function ProductCard({ p }) {
         <div className="relative h-[220px] overflow-hidden">
           <img src={p.images[i]} alt={p.title} className="w-full h-full object-cover" loading="lazy" />
           <span className="absolute left-3 top-3 h-7 px-3 rounded-full bg-surface/90 backdrop-blur t-label-md text-onsurface inline-flex items-center">{p.category}</span>
-          <button aria-label="Previous image" onClick={(e) => go(e, -1)} className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><ChevronLeft size={18} /></button>
-          <button aria-label="Next image" onClick={(e) => go(e, 1)} className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"><ChevronRight size={18} /></button>
+          <button aria-label="Previous image" onClick={(e) => go(e, -1)} className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"><ChevronLeft size={18} /></button>
+          <button aria-label="Next image" onClick={(e) => go(e, 1)} className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface/90 text-onsurface flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"><ChevronRight size={18} /></button>
           <div className="absolute left-0 right-0 bottom-3 flex justify-center gap-1.5">
             {p.images.map((_, di) => <span key={di} className={`h-1.5 rounded-full transition-all ${di === i ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`} />)}
           </div>
