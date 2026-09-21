@@ -100,7 +100,7 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
         {stuck && (
           <div className="hidden lg:flex items-center gap-4 pl-6 shrink-0" data-testid="eg-tabs-cta">
             <p className="eg-body-sm text-[#002131] text-right whitespace-nowrap">Your travel plan – no obligation<br />&amp; tailor-made</p>
-            <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md">{hero.cta}</a>
+            <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-tabs-cta-button">{hero.stickyCta}</a>
           </div>
         )}
       </div>
@@ -126,6 +126,24 @@ function StickyTabs({ style, sort, onStyle, onSort }) {
           })}
         </div>
       )}
+    </div>
+  );
+}
+
+export function MobileStickyCta() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-mobile-cta" aria-hidden={!show}>
+      <div className="flex items-center justify-between gap-4">
+        <p className="eg-body-sm text-[#174358] leading-tight">{hero.sub}</p>
+        <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md shrink-0" data-testid="eg-mobile-cta-button">{hero.stickyCta}</a>
+      </div>
     </div>
   );
 }

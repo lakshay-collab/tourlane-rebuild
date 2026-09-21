@@ -12,7 +12,6 @@ export const ReviewSummary = ({ className = '' }) => (
     <span>{trust.label}</span>
     <BoxStars rating={trust.rating} size={20} color={BRAND_BLUE} />
     <span>{trust.score} {trust.outOf}</span>
-    <span className="text-[#174358]">{trust.count} {trust.reviews}</span>
   </div>
 );
 

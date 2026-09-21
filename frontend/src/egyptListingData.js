@@ -5,6 +5,7 @@ export const hero = {
   h1: 'Egypt Honeymoons and holidays',
   styleH1: (style) => `Egypt ${style.toLowerCase()} holidays`,
   cta: 'Plan for free',
+  stickyCta: 'Customize this trip',
   ctaHref: '/l/egypt/enquiry/passengers/',
   sub: 'Your travel plan – no obligation & tailor-made',
   image: '/egypt/hero-egypt.webp'

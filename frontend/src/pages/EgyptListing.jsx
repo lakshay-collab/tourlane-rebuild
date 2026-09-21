@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import Footer from '../components/Footer';
-import EgyptHero, { ScrollTop, scrollToId } from '../components/egypt/EgyptHero';
+import EgyptHero, { ScrollTop, MobileStickyCta, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
@@ -150,7 +150,8 @@ export default function EgyptListing() {
           <div className="mt-8"><EgyptTileRow items={africa.items} testId="eg-africa-row" /></div>
         </section>
       </main>
-      <ScrollTop className="bottom-6 right-4 md:bottom-10 md:right-12" />
+      <ScrollTop className="bottom-24 right-4 lg:bottom-10 lg:right-12" />
+      <MobileStickyCta />
       <Footer />
     </div>
   );
