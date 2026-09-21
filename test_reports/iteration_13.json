@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only re-test of Hi Tours homepage refinements at desktop 1440x900 and mobile 390x844. 12/12 functional checks passed with zero console/page errors. Verified: (1) trust-bar shows exactly 'Rated 4.7 on Google' (data-testid=rating-google) and 'Rated 4.9 on Tripadvisor' (data-testid=rating-tripadvisor) with NO numeric review counts (no '3,200', '2,100' or 'reviews' strings in the bar); (2) hero-search-input opens hero-search-suggestions panel with 58 rows alphabetical (first 5: Argentina, Asia, Australia, Bahamas, Belize), each row = round thumbnail img + destination name only (no 'Destinations' heading, no 'View trips' label, no trailing icons); (3) clicking hero-search-suggestion-egypt navigates to /afrika/aegypten and hero-search-suggestion-asia navigates to /asien; (4) desktop 'Expert advice' (data-testid=nav-phone) opens advice-popover containing advice-phone '+91 22 6140 1500', opening hours 'Mon\u2013Sat, 9:00 \u2013 20:00 IST' and advice-cta 'Plan for free'; clicking outside closes it; (5) testimonials-section: testimonials-rating shows 'Excellent 4.9 out of 5' with BoxStars, 7 testimonial-card entries each with brand-stars, 0 testimonial-avatar elements, no 'Trustpilot' text anywhere in section; (6) footer-badges renders 3 <img> tags /badges/iso45001.png (500x500), /badges/cert3.png (554x554), /badges/travelife.png (1024x614) - all naturalWidth>0; (7) footer-country text = 'India' with tricolor flag rendered; (8) 5 visible footer-social icons (Facebook, Instagram, LinkedIn, YouTube, Spotify) - Spotify SVG has 18x18 render size; (9) no 'Tourlane' text anywhere in body, required Hi Tours strings present ('Why Hi Tours is worth it', 'With Hi Tours', 'Unforgettable Hi Tours moments', 'Hi Tours Care'); (10) mobile hamburger opens mobile-menu; mobile-advice block at bottom contains advice-phone + advice-cta; mobile-nav-destinations accordion expands to 19 sub-items; (11) no horizontal overflow at 390px (scrollWidth=clientWidth=390); (12) console clean on both viewports.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Footer badges", "issues": ["/badges/cert3.png visually renders as an IATA logo, but its alt text is 'ISO 9001 certified'. Image loads (naturalWidth=554) so the functional check passes, but the content/alt mismatch may confuse users if the intent was an actual ISO 9001 badge. Consider replacing cert3.png with a real ISO 9001 mark or updating the alt text."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Optional: Replace /badges/cert3.png with an actual ISO 9001 badge image (currently shows IATA logo while alt text says ISO 9001) OR update alt text to 'IATA member' to match the artwork."
+  ],
+  "critical_code_review_comments": [
+    "Footer.jsx still renders 10 elements with data-testid='footer-social' (5 hidden desktop variant + 5 visible mobile variant on <lg; inverted on lg+) because the same testid is applied to both responsive Socials() calls. Visually only 5 are ever visible per viewport (requirement met), but for query robustness consider suffixing testids or conditionally rendering only one set per viewport.",
+    "SearchBar.jsx pick() calls setValue(d.name) after navigate() for routed destinations; navigate is synchronous within React Router but the setValue is harmless. Not a bug.",
+    "Header.jsx AdviceBody is duplicated in-place for desktop popover and mobile-advice block \u2013 clean and DRY, good.",
+    "Testimonials use inline BLUE constant '#1C6FB8' \u2013 fine but could live in a Tailwind token for reuse."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% (12/12 checks pass)"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Hi Tours homepage stable after iteration 13. Verified counts: search=58 rows alphabetical with round thumbnails only, testimonials=7 cards no avatars, visible footer-social=5 (incl Spotify 18x18), mobile Destinations sub-items=19. Regression navigations: Egypt->/afrika/aegypten, Asia->/asien. No Tourlane string anywhere. Console clean on desktop 1440 and mobile 390. Only cosmetic note: /badges/cert3.png renders as IATA logo despite ISO 9001 alt text."
+}

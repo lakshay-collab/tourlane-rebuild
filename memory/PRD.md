@@ -124,6 +124,16 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Brand palette (from Hi Tours Brand Kit): Ember #E75E26, Amber #FB7F26, Ink #002131. Stars use Amber #FB7F26.
 - Tested: iteration_12 — 14/14 frontend checks pass at 1920 + 390, 0 console errors. Minor note: footer renders mobile+desktop social variants sharing `footer-social` testid (5 visible per viewport; not a bug).
 
+## Homepage refinements round 2 (2026-06, latest)
+- **Logo**: trimmed transparent padding on `/hitours-white.webp` (was 16:9 with padding → now ~2.6:1) so the white header logo sizes correctly; header logo set to h-10 sm:h-11.
+- **Search dropdown**: minimal — removed the "Destinations" label and the trailing icons/"View trips"; each row is a round thumbnail + name, alphabetical (58 rows). Egypt→listing, Asia→/asien.
+- **Expert Advice**: `nav-phone` now opens a Tourlane-style popover (desktop, `advice-popover`) and a contact block in the mobile menu (`mobile-advice`) with phone, hours, CTA. Data in `mock.expertAdvice` — phone is a PLACEHOLDER (+91 22 6140 1500) pending client's real number. Hamburger + expert-advice are Tourlane-style approximations (client to confirm side-by-side).
+- **Rating bar**: now "Rated 4.7 on Google" (Google G) + real Tripadvisor logo image (`/badges/tripadvisor.png`, white bg made transparent) with "Rated 4.9"; no review counts.
+- **Testimonials**: reverted to original card layout with Trustpilot-style BOXED stars turned BLUE (#1C6FB8), no Trustpilot text, and NO avatar/photo circles.
+- **Footer**: German award badges replaced with ISO 45001 + IATA + Travelife (`/badges/*.png`); country → India with tricolour flag; 5 socials (FB/IG/LinkedIn/YouTube/Spotify) enlarged to w-9/h-9 filled circles so Spotify is clearly visible.
+- **Copy**: all homepage "Tourlane" → "Hi Tours" (mock.js).
+- Tested: iteration_12 (14/14), iteration_13 (12/12) — 100% frontend pass, 0 console errors, desktop + mobile. Tripadvisor logo swap verified visually.
+
 ## Backlog
 - P1: Replace remaining 'Tourlane' brand mentions in copy with 'Hi Tours' (mock.js).
 - P1: Swap English copy for German source copy if exact wording is required (all in mock.js).

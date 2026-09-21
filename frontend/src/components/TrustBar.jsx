@@ -12,8 +12,8 @@ export default function TrustBar() {
         </div>
         <span className="hidden sm:block h-5 w-px bg-outline-variant" />
         <div className="flex items-center gap-2 whitespace-nowrap" data-testid="rating-tripadvisor">
-          <TripAdvisorLogo size={20} />
-          <span className="t-label-lg text-onsurface">Rated <span className="font-semibold">{ratings.tripadvisor.score}</span> on Tripadvisor</span>
+          <TripAdvisorLogo size={22} />
+          <span className="t-label-lg text-onsurface">Rated <span className="font-semibold">{ratings.tripadvisor.score}</span></span>
         </div>
       </div>
     </div>

@@ -68,12 +68,6 @@ export const GoogleLogo = ({ size = 18 }) => (
   </svg>
 );
 
-export const TripAdvisorLogo = ({ size = 20 }) => (
-  <svg viewBox="0 0 68 40" height={size} width={size * 1.7} aria-label="Tripadvisor">
-    <circle cx="20" cy="20" r="14" fill="none" stroke="#34E0A1" strokeWidth="5" />
-    <circle cx="20" cy="20" r="5.5" fill="#000" />
-    <circle cx="48" cy="20" r="14" fill="none" stroke="#34E0A1" strokeWidth="5" />
-    <circle cx="48" cy="20" r="5.5" fill="#000" />
-    <path d="M28 12 L40 12 L34 4 Z" fill="#34E0A1" />
-  </svg>
+export const TripAdvisorLogo = ({ size = 22 }) => (
+  <img src="/badges/tripadvisor.png" alt="Tripadvisor" style={{ height: size }} className="w-auto" />
 );

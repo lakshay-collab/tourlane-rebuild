@@ -17,7 +17,7 @@ const Badges = ({ className = '' }) => (
     </div>
     <div className="flex flex-wrap items-center gap-5">
       <img src="/badges/iso45001.png" alt="ISO 45001 certified" className="h-16 w-auto object-contain" />
-      <img src="/badges/cert3.png" alt="ISO 9001 certified" className="h-16 w-auto object-contain" />
+      <img src="/badges/cert3.png" alt="IATA accredited" className="h-16 w-auto object-contain" />
       <img src="/badges/travelife.png" alt="Travelife certified" className="h-16 w-auto object-contain" />
     </div>
   </div>
