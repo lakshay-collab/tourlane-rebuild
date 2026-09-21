@@ -1,0 +1,20 @@
+{
+  "summary": "Frontend verification of hero full-bleed video and downstream page. Hero <video data-testid=hero-collage> covers the hero-section exactly (bounding boxes equal at 1440/1280/905/600/390), autoplays muted+loop (paused=false, currentTime advances 1.0->3.2 over 2s), currentSrc resolves to /hero-video.webm, poster=/hero-poster.jpg, no media error, readyState=4. Title 'Exquisitely crafted luxury honeymoons and holidays' renders white in 2 lines at 1440/1280/905/600 and 3 lines at 390 (acceptable narrow-mobile wrap). Subtitle visible at >=600px and hidden at 390px. Hero heights: 680 (1440/1280), 620 (905), 600 (600), 560 (390) - within spec (~680 at 1440, ~560 at 390). Trust-bar top exactly matches hero bottom (no gap). All required sections present (features-section, ambassadors-section, comparison-section, moments-section, steps-section, showcase-section, adventure-section, experts-section, testimonials-section, destinations-section, newsletter-section, site-footer). No console errors. No horizontal overflow at 390. Search submit does not navigate (URL unchanged). Showcase tab (canada->iceland) and destinations tab (top10->africa) switch content. Newsletter success message 'Thank you! Please check your inbox to confirm your subscription.' displays after submit.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Note: The task spec mentioned section testids like 'features','ambassadors', etc.; actual implementation uses '-section' suffix (features-section, etc.). Not a bug, but keep spec/testids consistent."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Section data-testids use '-section' suffix (features-section, ambassadors-section, etc.). Hero video is a proper <video> tag with two <source> children (webm+mp4); in headless Chromium webm is selected. All acceptance criteria for iteration 4 verified passing."
+}
