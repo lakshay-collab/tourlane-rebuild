@@ -25,7 +25,7 @@ export default function SearchBar({ id = 'hero', className = '' }) {
       className={`flex items-center w-full h-14 bg-white rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)] pl-6 pr-2 ${className}`}
       data-testid={`${id}-search-form`}
     >
-      <MapPin size={22} strokeWidth={1.75} className="text-primary shrink-0" />
+      <MapPin size={22} strokeWidth={1.75} className="text-accent shrink-0" />
       <input
         type="text"
         value={value}

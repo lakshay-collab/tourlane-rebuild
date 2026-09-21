@@ -17,9 +17,10 @@ module.exports = {
         ui: ['"Instrument Sans"', 'Inter', 'sans-serif']
       },
       colors: {
-        primary: { DEFAULT: '#E75E26', hover: '#C84D1B', container: '#F4B49A', dim: '#FB7F26' },
-        onprimary: { fixedvariant: '#174358', container: '#002131' },
-        secondary: { DEFAULT: '#174358', container: '#FADDD1', dim: '#F4B49A' },
+        primary: { DEFAULT: '#174358', hover: '#113141', container: '#9ACDE5', dim: '#308BB6' },
+        accent: { DEFAULT: '#E75E26', soft: '#FADDD1' },
+        onprimary: { fixedvariant: '#002131', container: '#002131' },
+        secondary: { DEFAULT: '#308BB6', container: '#E0F7FF', dim: '#9ACDE5' },
         surface: {
           DEFAULT: '#FBF9F1',
           dim: '#DCDAD2',
@@ -28,7 +29,7 @@ module.exports = {
           container: '#F0EEE6',
           high: '#EAE8E0',
           highest: '#E4E3DB',
-          variant: '#FBEADB'
+          variant: '#E0F7FF'
         },
         onsurface: { DEFAULT: '#002131', variant: '#174358' },
         outline: { DEFAULT: '#6F777C', variant: '#C4CBD0' },
@@ -40,7 +41,6 @@ module.exports = {
         card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
         popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
         muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
-        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
         destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

@@ -13,7 +13,7 @@ body {
   color: #002131;
 }
 
-::selection { background: #E75E26; color: #fff; }
+::selection { background: #174358; color: #fff; }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -59,7 +59,7 @@ body {
     --card-foreground: 60 9% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 60 9% 10%;
-    --primary: 17 80% 53%;
+    --primary: 200 59% 22%;
     --primary-foreground: 0 0% 100%;
     --secondary: 138 34% 86%;
     --secondary-foreground: 60 9% 10%;
@@ -71,7 +71,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --border: 120 8% 77%;
     --input: 120 8% 77%;
-    --ring: 17 80% 53%;
+    --ring: 200 59% 22%;
     --radius: 0.75rem;
   }
 }

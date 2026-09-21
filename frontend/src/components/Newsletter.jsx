@@ -30,7 +30,7 @@ export default function Newsletter() {
               </div>
             ) : (
               <form onSubmit={submit} className="flex items-center w-full sm:w-[500px] h-14 bg-white rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.12),0_4px_16px_rgba(0,0,0,0.06)] pl-6 pr-2" data-testid="newsletter-form">
-                <Mail size={22} strokeWidth={1.75} className="text-primary shrink-0" />
+                <Mail size={22} strokeWidth={1.75} className="text-accent shrink-0" />
                 <input
                   type="email"
                   required
@@ -49,7 +49,7 @@ export default function Newsletter() {
                 const Icon = icons[b.icon];
                 return (
                   <li key={b.text} className="flex items-center gap-3 t-body-lg text-onsurface">
-                    <Icon size={24} strokeWidth={1.5} className="text-primary" />{b.text}
+                    <Icon size={24} strokeWidth={1.5} className="text-accent" />{b.text}
                   </li>
                 );
               })}

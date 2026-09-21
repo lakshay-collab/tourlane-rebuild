@@ -15,7 +15,7 @@ export const nav = {
 };
 
 export const hero = {
-  title: 'The easiest way to discover the world',
+  title: 'Discover and book amazing customized honeymoons and holidays.',
   searchPlaceholder: 'Where would you like to go?',
   searchPlaceholderMobile: 'Where to?',
   cta: 'Plan for free',
