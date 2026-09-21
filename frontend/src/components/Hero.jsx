@@ -29,9 +29,6 @@ export default function Hero() {
           <h1 className="t-display-sm md:t-display-lg text-center text-white [text-wrap:balance] drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)]" data-testid="hero-title">
             {hero.title[0]}<br className="hidden md:block" /> {hero.title[1]}
           </h1>
-          <p className="hidden sm:block mt-4 t-body-lg text-white/85 text-center max-w-[620px] mx-auto" data-testid="hero-subtitle">
-            {hero.subtitle}
-          </p>
         </div>
         <div className="w-full md:w-[552px]">
           <SearchBar id="hero" />

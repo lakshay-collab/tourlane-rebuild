@@ -15,7 +15,7 @@ export const nav = {
 };
 
 export const hero = {
-  title: ['Exquisitely crafted luxury', 'honeymoons and holidays'],
+  title: ['Exquisitely crafted luxury', 'honeymoons & holidays'],
   searchPlaceholder: 'Where would you like to go?',
   searchPlaceholderMobile: 'Where to?',
   cta: 'Plan for free',
