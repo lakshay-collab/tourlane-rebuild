@@ -172,3 +172,14 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Mobile fixes: horizontal overflow removed (tabs strip), activities 2-up swipe row, ScrollTop bottom-right smaller offset.
 - Header logo: `Logo.jsx` default now `/hitours-dark.webp` (no tagline, same framing as white logo); `tagline` prop keeps `/hitours-logo.webp` (used in Footer).
 - Tested: iteration_15 – 100% frontend pass (14 groups) at 1440 + 390, 0 console errors.
+
+## Egypt listing – round 2: full-bleed hero, brand tokens, SEO style URLs (2026-06, latest)
+- Hero now full-bleed with `Header overlay` (white logo) on desktop AND mobile, heights 520/560/600/640, white copy centered over image with Ink scrim. No white gap under header. H1 switches to 'Egypt <style> holidays' on style landing pages.
+- `.eg` scope re-tokenised to Hi Tours brand: Bricolage Grotesque (display/headline/title-lg), Inter (body), Instrument Sans (labels/title-md); Ink #002131 text, Harbor #174358 primary/secondary text + links, Ember #E75E26 active-tab underline/dots/progress, Blush arrows, outline #6F777C / #C4CBD0. `.eg-btn-filled` = Sunset Run gradient (like homepage CTAs). Applied across Egypt listing/detail/Asia components (shared).
+- Sub-nav order: About Egypt · Egypt holidays · Travel styles · Travel guide · Inspiration · Places · Sort.
+- Travel style = URL: route `/afrika/aegypten/travel-style/:style` (slugs family, honeymoon, culture, short-trips, beach, nile-cruise, luxury; 'Romantic' renamed 'Honeymoon'); sort = `?sort=price-asc|price-desc|days-asc|days-desc`; unknown style redirects to listing; document.title updates. Enables SEO landing pages.
+- About section: h2 'About Egypt – planned by experts'; expert Ria Banerjee, 'Head of Product & Travel Expert for Egypt', generated portrait `/egypt/expert-ria.webp`; 'Updated on' removed. Tours intro shortened to one sentence + 'Read more' toggle.
+- Product card: image dots removed; one 2-col grid of icon stats (days, cities, hotels, activities, transfers — no 'stops'), divider only above 'From ₹x per person'. Simpler icons (calendar, pin, bed, ticket, car).
+- Planner: reverted to 'As seen in:' press logos (Süddeutsche/Stern/Die Zeit) per user.
+- Section spacing: mt-12 on mobile, mt-16 desktop.
+- Tested: iteration_16 – 13/13 frontend scenarios pass at 1440 + 390, 0 console errors (card grid re-layout verified by screenshot afterwards).

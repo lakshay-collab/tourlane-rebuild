@@ -1,0 +1,33 @@
+{
+  "summary": "Round 2 verification of Hi Tours /afrika/aegypten page: full-bleed hero with overlay header, brand fonts/colors, URL-driven travel-style/sort filters, Ria Banerjee expert, Read more toggle, updated product cards, 'As seen in:' press logos. All 13 targeted scenarios pass on both 1440 desktop and 390 mobile emulation. 0 console errors. No horizontal overflow. Regression: /, /asien load cleanly. No source code was modified.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "detailed_results": {
+    "hero_overlay": "PASS - header position=absolute, top=0, eg-hero top=0 (no white gap). Logo=/hitours-white.webp. Hero title 'Egypt Honeymoons and holidays' rendered over image in white (rgb(255,255,255)) on desktop and mobile. eg-hero-cta='Plan for free' with linear-gradient orange background.",
+    "subnav_order": "PASS - ['About Egypt','Egypt holidays','Travel styles','Travel guide','Inspiration','Places','Sort']",
+    "travel_styles_dropdown": "PASS - Items: Family, Honeymoon, Culture, Short trips, Beach, Nile cruise, Luxury (no Romantic). Clicking Honeymoon -> /afrika/aegypten/travel-style/honeymoon, title='Egypt Honeymoon holidays | Hi Tours', hero+tours title 'Egypt honeymoon holidays', chip 'Travel style: Honeymoon', result-count '2 holidays', 2 cards. Clearing chip returns to /afrika/aegypten with 6 cards.",
+    "direct_load_family_price_desc": "PASS - 1 card (Egypt family holiday: adventure for kids), both style + sort chips visible. Sort dropdown updates ?sort= (sort-asc verified). /travel-style/unknown redirects to /afrika/aegypten.",
+    "back_button": "PASS - After picking Honeymoon, browser back returns to /afrika/aegypten with 6 cards.",
+    "about_expert": "PASS - h2 'About Egypt – planned by experts'. Ria Banerjee & 'Head of Product & Travel Expert for Egypt' present. No 'Updated on' text. /egypt/expert-ria.webp naturalWidth=256.",
+    "tours_intro_readmore": "PASS - Intro=142 chars (short), 'Read more' toggles to 381 chars & label becomes 'Read less'.",
+    "product_cards": "PASS - 6 cards, 0 carousel dots, days ('11 days')+cities ('5 cities'), inclusions exactly 3 (hotels/activities/transfers). Price 'From ₹1,44,000 per person'. No 'stops' or 'p.p.' text anywhere.",
+    "planner": "PASS - 'As seen in:' with Süddeutsche Zeitung, Stern, Die Zeit logos. No 'Certified by'.",
+    "brand_styling": "PASS - Hero & Tours titles fontFamily contains 'Bricolage Grotesque'. Tours intro fontFamily contains 'Inter'. Hero CTA bg contains linear-gradient. No element uses rgb(0,109,68) old Tourlane green anywhere.",
+    "active_tab_underline": "VISUAL PASS - Underline rendered via ::after/absolute element (not border-bottom); border-bottom-width=0px on all tab buttons. Orange underline visible under active 'About Egypt' tab in screenshot, matching Ember color. Note: border-bottom-color computed value on eg-tab-tours is not rgb(231,94,38) since underline is not implemented via border-bottom - this is a stylistic implementation detail, visual result is correct.",
+    "mobile_390": "PASS - documentElement.scrollWidth=390 (no overflow). Hero copy visible over image; no eg-hero-copy-mobile element. Tabs strip overflow-x=auto with scrollWidth 867>clientWidth 390. Travel styles dropdown stays within viewport (left=102,right=382 within 390).",
+    "regression": "PASS - / and /asien load with 0 console errors. Footer logo /hitours-logo.webp present."
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Egypt listing page /afrika/aegypten is fully passing round-2 requirements. Travel-style filter is URL-driven via /afrika/aegypten/travel-style/<slug>, sort via ?sort=. Data-testids used: site-header, eg-hero, eg-hero-title, eg-hero-cta, eg-hero-copy, eg-tabs-strip, eg-tab-dropdown-item, eg-filter-chip-style(+ -clear), eg-filter-chip-sort, eg-result-count, eg-product-card/days/cities/price/inclusions/hotels/activities/transfers, eg-tours-title, eg-tours-intro, eg-tours-readmore, eg-planner. Active tab underline uses an absolutely-positioned element, not border-bottom - test computed styles accordingly."
+}
