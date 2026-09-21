@@ -1,19 +1,19 @@
-// Product #18 from the uploaded "Tourlane Products Itinerary" (Egypt Explorer — Grand Luxury Edition),
-// mapped onto the /afrika/aegypten/luxor-strand-urlaub detail page. UI labels kept German (Tourlane clone).
+// Product #18 from the uploaded "Tourlane Products Itinerary" (Egypt Explorer — Grand Luxury Edition).
+// Entire detail page content in English.
 
 export const detail = {
   slug: 'luxor-strand-urlaub',
   ctaHref: '/l/aegypten/enquiry/passengers/',
-  cta: 'Kostenlos planen',
-  sub: 'Ihr Reiseplan – unverbindlich & maßgeschneidert',
-  banner: 'Sorglos planen: stabile Flugpreise seit über einem Jahr, sowie flexible Umbuchungs- und Stornierungsoptionen.',
+  cta: 'Plan for free',
+  sub: 'Your travel plan – non-binding & tailor-made',
+  banner: 'Worry-free planning: stable flight prices for over a year, plus flexible rebooking and cancellation options.',
   title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
   alt: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
-  days: '11 Tage',
-  stations: '5 Stationen',
-  transport: 'Individualtransfer',
-  tag: 'Kultur',
-  price: '1.690 $',
+  days: '11 days',
+  stations: '5 stops',
+  transport: 'Private transfer',
+  tag: 'Culture',
+  price: '$1,690',
   gallery: [
     'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=1080&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
@@ -21,30 +21,30 @@ export const detail = {
     'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
-  services: ['Unterkünfte', 'Transport', '24/7 Betreuung', 'Aktivitäten', 'Tourlane App', 'Reiseplan', 'eSim', 'Flüge'],
+  services: ['Accommodation', 'Transport', '24/7 Support', 'Activities', 'Tourlane App', 'Travel plan', 'eSIM', 'Flights'],
   expert: {
     name: 'Roman Karin',
     image: 'https://tourlane-experts.imgix.net/7290O000000YqpN',
-    role: 'Aus unserem -Expertenteam',
-    createdBy: 'Reise erstellt von',
-    quote: 'Egypt Explorer verbindet die großen Höhepunkte Ägyptens in einer einzigen Reise: die Pyramiden von Gizeh und das Grand Egyptian Museum in Kairo, eine entspannte Nilkreuzfahrt zwischen Assuan, Kom Ombo, Edfu und Luxor und zum Abschluss einen Badeaufenthalt am Roten Meer in Hurghada. Besonders empfehle ich den Tempel von Edfu, der per Pferdekutsche erreicht wird und zu den besterhaltenen Tempeln Ägyptens zählt. Und mein Tipp: Besuchen Sie das Tal der Könige früh morgens, wenn es an den Gräbern noch kühl und ruhig ist.',
-    more: 'Mehr anzeigen'
+    role: 'From our expert team',
+    createdBy: 'Trip created by',
+    quote: 'Egypt Explorer brings together the great highlights of Egypt in a single journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada. I especially recommend the Temple of Edfu, reached by horse carriage and one of the best-preserved temples in all of Egypt. And my tip: visit the Valley of the Kings early in the morning, when the tombs are still cool and quiet.',
+    more: 'Show more'
   }
 };
 
 export const route = {
-  h2: 'Empfohlene Route',
-  sub: 'Jederzeit mit einem Experten anpassbar',
-  accommodationHeading: 'Ihre Unterkunft',
-  accommodationCta: 'Unterkunft anpassen',
-  programHeading: 'Ihr Programm',
-  more: 'Mehr anzeigen',
-  less: 'Weniger anzeigen',
+  h2: 'Recommended route',
+  sub: 'Adjustable with an expert at any time',
+  accommodationHeading: 'Your accommodation',
+  accommodationCta: 'Adjust accommodation',
+  programHeading: 'Your programme',
+  more: 'Show more',
+  less: 'Show less',
   stops: [
     {
       letter: 'A',
       name: 'Cairo',
-      dayLabel: 'Tag 1 - 4',
+      dayLabel: 'Day 1 - 4',
       text: 'Arrival at Cairo International Airport with meet & assist through immigration and customs, then transfer to your hotel. Over the following days you explore the Pyramids of Giza (Cheops, Chephren & Mykerinos) and the majestic Sphinx, and visit the Grand Egyptian Museum (GEM) — one of the world\u2019s largest archaeological museums with more than 100,000 artefacts, including the complete Tutankhamun collection. You then fly to Aswan, tour the High Dam with panoramic views over Lake Nasser, embark your Nile cruise ship and enjoy a felucca ride past the Botanical Gardens and the Agha Khan Mausoleum.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
@@ -67,20 +67,20 @@ export const route = {
         image: 'https://kiwi-cdn.tlservers.com/activities%2Fbfb9504e-6013-4e1f-8222-eea32df5429f%2Fimage%2Fjpeg%2FyU9CWklfqHs_iUwXLmiygw%2FiStock-2239876304.jpg?w=640&q=75&auto=format&fit=max'
       },
       programDetail: {
-        h3: 'Ganztägiger Besuch des Grand Egyptian Museum',
+        h3: 'Full-day visit to the Grand Egyptian Museum',
         points: [
-          { h: '1. Exquisite Sammlungen Antiker Artefakte', t: 'Das Grand Egyptian Museum beherbergt eine der größten und bedeutendsten Sammlungen antiker ägyptischer Antiquitäten der Welt. Sie finden alles von monumentalen Statuen und kunstvollen Schmuckstücken bis hin zu Alltagsgegenständen, die von den alten Ägyptern verwendet wurden. Die Galerien des Museums sind nach Themen unterteilt und zeigen die Entwicklung der ägyptischen Kunst, Religion und Gesellschaft über Jahrtausende.' },
-          { h: '2. Die Schätze von König Tutanchamun', t: 'Ein Höhepunkt ist die Sammlung, die den Schätzen von König Tutanchamun gewidmet ist. Das Museum zeigt die vollständigste Sammlung von Gegenständen aus seinem Grab, darunter seine berühmte goldene Maske, Streitwagen, Schmuck und die beeindruckende Vielfalt an Gegenständen, die 1922 mit ihm begraben wurden. Dies ist eine einmalige Gelegenheit, diese Schätze in einer hochmodernen Umgebung zu sehen.' },
-          { h: '3. Mumienhalle', t: 'Das Museum zeigt auch eine unglaubliche Ausstellung königlicher Mumien, darunter die von Pharaonen wie Ramses II und Sethos I. Diese Ausstellung bietet faszinierende Einblicke in die Bestattungspraktiken des alten Ägypten und die Konservierung von Körpern sowie den Mumifizierungsprozess.' },
-          { h: '4. Moderne Architektur und Design', t: 'Das Grand Egyptian Museum selbst ist ein Meisterwerk moderner Architektur mit einem beeindruckenden Design, das sich nahtlos in die Wüstenlandschaft einfügt. Seine weitläufigen, offenen Räume und innovativen Ausstellungstechniken bieten eine atemberaubende Kulisse für die antiken Artefakte und machen es zu einem wirklich immersiven Erlebnis.' },
-          { h: '5. Interaktive und Multimedia-Ausstellungen', t: 'Das Museum nutzt die neueste Technologie, um das alte Ägypten zum Leben zu erwecken. Interaktive Ausstellungen, digitale Rekonstruktionen und Multimedia-Präsentationen ermöglichen es Ihnen, ein tieferes Verständnis des historischen Kontextes hinter jedem Artefakt zu gewinnen.' }
+          { h: '1. Exquisite collections of ancient artefacts', t: 'The Grand Egyptian Museum houses one of the largest and most significant collections of ancient Egyptian antiquities in the world. You will find everything from monumental statues and intricate jewellery to everyday objects used by the ancient Egyptians. The galleries are organised by theme and trace the evolution of Egyptian art, religion and society across millennia.' },
+          { h: '2. The treasures of King Tutankhamun', t: 'A highlight is the collection dedicated to the treasures of King Tutankhamun. The museum displays the most complete set of objects from his tomb, including his famous golden mask, chariots, jewellery and the astonishing variety of items buried with him in 1922 — a unique chance to see these treasures in a state-of-the-art setting.' },
+          { h: '3. Royal Mummies Hall', t: 'The museum also presents an incredible display of royal mummies, including those of pharaohs such as Ramses II and Seti I. This exhibition offers fascinating insight into ancient Egyptian burial practices, body preservation and the mummification process.' },
+          { h: '4. Modern architecture and design', t: 'The Grand Egyptian Museum is itself a masterpiece of modern architecture, with a striking design that blends seamlessly into the desert landscape. Its expansive open spaces and innovative display techniques provide a breathtaking backdrop for the ancient artefacts and make for a truly immersive experience.' },
+          { h: '5. Interactive and multimedia exhibits', t: 'The museum uses the latest technology to bring ancient Egypt to life. Interactive exhibits, digital reconstructions and multimedia presentations let you gain a deeper understanding of the historical context behind each artefact.' }
         ]
       }
     },
     {
       letter: 'B',
-      name: 'Nilkreuzfahrt: Aswan → Edfu → Luxor',
-      dayLabel: 'Tag 4 - 7',
+      name: 'Nile Cruise: Aswan → Edfu → Luxor',
+      dayLabel: 'Day 4 - 7',
       text: 'Cruise the Nile aboard the M/S Concerto Plus on a full-board basis. Sail to Kom Ombo to visit its rare dual-deity temple dedicated to Sobek the crocodile god and Horus the Elder, then continue to Edfu to see the Temple of Horus — one of the most complete and best-preserved temples in Egypt — reached by horse carriage. From there you sail on to Luxor via Esna, crossing the Esna lock, with relaxed afternoons enjoying the passing scenery. An optional excursion to the temples of Abu Simbel is available.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FRudhVVpyaS21MwTtLaDafQ%2Fistock-185209709.jpg?w=640&q=75&auto=format&fit=max',
@@ -106,7 +106,7 @@ export const route = {
     {
       letter: 'C',
       name: 'Luxor → Hurghada',
-      dayLabel: 'Tag 7',
+      dayLabel: 'Day 7',
       text: 'After breakfast and disembarkation you explore Luxor\u2019s West Bank — the Valley of the Kings with the royal tombs of the pharaohs, the Temple of Hatshepsut carved into the limestone cliffs, and the Colossi of Memnon. On the East Bank you visit the vast Karnak Temple with its Great Hypostyle Hall of 134 columns and sacred lakes, and Luxor Temple with its giant statues and obelisks. In the afternoon you transfer by luxury coach to Hurghada on the Red Sea coast.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FEIB8KA0OkA3jO_kZVHnoxA%2FiStock-1390987140.jpg?w=640&q=75&auto=format&fit=max',
@@ -131,8 +131,8 @@ export const route = {
     },
     {
       letter: 'D',
-      name: 'Hurghada – Rotes Meer',
-      dayLabel: 'Tag 7 - 10',
+      name: 'Hurghada – Red Sea',
+      dayLabel: 'Day 7 - 10',
       text: 'Three nights of all-inclusive relaxation on the Red Sea. Enjoy the beach and the warm, crystal-clear water at your own pace, with plenty of optional activities such as water sports, snorkelling and diving among Hurghada\u2019s famous coral reefs. This is the perfect contrast to the cultural first half of your journey.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
@@ -154,7 +154,7 @@ export const route = {
     {
       letter: 'E',
       name: 'Cairo',
-      dayLabel: 'Tag 10 - 11',
+      dayLabel: 'Day 10 - 11',
       text: 'Fly back to Cairo for a final overnight after your Red Sea stay, with a transfer to your hotel and the evening at leisure. After breakfast on your last day you are transferred to Cairo International Airport for your departure flight home — a balanced journey of culture, Nile cruising and beach time comes to a close.',
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max',
@@ -175,7 +175,7 @@ export const route = {
 };
 
 export const experts = {
-  h2: 'Warum mit unseren Experten planen?',
+  h2: 'Why plan with our experts?',
   count: '200+',
   avatars: [
     'https://tourlane-experts.imgix.net/7290O000000YqpN?w=80&q=70&auto=format&fit=max',
@@ -184,82 +184,78 @@ export const experts = {
     'https://www.tourlane.de/cfa-assets/experts/fallback/3.jpg?w=80&q=70'
   ],
   stats: [
-    { h: '33+ Stunden Planungszeit geschenkt', t: 'Lehnen Sie sich zurück – unsere Experten kümmern sich um jedes Detail.' },
-    { h: '12+ Einzelbuchungen für Sie erledigt', t: 'Hotels, Flüge, Aktivitäten – wir koordinieren alles optimal für Ihre Traumreise.' },
-    { h: '9+ Transfers reibungslos organisiert', t: 'Von Stopp zu Stopp – wir sorgen für perfekt abgestimmte Verbindungen auf Ihrer Route.' }
+    { h: '33+ hours of planning time saved', t: 'Sit back and relax – our experts take care of every detail.' },
+    { h: '12+ individual bookings handled for you', t: 'Hotels, flights, activities – we coordinate everything perfectly for your dream trip.' },
+    { h: '9+ transfers smoothly organised', t: 'From stop to stop – we ensure perfectly timed connections along your route.' }
   ]
 };
 
 export const glance = {
-  h2: 'Die Route auf einen Blick',
-  intro: 'Egypt Explorer verbindet die großen Höhepunkte Ägyptens in einer einzigen Reise: die Pyramiden von Gizeh und das Grand Egyptian Museum in Kairo, eine entspannte Nilkreuzfahrt zwischen Assuan, Kom Ombo, Edfu und Luxor sowie zum Abschluss einen Badeaufenthalt am Roten Meer in Hurghada.',
-  more: 'Weitere Details anzeigen',
-  less: 'Weniger Details anzeigen',
-  intro2: 'Entlang des Nils entdecken Sie die bedeutendsten Stätten Oberägyptens in entspanntem Tempo, bevor Sie antike Tempel gegen die Strände und Korallenriffe des Roten Meeres eintauschen – der perfekte Kontrast zur kulturellen ersten Hälfte der Reise.',
-  accommodationHeading: 'Ihre Unterkunft',
-  highlightsHeading: 'Highlights & Aktivitäten',
+  h2: 'The route at a glance',
+  intro: 'Egypt Explorer combines the great highlights of Egypt in one journey: the Pyramids of Giza and the Grand Egyptian Museum in Cairo, a relaxed Nile cruise between Aswan, Kom Ombo, Edfu and Luxor, and a finishing beach stay on the Red Sea in Hurghada.',
+  more: 'Show more details',
+  less: 'Show fewer details',
+  intro2: 'Along the Nile you discover the most important sites of Upper Egypt at a gentle pace, before swapping ancient temples for the beaches and coral reefs of the Red Sea — the perfect contrast to the cultural first half of the trip.',
+  accommodationHeading: 'Your accommodation',
+  highlightsHeading: 'Highlights & activities',
   days: [
-    { title: 'Tag 1–4: Cairo (4 Nächte)', text: 'Ihr Auftakt in Kairo mit den weltberühmten Pyramiden, dem Grand Egyptian Museum und dem Flug nach Assuan zum Beginn der Nilkreuzfahrt.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Pyramiden von Gizeh & Sphinx', 'Grand Egyptian Museum', 'Hochdamm von Assuan & Feluke'] },
-    { title: 'Tag 4–7: Nilkreuzfahrt Assuan → Edfu → Luxor (3 Nächte)', text: 'Entspanntes Reisen auf dem Nil mit Besuchen der Tempel von Kom Ombo und Edfu.', hotel: 'M/S Concerto Plus (Nilkreuzfahrt)', highlights: ['Tempel von Kom Ombo', 'Horus-Tempel von Edfu per Pferdekutsche'] },
-    { title: 'Tag 7: Luxor → Hurghada', text: 'West- und Ostufer von Luxor am Vormittag, anschließend Transfer ans Rote Meer.', hotel: 'Marriott Hurghada (o. ä.)', highlights: ['Tal der Könige', 'Karnak- & Luxor-Tempel'] },
-    { title: 'Tag 7–10: Hurghada – Rotes Meer (3 Nächte)', text: 'Erholung am Roten Meer auf All-inclusive-Basis mit Zeit für Strand und Wassersport.', hotel: 'Marriott Hurghada (o. ä.)', highlights: ['Badeaufenthalt am Roten Meer', 'Schnorcheln & Tauchen'] },
-    { title: 'Tag 10–11: Cairo', text: 'Rückflug nach Kairo mit letzter Übernachtung vor Ihrer Abreise.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Rückflug nach Kairo', 'Abreisetransfer'] }
+    { title: 'Day 1–4: Cairo (4 nights)', text: 'Your journey begins in Cairo with the world-famous pyramids, the Grand Egyptian Museum and a flight to Aswan to begin the Nile cruise.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Pyramids of Giza & Sphinx', 'Grand Egyptian Museum', 'Aswan High Dam & felucca'] },
+    { title: 'Day 4–7: Nile Cruise Aswan → Edfu → Luxor (3 nights)', text: 'Relaxed cruising on the Nile with visits to the temples of Kom Ombo and Edfu.', hotel: 'M/S Concerto Plus (Nile Cruise)', highlights: ['Kom Ombo Temple', 'Edfu Temple by horse carriage'] },
+    { title: 'Day 7: Luxor → Hurghada', text: 'Luxor\u2019s West and East Banks in the morning, followed by a transfer to the Red Sea.', hotel: 'Marriott Hurghada (or similar)', highlights: ['Valley of the Kings', 'Karnak & Luxor Temples'] },
+    { title: 'Day 7–10: Hurghada – Red Sea (3 nights)', text: 'Relax on the Red Sea on an all-inclusive basis, with time for the beach and water sports.', hotel: 'Marriott Hurghada (or similar)', highlights: ['Red Sea beach stay', 'Snorkelling & diving'] },
+    { title: 'Day 10–11: Cairo', text: 'Fly back to Cairo for a final overnight before your departure.', hotel: 'Semiramis Inter-Continental / Hyatt Centric', highlights: ['Return flight to Cairo', 'Departure transfer'] }
   ],
-  outro: 'Am letzten Tag endet Ihre Ägypten-Reise mit einem Abreisetransfer ab Kairo – eine ausgewogene Kombination aus Kultur, Nil-Erlebnis und Badeurlaub am Roten Meer.'
+  outro: 'On the final day your Egypt journey ends with a departure transfer from Cairo — a balanced combination of culture, Nile cruising and Red Sea beach time.'
 };
 
 export const brandFeatures = {
-  h2: 'Das Leben ist zu kurz für Standard-Reisen',
+  h2: 'Life is too short for standard travel',
   items: [
-    { icon: '/egypt/StarLike.svg', title: 'Echte Reiseexperten', text: 'Profitieren Sie von unserem lokalen Expertenwissen und preisgekröntem Service.' },
-    { icon: '/egypt/Tickets.svg', title: 'Rundum organisiert', text: 'Wir kümmern uns um jedes Detail – von der Inspiration bis zur Heimkehr.' },
-    { icon: '/egypt/Destination.svg', title: 'Reisen leicht gemacht', text: 'Egal ob Multi-Stopp oder Länder-Kombi, wir lassen Ihre Reisewünsche wahr werden.' }
+    { icon: '/egypt/StarLike.svg', title: 'Real travel experts', text: 'Benefit from our local expertise and award-winning service.' },
+    { icon: '/egypt/Tickets.svg', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your return home.' },
+    { icon: '/egypt/Destination.svg', title: 'Travel made easy', text: 'Whether multi-stop or multi-country, we make your travel wishes come true.' }
   ]
 };
 
-export const recommended = { h2: 'Jetzt Ihre  Ägypten-Reise planen' };
+export const recommended = { h2: 'Plan your Egypt trip now' };
 
-export const nav = {
-  links: ['Reiseziele', 'Reisearten', 'Aktivitäten'],
-  secondary: [{ label: 'Deals', href: '/reiseangebote/' }, { label: 'Über uns', href: '/ueber-uns' }],
-  phone: 'Expertenberatung',
-  login: 'Login',
-  loginHref: '/portal/login'
+export const planner = {
+  h3: 'Your trip, planned by experts',
+  social: '150,000 travellers trust Tourlane',
+  question: 'How many people are you planning your trip for?',
+  next: 'Continue',
+  known: 'As seen in:',
+  bg: '/egypt/planner-bg.jpg',
+  decoration: '/egypt/L.svg',
+  avatars: ['/egypt/tourlaner1.webp', '/egypt/tourlaner2.webp', '/egypt/tourlaner3.webp', '/egypt/tourlaner4.webp'],
+  press: [
+    { src: '/egypt/sueddeutsche-zeitung.svg', alt: 'Süddeutsche Zeitung', w: 96, h: 36 },
+    { src: '/egypt/stern.svg', alt: 'Stern', w: 96, h: 33 },
+    { src: '/egypt/die-zeit.svg', alt: 'Die Zeit', w: 123, h: 19 }
+  ],
+  rows: [
+    { label: 'Adults', sub: '13+ years', value: 2, min: 1 },
+    { label: 'Children', sub: '2 to 12 years', value: 0, min: 0 },
+    { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
+  ]
 };
 
 export const crumbs = [
-  { label: 'Reiseziele', href: '/reiseziele/' },
-  { label: 'Afrika', href: '/afrika/' },
-  { label: 'Ägypten', href: '/afrika/aegypten/' },
+  { label: 'Destinations', href: '/reiseziele/' },
+  { label: 'Africa', href: '/afrika/' },
+  { label: 'Egypt', href: '/afrika/aegypten/' },
   { label: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition' }
 ];
 
-export const trust = { label: 'Hervorragend', rating: 4.5, score: '4,5 von 5', count: '5.748 Bewertungen' };
+export const trust = { label: 'Excellent', rating: 4.5, score: '4.5 out of 5', count: '5,748 reviews' };
 
-export const price = { from: 'Ab', perPerson: 'pro Person', pp: 'p.P.', included: 'Im Preis enthalten', team: 'Roman Karin & unser Team' };
-
-export const footer = {
-  description: 'Tourlane schafft unvergessliche Reiseerlebnisse und unterstützt Sie mit echter Expertise und individuellem Service – von der Inspiration bis zur Rückkehr.',
-  socials: [
-    { name: 'Facebook', href: 'https://www.facebook.com/tourlane/' },
-    { name: 'Instagram', href: 'https://www.instagram.com/tourlane/' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/tourlane/' },
-    { name: 'Kununu', href: 'https://www.kununu.com/de/tourlane' }
-  ],
-  columns: [
-    { title: 'Tourlane', links: [['Reisen mit uns', '/ueber-uns/'], ['Arbeiten mit uns', 'https://careers.tourlane.com/'], ['Partnerschaften', '/partnerschaften/'], ['Erfahrungsberichte', '/tourlane-erfahrungen/'], ['Presse', '/presse/'], ['App', '/app/'], ['Serviceportal', 'https://support.tourlane.de/']] },
-    { title: 'Reiseziele', links: [['Costa Rica', '/mittelamerika/costa-rica/'], ['Island', '/europa/island/'], ['Südafrika', '/afrika/suedafrika/'], ['Tansania', '/afrika/tansania/'], ['Namibia', '/afrika/namibia/'], ['Kanada', '/nordamerika/kanada/'], ['USA', '/nordamerika/usa/'], ['Thailand', '/asien/thailand/'], ['Japan', '/asien/japan/'], ['Australien', '/ozeanien/australien/'], ['Mehr Reiseziele', '/reiseziele/'], ['Reisekalender', '/reisekalender/']] }
-  ],
-  care: { title: 'TourlaneCare', strong: 'Sorgenfrei buchen', text: 'Flexible Umbuchung und Stornierung', cta: 'Mehr erfahren', href: '/tourlanecare/' },
-  country: 'Deutschland',
-  legal: [['Impressum', '/impressum/'], ['Datenschutz', '/datenschutz/'], ['AGB', '/agb/'], ['Reisehinweise', '/allgemeine-reisehinweise/'], ['Cookie-Einstellungen', '#']]
-};
+export const price = { from: 'From', perPerson: 'per person', pp: 'p.p.', included: 'What\u2019s included', team: 'Roman Karin & our team' };
 
 export const steps = {
-  h2: 'Schritt für Schritt zu Ihrer Rundreise',
+  h2: 'Step by step to your trip',
   items: [
-    { n: '1', title: 'Reiseziel wählen', text: 'Sie möchten Ihre Traumreise wahr werden lassen? Verraten Sie uns ein paar Details – Ihr Wunschziel, Vorlieben, Budget – und erhalten Sie in unter 1 Minute ein kostenloses, personalisiertes Reiseangebot.' },
-    { n: '2', title: 'Individualisieren', text: 'Bei einem 30-minütigen Telefon- oder Videoanruf bringen wir Sie mit einem Experten zusammen, der Ihre Route noch individueller auf Sie zuschneidet – mit Insiderwissen zu jeder Destination.' },
-    { n: '3', title: 'Buchen', text: 'Bestätigen Sie das Angebot und freuen Sie sich auf Ihre Reise! Wir kümmern uns mit unserem Rundum-Service um alles Weitere – und sind mit unserer 24-Stunden-Soforthilfe auch unterwegs für Sie da.' }
+    { n: '1', title: 'Choose your destination', text: 'Want to make your dream trip a reality? Tell us a few details – your preferred destination, preferences and budget – and receive a free, personalised travel offer in under a minute.' },
+    { n: '2', title: 'Personalise', text: 'In a 30-minute phone or video call we connect you with an expert who tailors your route even more precisely to you – with insider knowledge of every destination.' },
+    { n: '3', title: 'Book', text: 'Confirm the offer and look forward to your trip! We take care of everything else with our all-round service – and are there for you on the go with our 24-hour emergency assistance.' }
   ]
 };

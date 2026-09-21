@@ -25,8 +25,8 @@ function StopCarousel({ images, name }) {
     <div className="relative flex-1 min-w-0 h-[220px] md:h-[268px] rounded-xl overflow-hidden group bg-[#EAE8E0]" data-testid="eg-stop-gallery">
       <img src={images[i]} alt={`${name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
       <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none">
-        <button type="button" onClick={() => setI((v) => Math.max(0, v - 1))} disabled={i === 0} className="eg-arrow pointer-events-auto disabled:opacity-40" aria-label="Zurück" data-testid="eg-stop-prev"><ChevronLeft size={24} /></button>
-        <button type="button" onClick={() => setI((v) => Math.min(n - 1, v + 1))} disabled={i === n - 1} className="eg-arrow pointer-events-auto disabled:opacity-40" aria-label="Weiter" data-testid="eg-stop-next"><ChevronRight size={24} /></button>
+        <button type="button" onClick={() => setI((v) => Math.max(0, v - 1))} disabled={i === 0} className="eg-arrow pointer-events-auto disabled:opacity-40" aria-label="Back" data-testid="eg-stop-prev"><ChevronLeft size={24} /></button>
+        <button type="button" onClick={() => setI((v) => Math.min(n - 1, v + 1))} disabled={i === n - 1} className="eg-arrow pointer-events-auto disabled:opacity-40" aria-label="Next" data-testid="eg-stop-next"><ChevronRight size={24} /></button>
       </div>
       <div className="absolute inset-x-0 bottom-0 h-6 flex items-center justify-center gap-2 pointer-events-none">
         {images.map((_, k) => <span key={k} className="w-2 h-2 rounded-full bg-white" style={{ opacity: k === i ? 1 : 0.65 }} />)}

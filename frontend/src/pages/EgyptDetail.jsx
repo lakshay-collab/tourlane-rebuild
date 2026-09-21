@@ -8,7 +8,7 @@ import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { BedIcon, PinIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, TpStars, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
-import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price } from '../egyptDetailData';
+import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner } from '../egyptDetailData';
 import { products } from '../egyptListingData';
 
 const stop = (e) => e.preventDefault();
@@ -32,7 +32,7 @@ function Gallery() {
           {g.slice(1, 5).map((src, i) => <div key={i} className={`relative cursor-pointer ${i > 1 ? 'hidden md:block' : ''}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></div>)}
         </div>
       </div>
-      <button type="button" className="absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#D0E8D6] text-[#0B1F14] inline-flex items-center justify-center" aria-label="Galerie" data-testid="eg-gallery-button"><GalleryIcon size={18} /></button>
+      <button type="button" className="absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-[#D0E8D6] text-[#0B1F14] inline-flex items-center justify-center" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} /></button>
     </div>
   );
 }
@@ -140,7 +140,7 @@ function ExpertsCard() {
               </div>
               <hr className="flex-1 border-[#C0C9C0]" />
             </div>
-            <div className="flex items-center justify-center gap-2 h-12 text-[#1B1C17]"><SparkleLeft /><p className="eg-title-md text-[#1B1C17]">Planen Sie mit echten Reiseexperten</p><SparkleRight /></div>
+            <div className="flex items-center justify-center gap-2 h-12 text-[#1B1C17]"><SparkleLeft /><p className="eg-title-md text-[#1B1C17]">Plan with real travel experts</p><SparkleRight /></div>
           </div>
         </div>
         <div className="px-6 flex flex-col gap-5">
@@ -256,12 +256,7 @@ export default function EgyptDetail() {
       <main className="flex flex-col gap-8 pb-24 md:pb-[100px]">
         <Head />
         <Crumbs />
-        <div className="eg-wide" id="map" data-testid="eg-detail-map">
-          <div className="h-[328px] md:h-[400px] rounded-xl overflow-hidden bg-[#E4E3DB]">
-            <iframe title="Karte" src="https://maps.google.com/maps?ll=26.2,32.5&z=6&t=m&output=embed" className="w-full h-full border-0" loading="lazy" />
-          </div>
-          <div className="md:hidden mt-4"><PriceCard /></div>
-        </div>
+        <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard /></div>
         <div className="flex flex-col gap-[72px] mt-0 md:mt-0">
           <div className="eg-wide flex flex-col md:flex-row gap-8">
             <div className="flex-1 min-w-0 flex flex-col gap-8">
@@ -273,7 +268,7 @@ export default function EgyptDetail() {
               <div className="sticky top-6"><ExpertsCard /></div>
             </aside>
           </div>
-          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" />
+          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
           <Glance />
           <Features />
           <EgyptReviews centered className="eg-container" />
