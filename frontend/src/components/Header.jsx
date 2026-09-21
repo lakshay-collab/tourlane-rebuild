@@ -5,6 +5,7 @@ import { nav } from '../mock';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [bannerOpen, setBannerOpen] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -13,9 +14,14 @@ export default function Header() {
 
   return (
     <>
-      <div className="bg-deep-water text-white text-center px-4 py-2 t-body-md" data-testid="top-banner">
-        {nav.banner}
-      </div>
+      {bannerOpen && (
+        <div className="relative bg-deep-water text-white px-10 py-2 t-body-md text-center" data-testid="top-banner">
+          {nav.banner}
+          <button onClick={() => setBannerOpen(false)} aria-label="Dismiss" data-testid="banner-close" className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/80 hover:text-white transition-colors">
+            <X size={18} strokeWidth={2} />
+          </button>
+        </div>
+      )}
 
       <header className="relative z-40 bg-surface" data-testid="site-header">
         <div className="tl-wide h-[72px] flex items-center justify-between">
@@ -43,13 +49,13 @@ export default function Header() {
             </button>
           </nav>
 
-          <button className="lg:hidden text-onsurface p-1" onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
+          <button className="text-onsurface p-1 ml-3 lg:ml-6" onClick={() => setOpen((v) => !v)} aria-label="Menu" data-testid="mobile-menu-toggle">
             {open ? <X size={26} strokeWidth={1.75} /> : <Menu size={26} strokeWidth={1.75} />}
           </button>
         </div>
 
         {open && (
-          <div className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-surface z-50 overflow-y-auto" data-testid="mobile-menu">
+          <div className="fixed inset-x-0 top-[72px] bottom-0 bg-surface z-50 overflow-y-auto" data-testid="mobile-menu">
             <ul className="px-4 sm:px-8 py-2">
               {nav.links.map((l) => (
                 <li key={l.label} className="border-b border-surface-highest">

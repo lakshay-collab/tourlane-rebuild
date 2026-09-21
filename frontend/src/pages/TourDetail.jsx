@@ -72,15 +72,6 @@ export default function TourDetail() {
 
         <Breadcrumb items={crumbs} />
 
-        {/* Included panel */}
-        <section className="tl-container pt-2" data-testid="included-section">
-          <h2 className="t-headline-sm mb-4">What's included</h2>
-          <div className="grid md:grid-cols-2 gap-6 bg-surface-container rounded-2xl p-6" data-testid="included-panel">
-            <ul className="space-y-2">{t.included.map((i) => <li key={i} className="flex gap-3 t-body-md"><Check size={18} className="text-primary shrink-0 mt-0.5" />{i}</li>)}</ul>
-            <ul className="space-y-2">{t.excluded.map((i) => <li key={i} className="flex gap-3 t-body-md text-onsurface-variant"><X size={18} className="shrink-0 mt-0.5" />{i}</li>)}</ul>
-          </div>
-        </section>
-
         {/* Recommended route */}
         <section className="pt-16 md:pt-20" data-testid="route-section">
           <div className="tl-container flex flex-col gap-3">
