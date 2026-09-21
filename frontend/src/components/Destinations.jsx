@@ -34,8 +34,8 @@ export default function Destinations() {
           {list.map((d) => (
             <a
               key={d.name}
-              href={`/${d.slug || d.name.toLowerCase().replace(/\s/g, '-')}`}
-              onClick={(e) => e.preventDefault()}
+              href={d.name === 'Egypt' ? '/afrika/aegypten' : '#'}
+              onClick={(e) => { if (d.name !== 'Egypt') e.preventDefault(); }}
               className="group block rounded-xl border border-outline-variant overflow-hidden bg-surface-lowest hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] transition-shadow"
               data-testid="destination-card"
             >
