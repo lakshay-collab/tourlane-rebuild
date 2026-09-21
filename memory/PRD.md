@@ -141,3 +141,11 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - P1: Detail pages for the remaining 17 products (data model already supports it – add `stops` per product).
 - P2: Nav dropdown menus (Destinations / Trip types / Activities), destination detail pages, mobile Trustpilot bar variant.
 - P2: Replace hotlinked Tourlane CDN assets with owned storage before production.
+
+## Homepage refinements round 3 (2026-06, latest)
+- Ratings bar: Google G + "Rated 4.7 on Google"; TripAdvisor round owl (user-supplied image, `/badges/tripadvisor-owl.png`, circle-masked) + "Rated 4.9 on TripAdvisor".
+- Stars: `BoxStars` now brand Harbor blue `#174358` (exported `BRAND_BLUE`), unfilled tile `#D6DCE0`; used in Testimonials AND footer 4.8 stars (consistent).
+- Footer certifications: ISO 45001 + IATA + Travelife as transparent PNGs (`/badges/*-t.png`, white boxes removed, mix-blend-multiply) sitting flat on cream. India flag is now a proper SVG with Ashoka Chakra.
+- Mobile menu rebuilt as `MobileDrawer.jsx` — measured from tourlane.de (390px): 50% dark overlay, 320px (sm:360) right drawer, rounded-l-2xl, surface-low bg, 40px close/back buttons, 56px rows (t-label-lg, onsurface-variant), pill hover, hr dividers inset 16px. Sections: Destinations/Trip types/Activities (arrow) | Deals, About us, Work with us, Press, Hi Tours Care | Expert advice. L2 Destinations: heading row + regions (40px round thumbs from destinationsData) with drop-triangle accordion → countries (first = region). Egypt→/afrika/aegypten, Asia→/asien. L2 Expert advice = `ExpertAdvicePanel`.
+- `ExpertAdvicePanel.jsx` mirrors Tourlane: status dot (Available now / Outside opening hours computed in IST from `expertAdvice.schedule`), existing-trip → Service portal, planning → phone + hours. Desktop popover opens on hover and click, right-aligned under "Expert advice" with underline indicator.
+- Tested: iteration_14.json (all pass, 0 console errors, desktop + mobile).

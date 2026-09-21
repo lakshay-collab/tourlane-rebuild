@@ -67,9 +67,16 @@ export default function Footer() {
       <div className="border-t border-outline-variant">
         <div className="tl-wide py-8 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0">
           <button className="flex items-center gap-2 t-body-md text-onsurface" data-testid="footer-country">
-            <span className="inline-block w-6 h-4 rounded-[2px] overflow-hidden" aria-hidden>
-              <span className="block h-1/3 bg-[#FF9933]" /><span className="block h-1/3 bg-white" /><span className="block h-1/3 bg-[#138808]" />
-            </span>
+            <svg viewBox="0 0 30 20" className="w-6 h-4 rounded-[2px] shrink-0" aria-hidden data-testid="footer-flag-india">
+              <rect width="30" height="20" fill="#FF9933" />
+              <rect y="6.667" width="30" height="6.667" fill="#FFFFFF" />
+              <rect y="13.333" width="30" height="6.667" fill="#138808" />
+              <circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" strokeWidth="0.55" />
+              <circle cx="15" cy="10" r="0.45" fill="#000080" />
+              {Array.from({ length: 24 }).map((_, i) => (
+                <line key={i} x1="15" y1="10" x2="15" y2="7.45" stroke="#000080" strokeWidth="0.22" transform={`rotate(${i * 15} 15 10)`} />
+              ))}
+            </svg>
             {footer.country}
             <ChevronDown size={16} />
           </button>
