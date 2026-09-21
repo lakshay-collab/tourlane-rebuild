@@ -1,0 +1,50 @@
+{
+  "summary": "Visual re-brand verification (frontend only). Verified hero 2-line rule at 1440/1280/905px, absence of forbidden light-blue colors (Sky/Dusk/Lagoon), all required orange 'Sunset Run' & 'Deep Water' gradients, font stack (Bricolage Grotesque / Inter / Instrument Sans) loaded and applied to correct elements, plus regression on showcase tabs, newsletter submit, logo load, no console errors and no horizontal overflow at 390px. All checks pass.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "detailed_results": {
+    "hero_two_lines": {
+      "1440": {"lines": 2, "height": 128, "lineHeight": "64px", "overlap": false},
+      "1280": {"lines": 2, "height": 128, "lineHeight": "64px", "overlap": false},
+      "905":  {"lines": 2, "height": 128, "lineHeight": "64px", "overlap": false},
+      "390":  {"lines": 3, "height": 132, "lineHeight": "44px", "overlap": false, "note": "Mobile wraps to 3 lines; only 1440/1280/905 were required to be 2 lines"}
+    },
+    "forbidden_light_blue_violations": 0,
+    "fonts": {"status": "loaded", "bricolage": true, "inter": true, "instrument": true},
+    "font_families_applied": {
+      "h1_h2_cardH3": "Bricolage Grotesque (verified for h1, h2, feature-item h3, step-card h3, expert-card h3)",
+      "paragraph": "Inter",
+      "buttons_.btn-filled/.btn-sunset/.btn-outlined": "Instrument Sans"
+    },
+    "gradients": {
+      "top-banner": "linear-gradient deep-water #002131->#174358 OK",
+      "comparison-table header": "linear-gradient deep-water OK",
+      "hero-search-submit / adventure-search-submit / newsletter-submit": "linear-gradient sunset-run 135deg orange OK, color white",
+      "active showcase tab underline": "linear-gradient sunset-line 90deg orange OK",
+      "step-card number circle": "linear-gradient dawn-haze OK"
+    },
+    "regressions": {
+      "logo_loaded": true,
+      "showcase_tab_switch": "OK (Iceland -> title 'Outdoor adventure in Iceland')",
+      "newsletter_submit_success": "OK",
+      "horizontal_overflow_390": false,
+      "console_errors": "none captured"
+    }
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "tailwind.config.js still defines primary.dim = '#308BB6' (Lagoon light blue) and secondary.dim = '#F4B49A'. primary-dim is currently unused in components, but leaving the token in the palette is a foot-gun for future work. Consider removing or renaming the token to avoid accidental reintroduction of the banned blue.",
+    "Hero title uses <br className='hidden md:block'> so at 905px (md breakpoint) the break is present giving exactly 2 lines - works correctly with the custom md=905 breakpoint."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Re-brand verification passed. If further changes are made to colors/gradients, re-run the same computed-style scans (backgroundColor/color/borderColor) for forbidden RGBs (224,247,255),(154,205,229),(48,139,182). Note primary.dim in tailwind.config.js is still the Lagoon color but is currently unused."
+}
