@@ -6,7 +6,7 @@ export default function Hero() {
   const c = hero.collage;
   return (
     <section
-      className="relative w-full bg-surface-container flex flex-col items-center h-[640px] sm:h-[800px] md:h-[680px] lg:h-[790px] overflow-hidden"
+      className="relative w-full bg-surface-container flex flex-col items-center h-[640px] sm:h-[800px] md:h-[680px] lg:h-[720px] overflow-hidden"
       data-testid="hero-section"
     >
       <div className="relative z-[2] w-full flex flex-col items-center gap-8 mt-4 lg:mt-10 px-4 sm:px-8 md:px-0">
