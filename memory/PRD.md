@@ -221,3 +221,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - TripShowcase: tags removed entirely; testimonial quote (t-quote) between value tiles and avatar; single-line "Crafted specially for **name**"; titles shortened to one mobile line (Canada road trip, Iceland adventure, Thailand with friends, Wild Namibia, Costa Rica Pura Vida; whitespace-nowrap <905px); tabs render BELOW the card on mobile (thumb reach) and above on desktop (showcase-tabs-mobile / showcase-tabs).
 - Footer logo row: py-8 (equal 32px above/below), stacked logo + socials on mobile.
 - Tested: iteration_18 (footer/showcase), 19 (typography/tabs), 20 (single-line titles) – all pass.
+
+## Egypt detail page rework – Hi Tours version (2026-06, latest)
+- `/afrika/aegypten/luxor-strand-urlaub` mirrors tourlane.de detail page with Hi Tours brand. Header block: gallery → h1 (Instrument Sans; 16px/2 lines on mobile, 30px desktop) → 5 Sand value tiles (days/cities/hotels/activities/transfers, same icons as listing) → Culture chip | CTA + "Excellent ★ 4.9 based on 1,400+ Egypt reviews" (Trustpilot removed everywhere).
+- Price ₹1,44,000 per person (`detail.price` numeric, `formatInr`); What's included = fixed list of 8 `[label, icon]` pairs incl. 24/7 support + "Travel customisation by your travel expert" (existing ServiceIcon vectors).
+- Expert: "Trip created by Ria Banerjee · Our destination expert for Egypt", Instrument Serif quote clamped to 2 lines + Read more.
+- Itinerary (EgyptRoute): "Your suggested itinerary", "View quick summary" button (→ opens + scrolls to #summary), tabs show name + day label (Cairo/Nile Cruise/Luxor/Hurghada/Cairo), stop text 2-line clamp, "Customise this accommodation", "Your activities" = horizontal card carousel per stop (`stops[].activities`, 3/4/3/3/2, `optional` badge), desktop arrows.
+- "The route at a glance": short line + Read more; day rows collapsed by default, opened via summary CTA (or eg-glance-toggle), 5 rows with dividers, hierarchy h2 > day h3 (title-md) > uppercase label-md, "Hide summary".
+- "Why plan with our experts?" now also rendered on mobile below itinerary; Google/TripAdvisor ratings row (eg-ratings-row) under it and under "Why book with Hi Tours". Recommended = "Other Egypt holidays you may like". Planner social "4,00,000+ travellers trust Hi Tours". Sticky bar INR + "per person".
+- Tested: iteration_21 – 70/70 assertions pass (1440 + 390), 0 console errors.
