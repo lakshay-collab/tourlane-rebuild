@@ -57,7 +57,7 @@ export default function Footer() {
 
       <div className="tl-wide pt-12 pb-6">
         <div className="flex items-center justify-between">
-          <a href="/" aria-label="Hi Tours"><Logo className="h-12 w-auto" /></a>
+          <a href="/" aria-label="Hi Tours"><Logo tagline className="h-12 w-auto" /></a>
           <div className="flex items-center gap-4"><Socials /></div>
         </div>
       </div>

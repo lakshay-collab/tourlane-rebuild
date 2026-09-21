@@ -55,7 +55,7 @@ export default function EgyptPlanner({ className = 'mt-16 px-4 sm:px-8 lg:px-10'
               {data.press.map((l, i) => (
                 <React.Fragment key={l.alt}>
                   {i > 0 && <span className="w-px h-6 bg-[#C0C9C0]" />}
-                  <img src={l.src} alt={l.alt} width={l.w} height={l.h} style={{ width: l.w, height: l.h }} />
+                  <img src={l.src} alt={l.alt} style={{ height: l.h }} className="w-auto mix-blend-multiply" />
                 </React.Fragment>
               ))}
             </div>
