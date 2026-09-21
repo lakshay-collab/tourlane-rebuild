@@ -9,22 +9,13 @@ import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { BoxStars, BRAND_BLUE, GoogleLogo, TripAdvisorLogo, TripAdvisorBubbles } from '../components/Rating';
 import { CalendarIcon, PinIcon, BedIcon, TicketIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
-import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner } from '../egyptDetailData';
+import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner, route, reviewsHeading } from '../egyptDetailData';
 import { products, formatInr } from '../egyptListingData';
 import { ratings as trustBar } from '../mock';
 
 const stop = (e) => e.preventDefault();
 const inr = formatInr(detail.price);
 const Cta = ({ className = '', testId }) => <a href={detail.ctaHref} onClick={stop} title={detail.cta} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{detail.cta}</a>;
-
-const Trust = ({ className = '' }) => (
-  <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 ${className}`} data-testid="eg-trust-row">
-    <span className="eg-label-lg text-[#002131]">{trust.label}</span>
-    <BoxStars rating={trust.rating} size={18} color={BRAND_BLUE} />
-    <span className="eg-label-lg text-[#002131]">{trust.score}</span>
-    <span className="eg-body-md text-[#174358]">{trust.count}</span>
-  </div>
-);
 
 const Ratings = ({ className = '' }) => (
   <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-2 ${className}`} data-testid="eg-ratings-row">
@@ -72,17 +63,10 @@ function Head() {
     <div className="eg-wide" data-testid="eg-detail-head">
       <Gallery />
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
-        <div className="grid md:grid-cols-[1fr_320px] gap-y-6 gap-x-6 items-start">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[16px] !leading-[22px] !tracking-[-0.3px] sm:!text-[26px] sm:!leading-8 sm:!tracking-normal md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
             <Stats />
             <span className="self-start inline-flex items-center gap-2 rounded-full bg-white border border-[#C4CBD0] pl-2 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><TagIcon name={detail.tag} size={20} />{detail.tag}</span>
-          </div>
-          <div className="flex flex-col gap-3 md:pt-1">
-            <Cta className="w-full" testId="eg-detail-cta" />
-            <p className="eg-body-sm text-[#174358] text-center">{detail.sub}</p>
-            <Trust />
-          </div>
         </div>
       </div>
     </div>
@@ -123,6 +107,8 @@ const PriceCard = () => (
         {detail.services.map(([label, icon]) => <li key={label} className="flex items-start gap-2 eg-body-md text-[#002131]"><ServiceIcon name={icon} size={20} className="text-[#174358] shrink-0 mt-0.5" />{label}</li>)}
       </ul>
     </div>
+    <hr className="border-[#E4E3DB]" />
+    <Ratings />
   </div>
 );
 
@@ -133,11 +119,8 @@ const ExpertCard = () => {
     <div className="flex items-start gap-3" data-testid="eg-detail-expert">
       <img src={e.image} alt={e.name} className="w-12 h-12 rounded-full object-cover shrink-0" />
       <div className="flex flex-col gap-2 min-w-0">
-        <div>
-          <p className="flex items-center gap-1 eg-title-md text-[#002131]">{e.createdBy} {e.name}<CheckBadge size={20} className="text-[#174358]" /></p>
-          <p className="eg-body-md text-[#174358]">{e.role}</p>
-        </div>
-        <p className={`eg-quote !text-[19px] !leading-7 text-[#002131] ${open ? '' : 'line-clamp-2'}`} data-testid="eg-expert-quote">“{e.quote}”</p>
+        <p className="eg-title-md text-[#002131]" data-testid="eg-expert-title">{e.createdBy} {e.name}, {e.role} <CheckBadge size={18} className="inline text-[#174358] -mt-0.5" /></p>
+        <p className={`eg-quote text-[#002131] ${open ? '' : 'line-clamp-2'}`} data-testid="eg-expert-quote">“{e.quote}”</p>
         <button type="button" onClick={() => setOpen((v) => !v)} className="self-start inline-flex items-center gap-1 eg-label-lg text-[#174358] underline" data-testid="eg-expert-quote-toggle">{open ? e.less : e.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} /></button>
       </div>
     </div>
@@ -173,7 +156,6 @@ const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
         ); })}
       </div>
     </div>
-    <Ratings />
   </div>
 );
 
@@ -188,15 +170,18 @@ function Glance({ open, setOpen }) {
       </p>
       {open ? (
         <div className="flex flex-col divide-y divide-[#C4CBD0] border-y border-[#C4CBD0]" data-testid="eg-glance-days">
-          {glance.days.map((d) => (
-            <div key={d.title} className="py-5 grid gap-3 md:grid-cols-[220px_1fr] md:gap-8" data-testid="eg-glance-day">
-              <div>
-                <h3 className="eg-title-md text-[#002131]">{d.title}</h3>
-                <p className="mt-1 eg-body-md text-[#174358]">{d.text}</p>
+          {glance.days.map((d, i) => (
+            <div key={d.title} className="py-5 grid gap-4 md:grid-cols-[1fr_260px] md:gap-8" data-testid="eg-glance-day">
+              <div className="flex gap-4">
+                <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
+                <div className="min-w-0">
+                  <h3 className="eg-title-md text-[#002131]">{d.title}</h3>
+                  <p className="mt-1 eg-body-md text-[#002131]">{d.text}</p>
+                </div>
               </div>
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#002131]">{d.hotel}</p></div>
-                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#002131] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:pl-6 md:border-l md:border-[#E4E3DB]">
+                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-sm md:eg-body-md text-[#174358]">{d.hotel}</p></div>
+                <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-sm md:eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
               </div>
             </div>
           ))}
@@ -220,7 +205,6 @@ const Features = () => (
         </div>
       ))}
     </div>
-    <Ratings />
   </section>
 );
 
@@ -302,7 +286,7 @@ export default function EgyptDetail() {
           <Glance open={summaryOpen} setOpen={setSummaryOpen} />
           <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
           <Features />
-          <EgyptReviews centered className="eg-container" />
+          <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} />
           <Recommended />
           <Steps />
         </div>

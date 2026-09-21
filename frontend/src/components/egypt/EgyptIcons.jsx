@@ -34,6 +34,7 @@ const servicePaths = {
   'Flights': 'M13 9V3.5q0-.625-.437-1.062T11.5 2t-1.062.438T10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5l8 2.5v-2z'
 };
 
+servicePaths['Entry tickets'] = 'M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z';
 export const ServiceIcon = ({ name, size = 24, className = '' }) => servicePaths[name] ? <Svg size={size} d={servicePaths[name]} className={className} /> : null;
 
 export const HotelIcon = (p) => <Svg {...p} d="M1 19V4h2v10h8V6h8q1.65 0 2.825 1.175T23 10v9h-2v-3H3v3zm3.875-6.875Q4 11.25 4 10t.875-2.125T7 7t2.125.875T10 10t-.875 2.125T7 13t-2.125-.875M13 14h8v-4q0-.825-.587-1.412T19 8h-6zm-5.287-3.287Q8 10.425 8 10t-.288-.712T7 9t-.712.288T6 10t.288.713T7 11t.713-.288M13 8v6z" />;

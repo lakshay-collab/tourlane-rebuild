@@ -7,19 +7,20 @@ const Rich = ({ parts }) => (Array.isArray(parts)
   ? parts.map((x, i) => (Array.isArray(x) ? <a key={i} href={x[1]} onClick={(e) => e.preventDefault()} className="eg-link">{x[0]}</a> : x))
   : parts);
 
-export const ReviewSummary = ({ className = '' }) => (
+export const ReviewSummary = ({ className = '', count }) => (
   <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-2 eg-label-lg text-[#002131] ${className}`} data-testid="eg-review-summary">
     <span>{trust.label}</span>
     <BoxStars rating={trust.rating} size={20} color={BRAND_BLUE} />
     <span>{trust.score} {trust.outOf}</span>
+    {count && <span className="text-[#174358] font-normal">{count}</span>}
   </div>
 );
 
-export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16' }) {
+export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count }) {
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
-      <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{reviews.h2}</h2>
-      <ReviewSummary className="mt-8" />
+      <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{h2}</h2>
+      <ReviewSummary className="mt-8" count={count} />
       <div className="mt-8 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" data-testid="eg-review-track">
         {reviews.items.map((r) => (
           <article key={r.name} className="shrink-0 snap-start w-[300px] md:w-auto" data-testid="eg-review-card">
