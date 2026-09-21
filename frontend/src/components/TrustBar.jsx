@@ -4,6 +4,7 @@ import { ratings } from '../mock';
 import { GoogleLogo, TripAdvisorLogo } from './Rating';
 
 const INTERVAL = 5000;
+const YEARS = new Date().getFullYear() - 1995;
 
 const Seg = ({ icon: Icon, children, short, testId }) => (
   <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap" data-testid={testId}>
@@ -33,9 +34,10 @@ const SLIDES = [
     node: (
       <Group>
         <Seg icon={CalendarDays} testId="trust-slide-heritage">Established in <B>1995</B></Seg>
-        <span className="hidden sm:contents"><Sep /><Seg><B>30+</B> years of expertise</Seg></span>
         <Sep />
-        <Seg><B>400,000+</B><span className="hidden sm:inline"> happy</span> travellers<span className="sm:hidden"> in <B>30+</B> years</span></Seg>
+        <Seg><B>{YEARS}</B> years of trust</Seg>
+        <Sep />
+        <Seg><B>400,000+</B><span className="hidden sm:inline"> happy</span> travellers</Seg>
       </Group>
     )
   },
