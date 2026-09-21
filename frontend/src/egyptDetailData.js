@@ -23,11 +23,11 @@ export const detail = {
     'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
-  services: [['Hotels', 'Accommodation'], ['Transfers', 'Transport'], ['Activities', 'Activities'], ['Entry tickets', 'Entry tickets'], ['24/7 support', '24/7 Support'], ['Holiday expert-led customisation', 'Travel plan']],
+  services: [['4 hotels', 'Accommodation'], ['12 activities', 'Activities'], ['9 transfers', 'Transport'], ['3 entry tickets', 'Entry tickets'], ['24/7 support', '24/7 Support'], ['Customisation', 'Customise']],
   expert: {
     name: 'Ria Banerjee',
     image: '/egypt/expert-ria.webp',
-    role: 'product & destination expert for Egypt',
+    role: 'Egypt expert at Hi Tours',
     createdBy: 'Trip created by',
     quote: 'Pyramids, a relaxed Nile cruise and a Red Sea beach finale, all in one journey.',
     quoteMore: 'My tip: see the Valley of the Kings early, while the tombs are cool and quiet. I especially recommend the Temple of Edfu, reached by horse carriage and one of the best-preserved temples in all of Egypt, and the Grand Egyptian Museum with the complete Tutankhamun collection.',
@@ -53,7 +53,13 @@ export const route = {
       letter: 'A',
       name: 'Cairo',
       dayLabel: 'Day 1–4',
-      text: 'Arrival at Cairo International Airport with meet & assist through immigration and customs, then transfer to your hotel. Over the following days you explore the Pyramids of Giza (Cheops, Chephren & Mykerinos) and the majestic Sphinx, and visit the Grand Egyptian Museum (GEM) — one of the world\u2019s largest archaeological museums with more than 100,000 artefacts, including the complete Tutankhamun collection. You then fly to Aswan, tour the High Dam with panoramic views over Lake Nasser, embark your Nile cruise ship and enjoy a felucca ride past the Botanical Gardens and the Agha Khan Mausoleum.',
+      bullets: [
+        'Meet & assist at Cairo airport, private transfer to your hotel',
+        'Pyramids of Giza & the Sphinx with your Egyptologist guide',
+        'Grand Egyptian Museum incl. the Tutankhamun collection',
+        'Old Cairo, the Citadel & Khan el-Khalili bazaar (optional)',
+        'Day 4: flight Cairo → Aswan and transfer to your ship'
+      ],
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max',
@@ -96,7 +102,13 @@ export const route = {
       name: 'Nile Cruise',
       subtitle: 'Aswan → Edfu → Luxor',
       dayLabel: 'Day 4–7',
-      text: 'Cruise the Nile aboard the M/S Concerto Plus on a full-board basis. Sail to Kom Ombo to visit its rare dual-deity temple dedicated to Sobek the crocodile god and Horus the Elder, then continue to Edfu to see the Temple of Horus — one of the most complete and best-preserved temples in Egypt — reached by horse carriage. From there you sail on to Luxor via Esna, crossing the Esna lock, with relaxed afternoons enjoying the passing scenery. An optional excursion to the temples of Abu Simbel is available.',
+      bullets: [
+        'Board the M/S Concerto Plus in Aswan',
+        'Philae Temple & the High Dam',
+        'Sail to Kom Ombo – visit the twin temple of Sobek & Horus',
+        'Edfu – Temple of Horus by horse carriage',
+        'Sunset felucca sail (optional), arrive in Luxor on day 7'
+      ],
       images: [
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FRudhVVpyaS21MwTtLaDafQ%2Fistock-185209709.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Faac487ef-1314-4d93-809a-3f407a9b12b2%2Fimage%2Fjpeg%2FohpwYLxxL2KcB-CAsMAz7Q%2Fjordi-orts-segales-crq94fdpdw-unsplash.jpg?w=640&q=75&auto=format&fit=max',
@@ -130,7 +142,12 @@ export const route = {
       name: 'Luxor',
       subtitle: 'Luxor → Hurghada',
       dayLabel: 'Day 7',
-      text: 'After breakfast and disembarkation you explore Luxor\u2019s West Bank — the Valley of the Kings with the royal tombs of the pharaohs, the Temple of Hatshepsut carved into the limestone cliffs, and the Colossi of Memnon. On the East Bank you visit the vast Karnak Temple with its Great Hypostyle Hall of 134 columns and sacred lakes, and Luxor Temple with its giant statues and obelisks. In the afternoon you transfer by luxury coach to Hurghada on the Red Sea coast.',
+      bullets: [
+        'Valley of the Kings – three royal tombs',
+        'Temple of Hatshepsut & Colossi of Memnon',
+        'Karnak & Luxor temples on the East Bank',
+        'Private transfer Luxor → Hurghada (approx. 4 h)'
+      ],
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FEIB8KA0OkA3jO_kZVHnoxA%2FiStock-1390987140.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FPIdc0MCDsBQBv4hzKfXk4g%2FiStock-1124348420.jpg?w=640&q=75&auto=format&fit=max',
@@ -163,7 +180,13 @@ export const route = {
       name: 'Hurghada',
       subtitle: 'Red Sea',
       dayLabel: 'Day 7–10',
-      text: 'Three nights of all-inclusive relaxation on the Red Sea. Enjoy the beach and the warm, crystal-clear water at your own pace, with plenty of optional activities such as water sports, snorkelling and diving among Hurghada\u2019s famous coral reefs. This is the perfect contrast to the cultural first half of your journey.',
+      bullets: [
+        'Check-in at your all-inclusive Red Sea resort',
+        'Free days for beach, pool & water sports',
+        'Snorkelling trip to Giftun Island (optional)',
+        'Desert quad safari with Bedouin dinner (optional)',
+        'Day 10: flight Hurghada → Cairo'
+      ],
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2FHg2vOD1So7jldYvue1bl1Q%2FiStock-1202686561+%281%29.jpg?w=640&q=75&auto=format&fit=max',
@@ -191,7 +214,11 @@ export const route = {
       letter: 'E',
       name: 'Cairo',
       dayLabel: 'Day 10–11',
-      text: 'Fly back to Cairo for a final overnight after your Red Sea stay, with a transfer to your hotel and the evening at leisure. After breakfast on your last day you are transferred to Cairo International Airport for your departure flight home — a balanced journey of culture, Nile cruising and beach time comes to a close.',
+      bullets: [
+        'Transfer to your hotel for a final night in Cairo',
+        'Free evening or farewell Nile dinner cruise (optional)',
+        'Private transfer to Cairo International Airport'
+      ],
       images: [
         'https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=640&q=75&auto=format&fit=max',
         'https://kiwi-cdn.tlservers.com/items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2FhWyz3DR4zUzH04PXYmTU1g%2Fistock-1992596991.jpg?w=640&q=75&auto=format&fit=max',
@@ -244,11 +271,11 @@ export const glance = {
   dayHeading: 'Day',
   routeHeading: 'Route',
   days: [
-    { title: 'Day 1–4: Cairo (4 nights)', text: 'Your journey begins in Cairo with the world-famous pyramids, the Grand Egyptian Museum and a flight to Aswan to begin the Nile cruise.', hotel: 'Semiramis InterContinental Cairo', highlights: ['Pyramids of Giza & Sphinx', 'Grand Egyptian Museum', 'Aswan High Dam & felucca'] },
-    { title: 'Day 4–7: Nile Cruise Aswan → Edfu → Luxor (3 nights)', text: 'Relaxed cruising on the Nile with visits to the temples of Kom Ombo and Edfu.', hotel: 'M/S Concerto Plus (Nile cruise)', highlights: ['Kom Ombo Temple', 'Edfu Temple by horse carriage'] },
-    { title: 'Day 7: Luxor → Hurghada', text: 'Luxor\u2019s West and East Banks in the morning, followed by a transfer to the Red Sea.', hotel: 'Hurghada Marriott Beach Resort', highlights: ['Valley of the Kings', 'Karnak & Luxor Temples'] },
-    { title: 'Day 7–10: Hurghada – Red Sea (3 nights)', text: 'Relax on the Red Sea on an all-inclusive basis, with time for the beach and water sports.', hotel: 'Hurghada Marriott Beach Resort', highlights: ['Red Sea beach stay', 'Snorkelling & diving'] },
-    { title: 'Day 10–11: Cairo', text: 'Fly back to Cairo for a final overnight before your departure.', hotel: 'Semiramis InterContinental Cairo', highlights: ['Return flight to Cairo', 'Departure transfer'] }
+    { title: 'Day 1–4: Cairo (4 nights)', text: 'Your journey begins in Cairo with the world-famous pyramids, the Grand Egyptian Museum and a flight to Aswan to begin the Nile cruise.', hotel: 'Semiramis InterContinental Cairo', highlights: ['Airport meet & assist, private transfer to hotel', 'Pyramids of Giza & Sphinx', 'Grand Egyptian Museum', 'Flight Cairo → Aswan'] },
+    { title: 'Day 4–7: Nile Cruise Aswan → Edfu → Luxor (3 nights)', text: 'Relaxed cruising on the Nile with visits to the temples of Kom Ombo and Edfu.', hotel: 'M/S Concerto Plus (Nile cruise)', highlights: ['Transfer Aswan airport → ship', 'Philae Temple & High Dam', 'Kom Ombo Temple', 'Edfu Temple by horse carriage'] },
+    { title: 'Day 7: Luxor → Hurghada', text: 'Luxor\u2019s West and East Banks in the morning, followed by a transfer to the Red Sea.', hotel: 'Hurghada Marriott Beach Resort', highlights: ['Valley of the Kings', 'Karnak & Luxor Temples', 'Private transfer Luxor → Hurghada'] },
+    { title: 'Day 7–10: Hurghada – Red Sea (3 nights)', text: 'Relax on the Red Sea on an all-inclusive basis, with time for the beach and water sports.', hotel: 'Hurghada Marriott Beach Resort', highlights: ['Red Sea beach stay (all inclusive)', 'Snorkelling & diving (optional)', 'Flight Hurghada → Cairo'] },
+    { title: 'Day 10–11: Cairo', text: 'Fly back to Cairo for a final overnight before your departure.', hotel: 'Semiramis InterContinental Cairo', highlights: ['Airport → hotel transfer', 'Farewell Nile dinner cruise (optional)', 'Private transfer to Cairo airport'] }
   ],
   outro: 'On the final day your Egypt journey ends with a departure transfer from Cairo — a balanced combination of culture, Nile cruising and Red Sea beach time.'
 };

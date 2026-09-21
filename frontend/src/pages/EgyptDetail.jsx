@@ -8,7 +8,7 @@ import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { GoogleLogo, TripAdvisorLogo } from '../components/Rating';
-import { CalendarIcon, PinIcon, BedIcon, TicketIcon, CarIcon, TagIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
+import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
 import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner, route, reviewsHeading } from '../egyptDetailData';
 import { products, formatInr, styles } from '../egyptListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
@@ -26,24 +26,6 @@ const Ratings = ({ className = '' }) => (
     <span className="flex items-center gap-2 eg-label-lg text-[#002131]"><TripAdvisorLogo size={20} />Rated {trustBar.tripadvisor.score} on TripAdvisor</span>
   </div>
 );
-
-const Stat = ({ icon: Icon, value, testId }) => (
-  <span className="flex items-center gap-2.5 rounded-lg bg-[#FBEADB] px-3 h-11 text-[#002131] whitespace-nowrap" data-testid={testId}>
-    <Icon size={20} className="text-[#174358] shrink-0" /><span className="eg-label-lg">{value}</span>
-  </span>
-);
-
-const Stats = () => {
-  const s = detail.stats;
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2" data-testid="eg-detail-stats">
-      <Stat icon={CalendarIcon} value={`${s.days} days`} testId="eg-detail-days" />
-      <Stat icon={BedIcon} value={`${s.hotels} hotels`} testId="eg-detail-hotels" />
-      <Stat icon={TicketIcon} value={`${s.activities} activities`} testId="eg-detail-activities" />
-      <Stat icon={CarIcon} value={`${s.transfers} transfers`} testId="eg-detail-transfers" />
-    </div>
-  );
-};
 
 function Gallery() {
   const g = detail.gallery;
@@ -67,8 +49,8 @@ function Head() {
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
-            <Stats />
             <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
+              <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-days"><CalendarIcon size={18} />{detail.stats.days} days</span>
               <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-cities"><PinIcon size={18} />{detail.stats.cities} cities</span>
               {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#174358]" />{tag}</span>)}
             </div>
@@ -303,11 +285,10 @@ export default function EgyptDetail() {
             <div className="flex-1 min-w-0 flex flex-col gap-8">
               <ExpertCard />
               <EgyptRoute onSummary={showSummary} />
-              <div className="md:hidden"><ExpertsCard testId="eg-detail-experts-mobile" /></div>
+              <div className="md:max-w-[520px]"><ExpertsCard /></div>
             </div>
             <aside className="hidden md:flex w-[384px] shrink-0 flex-col gap-6" data-testid="eg-detail-sidebar">
-              <PriceCard />
-              <div className="sticky top-6"><ExpertsCard /></div>
+              <div className="sticky top-6"><PriceCard /></div>
             </aside>
           </div>
           <Glance open={summaryOpen} setOpen={setSummaryOpen} />

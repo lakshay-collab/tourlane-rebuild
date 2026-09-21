@@ -1,23 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { detail, route } from '../../egyptDetailData';
 import { X } from 'lucide-react';
-import { ChevronLeft, ChevronRight, ChevronDown, HotelIcon, ExploreIcon, GalleryIcon } from './EgyptIcons';
+import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
 const HEADER = 120;
 
 function StopText({ s }) {
-  const [open, setOpen] = useState(false);
   return (
     <div className="md:w-[346px] shrink-0" data-testid="eg-route-stop">
-      <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
-      <p className="eg-label-lg text-[#174358] pt-1">{s.dayLabel}</p>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
+        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-[#FADDD1] eg-label-lg text-[#002131] whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
+      </div>
       {s.subtitle && <p className="eg-body-md text-[#6F777C] pt-0.5" data-testid="eg-route-subtitle">{s.subtitle}</p>}
-      <div className="pb-3" />
-      <p className={`eg-body-md text-[#002131] whitespace-pre-line ${open ? '' : 'line-clamp-3'}`} data-testid="eg-route-text">{s.text}</p>
-      <button type="button" onClick={() => setOpen((v) => !v)} className="inline-flex items-center gap-1 pt-1 eg-body-md text-[#002131] underline" data-testid="eg-route-text-toggle">
-        {open ? route.less : route.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} />
-      </button>
+      <ul className="mt-3 flex flex-col gap-2" data-testid="eg-route-bullets">
+        {s.bullets.map((b) => (
+          <li key={b} className="flex items-start gap-2.5 eg-body-md text-[#002131]" data-testid="eg-route-bullet"><span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[#174358] shrink-0" />{b}</li>
+        ))}
+      </ul>
     </div>
   );
 }
