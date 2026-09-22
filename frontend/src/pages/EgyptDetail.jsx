@@ -9,16 +9,22 @@ import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { GoogleLogo, TripAdvisorLogo } from '../components/Rating';
 import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
-import { detail, experts, glance, brandFeatures, recommended, steps, crumbs, trust, price, planner, route, reviewsHeading } from '../egyptDetailData';
+import { detail as detail0, route as route0, glance as glance0, crumbs as crumbs0, experts, brandFeatures, recommended, steps, trust, price, planner, reviewsHeading } from '../egyptDetailData';
+import { detail as detail1, route as route1, glance as glance1, crumbs as crumbs1 } from '../moroccoEgyptData';
 import { products, formatInr, styles } from '../egyptListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
 
 const tagIcon = Object.fromEntries(styles.map((s) => [s.key, s.icon]));
 import { ratings as trustBar } from '../mock';
 
+const BY_SLUG = {
+  [detail0.slug]: { detail: detail0, route: route0, glance: glance0, crumbs: crumbs0 },
+  [detail1.slug]: { detail: detail1, route: route1, glance: glance1, crumbs: crumbs1 }
+};
+
 const stop = (e) => e.preventDefault();
-const inr = formatInr(detail.price);
-const Cta = ({ className = '', testId }) => <a href={detail.ctaHref} onClick={stop} title={detail.cta} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{detail.cta}</a>;
+
+const Cta = ({ detail, className = '', testId }) => <a href={detail.ctaHref} onClick={stop} title={detail.cta} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{detail.cta}</a>;
 
 const Ratings = ({ className = '' }) => (
   <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-2 ${className}`} data-testid="eg-ratings-row">
@@ -27,7 +33,7 @@ const Ratings = ({ className = '' }) => (
   </div>
 );
 
-function Gallery() {
+function Gallery({ detail }) {
   const g = detail.gallery;
   const [lb, setLb] = useState(null);
   const [gi, setGi] = useState(0);
@@ -57,10 +63,10 @@ function Gallery() {
   );
 }
 
-function Head() {
+function Head({ detail }) {
   return (
     <div className="eg-wide" data-testid="eg-detail-head">
-      <Gallery />
+      <Gallery detail={detail} />
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
@@ -83,7 +89,7 @@ function Head() {
   );
 }
 
-const Crumbs = () => (
+const Crumbs = ({ crumbs }) => (
   <nav className="eg-wide hidden md:block" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
     <ol className="md:px-5 flex flex-wrap items-center gap-1">
       {crumbs.map((c, i) => (
@@ -100,7 +106,7 @@ const Crumbs = () => (
   </nav>
 );
 
-const PriceCard = () => (
+const PriceCard = ({ detail, inr }) => (
   <div className="bg-white rounded-2xl border border-[#C4CBD0] p-5 md:p-6 flex flex-col gap-4" data-testid="eg-detail-price">
     <div className="flex items-center justify-between gap-4">
       <div className="flex flex-col shrink-0">
@@ -108,7 +114,7 @@ const PriceCard = () => (
         <span className="eg-price text-[#174358]" data-testid="eg-detail-price-value">{inr}</span>
         <span className="eg-body-md text-[#6F777C]">{price.perPerson}</span>
       </div>
-      <Cta className="flex-1 !h-14 eg-title-lg" testId="eg-detail-price-cta" />
+      <Cta detail={detail} className="flex-1 !h-14 eg-title-lg" testId="eg-detail-price-cta" />
     </div>
     <hr className="border-[#E4E3DB]" />
     <div className="flex flex-col gap-3">
@@ -122,7 +128,7 @@ const PriceCard = () => (
   </div>
 );
 
-const ExpertCard = () => {
+const ExpertCard = ({ detail }) => {
   const e = detail.expert;
   const [open, setOpen] = useState(false);
   return (
@@ -169,7 +175,7 @@ const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
   </div>
 );
 
-function Glance({ open, setOpen }) {
+function Glance({ open, setOpen, glance, stops }) {
   const [more, setMore] = useState(false);
   return (
     <section className="eg-container flex flex-col gap-6 scroll-mt-4" id="summary" data-testid="eg-detail-glance">
@@ -184,7 +190,7 @@ function Glance({ open, setOpen }) {
             {glance.days.map((d, i) => (
               <div key={d.title} className="py-5 flex flex-col gap-4" data-testid="eg-glance-day">
                 <div className="flex gap-4">
-                  <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
+                  <img src={stops[Math.min(i, stops.length - 1)].images[0]} alt={stops[Math.min(i, stops.length - 1)].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
                   <div className="min-w-0">
                     <span className="inline-flex items-center h-6 px-2 rounded-full bg-[#308BB6] eg-label-md text-white">{d.title.split(': ')[0]}</span>
                     <h3 className="mt-1 eg-title-md text-[#002131]">{d.title.split(': ')[1] || d.title}</h3>
@@ -215,7 +221,7 @@ function Glance({ open, setOpen }) {
                     <td className="py-5 pr-4"><span className="inline-flex items-center justify-center min-w-[64px] h-8 px-2 rounded-full bg-[#308BB6] eg-label-lg text-white whitespace-nowrap">{day.replace('Day ', '')}</span></td>
                     <td className="py-5 pr-6">
                       <div className="flex gap-4">
-                        <img src={route.stops[i].images[0]} alt={route.stops[i].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
+                        <img src={stops[Math.min(i, stops.length - 1)].images[0]} alt={stops[Math.min(i, stops.length - 1)].name} className="w-20 h-20 rounded-xl object-cover shrink-0" loading="lazy" data-testid="eg-glance-photo" />
                         <div className="min-w-0"><h3 className="eg-title-md text-[#002131]">{rest || d.title}</h3><p className="mt-1 eg-body-md text-[#002131]">{d.text}</p></div>
                       </div>
                     </td>
@@ -249,7 +255,7 @@ const Features = () => (
   </section>
 );
 
-const Recommended = () => (
+const Recommended = ({ detail }) => (
   <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
     <h2 className="eg-display-sm text-[#002131]">{recommended.h2}</h2>
     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6" data-testid="eg-recommended-grid">
@@ -272,7 +278,7 @@ const Steps = () => (
   </section>
 );
 
-function StickyBar() {
+function StickyBar({ detail, inr }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 500);
@@ -285,7 +291,7 @@ function StickyBar() {
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
         <div className="px-4 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-3">
           <div className="flex flex-col"><span className="eg-body-sm text-[#6F777C]">{price.from}</span><span className="eg-price !text-[20px] !leading-6 md:!text-[22px] text-[#174358]">{inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
-          <Cta className="w-auto !h-14 !px-8 eg-title-lg" testId="eg-sticky-cta" />
+          <Cta detail={detail} className="w-auto !h-14 !px-8 eg-title-lg" testId="eg-sticky-cta" />
         </div>
       </div>
     </div>
@@ -299,35 +305,38 @@ export default function EgyptDetail() {
     setSummaryOpen(true);
     requestAnimationFrame(() => { const el = document.getElementById('summary'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' }); });
   };
-  if (slug !== detail.slug) return <Navigate to="/afrika/aegypten" replace />;
+  const data = BY_SLUG[slug];
+  if (!data) return <Navigate to="/afrika/aegypten" replace />;
+  const { detail, route, glance, crumbs } = data;
+  const inr = formatInr(detail.price);
   return (
     <div className="eg" data-testid="egypt-detail-page">
       <Header />
       <main className="flex flex-col gap-8 pb-28 md:pb-[100px]">
-        <Head />
-        <Crumbs />
-        <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard /></div>
+        <Head detail={detail} />
+        <Crumbs crumbs={crumbs} />
+        <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard detail={detail} inr={inr} /></div>
         <div className="flex flex-col gap-14 md:gap-[72px]">
           <div className="eg-wide flex flex-col md:flex-row gap-8">
             <div className="flex-1 min-w-0 flex flex-col gap-8">
-              <ExpertCard />
-              <EgyptRoute onSummary={showSummary} />
+              <ExpertCard detail={detail} />
+              <EgyptRoute onSummary={showSummary} stops={route.stops} />
               <div className="md:hidden"><ExpertsCard testId="eg-detail-experts-mobile" /></div>
             </div>
             <aside className="hidden md:flex w-[384px] shrink-0 flex-col gap-6 self-start sticky top-6 max-h-[calc(100vh-24px)] overflow-y-auto no-scrollbar" data-testid="eg-detail-sidebar">
-              <PriceCard />
+              <PriceCard detail={detail} inr={inr} />
               <ExpertsCard />
             </aside>
           </div>
-          <Glance open={summaryOpen} setOpen={setSummaryOpen} />
+          <Glance open={summaryOpen} setOpen={setSummaryOpen} glance={glance} stops={route.stops} />
           <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
           <Features />
           <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
-          <Recommended />
+          <Recommended detail={detail} />
           <Steps />
         </div>
       </main>
-      <StickyBar />
+      <StickyBar detail={detail} inr={inr} />
       <ScrollTop className="bottom-24 right-4 md:bottom-[104px] md:right-10" />
       <Footer />
     </div>

@@ -1,5 +1,6 @@
 // Egypt listing page content (English, INR) for Hi Tours.
 import { productImages, placeImages, activityImages, themeImages, africaImages, reviewImages } from './egyptImages';
+import { cardImages as moroccoEgyptCardImages } from './moroccoEgyptData';
 
 export const hero = {
   h1: 'Egypt Honeymoons and holidays',
@@ -60,6 +61,7 @@ export const tours = {
 // Prices in INR (converted at ~₹90/€ and ₹85/$, rounded). hotels/cities/activities/transfers for products 2–7 are placeholders.
 export const products = [
   { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Honeymoon'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, price: 144000, images: productImages[0] },
+  { slug: 'morocco-egypt-palaces-pyramids', tag: 'Culture', styles: ['Culture', 'Luxury'], title: 'Morocco & Egypt: Palaces, Medinas & Pyramids', days: 8, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 8, price: 164000, images: moroccoEgyptCardImages },
   { slug: 'rundreise-7-tage', tag: 'Short trips', styles: ['Short trips', 'Culture'], title: 'Unforgettable holiday in Egypt', days: 7, stops: 1, hotels: 1, cities: 1, activities: 5, transfers: 2, price: 121500, images: productImages[1] },
   { slug: 'urlaub-am-meer', tag: null, styles: ['Culture'], title: 'Egypt round trip: experience fascinating culture', days: 8, stops: 3, hotels: 3, cities: 3, activities: 7, transfers: 6, price: 135000, images: productImages[2] },
   { slug: 'pyramiden-urlaub', tag: 'Culture', styles: ['Culture', 'Honeymoon'], title: 'Egypt: experience the fascinating pyramids', days: 9, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 6, price: 157500, images: productImages[3] },

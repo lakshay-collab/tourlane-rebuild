@@ -278,6 +278,14 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Desktop sidebar = sticky price card only; "Why plan with our experts?" moved into main column under the itinerary (all breakpoints, max-w 520). Expert line: "Trip created by Ria Banerjee, Egypt expert at Hi Tours".
 - Tested: iteration_24 – all 9 checks pass (1440 + 390).
 
+## New Egypt product: Morocco & Egypt combo (2026-06, latest)
+- User: take a Thrillophilia Morocco+Egypt 8-day itinerary and add it as another Egypt product in Hi Tours' existing design/style (extract info + images only, keep our design).
+- New data file `src/moroccoEgyptData.js`: `detail` (slug `morocco-egypt-palaces-pyramids`, title 'Morocco & Egypt: Palaces, Medinas & Pyramids', 8 days / 3 cities, ₹1,64,000 pp ≈ USD 1,930×85, tags Culture/Luxury, gallery + services), `route.stops` (A Marrakech D1–3, B Casablanca→Chefchaouen D3–5, C Cairo→Alexandria D5–8; each with bullets, image carousel, activities, accommodation, program), `glance` (4 day-rows), `crumbs`. All prose rewritten in Hi Tours voice (no verbatim source copy). Images hotlinked from media1.thrillophilia.com (via `img()` helper) — same external-CDN approach as existing Egypt data.
+- `EgyptDetail.jsx` refactored from a single hard-coded product to a `BY_SLUG` registry ({luxor-strand-urlaub, morocco-egypt-palaces-pyramids} → {detail, route, glance, crumbs}); all product-specific components (Gallery/Head/Crumbs/PriceCard/ExpertCard/Glance/Recommended/StickyBar/Cta) now take props instead of module-scope constants. Shared exports (experts/brandFeatures/recommended/steps/price/planner/trust/reviewsHeading) still from egyptDetailData. Unknown slug → redirect to /afrika/aegypten.
+- `EgyptRoute` gained a `stops` prop (default = imported route.stops) so it can render either product; labels stay shared.
+- `egyptListingData.js`: added the product as 2nd card in `products` (styles Culture/Luxury) using `cardImages` from moroccoEgyptData; appears on the Egypt listing and in the detail "Other Egypt holidays" grid.
+- Verified: compiles clean, /afrika/aegypten/morocco-egypt-palaces-pyramids renders full page (title, ₹1,64,000, 3 route tabs Marrakech/Casablanca/Cairo, route line, expert, what's-included, itinerary), 0 console errors; listing loads with 0 errors.
+
 ## Egypt detail page – rounds 5–7 (2026-06, latest)
 - Header: title → one row of chips on desktop (11 days, 5 cities Deep Water; Culture/Honeymoon/Luxury white with Ink border) → Route line (Ink chips with Dusk pin, Lagoon chevrons, testids eg-detail-route-line-chip-i). Route code REMOVED (user). Breadcrumb hidden on mobile.
 - Gallery: mobile = single swipeable image row with dots (debounced active dot); desktop = 5-image grid, gallery button + image click open `Lightbox` (exported from EgyptRoute, `start` prop).

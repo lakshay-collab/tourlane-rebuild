@@ -137,7 +137,7 @@ function Activities({ items }) {
   );
 }
 
-export default function EgyptRoute({ onSummary }) {
+export default function EgyptRoute({ onSummary, stops = route.stops }) {
   const [active, setActive] = useState(0);
   const [stuck, setStuck] = useState(false);
   const head = useRef(null);
@@ -172,7 +172,7 @@ export default function EgyptRoute({ onSummary }) {
         </div>
         {!stuck && <p className="eg-body-md text-[#174358] pb-3" data-testid="eg-route-sub">{route.sub}</p>}
         <div role="tablist" className="flex overflow-x-auto no-scrollbar border-b border-[#E4E3DB]" data-testid="eg-route-tabs">
-          {route.stops.map((st, i) => (
+          {stops.map((st, i) => (
             <button key={st.letter} role="tab" aria-selected={active === i} onClick={() => goTo(i)} className={`relative h-14 ${i ? 'pl-3' : 'pl-1'} pr-3 flex items-center gap-2 whitespace-nowrap ${active === i ? 'text-[#002131]' : 'text-[#174358]'}`} data-testid={`eg-route-tab-${i}`}>
               <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#174358] border-[#174358] text-white' : 'bg-white border-[#C4CBD0] text-[#174358]'}`}>{st.letter}</span>
               <span className="flex flex-col items-start leading-tight"><span className="eg-label-lg">{st.name}</span><span className="eg-body-sm text-[#6F777C]">{st.dayLabel}</span></span>
@@ -182,7 +182,7 @@ export default function EgyptRoute({ onSummary }) {
         </div>
       </div>
       <div className="px-4 md:px-10 pt-8 pb-7 flex flex-col divide-y divide-[#DDD9CE]">
-        {route.stops.map((s, i) => (
+        {stops.map((s, i) => (
           <section key={s.letter} ref={(el) => { refs.current[i] = el; }} id={`stop-${i}`} className="py-8 first:pt-0 last:pb-0 flex flex-col gap-8" data-testid={`eg-route-section-${i}`}>
             <div className="flex flex-col md:flex-row gap-6 md:gap-8">
               <StopText s={s} />
