@@ -1,0 +1,93 @@
+{
+  "summary": "Frontend regression testing at 1440 and 390 for /afrika/aegypten/holidays (+ style landing), planner, reviews, FAQ, and regression pages. Two real bugs found: (1) CRITICAL — filter/sort dropdown items on /afrika/aegypten/holidays render BEHIND product cards, so users cannot select any Filter-by or Sort-by option by clicking (a URL-based navigation to /holidays/honeymoon and ?sort=price-asc works correctly and the page renders as expected — only the physical click on menu items is broken). Root cause: the `.eg-rise` wrapper around <EgyptFilterBar> in EgyptHolidays.jsx applies a transform animation, creating a new stacking context that traps the sticky bar's z-30; the eg-product-grid siblings (which come later in DOM) then paint above the dropdown items. (2) HIGH — On /afrika/aegypten/luxor-strand-urlaub the EgyptPlanner does NOT render the passenger counter step (step 0). The detail page imports `planner` from `egyptDetailData.js`, which is missing the `rows`, `question`, and `next` fields, so LeadForm falls through to step 1 (name/phone/email) immediately. Everything else passes: hero title 'Egypt tours & holidays', CTA 'Browse 8 package ideas' scrolls to #tours (0→636), no eg-tours-title element, sticky filter pills 'Filter by' + 'Sort by', direct URL /holidays/honeymoon → H1 'Egypt honeymoon holidays', chip 'Travel style: Honeymoon', CTA count 'Browse 2 package ideas', ?sort=price-asc reorders prices ascending (1,21,500→1,35,000→1,44,000→1,57,500), section order video→breadcrumb→filter-bar→grid→planner→reviews→faq (no eg-intro/places/activities/themes/africa/plan/reviews-old), reviews h2 correct, score 4.5, count '7,618 reviews', mosaic 412px with 4 valid photos, 5 categories, 3 review cards, card text clamped 48px expanding to 240px with 'Read more'→'Read less', eg-cr-plan-cta scrolls to #planner, eg-faq h2 centered 'Practical information for your trip'. Desktop planner: 3 rows, values 2/0/0, adults minus disabled at 1 after click, next→form, submit disabled until valid, valid submit → success shown, POST /api/leads verified via GET (source 'egypt-holidays', passengers {adults:1,children:0,infants:0}). Mobile 390: no horizontal overflow, hero CTA visible, eg-mobile-cta bottom bar has eg-mobile-filter-styles 'Filter by' + eg-mobile-filter-sort 'Sort by' + CTA, mobile planner card renders with 3 rows. Regression: /afrika/aegypten view-all → /afrika/aegypten/holidays, listing planner shows counter step, /asien and /luxor-strand-urlaub 0 console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EgyptHolidays / EgyptFilterBar dropdown", "issue": "Filter-by and Sort-by dropdown items render BEHIND eg-product-grid cards — physical click on any menu item lands on the product card behind it (navigates to that product detail) instead of applying the filter/sort. Verified with elementsFromPoint: at menu-item coordinates the topmost element is IMG > DIV > ARTICLE[eg-product-card], not the button. React onClick DOES fire when invoked programmatically, confirming logic is correct. Root cause: EgyptHolidays.jsx line 123 wraps <EgyptFilterBar> in <div className='eg-rise' ...> and .eg-rise (index.css:141) runs a transform-based animation with animation-fill-mode:both, creating a new stacking context that traps the sticky bar's z-30. Product-grid siblings then paint on top. Fix: either remove the eg-rise wrapper around the filter bar, or ensure eg-rise itself has isolation/z-index so its child z-30 is not trapped (e.g., add position:relative; z-index:30 to the wrapper), or portal the dropdown to document.body.", "selector": "[data-testid=\"eg-filter-dropdown-styles\"] button, [data-testid=\"eg-filter-dropdown-sort\"] button", "priority": "CRITICAL"},
+      {"component": "EgyptDetail planner (/afrika/aegypten/luxor-strand-urlaub)", "issue": "The planner on the Egypt detail page does NOT show the passenger counter step 0 — it renders the name/phone/email form directly. Spec says the detail page planner should also start with the Adults/Children/Infants counter. Root cause: `planner` in /app/frontend/src/egyptDetailData.js is missing the `rows`, `question`, and `next` fields that LeadForm needs to render step 0. Fix: add rows/question/next/filterLabel etc. (mirror the listing planner) OR import & spread the listing planner as the base and override only detail-specific copy.", "selector": "[data-testid=\"eg-planner-step-passengers\"]", "priority": "HIGH"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_results": {
+    "/afrika/aegypten/holidays @1440": {
+      "eg-hero-title": "Egypt tours & holidays",
+      "eg-hero-cta_text": "Browse 8 package ideas",
+      "eg-hero-cta_scroll_y_change": "0 -> 636 (scrolls to #tours)",
+      "eg-tours-title_absent": true,
+      "eg-filter-styles_text": "Filter by",
+      "eg-filter-sort_text": "Sort by",
+      "section_order": "eg-holidays-video(0) -> eg-breadcrumb(672) -> eg-filter-bar(731) -> eg-product-grid(796) -> eg-planner(1898) -> eg-customer-reviews(2722) -> eg-faq(4178)",
+      "excluded_sections_present": []
+    },
+    "style/sort behaviour": {
+      "direct_/holidays/honeymoon": "H1 'Egypt honeymoon holidays', CTA 'Browse 2 package ideas', chip 'Travel style: Honeymoon'",
+      "click_flow_menu_item": "BROKEN — physical click on Honeymoon item routes to /afrika/aegypten/luxor-strand-urlaub (product page underneath). JS-triggered .click() on same element correctly routes to /holidays/honeymoon. See ui bug #1.",
+      "sort_?sort=price-asc": "prices ascend: 1,21,500 → 1,35,000 → 1,44,000 → 1,57,500",
+      "chip_clear": "returns to /afrika/aegypten/holidays"
+    },
+    "customer reviews": {
+      "h2": "Our customers about their Egypt trip",
+      "eg-cr-score": "4.5",
+      "eg-cr-count": "7,618 reviews",
+      "mosaic_height_px": 412,
+      "mosaic_photos_ok": "8 img nodes, all naturalWidth>0 (0 broken)",
+      "eg-cr-categories_items": 5,
+      "eg-cr-card_count": 3,
+      "eg-cr-card-text_clamp_height": "48px",
+      "eg-cr-card-more_toggle": "Read more -> Read less (text 48px -> 240px)",
+      "eg-cr-plan-cta_scroll": "scrollY 1818 (target #planner ~1898)"
+    },
+    "eg-faq": {"h2": "Practical information for your trip", "textAlign": "center"},
+    "planner desktop (eg-planner)": {
+      "step0_visible": true,
+      "rows": 3,
+      "initial_values": ["2","0","0"],
+      "adults_minus_disabled_at_1": true,
+      "form_after_next": true,
+      "submit_disabled_empty": true,
+      "submit_enabled_after_valid": true,
+      "success_shown": true
+    },
+    "/api/leads persistence": {
+      "source": "egypt-holidays",
+      "passengers": {"adults": 1, "children": 0, "infants": 0},
+      "name": "QA Holidays", "email": "qa2@example.com", "phone": "9876543210", "country_code": "+91"
+    },
+    "/afrika/aegypten/holidays @390": {
+      "horizontal_overflow": false,
+      "hero_cta_visible": true,
+      "eg-mobile-filter-styles": "Filter by",
+      "eg-mobile-filter-sort": "Sort by",
+      "eg-mobile-cta-button_visible": true,
+      "eg-planner-card-mobile_visible": true,
+      "eg-planner-m-row_count": 3
+    },
+    "regression": {
+      "/afrika/aegypten view-all": "'View all Egypt holidays' -> /afrika/aegypten/holidays",
+      "/afrika/aegypten planner counter step": true,
+      "/afrika/aegypten/luxor-strand-urlaub planner counter step": false,
+      "/asien console errors": 0,
+      "/afrika/aegypten/luxor-strand-urlaub console errors": 0,
+      "/afrika/aegypten console errors": 0
+    }
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix filter/sort dropdown z-index bug: the .eg-rise wrapper around <EgyptFilterBar> in EgyptHolidays.jsx (line 123) creates a stacking context that traps the sticky bar's z-30 so product cards paint over the dropdown menu. Easiest fixes: (a) drop the .eg-rise wrapper on the filter bar (animate the pills individually instead), or (b) give the wrapper isolation + high z-index (`position: relative; z-index: 40`), or (c) render the dropdown in a portal.",
+    "Add `rows`, `question`, and `next` fields to `planner` in /app/frontend/src/egyptDetailData.js (mirror /app/frontend/src/egyptListingData.js `planner.rows`, `question`, `next`) so that the Egypt detail page planner also starts with the Adults/Children/Infants counter step per the spec."
+  ],
+  "critical_code_review_comments": [
+    ".eg-rise animates transform with fill-mode:both — anywhere it is used to wrap a container that itself has z-index-dependent children, those children will be trapped in the wrapper's stacking context. Consider adding `isolation: isolate` and a defined z-index to .eg-rise, or (better) animate the inner elements instead of the wrapper.",
+    "EgyptPlanner has two variants (desktop + mobile) always mounted with different testid prefixes; the mobile form is hidden via `lg:hidden`. State is duplicated across both. Consider conditional render via matchMedia to avoid two form instances and any accidental double-submit risk.",
+    "eg-hero-cta ‘Browse 8 package ideas’ count text is dynamic — good — but the sticky filter-bar CTA ‘Plan your Egypt trip’ and the review filter/search/‘Show more reviews’ buttons are documented as static placeholders. Consider disabling them or wiring at least the ‘Show more reviews’ to reveal remaining items to avoid dead-click UX."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (POST/GET /api/leads with passengers works)", "frontend": "~90% (2 real bugs, all other spec items pass)"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "One /api/leads record created during testing: {name:'QA Holidays', email:'qa2@example.com', source:'egypt-holidays', passengers:{adults:1,children:0,infants:0}}.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "The filter/sort dropdown click bug is caused by the .eg-rise wrapper around <EgyptFilterBar> in EgyptHolidays.jsx creating a stacking context. Programmatic .click() on the menu items still works (routing is correct), so it's purely a paint/z-index issue. Verify with elementsFromPoint at menu-item center coordinates — top element should be the BUTTON, not an IMG/ARTICLE. Detail-page planner counter step requires adding `rows`/`question`/`next` to egyptDetailData.js planner (matching egyptListingData.js).",
+  "rca of the issue": "Bug 1 (filter dropdown behind cards): EgyptHolidays.jsx wraps <EgyptFilterBar> in a div with class .eg-rise (index.css: `animation: eg-rise .55s cubic-bezier(.2,.7,.2,1) both`; keyframes use transform: translateY). Because the animation applies a transform (and animation-fill-mode:both preserves it), the wrapper becomes a new stacking context. The sticky filter bar's `z-30` is now scoped inside that context; siblings (eg-product-grid) with z-index auto paint on top per DOM order. Reproduction: at viewport 1440 on /afrika/aegypten/holidays open the styles pill and try to click any item — you land on the product card behind. Mitigation: remove the .eg-rise wrapper on the filter bar, add `isolation:isolate; z-index:40` to eg-rise, or portal the dropdown. Bug 2 (detail planner missing counter): /app/frontend/src/egyptDetailData.js `planner` lacks `rows`/`question`/`next`, so LeadForm’s `if (step === 0 && data.rows)` branch is skipped. Mitigation: copy those fields from egyptListingData.js `planner`."
+}

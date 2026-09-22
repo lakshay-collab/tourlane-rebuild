@@ -298,7 +298,14 @@ export const brandFeatures = {
 export const recommended = { h2: 'Other Egypt holidays you may like' };
 
 export const planner = {
-  h3: 'Build your Egypt trip with an expert',
+  h3: 'Plan your Egypt trip',
+  question: 'For how many people are you planning your trip?',
+  rows: [
+    { label: 'Adults', sub: '13+ years', value: 2, min: 1 },
+    { label: 'Children', sub: '2 to 12 years', value: 0, min: 0 },
+    { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
+  ],
+  next: 'Continue',
   social: '4,00,000+ travellers trust Hi Tours',
   formTitle: 'Start customising your trip',
   formSub: 'A few quick details and your Hi Tours expert takes it from here — free, no obligation.',

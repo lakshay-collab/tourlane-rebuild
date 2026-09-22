@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import Header from '../components/Header';
+import TrustBar from '../components/TrustBar';
 import Footer from '../components/Footer';
 import { ScrollTop, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
@@ -56,6 +57,7 @@ const VideoHero = ({ video, title, count }) => (
         <button type="button" onClick={() => scrollToId('tours')} className="eg-btn-filled h-12 px-6 eg-title-md eg-rise !bg-none !bg-white !text-[#002131] hover:!bg-[#FBEADB] transition-colors" style={{ animationDelay: '120ms' }} data-testid="eg-hero-cta">{count}</button>
       </div>
     </section>
+    <div data-testid="eg-trust-bar"><TrustBar /></div>
   </div>
 );
 
@@ -120,9 +122,7 @@ export default function EgyptHolidays() {
         </div>
 
         <section className="eg-container mt-2 md:mt-4 scroll-mt-20" id="tours" data-testid="eg-tours">
-          <div className="eg-rise" style={{ animationDelay: '160ms' }}>
-            <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
-          </div>
+          <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
           {(style || sort) && (
             <div className="mt-4 md:mt-2 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
               {style && <Chip label={tours.filterLabel} value={style} onClear={() => setStyle(null)} testId="eg-filter-chip-style" />}
