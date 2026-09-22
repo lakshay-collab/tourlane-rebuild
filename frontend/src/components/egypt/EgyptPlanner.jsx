@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { planner } from '../../egyptListingData';
-import { CheckCircleIcon } from './EgyptIcons';
+import { CheckCircleIcon, MinusIcon, PlusIcon } from './EgyptIcons';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL;
 const COUNTRY_CODES = [
@@ -15,13 +15,44 @@ const COUNTRY_CODES = [
 
 const inputCls = 'h-12 w-full rounded-lg border border-[#C4CBD0] bg-white px-3 eg-body-lg text-[#002131] focus:border-[#308BB6] focus:outline-none';
 
-function LeadForm({ data, form, set, cc, setCc, status, valid, submit, prefix }) {
+function CounterRow({ row, value, onChange, prefix }) {
+  const dis = value <= row.min;
+  return (
+    <div className="flex items-center justify-between gap-2 py-4" data-testid={`${prefix}-row`}>
+      <div>
+        <p className="eg-title-md text-[#002131]">{row.label}</p>
+        <span className="block eg-body-md text-[#174358]">{row.sub}</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <button type="button" disabled={dis} onClick={() => onChange(value - 1)} className={`w-10 h-10 rounded-full border border-[#6F777C] text-[#174358] flex items-center justify-center ${dis ? 'opacity-40' : 'hover:bg-black/5'}`} aria-label="Fewer" data-testid={`${prefix}-minus`}><MinusIcon size={24} /></button>
+        <span className="w-5 text-center eg-title-md text-[#002131]" data-testid={`${prefix}-value`}>{value}</span>
+        <button type="button" onClick={() => onChange(value + 1)} className="w-10 h-10 rounded-full border border-[#6F777C] text-[#174358] flex items-center justify-center hover:bg-black/5" aria-label="More" data-testid={`${prefix}-plus`}><PlusIcon size={24} /></button>
+      </div>
+    </div>
+  );
+}
+
+function LeadForm({ data, form, set, cc, setCc, status, valid, submit, prefix, step, setStep, vals, setVals }) {
   if (status === 'done') {
     return (
       <div className="py-8 flex flex-col items-center text-center gap-2" data-testid={`${prefix}-success`}>
         <div className="w-12 h-12 rounded-full bg-[#174358] text-white flex items-center justify-center"><CheckCircleIcon size={28} /></div>
         <h4 className="eg-title-lg text-[#002131]">{data.successTitle}</h4>
         <p className="eg-body-md text-[#174358]">{data.successText}</p>
+      </div>
+    );
+  }
+  if (step === 0 && data.rows) {
+    return (
+      <div data-testid={`${prefix}-step-passengers`}>
+        <h3 className="eg-title-lg text-[#002131] text-center">{data.question}</h3>
+        <div className="mt-[33px] rounded-xl border border-[#C4CBD0] px-4">
+          {data.rows.map((r, i) => <CounterRow key={r.label} row={r} value={vals[i]} onChange={(v) => setVals(vals.map((x, k) => (k === i ? Math.max(r.min, v) : x)))} prefix={prefix} />)}
+        </div>
+        <div className="mt-[104px]">
+          <div className="h-[2px] bg-[#E4E3DB] rounded-full"><div className="h-full w-[12.5%] bg-[#174358] rounded-full" /></div>
+          <button type="button" onClick={() => setStep(1)} className="eg-btn-filled w-full h-10 mt-4 eg-label-lg" data-testid={`${prefix}-next`}>{data.next}</button>
+        </div>
       </div>
     );
   }
@@ -51,6 +82,7 @@ function LeadForm({ data, form, set, cc, setCc, status, valid, submit, prefix })
         </label>
       </div>
       {status === 'error' && <p className="eg-body-md text-[#B42318]" data-testid={`${prefix}-error`}>Something went wrong. Please try again.</p>}
+      {data.rows && <div className="h-[2px] bg-[#E4E3DB] rounded-full"><div className="h-full w-[25%] bg-[#174358] rounded-full" /></div>}
       <button type="submit" disabled={!valid || status === 'sending'} className="eg-btn-filled w-full !h-12 eg-label-lg disabled:opacity-60 disabled:cursor-not-allowed" data-testid={`${prefix}-submit`}>
         {status === 'sending' ? data.sending : (valid ? data.cta : (data.ctaIdle || data.cta))}
       </button>
@@ -73,6 +105,8 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
   const [form, setForm] = useState({ name: '', phone: '', email: '' });
   const [cc, setCc] = useState('+91');
   const [status, setStatus] = useState('idle'); // idle | sending | done | error
+  const [step, setStep] = useState(0);
+  const [vals, setVals] = useState((data.rows || []).map((r) => r.value));
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
   const cleanPhone = form.phone.replace(/\s+/g, '');
   const valid = form.name.trim().length > 1 && /^\d{7,15}$/.test(cleanPhone) && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim());
@@ -85,7 +119,7 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
       const res = await fetch(`${BACKEND}/api/leads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: form.name.trim(), phone: cleanPhone, email: form.email.trim(), country_code: cc, trip_title: tripTitle, source })
+        body: JSON.stringify({ name: form.name.trim(), phone: cleanPhone, email: form.email.trim(), country_code: cc, trip_title: tripTitle, source, passengers: data.rows ? Object.fromEntries(data.rows.map((r, i) => [r.label.toLowerCase(), vals[i]])) : undefined })
       });
       if (!res.ok) throw new Error('bad');
       setStatus('done');
@@ -93,7 +127,7 @@ export default function EgyptPlanner({ className = 'mt-12 md:mt-16 px-4 sm:px-8 
       setStatus('error');
     }
   };
-  const formProps = { data, form, set, cc, setCc, status, valid, submit };
+  const formProps = { data, form, set, cc, setCc, status, valid, submit, step, setStep, vals, setVals };
 
   return (
     <section className={className} data-testid="eg-planner">

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
-import { styles, sorts, hero } from '../../egyptListingData';
+import { styles, sorts, hero, tours } from '../../egyptListingData';
 import { ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 import { scrollToId } from './EgyptHero';
 
 const menus = (style, sort) => [
-  { key: 'styles', label: 'Travel styles', pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
-  { key: 'sort', label: 'Sort', pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
+  { key: 'styles', label: tours.filterBy, pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
+  { key: 'sort', label: tours.sortBy, pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
 ];
 
 export function FilterPills({ style, sort, onStyle, onSort, up = false, testPrefix = 'eg-filter' }) {

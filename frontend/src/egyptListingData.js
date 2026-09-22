@@ -56,8 +56,9 @@ export const intro = {
 export const tours = {
   h2: 'Top-selling Egypt holiday ideas',
   allH2: 'Egypt tours & holidays',
-  browse: 'Browse package ideas',
-  count: (n) => `${n} package ${n === 1 ? 'idea' : 'ideas'} available`,
+  browse: (n) => `Browse ${n} package ${n === 1 ? 'idea' : 'ideas'}`,
+  filterBy: 'Filter by',
+  sortBy: 'Sort by',
   viewAll: 'View all Egypt holidays',
   styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
   short: ['Embark on an ', ['unforgettable journey of discovery'], ' through a millennia-old culture – every Egypt holiday is tailor-made by our experts.'],
@@ -96,9 +97,16 @@ export const features = [
 
 export const planner = {
   bg: '/egypt/planner-bg.jpg',
-  h3: 'Build your Egypt trip with an expert',
+  h3: 'Plan your Egypt trip',
   avatars: ['/egypt/tourlaner1.webp', '/egypt/tourlaner2.webp', '/egypt/tourlaner3.webp', '/egypt/tourlaner4.webp'],
   social: '4,00,000+ travellers trust Hi Tours',
+  question: 'For how many people are you planning your trip?',
+  rows: [
+    { label: 'Adults', sub: '13+ years', value: 2, min: 1 },
+    { label: 'Children', sub: '2 to 12 years', value: 0, min: 0 },
+    { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
+  ],
+  next: 'Continue',
   formTitle: 'Start customising your trip',
   formSub: 'A few quick details and your Hi Tours expert takes it from here — free, no obligation.',
   nameLabel: 'Full name',
@@ -191,3 +199,42 @@ export const faq = {
 
 const africaNames = ['South Africa', 'Seychelles', 'Tanzania', 'Namibia', 'Botswana', 'Kenya', 'Morocco', 'Mauritius', 'Uganda'];
 export const africa = { h2: 'More destinations in Africa', items: africaNames.map((title, i) => ({ title, alt: title, tag: null, href: '#', image: africaImages[i] })) };
+
+export const customerReviews = {
+  h2: 'Our customers about their Egypt trip',
+  score: '4.5',
+  rating: 4.5,
+  count: '7,618 reviews',
+  countN: 7618,
+  source: 'Hi Tours customer reviews',
+  summary: 'Fantastic two-week round trip in Egypt, unforgettable experiences and absolutely recommended!',
+  summaryTag: 'Summarised with AI',
+  avatars: ['/egypt/tourlaner1.webp', '/egypt/tourlaner2.webp', '/egypt/tourlaner3.webp', '/egypt/tourlaner4.webp'],
+  photos: [
+    'https://tourlane-dm-images.imgix.net/reviews/thailand/1.png?q=70&w=600&auto=format&fit=max',
+    'https://tourlane-dm-images.imgix.net/reviews/thailand/4.png?q=70&w=300&auto=format&fit=max',
+    'https://tourlane-dm-images.imgix.net/reviews/thailand/2.png?q=70&w=300&auto=format&fit=max',
+    'https://tourlane-dm-images.imgix.net/reviews/thailand/3.png?q=70&w=450&auto=format&fit=max'
+  ],
+  categoriesH4: 'Ratings by category',
+  categories: [
+    { label: 'Accommodation', value: 4.4, icon: 'hotel' },
+    { label: 'Activities', value: 4.6, icon: 'activity' },
+    { label: 'Transport', value: 4.6, icon: 'transport' },
+    { label: 'Expert advice', value: 4.7, icon: 'advice' },
+    { label: 'Service during the trip', value: 4.5, icon: 'service' }
+  ],
+  planH3: 'Plan your individual round trip.',
+  planText: 'Personalise the details now with your personal expert.',
+  planCta: 'Plan for free',
+  planExpert: '/egypt/expert-ria.webp',
+  filterLabel: 'All reviews',
+  items: [
+    { initial: 'S', name: 'Sibel', date: 'August 2026', title: 'We booked our entire…', source: 'Trustpilot', text: 'We booked our entire Egypt trip through Hi Tours and were really very satisfied. Especially on a trip with several stops it was so pleasant that hotels, transfers, excursions and onward journeys were organised for us. We were picked up everywhere and hardly had to worry about anything. There were flight time changes on both the outbound and return flights. Hi Tours informed us, we only had to confirm the new time that suited us – everything else was taken care of and the new documents were updated directly in the app. The only problem was in Hurghada: because of a storm our boat was almost two hours late and when we arrived the booked transfer was no longer there. We contacted Hi Tours immediately and took a taxi ourselves. On the same day both the taxi costs and the costs for the missed transfer were fully refunded. We can only recommend Hi Tours!' },
+    { initial: 'T', name: 'Hi Tours customer', date: 'May 2025', title: 'I am very satisfied with the transfers and the fast service from Hi Tours!', source: 'Customer survey', text: 'I had a great experience with the transfers. Everything worked perfectly! When we had a small problem with a hotel, Hi Tours immediately put us up in another one and organised the transfer. I am very satisfied!' },
+    { initial: 'T', name: 'Hi Tours customer', date: 'May 2026', title: 'an absolute dream – that was really MEGA!', source: 'Hi Tours App', text: 'an absolute dream – that was really MEGA!' }
+  ],
+  readMore: 'Read more',
+  readLess: 'Read less',
+  more: 'Show more reviews'
+};

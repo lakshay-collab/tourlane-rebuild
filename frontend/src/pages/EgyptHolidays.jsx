@@ -6,6 +6,9 @@ import Footer from '../components/Footer';
 import { ScrollTop, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptFilterBar, { MobileToursBars } from '../components/egypt/EgyptFilterBar';
+import EgyptPlanner from '../components/egypt/EgyptPlanner';
+import EgyptCustomerReviews from '../components/egypt/EgyptCustomerReviews';
+import { EgyptFaq } from '../components/egypt/EgyptSections';
 import { ChevronRight } from '../components/egypt/EgyptIcons';
 import { hero, tours, products, sorts, styles, styleBySlug, styleLanding, holidaysPath, holidaysCrumbs } from '../egyptListingData';
 
@@ -50,8 +53,7 @@ const VideoHero = ({ video, title, count }) => (
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.55)_0%,rgba(0,33,49,0.2)_45%,rgba(0,33,49,0.6)_100%)] pointer-events-none" />
       <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-4 md:gap-5 px-4 text-center" data-testid="eg-hero-copy">
         <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance] eg-rise" data-testid="eg-hero-title">{title}</h1>
-        <p className="eg-title-md text-white/90 eg-rise" style={{ animationDelay: '90ms' }} data-testid="eg-tours-count">{count}</p>
-        <button type="button" onClick={() => scrollToId('tours')} className="eg-btn-filled h-12 px-6 eg-title-md eg-rise !bg-none !bg-white !text-[#002131] hover:!bg-[#FBEADB] transition-colors" style={{ animationDelay: '160ms' }} data-testid="eg-hero-cta">{tours.browse}</button>
+        <button type="button" onClick={() => scrollToId('tours')} className="eg-btn-filled h-12 px-6 eg-title-md eg-rise !bg-none !bg-white !text-[#002131] hover:!bg-[#FBEADB] transition-colors" style={{ animationDelay: '120ms' }} data-testid="eg-hero-cta">{count}</button>
       </div>
     </section>
   </div>
@@ -105,7 +107,7 @@ export default function EgyptHolidays() {
   return (
     <div className="eg" data-testid="egypt-holidays-page">
       <main>
-        <VideoHero video={hero.video} title={style ? hero.styleH1(style) : hero.holidaysH1} count={tours.count(list.length)} />
+        <VideoHero video={hero.video} title={style ? hero.styleH1(style) : hero.holidaysH1} count={tours.browse(list.length)} />
         <div className="eg-container mt-6 md:mt-8">
           <nav className="hidden sm:flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
             {crumbs.map((c, i) => (
@@ -117,8 +119,7 @@ export default function EgyptHolidays() {
           </nav>
         </div>
 
-        <section className="eg-container mt-6 md:mt-8 scroll-mt-20 mb-16" id="tours" data-testid="eg-tours">
-          <h2 className="eg-display-sm text-[#002131]" data-testid="eg-tours-title">{title}</h2>
+        <section className="eg-container mt-2 md:mt-4 scroll-mt-20" id="tours" data-testid="eg-tours">
           <div className="eg-rise" style={{ animationDelay: '160ms' }}>
             <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
           </div>
@@ -141,6 +142,10 @@ export default function EgyptHolidays() {
             </div>
           )}
         </section>
+
+        <div id="planner" className="scroll-mt-20"><EgyptPlanner source="egypt-holidays" /></div>
+        <EgyptCustomerReviews />
+        <EgyptFaq centered className="eg-container mt-12 md:mt-16 mb-16" />
       </main>
       <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
       <MobileToursBars title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />

@@ -6,7 +6,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
 
@@ -44,6 +44,7 @@ class LeadCreate(BaseModel):
     country_code: str = "+91"
     trip_title: str = ""
     source: str = ""
+    passengers: Optional[Dict[str, int]] = None
 
 class Lead(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -54,6 +55,7 @@ class Lead(BaseModel):
     country_code: str = "+91"
     trip_title: str = ""
     source: str = ""
+    passengers: Optional[Dict[str, int]] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 # Add your routes to the router instead of directly to app

@@ -89,11 +89,11 @@ export function EgyptPlan() {
   );
 }
 
-export function EgyptFaq() {
+export function EgyptFaq({ centered = false, className = 'eg-container mt-12 md:mt-16' }) {
   const [open, setOpen] = useState(null);
   return (
-    <section className="eg-container mt-12 md:mt-16" id="faq" data-testid="eg-faq">
-      <h2 className="eg-display-sm text-[#002131]">{faq.h2}</h2>
+    <section className={className} id="faq" data-testid="eg-faq">
+      <h2 className={`eg-display-sm text-[#002131] ${centered ? 'text-center' : ''}`}>{faq.h2}</h2>
       <div className="mt-8 pb-4 border-t border-[#C4CBD0]">
         {faq.items.map((it, i) => (
           <div key={it.q} className="border-b border-[#C4CBD0]" data-testid="eg-faq-item">
