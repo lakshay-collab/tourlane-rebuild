@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TagIcon, PinIcon, CalendarIcon, BedIcon, TicketIcon, CarIcon, MealIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
+import { BedIcon, TicketIcon, CarIcon, MealIcon, ChevronLeft, ChevronRight } from './EgyptIcons';
 import { formatInr } from '../../egyptListingData';
 
 const Stat = ({ icon: Icon, value, testId }) => (
@@ -34,14 +34,9 @@ export default function EgyptProductCard({ p }) {
             <button type="button" onClick={() => go(-1)} className="eg-arrow pointer-events-auto" aria-label="Previous image" data-testid="eg-product-prev"><ChevronLeft size={24} /></button>
             <button type="button" onClick={() => go(1)} className="eg-arrow pointer-events-auto" aria-label="Next image" data-testid="eg-product-next"><ChevronRight size={24} /></button>
           </div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/45 to-transparent pointer-events-none" aria-hidden="true" />
+          <span className="absolute left-3 bottom-3 eg-label-md text-white/95 tracking-wide pointer-events-none" data-testid="eg-product-meta">{days} · {cities}</span>
         </div>
-        {p.tag && (
-          <div className="absolute left-0 top-0 p-2">
-            <span className="inline-flex items-center gap-1 rounded-lg border border-[#C4CBD0] bg-white px-2 py-1.5 eg-label-lg text-[#174358]" data-testid="eg-product-tag">
-              <TagIcon name={p.tag} size={20} />{p.tag}
-            </span>
-          </div>
-        )}
       </div>
 
       <Wrap className="block p-4 flex-1" data-testid="eg-product-details-link">
@@ -49,8 +44,6 @@ export default function EgyptProductCard({ p }) {
           <h3 className="eg-card-title text-[#002131]" data-testid="eg-product-title">{p.title}</h3>
           {p.hotels != null && (
             <div className="mt-4 grid grid-cols-2 gap-2" data-testid="eg-product-inclusions">
-              <Stat icon={CalendarIcon} value={days} testId="eg-product-days" />
-              <Stat icon={PinIcon} value={cities} testId="eg-product-cities" />
               <Stat icon={BedIcon} value={`${p.hotels} ${p.hotels === 1 ? 'hotel' : 'hotels'}`} testId="eg-product-hotels" />
               <Stat icon={TicketIcon} value={`${p.activities} activities`} testId="eg-product-activities" />
               <Stat icon={CarIcon} value={`${p.transfers} transfers`} testId="eg-product-transfers" />
