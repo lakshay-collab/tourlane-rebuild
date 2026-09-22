@@ -1,0 +1,54 @@
+{
+  "summary": "Round-7 verification for Hi Tours Egypt package detail page (/afrika/aegypten/luxor-strand-urlaub). Mobile (390, is_mobile+has_touch) and Desktop (1440) checks executed. All requested checks pass: no console errors, layout/visibility, gallery scroll-to-dot mapping, itinerary colours, tour-summary modal, lightbox flows, sticky bar copy, scroll-spy tab-2 selection, and listing page. Frontend only; no source files modified.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "detailed_results": {
+    "desktop_1440": {
+      "eg-stop-prev bg": "rgb(224, 247, 255) PASS",
+      "eg-stop-next bg": "rgb(224, 247, 255) PASS",
+      "eg-activities-next bg": "rgb(224, 247, 255) PASS",
+      "blush rgb(250,221,209) inside eg-detail-route": "none found PASS",
+      "eg-detail-route-line-chip-0..5": "6 chips present, texts Cairo/Aswan/Edfu/Luxor/Hurghada/Cairo, bg rgb(0,33,49), color rgb(255,255,255), each contains svg PASS",
+      "eg-gallery-button opens eg-lightbox and eg-lightbox-close closes": "PASS",
+      "eg-accommodation-photos opens lightbox (desktop)": "PASS",
+      "No 'Plan for free' text": "PASS",
+      "Sticky 'Customise this trip' present": "PASS",
+      "Scroll-spy eg-route-tab-2 aria-selected=true when section-2 near top": "PASS",
+      "Console errors": "0"
+    },
+    "mobile_390": {
+      "Console errors": "0 PASS",
+      "documentElement.scrollWidth == 390": "PASS",
+      "eg-breadcrumb hidden": "PASS",
+      "eg-detail-experts-mobile visible and below eg-detail-route": "PASS (top=6605px, below route)",
+      "eg-detail-sidebar hidden": "PASS",
+      "Gallery scrollLeft=clientWidth -> 2nd of 5 dots active": "PASS (5 dots + 1 active marker; active_idx_in_parent=1 = 2nd)",
+      "Gallery scrollLeft=2*clientWidth -> 3rd dot active": "PASS (active_idx_in_parent=2 = 3rd)",
+      "eg-route-daylabel bg rgb(48,139,182)": "PASS",
+      "eg-accommodation-cta bg rgb(231,94,38)": "PASS",
+      "eg-activities-cta bg rgb(231,94,38)": "PASS",
+      "eg-route-subtitle-chip-0..2 in section-1 (Aswan/Edfu/Luxor) bg rgb(0,33,49)": "PASS",
+      "Bullet markers (flight Lagoon / transfer Amber / other Dusk)": "PASS across sections 0..4 (flight rgb(48,139,182); transfer rgb(251,127,38); other rgb(154,205,229))",
+      "eg-route-summary-cta opens eg-glance-days with 5 glance days & Day pill bg rgb(48,139,182)": "PASS (5 visible days confirmed via text; 10 elements likely due to duplicate render for accessibility; pill bg rgb(48,139,182) on all)",
+      "ACCOMMODATION appears above KEY HIGHLIGHTS in each day block": "PASS (verified via modal innerText ordering)",
+      "eg-accommodation-photos opens eg-lightbox on mobile": "PASS"
+    },
+    "listing_page": {"/afrika/aegypten console errors": "0 PASS"}
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: eg-glance-day appears to be rendered 10 times (2x for 5 days) suggesting duplicated DOM for responsive layouts. Working correctly but could be consolidated to reduce DOM weight.",
+    "Note: tour summary modal uses ALL CAPS 'ACCOMMODATION' / 'KEY HIGHLIGHTS' section labels via CSS uppercase transform - matches spec order requirement."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All Round-7 mobile + desktop verifications pass. .eg-arrow arrows correctly Sky #E0F7FF (rgb(224,247,255)); no Blush inside eg-detail-route. Line chips 0..5 present with correct texts/colours/svg. Mobile gallery dot-active tracks scroll position correctly. Lightbox works from both eg-gallery-button and eg-accommodation-photos on desktop and mobile. Scroll-spy sets eg-route-tab-2 aria-selected=true. Bullet marker colour taxonomy (flight/transfer/other) verified across all 5 route sections."
+}

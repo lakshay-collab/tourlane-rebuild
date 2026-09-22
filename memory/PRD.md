@@ -254,3 +254,14 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Itinerary stops: `bullets[]` replace `text` (crisp per-stop list incl. transfers/flights); stop header = name + Blush Day pill on one row, subtitle beneath. Glance highlights include transfers/flights.
 - Desktop sidebar = sticky price card only; "Why plan with our experts?" moved into main column under the itinerary (all breakpoints, max-w 520). Expert line: "Trip created by Ria Banerjee, Egypt expert at Hi Tours".
 - Tested: iteration_24 – all 9 checks pass (1440 + 390).
+
+## Egypt detail page – rounds 5–7 (2026-06, latest)
+- Header: title → one row of chips on desktop (11 days, 5 cities Deep Water; Culture/Honeymoon/Luxury white with Ink border) → Route line (Ink chips with Dusk pin, Lagoon chevrons, testids eg-detail-route-line-chip-i). Route code REMOVED (user). Breadcrumb hidden on mobile.
+- Gallery: mobile = single swipeable image row with dots (debounced active dot); desktop = 5-image grid, gallery button + image click open `Lightbox` (exported from EgyptRoute, `start` prop).
+- CTA copy everywhere "Customise this trip" (detail.cta; EgyptReviews `cta` prop). Sticky bar: bigger price + h-14 CTA. Price-card CTA h-14.
+- What's included: 6th block "Customisation" (mobile) / "Expert customisation" (desktop) via services [label, icon, long].
+- Itinerary: stop header = name + Lagoon Day pill; subtitle rendered as Ink route chips; bullets 16px with BulletMark (flight = Lagoon plane, transfer = Amber car, else Dusk dot); Customise pills = Ember; "Tour summary"/"View tour summary" button = Deep Water gradient; activity/accommodation text never clamped.
+- Tour summary (renamed from "The route at a glance"): labels "Accommodation"/"Key highlights"; mobile rows stacked with Lagoon day pill + Dusk left rule; desktop table with Lagoon day pills. "Hide tour summary".
+- Sidebar (desktop): sticky aside (max-h 100vh, internal scroll) with PriceCard + ExpertsCard (experts on the RIGHT per user); mobile experts card in main column (eg-detail-experts-mobile).
+- Palette rule (user): no Blush/"stale pink" on detail page; `.eg-arrow` now Sky/Harbor (hover Dusk). Use brand-kit colours: Ink chips, Lagoon days, Ember accents, Amber transfers, Dusk neutrals.
+- Tested: iteration_25 (found reviews CTA → fixed), 26 (dot index → fixed), 27 – all pass (1440 + 390).
