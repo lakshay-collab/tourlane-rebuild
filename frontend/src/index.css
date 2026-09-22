@@ -38,8 +38,8 @@
 .eg-btn-outlined:hover { background: rgba(23, 67, 88, 0.08); }
 .eg-link { color: #174358; font-weight: 600; text-decoration: underline; }
 .eg-card { border: 1px solid #C4CBD0; border-radius: 12px; overflow: hidden; background: #FBF9F1; display: block; }
-.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #FADDD1; color: #002131; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
-.eg-arrow:hover { background: #F4B49A; }
+.eg-arrow { width: 40px; height: 40px; border-radius: 9999px; background: #E0F7FF; color: #174358; display: inline-flex; align-items: center; justify-content: center; transition: background-color .2s; }
+.eg-arrow:hover { background: #9ACDE5; }
 
 @tailwind base;
 @tailwind components;

@@ -10,7 +10,7 @@ export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) 
     {cities.map((c, i) => (
       <React.Fragment key={`${c}-${i}`}>
         {i > 0 && <ChevronRight size={16} className="text-[#308BB6] mx-0.5 shrink-0" />}
-        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-[#002131] eg-label-lg text-white whitespace-nowrap"><PinIcon size={14} className="text-[#9ACDE5]" />{c}</span>
+        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-[#002131] eg-label-lg text-white whitespace-nowrap" data-testid={`${testId}-chip-${i}`}><PinIcon size={14} className="text-[#9ACDE5]" />{c}</span>
       </React.Fragment>
     ))}
   </div>
