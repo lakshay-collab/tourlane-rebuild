@@ -31,6 +31,17 @@ export const intro = {
   ]
 };
 
+export const team = {
+  h2: 'Who are our Asia specialists?',
+  members: [
+    { name: 'Aarav Mehta', role: 'Senior Travel Expert, Japan & South Korea', image: '/team/asia-1.webp', quote: 'Planning an Asia holiday shouldn\'t be a headache – that\'s my job, not yours.' },
+    { name: 'Ananya Iyer', role: 'Travel Expert, Thailand & Vietnam', image: '/team/asia-2.webp', quote: 'I\'ve spent months island-hopping in Thailand so your two weeks are perfectly spent.' },
+    { name: 'Vikram Nair', role: 'Head of Asia Product', image: '/team/asia-3.webp', quote: 'Twenty years of Asia and I still find new corners to send our travellers to.' },
+    { name: 'Meera Krishnan', role: 'Travel Expert, Bali & Indonesia', image: '/team/asia-4.webp', quote: 'Honeymoon in Bali? Tell me how you like your mornings and I\'ll plan the rest.' },
+    { name: 'Kabir Shah', role: 'Travel Expert, Sri Lanka & Maldives', image: '/team/asia-5.webp', quote: 'Beaches, tea country or leopards – Sri Lanka has all three and I\'ll fit them in.' }
+  ]
+};
+
 export const tours = {
   h2: 'Popular Asia holidays',
   more: 'Show more',
@@ -204,7 +215,7 @@ const inspiration = [
 ];
 
 export const tabs = [
-  { key: 'about', label: 'About Asia', target: 'about' },
+  { key: 'about', label: 'Our specialists', target: 'about' },
   { key: 'tours', label: 'Asia holidays', target: 'tours' },
   { key: 'countries', label: 'Countries', items: countries.items.map((c) => ({ id: c.title, label: c.title, icon: 'pin', href: c.href })) },
   { key: 'guide', label: 'Travel guide', items: guide },

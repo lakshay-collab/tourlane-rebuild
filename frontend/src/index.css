@@ -10,6 +10,7 @@
 @media (min-width: 905px) { .eg-display-sm { font-size: 36px; line-height: 44px; } }
 .eg-title-lg { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0; }
 .eg-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; line-height: 30px; }
+.eg-team-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 19px; line-height: 27px; }
 .eg-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-label-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }

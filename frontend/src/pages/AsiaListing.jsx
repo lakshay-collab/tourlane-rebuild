@@ -6,8 +6,9 @@ import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptTileRow from '../components/egypt/EgyptTileRow';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { ChevronDown, ChevronRight } from '../components/egypt/EgyptIcons';
+import TeamIntro from '../components/TeamIntro';
 import { features } from '../egyptListingData';
-import { intro, tours, products, countries, whereTo, continents, reviews } from '../asiaListingData';
+import { team, tours, products, countries, whereTo, continents, reviews } from '../asiaListingData';
 
 export default function AsiaListing() {
   const [allTours, setAllTours] = useState(false);
@@ -18,12 +19,7 @@ export default function AsiaListing() {
       <main>
         <AsiaHero />
 
-        <section className="eg-container mt-12 scroll-mt-20" id="about" data-testid="as-intro">
-          <h2 className="eg-display-sm text-[#002131]">{intro.h2}</h2>
-          <p className="mt-6 eg-body-lg text-[#002131]">
-            {intro.text.map((x, i) => (Array.isArray(x) ? <b key={i} className="font-semibold">{x[0]}</b> : x))}
-          </p>
-        </section>
+        <TeamIntro h2={team.h2} members={team.members} />
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="tours" data-testid="as-tours">
           <h2 className="eg-display-sm text-[#002131]">{tours.h2}</h2>

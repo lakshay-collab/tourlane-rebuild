@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { reviews, plan, faq, trust } from '../../egyptListingData';
 import { BoxStars, BRAND_BLUE } from '../Rating';
 import { ChevronRight, ChevronDown } from './EgyptIcons';
+import EgyptTileRow from './EgyptTileRow';
 
 const Rich = ({ parts }) => (Array.isArray(parts)
   ? parts.map((x, i) => (Array.isArray(x) ? <a key={i} href={x[1]} onClick={(e) => e.preventDefault()} className="eg-link">{x[0]}</a> : x))
@@ -16,28 +17,46 @@ export const ReviewSummary = ({ className = '', count }) => (
   </div>
 );
 
-export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count, cta = reviews.cta, items = reviews.items }) {
+const ReviewCard = ({ r, className = '' }) => (
+  <article className={`shrink-0 snap-start ${className}`} data-testid="eg-review-card">
+    <div className="relative h-[200px] md:h-[225px] rounded-xl overflow-hidden">
+      <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      <div className="absolute inset-x-0 bottom-0 h-12 bg-[linear-gradient(rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.65)_100%)]" />
+      <p className="absolute left-0 bottom-3 px-4 eg-title-md text-white">{r.title}</p>
+    </div>
+    <div className="pt-4 px-4">
+      <BoxStars rating={r.stars} size={18} color={BRAND_BLUE} />
+      <h3 className="mt-3 eg-title-md text-[#002131]">{r.name}</h3>
+      <p className="mt-3 eg-body-md text-[#002131] line-clamp-5">{r.text}</p>
+      <div className="mt-4 eg-body-md text-[#174358]">{r.date}</div>
+    </div>
+  </article>
+);
+
+const useMobile = () => {
+  const [m, setM] = useState(() => window.matchMedia('(max-width: 904px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 904px)');
+    const fn = (e) => setM(e.matches);
+    mq.addEventListener('change', fn);
+    return () => mq.removeEventListener('change', fn);
+  }, []);
+  return m;
+};
+
+export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count, cta = reviews.cta, items = reviews.items, row = false, h2Class }) {
+  const mobile = useMobile();
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
-      <h2 className={centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]'}>{h2}</h2>
+      <h2 className={h2Class || (centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]')}>{h2}</h2>
       <ReviewSummary className="mt-8" count={count} />
-      <div className="mt-8 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" data-testid="eg-review-track">
-        {items.map((r) => (
-          <article key={r.name} className="shrink-0 snap-start w-[300px] md:w-auto" data-testid="eg-review-card">
-            <div className="relative h-[200px] md:h-[225px] rounded-xl overflow-hidden">
-              <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-[linear-gradient(rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.65)_100%)]" />
-              <p className="absolute left-0 bottom-3 px-4 eg-title-md text-white">{r.title}</p>
-            </div>
-            <div className="pt-4 px-4">
-              <BoxStars rating={r.stars} size={18} color={BRAND_BLUE} />
-              <h3 className="mt-3 eg-title-md text-[#002131]">{r.name}</h3>
-              <p className="mt-3 eg-body-md text-[#002131] line-clamp-5">{r.text}</p>
-              <div className="mt-4 eg-body-md text-[#174358]">{r.date}</div>
-            </div>
-          </article>
-        ))}
-      </div>
+      {row ? (
+        <div className="mt-8"><EgyptTileRow items={items} itemWidth={mobile ? 316 : 384} testId="eg-review-track" renderItem={(r) => <ReviewCard r={r} className="w-full" />} /></div>
+      ) : (
+        <div className="mt-8 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-0 md:px-0" data-testid="eg-review-track">
+          {items.map((r) => <ReviewCard key={r.name} r={r} className="w-[300px] md:w-auto" />)}
+        </div>
+      )}
       <div className="mt-8 flex flex-col items-center gap-2">
         <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{cta}</a>
         {!centered && <p className="eg-body-sm text-[#002131] text-center">{reviews.sub}</p>}

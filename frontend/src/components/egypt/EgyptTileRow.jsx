@@ -13,7 +13,7 @@ export function EgyptTile({ item, imgClass = 'h-[287px]', testId = 'eg-tile' }) 
   );
 }
 
-export default function EgyptTileRow({ items, testId = 'eg-tile-row' }) {
+export default function EgyptTileRow({ items, testId = 'eg-tile-row', itemWidth = 288, renderItem }) {
   const ref = useRef(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -30,13 +30,13 @@ export default function EgyptTileRow({ items, testId = 'eg-tile-row' }) {
     window.addEventListener('resize', update);
     return () => { el.removeEventListener('scroll', update); window.removeEventListener('resize', update); };
   }, [update]);
-  const go = (d) => ref.current.scrollBy({ left: d * 288, behavior: 'smooth' });
+  const go = (d) => ref.current.scrollBy({ left: d * itemWidth, behavior: 'smooth' });
 
   return (
     <div className="relative -mx-3" data-testid={testId}>
       <div ref={ref} className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory">
         {items.map((it) => (
-          <div key={it.title} className="shrink-0 w-[288px] px-3 snap-start"><EgyptTile item={it} /></div>
+          <div key={it.title || it.name} style={{ width: itemWidth }} className="shrink-0 px-3 snap-start">{renderItem ? renderItem(it) : <EgyptTile item={it} />}</div>
         ))}
       </div>
       {canPrev && <button type="button" onClick={() => go(-1)} className="eg-arrow absolute left-0 top-1/2 -translate-y-1/2 hidden md:inline-flex" aria-label="Zurück" data-testid={`${testId}-prev`}><ChevronLeft size={24} /></button>}

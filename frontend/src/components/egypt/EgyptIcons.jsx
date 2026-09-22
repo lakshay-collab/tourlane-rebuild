@@ -12,7 +12,7 @@ const tagPaths = {
 };
 
 tagPaths.Kultur = tagPaths.Culture; tagPaths.Kurztrips = tagPaths['Short trips']; tagPaths.Familienurlaub = tagPaths.Family;
-const tagNav = { Nature: 'leaf', 'Island hopping': 'island', 'Road trip': 'road', Luxury: 'gem', 'Multi-country': 'globe', Beach: 'beach' };
+const tagNav = { Nature: 'leaf', 'Island hopping': 'island', 'Road trip': 'road', Luxury: 'gem', 'Multi-country': 'globe', Beach: 'beach', Honeymoon: 'heart', 'City breaks': 'landscape' };
 export const TagIcon = ({ name, size = 20 }) => (tagPaths[name]
   ? <Svg size={size} {...tagPaths[name]} />
   : <NavIcon name={tagNav[name]} size={size} className="" />);
