@@ -11,7 +11,9 @@ import { GoogleLogo, TripAdvisorLogo } from '../components/Rating';
 import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
 import { detail as detail0, route as route0, glance as glance0, crumbs as crumbs0, experts, brandFeatures, recommended, steps, trust, price, planner, reviewsHeading } from '../egyptDetailData';
 import { detail as detail1, route as route1, glance as glance1, crumbs as crumbs1 } from '../moroccoEgyptData';
+import { detail as detail2, route as route2, glance as glance2, crumbs as crumbs2 } from '../srilankaData';
 import { products, formatInr, styles } from '../egyptListingData';
+import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
 
 const tagIcon = Object.fromEntries(styles.map((s) => [s.key, s.icon]));
@@ -19,7 +21,8 @@ import { ratings as trustBar } from '../mock';
 
 const BY_SLUG = {
   [detail0.slug]: { detail: detail0, route: route0, glance: glance0, crumbs: crumbs0 },
-  [detail1.slug]: { detail: detail1, route: route1, glance: glance1, crumbs: crumbs1 }
+  [detail1.slug]: { detail: detail1, route: route1, glance: glance1, crumbs: crumbs1 },
+  [detail2.slug]: { detail: detail2, route: route2, glance: glance2, crumbs: crumbs2 }
 };
 
 const stop = (e) => e.preventDefault();
@@ -98,7 +101,9 @@ const Crumbs = ({ crumbs }) => (
           {c.href
             ? (c.href.startsWith('/afrika/aegypten')
                 ? <Link to="/afrika/aegypten" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
-                : <a href={c.href} onClick={stop} className="eg-body-md text-[#174358] hover:underline">{c.label}</a>)
+                : c.href === '/asien'
+                  ? <Link to="/asien" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
+                  : <a href={c.href} onClick={stop} className="eg-body-md text-[#174358] hover:underline">{c.label}</a>)
             : <span className="eg-label-lg text-[#002131] truncate max-w-[220px] sm:max-w-none">{c.label}</span>}
         </li>
       ))}
@@ -255,14 +260,18 @@ const Features = () => (
   </section>
 );
 
-const Recommended = ({ detail }) => (
-  <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
-    <h2 className="eg-display-sm text-[#002131]">{recommended.h2}</h2>
-    <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6" data-testid="eg-recommended-grid">
-      {products.filter((p) => p.slug !== detail.slug).slice(0, 6).map((p, i) => <EgyptProductCard key={`${p.slug}-${i}`} p={p} />)}
-    </div>
-  </section>
-);
+const Recommended = ({ detail }) => {
+  const pool = detail.region === 'asia' ? asiaProducts : products;
+  const title = detail.region === 'asia' ? 'Other Asia holidays you may like' : recommended.h2;
+  return (
+    <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
+      <h2 className="eg-display-sm text-[#002131]">{title}</h2>
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6" data-testid="eg-recommended-grid">
+        {pool.filter((p) => p.slug !== detail.slug).slice(0, 6).map((p, i) => <EgyptProductCard key={`${p.slug || p.title}-${i}`} p={p} />)}
+      </div>
+    </section>
+  );
+};
 
 const Steps = () => (
   <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-steps">

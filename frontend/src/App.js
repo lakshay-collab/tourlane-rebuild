@@ -16,6 +16,7 @@ function App() {
           <Route path="/afrika/aegypten/travel-style/:style" element={<EgyptListing />} />
           <Route path="/afrika/aegypten/:slug" element={<EgyptDetail />} />
           <Route path="/asien" element={<AsiaListing />} />
+          <Route path="/asien/:slug" element={<EgyptDetail />} />
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
         </Routes>
       </BrowserRouter>
