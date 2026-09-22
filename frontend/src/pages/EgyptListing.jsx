@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import EgyptHero, { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
@@ -24,7 +24,7 @@ const ExpertQuote = () => {
   return (
     <figure className="mt-8 rounded-2xl bg-[#FBEADB]/60 px-5 py-6 md:px-8 md:py-8" data-testid="eg-expert-quote">
       <blockquote>
-        <p className={`eg-quote !text-[19px] !leading-[27px] md:!text-[22px] md:!leading-[30px] text-[#002131] ${open ? '' : 'eg-clamp-3 md:eg-clamp-2'}`} data-testid="eg-expert-quote-text">
+        <p className={`eg-quote !text-[18px] !leading-[29px] md:!text-[20px] md:!leading-[32px] text-[#002131] ${open ? '' : 'eg-clamp-3 md:eg-clamp-2'}`} data-testid="eg-expert-quote-text">
           “{intro.quote}{open ? ` ${intro.quoteMore}` : ''}”
         </p>
       </blockquote>
@@ -43,17 +43,28 @@ const ExpertQuote = () => {
 export default function EgyptListing() {
   const [allThemes, setAllThemes] = useState(false);
   const [readMore, setReadMore] = useState(false);
+  const [aboutMore, setAboutMore] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => { document.title = 'Egypt Honeymoons and holidays | Hi Tours'; }, []);
   const top = products.slice(0, 6);
+  const viewAll = (e) => {
+    e.preventDefault();
+    setLeaving(true);
+    window.setTimeout(() => navigate(holidaysPath), 320);
+  };
 
   return (
-    <div className="eg" data-testid="egypt-listing-page">
+    <div className={`eg ${leaving ? 'eg-page-leave' : ''}`} data-testid="egypt-listing-page">
       <main>
         <EgyptHero />
 
         <section className="eg-container mt-12 scroll-mt-20" id="about" data-testid="eg-intro">
           <h2 className="eg-display-sm text-[#002131]">{intro.h2}</h2>
-          <p className="mt-6 eg-body-lg text-[#002131]">{intro.text}</p>
+          <p className="mt-6 eg-body-lg text-[#002131]" data-testid="eg-intro-text">
+            {intro.text}{aboutMore && intro.more}
+            {' '}<button type="button" onClick={() => setAboutMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-intro-learnmore">{aboutMore ? intro.learnLess : intro.learnMore}</button>
+          </p>
           <ExpertQuote />
         </section>
 
@@ -68,7 +79,7 @@ export default function EgyptListing() {
             {top.map((p, i) => <div key={p.slug} className={i >= 4 ? 'hidden sm:block' : ''}><EgyptProductCard p={p} /></div>)}
           </div>
           <div className="mt-8 flex justify-center">
-            <Link to={holidaysPath} className="eg-btn-filled h-12 px-8 eg-title-md" data-testid="eg-view-all">{tours.viewAll}</Link>
+            <Link to={holidaysPath} onClick={viewAll} className="eg-btn-filled h-12 px-8 eg-title-md" data-testid="eg-view-all">{tours.viewAll}</Link>
           </div>
         </section>
 

@@ -12,7 +12,8 @@ export const hero = {
   stickyCta: 'Plan your Egypt trip',
   ctaHref: '/l/egypt/enquiry/passengers/',
   sub: 'Your travel plan – no obligation & tailor-made',
-  image: '/egypt/hero-egypt.webp'
+  image: '/egypt/hero-egypt.webp',
+  video: { src: '/hero-video.mp4', poster: '/hero-poster.jpg', label: 'Watch: customising Egypt with Hi Tours' }
 };
 
 export const trust = { label: 'Excellent', score: '4.8', outOf: 'out of 5', count: '5,000+', reviews: 'reviews', rating: 4.8 };
@@ -42,6 +43,9 @@ export const sorts = [
 export const intro = {
   h2: 'About Egypt',
   text: 'Egypt is synonymous with history. Anyone visiting Cairo should include Saqqara in their itinerary. The Step Pyramid of Djoser is the oldest monumental stone structure in the world, older than Giza, and attracts a fraction of the visitors.',
+  more: ' Beyond the pyramids, Egypt is a river, a desert and two seas. A Nile cruise between Luxor and Aswan strings together Karnak, the Valley of the Kings, Edfu and Philae without a single early-morning drive; the Red Sea coast at Hurghada, Marsa Alam and Sharm El-Sheikh offers some of the clearest snorkelling and diving water anywhere; and the White Desert and Siwa reward travellers with more time. October to April brings the most comfortable weather, and with direct flights from India and no long layovers, a rich itinerary fits comfortably into 8 to 12 days.',
+  learnMore: 'Learn more',
+  learnLess: 'Show less',
   quote: 'Egypt is one of those places the photos undersell. Standing under the Great Pyramid at sunrise, or drifting past Kom Ombo on a Nile cruise, you understand why travellers have been coming here for two thousand years.',
   quoteMore: 'My advice: don\u2019t rush it. Give Cairo two full days, sail the Nile between Luxor and Aswan instead of driving it, and finish on the Red Sea so the trip ends slower than it began. Every Egypt itinerary we build starts with what you want from the holiday, not a fixed template, and I personally check each one before it reaches you.',
   readMore: 'Read more',
@@ -50,8 +54,9 @@ export const intro = {
 };
 
 export const tours = {
-  h2: 'Top Egypt holidays',
+  h2: 'Top-selling Egypt holiday ideas',
   allH2: 'Egypt holidays & tours',
+  count: (n) => `${n} ${n === 1 ? 'holiday' : 'holidays & tours'} available`,
   viewAll: 'View all Egypt holidays',
   styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
   short: ['Embark on an ', ['unforgettable journey of discovery'], ' through a millennia-old culture – every Egypt holiday is tailor-made by our experts.'],

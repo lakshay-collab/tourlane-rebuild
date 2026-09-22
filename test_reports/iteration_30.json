@@ -1,0 +1,78 @@
+{
+  "summary": "Frontend regression at 1440x900 and 390x844 for the Egypt rebuild (listing restructure, dedicated holidays page, planner card revert, product card meta). Every spec item passes: section order on /afrika/aegypten, About Egypt h2, Ria Banerjee expert quote with Read more/Read less toggle expanding text, Top Egypt holidays with 6 desktop cards (4 visible on <600px), view-all button navigating to /afrika/aegypten/holidays, no filter/lazy on listing, mobile CTA on listing having no filter pills, planner card with desktop/mobile variants, product meta as plain white 'X days • Y cities' with 4 stats, /afrika/aegypten/holidays hero 'Egypt holidays & tours' with no eg-tabs and breadcrumb Home>Egypt>Egypt holidays, sticky filter bar with styles/sort pills, Honeymoon → URL /honeymoon + H1 'Egypt honeymoon holidays' + chip, sort adds ?sort=, chip clear returns to /holidays, lazy load 3→8 on mobile, /travel-style/nile-cruise redirects to /holidays/nile-cruise with H1 'Egypt nile cruise holidays', unknown /holidays/foo redirects to /holidays. Regression pages /afrika/aegypten/luxor-strand-urlaub and /asien have 0 console errors. Lead submission verified in-browser (eg-planner-success shown) AND via curl (POST/GET /api/leads work, data persists).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "verification_results": {
+    "/afrika/aegypten desktop 1440": {
+      "console_errors": 0,
+      "horizontal_overflow": false,
+      "section_order": "eg-intro → eg-expert-quote → eg-tours → eg-features → eg-planner → eg-reviews → eg-places → eg-activities → eg-plan → eg-themes → eg-faq → eg-africa (matches spec)",
+      "eg-intro h2": "About Egypt",
+      "eg-tours-title": "Top Egypt holidays",
+      "product_cards_visible": 6,
+      "expert_quote_toggle": "Read more → Read less; text length 217 → 547 (expands)",
+      "eg-view-all href/text": "/afrika/aegypten/holidays / 'View all Egypt holidays'",
+      "filter_bar_on_listing": "null (correct)",
+      "lazy_sentinel_on_listing": "null (correct)",
+      "desktop_planner_visible": true,
+      "mobile_planner_hidden": true,
+      "planner_card_dims": "550x760 container, press strip fully visible, no clipping",
+      "planner_submit_states": "disabled 'Fill above to start customising' → enabled 'Start customising' after valid fill",
+      "planner_submit_result": "eg-planner-success shown (browser POST works)",
+      "product_meta": "text '11 days · 5 cities', color rgb(255,255,255), background transparent, position absolute top-left (matches spec)",
+      "product_inclusions_stats": 4
+    },
+    "/afrika/aegypten mobile 390": {
+      "console_errors": 0,
+      "horizontal_overflow": false,
+      "product_cards_visible": "4 of 6 (correct)",
+      "mobile_cta": "only CTA button, no eg-mobile-filter-styles/sort (correct)",
+      "mobile_planner_visible": true,
+      "desktop_planner_hidden": true
+    },
+    "/afrika/aegypten/holidays desktop 1440": {
+      "eg-hero-title": "Egypt holidays & tours",
+      "eg-tabs": "null (correct)",
+      "breadcrumb": "['Home','Egypt','Egypt holidays']",
+      "filter_bar": "sticky with eg-filter-styles & eg-filter-sort (7 items)",
+      "excluded_sections": "eg-reviews/eg-places/eg-planner/eg-plan/eg-faq/eg-africa all absent (correct)",
+      "initial_cards": 6,
+      "honeymoon_flow": "URL → /holidays/honeymoon, H1 → 'Egypt honeymoon holidays', chip 'Travel style: Honeymoon' visible",
+      "sort_flow": "URL → /holidays/honeymoon?sort=price-asc",
+      "chip_clear_flow": "URL → /afrika/aegypten/holidays",
+      "console_errors": 0
+    },
+    "/afrika/aegypten/holidays mobile 390": {
+      "initial_cards": 3,
+      "after_lazy_scroll": 8,
+      "mobile_cta_has_filters": true,
+      "console_errors": 0
+    },
+    "redirects": {
+      "/afrika/aegypten/travel-style/nile-cruise": "→ /afrika/aegypten/holidays/nile-cruise, H1 'Egypt nile cruise holidays'",
+      "/afrika/aegypten/holidays/foo": "→ /afrika/aegypten/holidays"
+    },
+    "regression": {
+      "/afrika/aegypten/luxor-strand-urlaub": "0 console errors",
+      "/asien": "0 console errors"
+    },
+    "/api/leads": {
+      "browser_POST": "200 success, eg-planner-success shown",
+      "curl_POST": "returns id + persisted record",
+      "curl_GET": "lists both the browser lead (source=egypt-planner, QA Tester) and curl lead"
+    }
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Homepage search suggestion 'Honeymoons' regression test not executed here because the visible 'Where would you like to go?' input on Home is not a plain <input> reachable via placeholder selector at load time (it appears to open a modal on click). Not a bug per se; a data-testid on the home search input & suggestion items would make this trivially testable.",
+    "EgyptPlanner uses useIsMobile-less CSS media hide/show, so both desktop and mobile forms are always in the DOM. This is called out in the request note. Consider using conditional rendering to avoid double form state, but functional behaviour is correct."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (leads POST/GET)", "frontend": "100% (all spec items pass)"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "Two /api/leads records created during testing: QA Tester (source=egypt-planner, browser) and QA Curl (source=regression-test). Prefixed test data can be cleaned up if desired.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Egypt listing + holidays + planner + product card meta all fully green across 1440 and 390. Redirects working (old /travel-style/:slug → new /holidays/:slug; unknown slug → /holidays). Lead POST works both in browser and via curl. Only untestable item was homepage search suggestion → /afrika/aegypten/holidays/honeymoon because the home search widget didn't expose a plain input to Playwright."
+}

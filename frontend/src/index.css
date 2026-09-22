@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@300..700&family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400..600;1,400..600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,-200..150,27..175,323..603,25..135,649..854,-305..-98,560..788,416..570,528..760&family=Roboto+Serif:opsz,wght@8..144,400&display=swap');
 
 /* Egypt/Asia listing scope: Hi Tours brand tokens (Bricolage Grotesque / Inter / Instrument Sans, Ink + Harbor + Ember) */
@@ -9,8 +9,8 @@
 .eg-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; text-wrap: balance; }
 @media (min-width: 905px) { .eg-display-sm { font-size: 36px; line-height: 44px; } }
 .eg-title-lg { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 22px; line-height: 28px; font-weight: 600; letter-spacing: 0; }
-.eg-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; line-height: 30px; }
-.eg-team-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 19px; line-height: 27px; }
+.eg-quote { font-family: 'Lora', Georgia, serif; font-style: normal; font-size: 20px; line-height: 32px; letter-spacing: 0; }
+.eg-team-quote { font-family: 'Lora', Georgia, serif; font-style: normal; font-size: 19px; line-height: 27px; }
 .eg-headline-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 32px; line-height: 40px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-headline-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
 .eg-label-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .5px; }
@@ -69,7 +69,7 @@ body {
   .t-headline-md { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.2px; }
   .t-headline-sm { font-family: 'Instrument Sans', Inter, sans-serif; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -0.2px; }
   .t-title-lg { font-size: 22px; line-height: 28px; font-weight: 500; }
-  .t-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; line-height: 30px; letter-spacing: 0; }
+  .t-quote { font-family: 'Lora', Georgia, serif; font-style: normal; font-size: 22px; line-height: 30px; letter-spacing: 0; }
   @media (min-width: 905px) { .t-quote { font-size: 26px; line-height: 34px; } }
   .t-title-md { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: .15px; }
   .t-title-sm { font-size: 14px; line-height: 20px; font-weight: 500; letter-spacing: .1px; }
@@ -133,3 +133,8 @@ body {
 @keyframes hi-drop-in { from { transform: translateY(-10px) scaleY(.96); opacity: 0; } to { transform: translateY(0) scaleY(1); opacity: 1; } }
 @keyframes hi-row-in { from { transform: translateX(-8px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes hi-pin-nudge { 0% { transform: translateY(0); } 30% { transform: translateY(-5px) scale(1.15); } 60% { transform: translateY(1px); } 100% { transform: translateY(0); } }
+@keyframes eg-rise { from { transform: translateY(18px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes eg-pop { from { transform: scale(.9) translateY(10px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+.eg-rise { animation: eg-rise .55s cubic-bezier(.2,.7,.2,1) both; }
+.eg-pop { animation: eg-pop .6s cubic-bezier(.2,.7,.2,1) both; }
+.eg-page-leave { opacity: 0; transform: translateY(-14px); transition: opacity .3s ease, transform .3s ease; }

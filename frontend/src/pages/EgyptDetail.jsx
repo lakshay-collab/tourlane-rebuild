@@ -136,7 +136,7 @@ const ExpertCard = ({ detail }) => {
       <img src={e.image} alt={e.name} className="w-12 h-12 rounded-full object-cover shrink-0" />
       <div className="flex flex-col gap-2 min-w-0">
         <p className="eg-title-md text-[#002131]" data-testid="eg-expert-title">{e.createdBy} {e.name}, {e.role} <CheckBadge size={18} className="inline text-[#174358] -mt-0.5" /></p>
-        <p className="eg-quote !text-[18px] !leading-[26px] md:!text-[22px] md:!leading-[30px] text-[#002131]" data-testid="eg-expert-quote">“{e.quote}{open ? ` ${e.quoteMore}` : ''}”</p>
+        <p className="eg-quote !text-[18px] !leading-[29px] md:!text-[20px] md:!leading-[32px] text-[#002131]" data-testid="eg-expert-quote">“{e.quote}{open ? ` ${e.quoteMore}` : ''}”</p>
         <button type="button" onClick={() => setOpen((v) => !v)} className="self-start inline-flex items-center gap-1 eg-label-lg text-[#174358] underline" data-testid="eg-expert-quote-toggle">{open ? e.less : e.more}<ChevronDown size={16} className={open ? 'rotate-180' : ''} /></button>
       </div>
     </div>
