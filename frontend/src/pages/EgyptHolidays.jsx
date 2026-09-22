@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { X } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { ScrollTop } from '../components/egypt/EgyptHero';
+import { ScrollTop, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptFilterBar, { MobileToursBars } from '../components/egypt/EgyptFilterBar';
 import { ChevronRight } from '../components/egypt/EgyptIcons';
@@ -34,17 +34,26 @@ const sortFns = {
   'days-desc': (a, b) => b.days - a.days
 };
 
-const VideoTile = ({ video }) => (
-  <div className="eg-pop w-full md:w-[360px] lg:w-[400px] shrink-0 aspect-video rounded-2xl overflow-hidden bg-[#002131] shadow-[0_10px_30px_-12px_rgba(0,33,49,0.45)]" style={{ animationDelay: '120ms' }} data-testid="eg-holidays-video">
-    <iframe
-      src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&playsinline=1&rel=0&modestbranding=1`}
-      title={video.label}
-      className="w-full h-full"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-      loading="lazy"
-    />
+const VideoHero = ({ video, title, count }) => (
+  <div className="relative">
+    <Header overlay />
+    <section className="relative h-[520px] sm:h-[560px] md:h-[600px] lg:h-[640px] overflow-hidden bg-[#002131]" data-testid="eg-holidays-video">
+      <img src={hero.image} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+      <iframe
+        src={`https://player.vimeo.com/video/${video.vimeoId}?h=${video.h}&background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&playsinline=1&dnt=1`}
+        title={video.label}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[177.78vh] min-w-full h-[56.25vw] min-h-full"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        data-testid="eg-holidays-video-iframe"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.55)_0%,rgba(0,33,49,0.2)_45%,rgba(0,33,49,0.6)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-4 md:gap-5 px-4 text-center" data-testid="eg-hero-copy">
+        <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance] eg-rise" data-testid="eg-hero-title">{title}</h1>
+        <p className="eg-title-md text-white/90 eg-rise" style={{ animationDelay: '90ms' }} data-testid="eg-tours-count">{count}</p>
+        <button type="button" onClick={() => scrollToId('tours')} className="eg-btn-filled h-12 px-6 eg-title-md eg-rise !bg-none !bg-white !text-[#002131] hover:!bg-[#FBEADB] transition-colors" style={{ animationDelay: '160ms' }} data-testid="eg-hero-cta">{tours.browse}</button>
+      </div>
+    </section>
   </div>
 );
 
@@ -95,10 +104,10 @@ export default function EgyptHolidays() {
 
   return (
     <div className="eg" data-testid="egypt-holidays-page">
-      <Header />
       <main>
-        <div className="eg-container mt-5 md:mt-8">
-          <nav className="hidden sm:flex items-center gap-1 eg-body-md text-[#174358] eg-rise" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
+        <VideoHero video={hero.video} title={style ? hero.styleH1(style) : hero.holidaysH1} count={tours.count(list.length)} />
+        <div className="eg-container mt-6 md:mt-8">
+          <nav className="hidden sm:flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
             {crumbs.map((c, i) => (
               <React.Fragment key={c.label}>
                 {i > 0 && <ChevronRight size={20} className="text-[#174358]" />}
@@ -106,16 +115,10 @@ export default function EgyptHolidays() {
               </React.Fragment>
             ))}
           </nav>
-          <div className="mt-4 md:mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-10" data-testid="eg-holidays-head">
-            <div className="min-w-0 flex flex-col gap-2 md:gap-3">
-              <h1 className="eg-display-lg text-[#002131] eg-rise [text-wrap:balance]" style={{ animationDelay: '40ms' }} data-testid="eg-hero-title">{style ? hero.styleH1(style) : hero.holidaysH1}</h1>
-              <p className="eg-body-lg text-[#174358] eg-rise" style={{ animationDelay: '110ms' }} data-testid="eg-tours-count">{tours.count(list.length)}</p>
-            </div>
-            <VideoTile video={hero.video} />
-          </div>
         </div>
 
-        <section className="eg-container mt-2 md:mt-4 scroll-mt-20 mb-16" id="tours" data-testid="eg-tours">
+        <section className="eg-container mt-6 md:mt-8 scroll-mt-20 mb-16" id="tours" data-testid="eg-tours">
+          <h2 className="eg-display-sm text-[#002131]" data-testid="eg-tours-title">{title}</h2>
           <div className="eg-rise" style={{ animationDelay: '160ms' }}>
             <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
           </div>

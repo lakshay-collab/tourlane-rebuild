@@ -13,7 +13,7 @@ export const hero = {
   ctaHref: '/l/egypt/enquiry/passengers/',
   sub: 'Your travel plan – no obligation & tailor-made',
   image: '/egypt/hero-egypt.webp',
-  video: { youtubeId: 'eM94mLutsbw', label: 'India to Egypt travel guide' }
+  video: { vimeoId: '8951897', h: '41bf8c599a', label: 'Egypt travel film' }
 };
 
 export const trust = { label: 'Excellent', score: '4.8', outOf: 'out of 5', count: '5,000+', reviews: 'reviews', rating: 4.8 };
@@ -56,6 +56,7 @@ export const intro = {
 export const tours = {
   h2: 'Top-selling Egypt holiday ideas',
   allH2: 'Egypt tours & holidays',
+  browse: 'Browse package ideas',
   count: (n) => `${n} package ${n === 1 ? 'idea' : 'ideas'} available`,
   viewAll: 'View all Egypt holidays',
   styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
