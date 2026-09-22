@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { hero, crumbs, places, themes } from '../../egyptListingData';
 import { ChevronRight, ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
@@ -118,18 +119,18 @@ export function ScrollTop({ className = 'bottom-10 right-12' }) {
   );
 }
 
-const HeroCopy = ({ title }) => (
+const HeroCopy = ({ title, sub = hero.sub }) => (
   <>
     <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance]" data-testid="eg-hero-title">{title}</h1>
     <div className="flex flex-col items-center gap-2">
       <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-hero-cta">{hero.cta}</a>
-      <p className="eg-body-sm text-white/90 max-w-[300px] md:max-w-none">{hero.sub}</p>
+      <p className="eg-body-sm text-white/90 max-w-[300px] md:max-w-none">{sub}</p>
     </div>
   </>
 );
 
-export default function EgyptHero({ style }) {
-  const title = style ? hero.styleH1(style) : hero.h1;
+export default function EgyptHero({ style, title: titleProp, showTabs = true, crumbs: crumbList = crumbs }) {
+  const title = titleProp || (style ? hero.styleH1(style) : hero.h1);
   return (
     <>
       <div className="relative">
@@ -143,13 +144,15 @@ export default function EgyptHero({ style }) {
 
       <div data-testid="eg-trust-bar"><TrustBar /></div>
 
-      <StickyTabs />
+      {showTabs && <StickyTabs />}
 
       <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
-        {crumbs.map((c, i) => (
+        {crumbList.map((c, i) => (
           <React.Fragment key={c.label}>
             {i > 0 && <ChevronRight size={20} className="text-[#174358]" />}
-            {c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a> : <span className="eg-label-lg text-[#002131]">{c.label}</span>}
+            {c.to ? <Link to={c.to} className="hover:underline">{c.label}</Link>
+              : c.href ? <a href={c.href} onClick={(e) => e.preventDefault()} className="hover:underline">{c.label}</a>
+                : <span className="eg-label-lg text-[#002131]">{c.label}</span>}
           </React.Fragment>
         ))}
       </nav>

@@ -1,15 +1,14 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import EgyptHero, { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
-import EgyptFilterBar, { MobileToursBars } from '../components/egypt/EgyptFilterBar';
+import { MobileToursBars } from '../components/egypt/EgyptFilterBar';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
 import { EgyptReviews, EgyptPlan, EgyptFaq } from '../components/egypt/EgyptSections';
 import { ChevronDown } from '../components/egypt/EgyptIcons';
-import { intro, tours, products, features, places, activities, themes, africa, sorts, styles, styleBySlug, styleLanding } from '../egyptListingData';
+import { intro, tours, products, features, places, activities, themes, africa, holidaysPath } from '../egyptListingData';
 
 const MoreButton = ({ open, onClick, more, less, testId }) => (
   <div className="mt-8 flex justify-center">
@@ -19,120 +18,58 @@ const MoreButton = ({ open, onClick, more, less, testId }) => (
   </div>
 );
 
-const Chip = ({ label, value, onClear, testId }) => (
-  <span className="inline-flex items-center gap-1 rounded-lg border border-[#C4CBD0] bg-white pl-3 pr-1.5 py-1 eg-label-lg text-[#002131]" data-testid={testId}>
-    <span className="text-[#174358] font-normal">{label}</span> {value}
-    <button type="button" onClick={onClear} aria-label={`Clear ${label}`} className="ml-1 w-6 h-6 rounded-full flex items-center justify-center hover:bg-black/5" data-testid={`${testId}-clear`}><X size={16} /></button>
-  </span>
-);
-
-const useIsMobile = () => {
-  const [m, setM] = useState(() => window.matchMedia('(max-width: 904px)').matches);
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 904px)');
-    const fn = (e) => setM(e.matches);
-    mq.addEventListener('change', fn);
-    return () => mq.removeEventListener('change', fn);
-  }, []);
-  return m;
-};
-
-const sortFns = {
-  'price-asc': (a, b) => a.price - b.price,
-  'price-desc': (a, b) => b.price - a.price,
-  'days-asc': (a, b) => a.days - b.days,
-  'days-desc': (a, b) => b.days - a.days
+const ExpertQuote = () => {
+  const [open, setOpen] = useState(false);
+  const e = intro.expert;
+  return (
+    <figure className="mt-8 rounded-2xl bg-[#FBEADB]/60 px-5 py-6 md:px-8 md:py-8" data-testid="eg-expert-quote">
+      <blockquote>
+        <p className={`eg-quote !text-[19px] !leading-[27px] md:!text-[22px] md:!leading-[30px] text-[#002131] ${open ? '' : 'eg-clamp-3 md:eg-clamp-2'}`} data-testid="eg-expert-quote-text">
+          “{intro.quote}{open ? ` ${intro.quoteMore}` : ''}”
+        </p>
+      </blockquote>
+      <button type="button" onClick={() => setOpen((v) => !v)} className="mt-2 eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-expert-quote-toggle">{open ? intro.readLess : intro.readMore}</button>
+      <figcaption className="mt-5 flex items-center gap-3">
+        <img src={e.image} alt={`${e.name}, travel expert`} className="w-14 h-14 rounded-full object-cover" />
+        <div>
+          <p className="eg-title-md text-[#002131]">{e.name}</p>
+          <p className="eg-body-md text-[#174358] mt-0.5">{e.role}</p>
+        </div>
+      </figcaption>
+    </figure>
+  );
 };
 
 export default function EgyptListing() {
   const [allThemes, setAllThemes] = useState(false);
   const [readMore, setReadMore] = useState(false);
-  const navigate = useNavigate();
-  const { style: styleSlug } = useParams();
-  const [params] = useSearchParams();
-  const style = styleSlug ? (styleBySlug(styleSlug) || {}).key || null : null;
-  const sort = sorts.some((s) => s.key === params.get('sort')) ? params.get('sort') : null;
-  const go = (styleKey, sortKey) => {
-    const st = styles.find((s) => s.key === styleKey);
-    const q = sortKey ? `?sort=${sortKey}` : '';
-    navigate(`${st ? styleLanding(st.slug) : '/afrika/aegypten'}${q}`, { replace: false });
-  };
-  const setStyle = (k) => go(k, sort);
-  const setSort = (k) => go(style, k);
-
-  useEffect(() => {
-    if (styleSlug && !styleBySlug(styleSlug)) navigate('/afrika/aegypten', { replace: true });
-  }, [styleSlug, navigate]);
-  useEffect(() => {
-    document.title = style ? `Egypt ${style} holidays | Hi Tours` : 'Egypt Honeymoons and holidays | Hi Tours';
-  }, [style]);
-
-  const list = useMemo(() => {
-    const f = style ? products.filter((p) => p.styles.includes(style)) : products;
-    return sort ? [...f].sort(sortFns[sort]) : f;
-  }, [style, sort]);
-  const mobile = useIsMobile();
-  const page = mobile ? 3 : 6;
-  const [count, setCount] = useState(page);
-  const [loading, setLoading] = useState(false);
-  const sentinel = useRef(null);
-  useEffect(() => { setCount(page); }, [style, sort, page]);
-  useEffect(() => {
-    if (!sentinel.current || count >= list.length) return undefined;
-    const io = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting || loading) return;
-      setLoading(true);
-      setTimeout(() => { setCount((c) => Math.min(c + page, list.length)); setLoading(false); }, 450);
-    }, { rootMargin: '200px 0px' });
-    io.observe(sentinel.current);
-    return () => io.disconnect();
-  }, [count, list.length, loading, page]);
-  const shown = list.slice(0, count);
-  const sortLabel = sort && sorts.find((s) => s.key === sort).label;
+  useEffect(() => { document.title = 'Egypt Honeymoons and holidays | Hi Tours'; }, []);
+  const top = products.slice(0, 6);
 
   return (
     <div className="eg" data-testid="egypt-listing-page">
       <main>
-        <EgyptHero style={style} />
+        <EgyptHero />
 
         <section className="eg-container mt-12 scroll-mt-20" id="about" data-testid="eg-intro">
           <h2 className="eg-display-sm text-[#002131]">{intro.h2}</h2>
           <p className="mt-6 eg-body-lg text-[#002131]">{intro.text}</p>
-          <div className="mt-6 flex items-center gap-3 h-[72px]">
-            <img src={intro.expert.image} alt={`${intro.expert.name}, travel expert`} className="w-14 h-14 rounded-full object-cover" />
-            <div>
-              <p className="eg-title-md text-black">{intro.expert.name}</p>
-              <p className="eg-body-md text-[#002131] mt-1">{intro.expert.role}</p>
-            </div>
-          </div>
+          <ExpertQuote />
         </section>
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="tours" data-testid="eg-tours">
-          <h2 className="eg-display-sm text-[#002131]" data-testid="eg-tours-title">{style ? tours.styleH2(style) : tours.h2}</h2>
+          <h2 className="eg-display-sm text-[#002131]" data-testid="eg-tours-title">{tours.h2}</h2>
           <p className="mt-6 eg-body-lg text-[#002131]" data-testid="eg-tours-intro">
             {tours.short.map((x, i) => (Array.isArray(x) ? <b key={i} className="font-semibold">{x[0]}</b> : x))}
             {readMore && tours.intro.map((x, i) => (Array.isArray(x) ? <b key={`m${i}`} className="font-semibold">{x[0]}</b> : x))}
             {' '}<button type="button" onClick={() => setReadMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-tours-readmore">{readMore ? tours.readLess : tours.readMore}</button>
           </p>
-          <EgyptFilterBar title={style ? tours.styleH2(style) : tours.h2} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
-          {(style || sort) && (
-            <div className="mt-2 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
-              {style && <Chip label={tours.filterLabel} value={style} onClear={() => setStyle(null)} testId="eg-filter-chip-style" />}
-              {sort && <Chip label={tours.sortLabel} value={sortLabel} onClear={() => setSort(null)} testId="eg-filter-chip-sort" />}
-            </div>
-          )}
-          {list.length ? (
-            <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
-              {shown.map((p) => <EgyptProductCard key={p.slug} p={p} />)}
-            </div>
-          ) : (
-            <p className="mt-8 eg-body-lg text-[#174358]" data-testid="eg-empty">{tours.empty}</p>
-          )}
-          {count < list.length && (
-            <div ref={sentinel} className="mt-6 flex justify-center h-10" data-testid="eg-lazy-sentinel">
-              {loading && <span className="w-8 h-8 rounded-full border-[3px] border-[#E4E3DB] border-t-[#174358] animate-spin" data-testid="eg-lazy-spinner" aria-label="Loading more holidays" />}
-            </div>
-          )}
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
+            {top.map((p, i) => <div key={p.slug} className={i >= 4 ? 'hidden sm:block' : ''}><EgyptProductCard p={p} /></div>)}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Link to={holidaysPath} className="eg-btn-filled h-12 px-8 eg-title-md" data-testid="eg-view-all">{tours.viewAll}</Link>
+          </div>
         </section>
 
         <section className="eg-container mt-12 md:mt-16 grid gap-6 md:grid-cols-3" data-testid="eg-features">
@@ -179,8 +116,8 @@ export default function EgyptListing() {
           <div className="mt-8"><EgyptTileRow items={africa.items} testId="eg-africa-row" /></div>
         </section>
       </main>
-      <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
-      <MobileToursBars title={style ? tours.styleH2(style) : tours.h2} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
+      <ScrollTop className="bottom-28 right-4 md:bottom-10 md:right-12" />
+      <MobileToursBars filters={false} />
       <Footer />
     </div>
   );

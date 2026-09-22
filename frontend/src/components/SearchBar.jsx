@@ -9,17 +9,17 @@ const ASIA_IMG = 'https://images.ctfassets.net/bth3mlrehms2/27MnAH4RS1zTSFygAmnq
 
 const STYLES = [
   { name: 'Northern Lights', icon: Sparkles, to: '/trip-styles/northern-lights' },
-  { name: 'Honeymoons', icon: Heart, to: '/afrika/aegypten/travel-style/honeymoon' },
-  { name: 'Family holidays', icon: Users, to: '/afrika/aegypten/travel-style/family' },
+  { name: 'Honeymoons', icon: Heart, to: '/afrika/aegypten/holidays/honeymoon' },
+  { name: 'Family holidays', icon: Users, to: '/afrika/aegypten/holidays/family' },
   { name: 'Road trips', icon: Car },
   { name: 'Safari', icon: Binoculars },
-  { name: 'Beach & relaxation', icon: Umbrella, to: '/afrika/aegypten/travel-style/beach' },
+  { name: 'Beach & relaxation', icon: Umbrella, to: '/afrika/aegypten/holidays/beach' },
   { name: 'Adventure', icon: Mountain },
   { name: 'Island hopping', icon: TreePalm },
-  { name: 'Culture', icon: Landmark, to: '/afrika/aegypten/travel-style/culture' },
-  { name: 'Luxury', icon: Gem, to: '/afrika/aegypten/travel-style/luxury' },
-  { name: 'Nile cruise', icon: Sailboat, to: '/afrika/aegypten/travel-style/nile-cruise' },
-  { name: 'Short trips', icon: Timer, to: '/afrika/aegypten/travel-style/short-trips' }
+  { name: 'Culture', icon: Landmark, to: '/afrika/aegypten/holidays/culture' },
+  { name: 'Luxury', icon: Gem, to: '/afrika/aegypten/holidays/luxury' },
+  { name: 'Nile cruise', icon: Sailboat, to: '/afrika/aegypten/holidays/nile-cruise' },
+  { name: 'Short trips', icon: Timer, to: '/afrika/aegypten/holidays/short-trips' }
 ].map((s) => ({ ...s, kind: 'style' }));
 
 const PROMPTS = [

@@ -2,8 +2,11 @@
 import { productImages, placeImages, activityImages, themeImages, africaImages, reviewImages } from './egyptImages';
 import { cardImages as moroccoEgyptCardImages } from './moroccoEgyptData';
 
+export const holidaysPath = '/afrika/aegypten/holidays';
+
 export const hero = {
   h1: 'Egypt Honeymoons and holidays',
+  holidaysH1: 'Egypt holidays & tours',
   styleH1: (style) => `Egypt ${style.toLowerCase()} holidays`,
   cta: 'Plan for free',
   stickyCta: 'Plan your Egypt trip',
@@ -15,6 +18,7 @@ export const hero = {
 export const trust = { label: 'Excellent', score: '4.8', outOf: 'out of 5', count: '5,000+', reviews: 'reviews', rating: 4.8 };
 
 export const crumbs = [{ label: 'Destinations', href: '/destinations/' }, { label: 'Africa', href: '/africa/' }, { label: 'Egypt' }];
+export const holidaysCrumbs = [{ label: 'Home', to: '/' }, { label: 'Egypt', to: '/afrika/aegypten' }, { label: 'Egypt holidays' }];
 
 export const styles = [
   { key: 'Family', slug: 'family', icon: 'family' },
@@ -26,7 +30,7 @@ export const styles = [
   { key: 'Luxury', slug: 'luxury', icon: 'gem' }
 ];
 export const styleBySlug = (slug) => styles.find((s) => s.slug === slug) || null;
-export const styleLanding = (slug) => `/afrika/aegypten/travel-style/${slug}`;
+export const styleLanding = (slug) => `${holidaysPath}/${slug}`;
 
 export const sorts = [
   { key: 'price-asc', label: 'Price: low to high', icon: 'sortAsc' },
@@ -36,13 +40,19 @@ export const sorts = [
 ];
 
 export const intro = {
-  h2: 'About Egypt – planned by experts',
+  h2: 'About Egypt',
   text: 'Egypt is synonymous with history. Anyone visiting Cairo should include Saqqara in their itinerary. The Step Pyramid of Djoser is the oldest monumental stone structure in the world, older than Giza, and attracts a fraction of the visitors.',
+  quote: 'Egypt is one of those places the photos undersell. Standing under the Great Pyramid at sunrise, or drifting past Kom Ombo on a Nile cruise, you understand why travellers have been coming here for two thousand years.',
+  quoteMore: 'My advice: don\u2019t rush it. Give Cairo two full days, sail the Nile between Luxor and Aswan instead of driving it, and finish on the Red Sea so the trip ends slower than it began. Every Egypt itinerary we build starts with what you want from the holiday, not a fixed template, and I personally check each one before it reaches you.',
+  readMore: 'Read more',
+  readLess: 'Read less',
   expert: { image: '/egypt/expert-ria.webp', name: 'Ria Banerjee', role: 'Head of Product & Travel Expert for Egypt' }
 };
 
 export const tours = {
-  h2: 'Egypt holidays',
+  h2: 'Top Egypt holidays',
+  allH2: 'Egypt holidays & tours',
+  viewAll: 'View all Egypt holidays',
   styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
   short: ['Embark on an ', ['unforgettable journey of discovery'], ' through a millennia-old culture – every Egypt holiday is tailor-made by our experts.'],
   intro: [
@@ -140,7 +150,7 @@ export const plan = {
   ]
 };
 
-export const themes = { h2: 'Travel themes: what to know about Egypt', more: 'Show more', less: 'Show less', items: [
+export const themes = { h2: 'Travel guide & inspiration', more: 'Show more', less: 'Show less', items: [
   { href: '#', title: 'The best time to visit Egypt', tag: 'Travel guide', icon: 'sun', image: themeImages[0] },
   { href: '#', title: 'The ideal trip duration for Egypt', tag: 'Travel guide', icon: 'calendar', image: themeImages[1] },
   { href: '#', title: 'Food in Egypt: top 10 dishes', tag: 'Inspiration', icon: 'food', image: themeImages[2] },

@@ -10,6 +10,21 @@ const Stat = ({ icon: Icon, value, testId }) => (
   </span>
 );
 
+const ImageMeta = ({ days, cities }) => (
+  <>
+    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#002131]/45 to-transparent pointer-events-none" aria-hidden="true" />
+    <div className="absolute left-4 top-3.5 flex items-center gap-2 text-white eg-label-lg drop-shadow-[0_1px_3px_rgba(0,33,49,0.6)] pointer-events-none" data-testid="eg-product-meta">
+      <span data-testid="eg-product-days">{days}</span>
+      {cities && (
+        <>
+          <span className="w-1 h-1 rounded-full bg-white/80" aria-hidden="true" />
+          <span data-testid="eg-product-cities">{cities}</span>
+        </>
+      )}
+    </div>
+  </>
+);
+
 export default function EgyptProductCard({ p }) {
   const [i, setI] = useState(0);
   const n = p.images.length;
@@ -34,8 +49,7 @@ export default function EgyptProductCard({ p }) {
             <button type="button" onClick={() => go(-1)} className="eg-arrow pointer-events-auto" aria-label="Previous image" data-testid="eg-product-prev"><ChevronLeft size={24} /></button>
             <button type="button" onClick={() => go(1)} className="eg-arrow pointer-events-auto" aria-label="Next image" data-testid="eg-product-next"><ChevronRight size={24} /></button>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/45 to-transparent pointer-events-none" aria-hidden="true" />
-          <span className="absolute left-3 bottom-3 eg-label-md text-white/95 tracking-wide pointer-events-none" data-testid="eg-product-meta">{days} · {cities}</span>
+          <ImageMeta days={days} cities={cities} />
         </div>
       </div>
 

@@ -118,7 +118,7 @@ function Activities({ items }) {
             <div key={a.name} className="w-[260px] shrink-0 snap-start bg-[#FBF9F1] border border-[#C4CBD0] rounded-xl overflow-hidden" data-testid="eg-activity-card">
               <div className="relative h-[150px] bg-[#EAE8E0]">
                 <img src={a.image} alt={a.name} className="w-full h-full object-cover" loading="lazy" />
-                {a.optional && <span className="absolute left-2 top-2 rounded-lg bg-white/90 px-2 py-1 eg-label-md text-[#174358] uppercase tracking-wide" data-testid="eg-activity-optional">{route.optional}</span>}
+                {a.optional && <span className="absolute left-2 top-2 rounded-lg bg-white/90 px-2 py-1 eg-label-md text-[#174358]" data-testid="eg-activity-optional">{route.optional}</span>}
               </div>
               <div className="p-4 flex flex-col gap-1">
                 <h5 className="eg-title-md text-[#002131]" data-testid="eg-activity-name">{a.name}</h5>

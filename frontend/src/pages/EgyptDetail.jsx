@@ -195,15 +195,15 @@ function Glance({ open, setOpen, glance, stops }) {
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 pl-3 border-l-2 border-[#9ACDE5]">
-                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#174358]">{d.hotel}</p></div>
-                  <div><p className="eg-label-md uppercase tracking-wide text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
+                  <div><p className="eg-label-md text-[#6F777C]">{glance.accommodationHeading}</p><p className="mt-1 eg-body-md text-[#174358]">{d.hotel}</p></div>
+                  <div><p className="eg-label-md text-[#6F777C]">{glance.highlightsHeading}</p><ul className="mt-1 eg-body-md text-[#174358] list-disc pl-4">{d.highlights.map((h) => <li key={h}>{h}</li>)}</ul></div>
                 </div>
               </div>
             ))}
           </div>
           <table className="hidden md:table w-full border-collapse" data-testid="eg-glance-table">
             <thead>
-              <tr className="text-left eg-label-md uppercase tracking-wide text-[#6F777C] border-b border-[#C4CBD0]">
+              <tr className="text-left eg-label-md text-[#6F777C] border-b border-[#C4CBD0]">
                 <th className="py-3 pr-4 w-[88px] font-semibold">{glance.dayHeading}</th>
                 <th className="py-3 pr-6 font-semibold">{glance.routeHeading}</th>
                 <th className="py-3 pr-6 w-[220px] font-semibold">{glance.accommodationHeading}</th>

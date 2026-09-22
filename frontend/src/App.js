@@ -1,10 +1,13 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Home from './pages/Home';
 import EgyptListing from './pages/EgyptListing';
+import EgyptHolidays from './pages/EgyptHolidays';
 import EgyptDetail from './pages/EgyptDetail';
 import AsiaListing from './pages/AsiaListing';
 import TripStyleListing from './pages/TripStyleListing';
+
+const StyleRedirect = () => <Navigate to={`/afrika/aegypten/holidays/${useParams().style}`} replace />;
 
 function App() {
   return (
@@ -13,7 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/afrika/aegypten" element={<EgyptListing />} />
-          <Route path="/afrika/aegypten/travel-style/:style" element={<EgyptListing />} />
+          <Route path="/afrika/aegypten/holidays" element={<EgyptHolidays />} />
+          <Route path="/afrika/aegypten/holidays/:style" element={<EgyptHolidays />} />
+          <Route path="/afrika/aegypten/travel-style/:style" element={<StyleRedirect />} />
           <Route path="/afrika/aegypten/:slug" element={<EgyptDetail />} />
           <Route path="/asien" element={<AsiaListing />} />
           <Route path="/asien/:slug" element={<EgyptDetail />} />
