@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { X, Volume2, VolumeX } from 'lucide-react';
+import { X } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ScrollTop } from '../components/egypt/EgyptHero';
@@ -34,19 +34,19 @@ const sortFns = {
   'days-desc': (a, b) => b.days - a.days
 };
 
-const VideoTile = ({ video }) => {
-  const [muted, setMuted] = useState(true);
-  const ref = useRef(null);
-  const toggle = () => { setMuted((m) => !m); if (ref.current) ref.current.muted = !muted; };
-  return (
-    <div className="eg-pop shrink-0 relative w-[96px] h-[170px] md:w-[124px] md:h-[220px] rounded-2xl overflow-hidden bg-[#002131] shadow-[0_10px_30px_-12px_rgba(0,33,49,0.45)]" style={{ animationDelay: '120ms' }} data-testid="eg-holidays-video">
-      <video ref={ref} src={video.src} poster={video.poster} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" aria-label={video.label} />
-      <button type="button" onClick={toggle} aria-label={muted ? 'Unmute video' : 'Mute video'} className="absolute right-2 bottom-2 w-8 h-8 rounded-full bg-white/90 text-[#002131] flex items-center justify-center shadow" data-testid="eg-holidays-video-mute">
-        {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-      </button>
-    </div>
-  );
-};
+const VideoTile = ({ video }) => (
+  <div className="eg-pop w-full md:w-[360px] lg:w-[400px] shrink-0 aspect-video rounded-2xl overflow-hidden bg-[#002131] shadow-[0_10px_30px_-12px_rgba(0,33,49,0.45)]" style={{ animationDelay: '120ms' }} data-testid="eg-holidays-video">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&playsinline=1&rel=0&modestbranding=1`}
+      title={video.label}
+      className="w-full h-full"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+      loading="lazy"
+    />
+  </div>
+);
 
 export default function EgyptHolidays() {
   const navigate = useNavigate();
@@ -106,7 +106,7 @@ export default function EgyptHolidays() {
               </React.Fragment>
             ))}
           </nav>
-          <div className="mt-4 md:mt-6 flex items-center justify-between gap-5 md:gap-10" data-testid="eg-holidays-head">
+          <div className="mt-4 md:mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-10" data-testid="eg-holidays-head">
             <div className="min-w-0 flex flex-col gap-2 md:gap-3">
               <h1 className="eg-display-lg text-[#002131] eg-rise [text-wrap:balance]" style={{ animationDelay: '40ms' }} data-testid="eg-hero-title">{style ? hero.styleH1(style) : hero.holidaysH1}</h1>
               <p className="eg-body-lg text-[#174358] eg-rise" style={{ animationDelay: '110ms' }} data-testid="eg-tours-count">{tours.count(list.length)}</p>

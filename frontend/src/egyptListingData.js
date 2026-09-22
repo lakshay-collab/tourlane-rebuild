@@ -6,20 +6,20 @@ export const holidaysPath = '/afrika/aegypten/holidays';
 
 export const hero = {
   h1: 'Egypt Honeymoons and holidays',
-  holidaysH1: 'Egypt holidays & tours',
+  holidaysH1: 'Egypt tours & holidays',
   styleH1: (style) => `Egypt ${style.toLowerCase()} holidays`,
   cta: 'Plan for free',
   stickyCta: 'Plan your Egypt trip',
   ctaHref: '/l/egypt/enquiry/passengers/',
   sub: 'Your travel plan – no obligation & tailor-made',
   image: '/egypt/hero-egypt.webp',
-  video: { src: '/hero-video.mp4', poster: '/hero-poster.jpg', label: 'Watch: customising Egypt with Hi Tours' }
+  video: { youtubeId: 'eM94mLutsbw', label: 'India to Egypt travel guide' }
 };
 
 export const trust = { label: 'Excellent', score: '4.8', outOf: 'out of 5', count: '5,000+', reviews: 'reviews', rating: 4.8 };
 
 export const crumbs = [{ label: 'Destinations', href: '/destinations/' }, { label: 'Africa', href: '/africa/' }, { label: 'Egypt' }];
-export const holidaysCrumbs = [{ label: 'Home', to: '/' }, { label: 'Egypt', to: '/afrika/aegypten' }, { label: 'Egypt holidays' }];
+export const holidaysCrumbs = [{ label: 'Home', to: '/' }, { label: 'Egypt', to: '/afrika/aegypten' }, { label: 'Egypt tours & holidays' }];
 
 export const styles = [
   { key: 'Family', slug: 'family', icon: 'family' },
@@ -55,8 +55,8 @@ export const intro = {
 
 export const tours = {
   h2: 'Top-selling Egypt holiday ideas',
-  allH2: 'Egypt holidays & tours',
-  count: (n) => `${n} ${n === 1 ? 'holiday' : 'holidays & tours'} available`,
+  allH2: 'Egypt tours & holidays',
+  count: (n) => `${n} package ${n === 1 ? 'idea' : 'ideas'} available`,
   viewAll: 'View all Egypt holidays',
   styleH2: (style) => `Egypt ${style.toLowerCase()} holidays`,
   short: ['Embark on an ', ['unforgettable journey of discovery'], ' through a millennia-old culture – every Egypt holiday is tailor-made by our experts.'],
