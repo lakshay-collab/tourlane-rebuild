@@ -22,12 +22,12 @@ const buildTabs = () => [
   { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) }
 ];
 
-function StickyTabs() {
+export function StickyTabs({ tabs: tabsProp, testId = 'eg' }) {
   const [active, setActive] = useState('about');
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(16);
   const wrapRef = useRef(null);
-  const tabs = buildTabs();
+  const tabs = tabsProp || buildTabs();
 
   useEffect(() => {
     const onScroll = () => {
@@ -59,9 +59,9 @@ function StickyTabs() {
   const openTab = tabs.find((t) => t.key === open);
 
   return (
-    <div ref={wrapRef} className="relative z-20 bg-[#FBF9F1] border-b border-[#E4E3DB]" data-testid="eg-tabs">
+    <div ref={wrapRef} className="relative z-20 bg-[#FBF9F1] border-b border-[#E4E3DB]" data-testid={`${testId}-tabs`}>
       <div className="w-full max-w-[1440px] mx-auto md:px-6 lg:px-10 flex items-center justify-between">
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar px-2 sm:px-4 md:px-0 w-full md:w-auto" data-testid="eg-tabs-strip">
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar px-2 sm:px-4 md:px-0 w-full md:w-auto" data-testid={`${testId}-tabs-strip`}>
           {tabs.map((t) => {
             const isOpen = open === t.key;
             const isActive = !t.items && active === t.key;
@@ -69,16 +69,16 @@ function StickyTabs() {
             const base = `relative h-16 px-4 md:px-5 flex items-center gap-1 whitespace-nowrap eg-label-lg rounded-t-xl transition-colors ${isActive || isOpen || hasPick ? 'text-[#002131]' : 'text-[#174358]'} ${isOpen ? 'bg-[rgba(27,28,23,0.08)]' : 'hover:bg-[rgba(27,28,23,0.08)]'}`;
             if (!t.items) {
               return (
-                <button key={t.key} type="button" onClick={() => scrollToId(t.target)} className={base} data-testid={`eg-tab-${t.key}`}>
+                <button key={t.key} type="button" onClick={() => scrollToId(t.target)} className={base} data-testid={`${testId}-tab-${t.key}`}>
                   {t.label}
                   {isActive && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#174358]" />}
                 </button>
               );
             }
             return (
-              <button key={t.key} type="button" onClick={(e) => toggle(t.key, e)} aria-expanded={isOpen} aria-haspopup="menu" className={base} data-testid={`eg-tab-${t.key}`}>
+              <button key={t.key} type="button" onClick={(e) => toggle(t.key, e)} aria-expanded={isOpen} aria-haspopup="menu" className={base} data-testid={`${testId}-tab-${t.key}`}>
                 {t.label}
-                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#174358]" data-testid={`eg-tab-${t.key}-dot`} />}
+                {hasPick && <span className="ml-0.5 w-2 h-2 rounded-full bg-[#174358]" data-testid={`${testId}-tab-${t.key}-dot`} />}
                 <ChevronDown size={24} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                 {hasPick && !isOpen && <span className="absolute inset-x-0 bottom-0 h-[2px] bg-[#174358]" />}
               </button>
@@ -88,11 +88,11 @@ function StickyTabs() {
       </div>
 
       {openTab && (
-        <div role="menu" style={{ left }} className="absolute top-full mt-0 z-40 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]" data-testid={`eg-tab-dropdown-${openTab.key}`}>
+        <div role="menu" style={{ left }} className="absolute top-full mt-0 z-40 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]" data-testid={`${testId}-tab-dropdown-${openTab.key}`}>
           {openTab.items.map((it) => {
             const cls = 'w-full flex items-center gap-3 px-4 py-3 text-left eg-body-lg text-[#002131] hover:bg-[rgba(64,73,66,0.08)] transition-colors';
             return (
-              <a key={it.id} role="menuitem" href={it.href} onClick={(e) => { e.preventDefault(); setOpen(null); }} className={cls} data-testid="eg-tab-dropdown-item">
+              <a key={it.id} role="menuitem" href={it.href} onClick={(e) => { e.preventDefault(); setOpen(null); }} className={cls} data-testid={`${testId}-tab-dropdown-item`}>
                 <NavIcon name={it.icon} /><span>{it.label}</span>
               </a>
             );

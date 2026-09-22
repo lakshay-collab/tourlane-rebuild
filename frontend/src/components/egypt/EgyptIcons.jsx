@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavIcon } from './EgyptNavIcons';
 
 const Svg = ({ vb = '0 0 24 24', d, size = 24, className = '' }) => (
   <svg aria-hidden="true" viewBox={vb} width={size} height={size} className={`shrink-0 ${className}`} fill="currentColor"><path d={d} /></svg>
@@ -11,7 +12,10 @@ const tagPaths = {
 };
 
 tagPaths.Kultur = tagPaths.Culture; tagPaths.Kurztrips = tagPaths['Short trips']; tagPaths.Familienurlaub = tagPaths.Family;
-export const TagIcon = ({ name, size = 20 }) => tagPaths[name] ? <Svg size={size} {...tagPaths[name]} /> : null;
+const tagNav = { Nature: 'leaf', 'Island hopping': 'island', 'Road trip': 'road', Luxury: 'gem', 'Multi-country': 'globe', Beach: 'beach' };
+export const TagIcon = ({ name, size = 20 }) => (tagPaths[name]
+  ? <Svg size={size} {...tagPaths[name]} />
+  : <NavIcon name={tagNav[name]} size={size} className="" />);
 export const CityIcon = (p) => <Svg {...p} d="M15 11V5l-3-3-3 3v2H3v14h18V11zM7 19H5v-2h2zm0-4H5v-2h2zm0-4H5V9h2zm6 8h-2v-2h2zm0-4h-2v-2h2zm0-4h-2V9h2zm0-4h-2V5h2zm6 12h-2v-2h2zm0-4h-2v-2h2z" />;
 export const TicketIcon = (p) => <Svg {...p} d="M4 20q-.825 0-1.412-.587T2 18v-3.5q.825 0 1.413-.588T4 12.5t-.587-1.412T2 10.5V7q0-.825.588-1.412T4 5h16q.825 0 1.413.588T22 7v3.5q-.825 0-1.412.588T20 12.5t.588 1.413T22 14.5V18q0 .825-.587 1.413T20 20zm0-2h16v-2.2q-.925-.55-1.463-1.45T18 12.5t.538-1.85T20 9.2V7H4v2.2q.925.55 1.463 1.45T6 12.5t-.537 1.85T4 15.8zm8-2q.425 0 .713-.288T13 15t-.288-.712T12 14t-.712.288T11 15t.288.713T12 16m0-2.5q.425 0 .713-.288T13 12.5t-.288-.712T12 11.5t-.712.288T11 12.5t.288.713T12 13.5M12 11q.425 0 .713-.288T13 10t-.288-.712T12 9t-.712.288T11 10t.288.713T12 11" />;
 
