@@ -60,8 +60,8 @@ export const tours = {
 
 // Prices in INR (converted at ~₹90/€ and ₹85/$, rounded). hotels/cities/activities/transfers for products 2–7 are placeholders.
 export const products = [
-  { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Honeymoon'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, price: 144000, images: productImages[0] },
-  { slug: 'morocco-egypt-palaces-pyramids', tag: 'Culture', styles: ['Culture', 'Luxury'], title: 'Morocco & Egypt: Palaces, Medinas & Pyramids', days: 8, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 8, price: 164000, images: moroccoEgyptCardImages },
+  { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Honeymoon'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, meals: 25, price: 144000, images: productImages[0] },
+  { slug: 'morocco-egypt-palaces-pyramids', tag: 'Culture', styles: ['Culture', 'Luxury'], title: 'Morocco & Egypt: Palaces, Medinas & Pyramids', days: 8, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 8, meals: 7, price: 164000, images: moroccoEgyptCardImages },
   { slug: 'rundreise-7-tage', tag: 'Short trips', styles: ['Short trips', 'Culture'], title: 'Unforgettable holiday in Egypt', days: 7, stops: 1, hotels: 1, cities: 1, activities: 5, transfers: 2, price: 121500, images: productImages[1] },
   { slug: 'urlaub-am-meer', tag: null, styles: ['Culture'], title: 'Egypt round trip: experience fascinating culture', days: 8, stops: 3, hotels: 3, cities: 3, activities: 7, transfers: 6, price: 135000, images: productImages[2] },
   { slug: 'pyramiden-urlaub', tag: 'Culture', styles: ['Culture', 'Honeymoon'], title: 'Egypt: experience the fascinating pyramids', days: 9, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 6, price: 157500, images: productImages[3] },
@@ -80,16 +80,22 @@ export const features = [
 
 export const planner = {
   bg: '/egypt/planner-bg.jpg',
-  h3: 'Plan your Egypt trip',
+  h3: 'Build your Egypt trip with an expert',
   avatars: ['/egypt/tourlaner1.webp', '/egypt/tourlaner2.webp', '/egypt/tourlaner3.webp', '/egypt/tourlaner4.webp'],
   social: '4,00,000+ travellers trust Hi Tours',
-  question: 'How many people are you planning your trip for?',
-  rows: [
-    { label: 'Adults', sub: '13+ years', value: 2, min: 1 },
-    { label: 'Children', sub: '2 to 12 years', value: 0, min: 0 },
-    { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
-  ],
-  next: 'Continue',
+  formTitle: 'Start customising your trip',
+  formSub: 'A few quick details and your Hi Tours expert takes it from here — free, no obligation.',
+  nameLabel: 'Full name',
+  namePlaceholder: 'e.g. Priya Sharma',
+  phoneLabel: 'Phone number',
+  phonePlaceholder: '98765 43210',
+  emailLabel: 'Email address',
+  emailPlaceholder: 'you@example.com',
+  cta: 'Start customising',
+  ctaIdle: 'Fill above to start customising',
+  sending: 'Sending…',
+  successTitle: 'Thank you!',
+  successText: 'Your request is in. A Hi Tours expert will reach out shortly to build your trip.',
   known: 'As seen in:',
   press: [
     { src: '/egypt/sueddeutsche-zeitung.svg', alt: 'Süddeutsche Zeitung', w: 96, h: 36 },

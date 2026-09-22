@@ -8,7 +8,7 @@ import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { GoogleLogo, TripAdvisorLogo } from '../components/Rating';
-import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, ClockIcon, CheckCircleIcon, TransfersIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
+import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBadge, UserIcon, SparklesIcon, WalletIcon, SparkleLeft, SparkleRight, GalleryIcon } from '../components/egypt/EgyptIcons';
 import { detail as detail0, route as route0, glance as glance0, crumbs as crumbs0, experts, brandFeatures, recommended, steps, trust, price, planner, reviewsHeading } from '../egyptDetailData';
 import { detail as detail1, route as route1, glance as glance1, crumbs as crumbs1 } from '../moroccoEgyptData';
 import { detail as detail2, route as route2, glance as glance2, crumbs as crumbs2 } from '../srilankaData';
@@ -58,7 +58,7 @@ function Gallery({ detail }) {
           {g.slice(1, 5).map((src, i) => <button type="button" key={i} onClick={() => setLb(i + 1)} className="relative cursor-pointer" aria-label={`Open photo ${i + 2}`} data-testid={`eg-gallery-image-${i + 1}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>)}
         </div>
       </div>
-      <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-10 px-4 rounded-full bg-white/90 hover:bg-white text-[#174358] items-center gap-2 eg-label-lg shadow-sm" aria-label="Gallery" data-testid="eg-gallery-button"><GalleryIcon size={18} />{g.length} photos</button>
+      <button type="button" onClick={() => setLb(0)} className="hidden md:inline-flex absolute bottom-3 right-3 z-[2] h-11 w-11 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#174358] shadow-sm transition-colors" aria-label={`View all ${g.length} photos`} data-testid="eg-gallery-button"><GalleryIcon size={20} /></button>
       <div className="md:hidden absolute inset-x-0 bottom-3 z-[2] flex justify-center gap-1.5 pointer-events-none" data-testid="eg-gallery-dots">
         {g.map((_, i) => <span key={i} className={`h-1.5 rounded-full transition-all ${i === gi ? 'w-4 bg-white' : 'w-1.5 bg-white/60'}`} data-testid={i === gi ? 'eg-gallery-dot-active' : 'eg-gallery-dot'} />)}
       </div>
@@ -73,14 +73,9 @@ function Head({ detail }) {
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>
-            <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 md:gap-2">
             <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-facts">
-              <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-days"><CalendarIcon size={18} />{detail.stats.days} days</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full eg-grad-harbor text-white pl-2.5 pr-3 py-1.5 eg-label-lg" data-testid="eg-detail-cities"><PinIcon size={18} />{detail.stats.cities} cities</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2" data-testid="eg-detail-tags">
-              {detail.tags.map((tag) => <span key={tag} className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#002131] pl-2.5 pr-3 py-1.5 eg-label-lg text-[#002131]" data-testid="eg-detail-tag"><NavIcon name={tagIcon[tag]} size={18} className="text-[#002131]" />{tag}</span>)}
-            </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] px-3 py-1.5 eg-label-lg text-[#002131]" data-testid="eg-detail-days"><CalendarIcon size={18} className="text-[#308BB6]" />{detail.stats.days} days</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[#C4CBD0] px-3 py-1.5 eg-label-lg text-[#002131]" data-testid="eg-detail-cities"><PinIcon size={18} className="text-[#308BB6]" />{detail.stats.cities} cities</span>
             </div>
             <div className="pt-2 border-t border-[#E4E3DB] flex flex-col gap-2" data-testid="eg-detail-route-block">
               <span className="eg-label-lg text-[#002131]">{detail.routeLabel}</span>
@@ -113,13 +108,13 @@ const Crumbs = ({ crumbs }) => (
 
 const PriceCard = ({ detail, inr }) => (
   <div className="bg-white rounded-2xl border border-[#C4CBD0] p-5 md:p-6 flex flex-col gap-4" data-testid="eg-detail-price">
-    <div className="flex items-center justify-between gap-4">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-col shrink-0">
         <span className="eg-body-md text-[#6F777C]">{price.from}</span>
         <span className="eg-price text-[#174358]" data-testid="eg-detail-price-value">{inr}</span>
         <span className="eg-body-md text-[#6F777C]">{price.perPerson}</span>
       </div>
-      <Cta detail={detail} className="flex-1 !h-14 eg-title-lg" testId="eg-detail-price-cta" />
+      <Cta detail={detail} className="w-full !h-16 !text-[18px]" testId="eg-detail-price-cta" />
     </div>
     <hr className="border-[#E4E3DB]" />
     <div className="flex flex-col gap-3">
@@ -148,7 +143,7 @@ const ExpertCard = ({ detail }) => {
   );
 };
 
-const statIcons = [ClockIcon, CheckCircleIcon, TransfersIcon];
+const statIcons = [UserIcon, SparklesIcon, WalletIcon];
 const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
   <div className="flex flex-col gap-4" data-testid={testId}>
     <div className="rounded-2xl border border-[#C4CBD0] bg-[#FBF9F1] py-6 flex flex-col gap-6">
@@ -158,14 +153,11 @@ const ExpertsCard = ({ testId = 'eg-detail-experts' }) => (
           <div className="flex items-center gap-4">
             <hr className="flex-1 border-[#C4CBD0]" />
             <div className="flex items-center">
-              {experts.avatars.slice(0, 2).map((a, i) => <img key={a} src={a} alt="Hi Tours expert" className={`w-10 h-10 rounded-full border-2 border-white object-cover ${i ? '-ml-2.5' : ''}`} />)}
-              <span className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white bg-white flex items-center justify-center"><CheckBadge size={28} className="text-[#174358]" /></span>
-              <img src={experts.avatars[2]} alt="Hi Tours expert" className="w-10 h-10 -ml-2.5 rounded-full border-2 border-white object-cover" />
-              <span className="relative -ml-2.5"><img src={experts.avatars[3]} alt="Hi Tours expert" className="w-10 h-10 rounded-full border-2 border-white object-cover" /><span className="absolute inset-0.5 rounded-full bg-[#002131]/70 flex items-center justify-center text-white text-[11px] font-bold">{experts.count}</span></span>
+              {experts.avatars.map((a, i) => <img key={a} src={a} alt="Hi Tours travel expert" className={`w-10 h-10 rounded-full border-2 border-white object-cover ${i ? '-ml-2.5' : ''}`} loading="lazy" />)}
             </div>
             <hr className="flex-1 border-[#C4CBD0]" />
           </div>
-          <div className="flex items-center justify-center gap-2 h-12 text-[#002131]"><SparkleLeft /><p className="eg-title-md">Plan with real travel experts</p><SparkleRight /></div>
+          <div className="flex items-center justify-center gap-2 h-12 text-[#002131]"><SparkleLeft /><p className="eg-title-md">Plan with our travel experts</p><SparkleRight /></div>
         </div>
       </div>
       <div className="px-6 flex flex-col gap-5">
@@ -338,7 +330,7 @@ export default function EgyptDetail() {
             </aside>
           </div>
           <Glance open={summaryOpen} setOpen={setSummaryOpen} glance={glance} stops={route.stops} />
-          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} />
+          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} tripTitle={detail.title} source="egypt-detail" />
           <Features />
           <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
           <Recommended detail={detail} />

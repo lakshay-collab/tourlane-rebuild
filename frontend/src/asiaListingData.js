@@ -7,7 +7,7 @@ export const hero = {
   sub: 'The largest continent on Earth',
   cta: 'Plan for free',
   ctaHref: '/l/asia/enquiry/passengers/',
-  note: 'Your travel plan – no obligation & tailor-made',
+  note: 'No two trips alike.',
   images: [
     { alt: 'Woman on green rice terraces in the mountains, Mu Cang Chai, Yen Bai, Vietnam', title: 'Mu Cang Chai, Yen Bai, Vietnam', src: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=1400&q=60&fm=webp` },
     { alt: 'Street kitchen with grilled fish and seafood, vendor in a straw hat, Bangkok, Thailand', title: 'Bangkok, Thailand', src: `${CT}/wERMGlUKJUQCrO3gKAOvG/6387880b3e5cc4d9611ed56fb15404fb/Bangkok__Thailand.png?w=800&q=60&fm=webp` },
@@ -33,7 +33,7 @@ export const intro = {
 };
 
 export const team = {
-  h2: 'Who are our Asia specialists?',
+  h2: 'Our Asia specialists',
   members: [
     { name: 'Aarav Mehta', role: 'Senior Travel Expert, Japan & South Korea', image: '/team/asia-1.webp', quote: 'Planning an Asia holiday shouldn\'t be a headache – that\'s my job, not yours.' },
     { name: 'Ananya Iyer', role: 'Travel Expert, Thailand & Vietnam', image: '/team/asia-2.webp', quote: 'I\'ve spent months island-hopping in Thailand so your two weeks are perfectly spent.' },
@@ -52,7 +52,7 @@ export const tours = {
 const P = (title, tag, days, cities, hotels, activities, transfers, price, alt, images) => ({ title, tag, days, stops: cities, cities, hotels, activities, transfers, price, alt, images });
 
 export const products = [
-  { title: 'Emerald Isle Explorer: 9-day Sri Lanka culture & wildlife journey', tag: 'Culture', days: 9, stops: 6, cities: 6, hotels: 6, activities: 14, transfers: 7, price: 94472, alt: 'Sigiriya Lion Rock, Sri Lanka', slug: 'emerald-isle-explorer-sri-lanka', href: '/asien/emerald-isle-explorer-sri-lanka', images: srilankaCardImages },
+  { title: 'Emerald Isle Explorer: 9-day Sri Lanka culture & wildlife journey', tag: 'Culture', days: 9, stops: 6, cities: 6, hotels: 6, activities: 14, transfers: 7, meals: 9, price: 94472, alt: 'Sigiriya Lion Rock, Sri Lanka', slug: 'emerald-isle-explorer-sri-lanka', href: '/asien/emerald-isle-explorer-sri-lanka', images: srilankaCardImages },
   P('Khao Lak holiday for beach lovers and adventurers', 'Culture', 22, 7, 7, 14, 12, 155700, 'Khao Lak, Thailand', [
     `${CT}/5Hm10TrqCIgW8kcP3h2twj/c76291902631d2211aaafd7f4b68c726/Thailand__Khao_Lak__Sandbank.jpg?w=1080&q=60&fm=webp`,
     'https://kiwi-cdn.tlservers.com/items%2F456f162b-30ab-422f-ae7e-0c61356b3688%2Fimage%2Fjpeg%2FtXJwHQAMy1VjAu8AtLBqxA%2FiStock-4979663321.jpg?w=1080&q=60&auto=format&fit=max',

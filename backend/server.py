@@ -37,6 +37,25 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class LeadCreate(BaseModel):
+    name: str
+    phone: str
+    email: str
+    country_code: str = "+91"
+    trip_title: str = ""
+    source: str = ""
+
+class Lead(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    phone: str
+    email: str
+    country_code: str = "+91"
+    trip_title: str = ""
+    source: str = ""
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
@@ -65,6 +84,23 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/leads", response_model=Lead)
+async def create_lead(input: LeadCreate):
+    lead = Lead(**input.model_dump())
+    doc = lead.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.leads.insert_one(doc)
+    logger.info(f"New lead captured: {lead.name} / {lead.country_code}{lead.phone} / {lead.email} / trip='{lead.trip_title}'")
+    return lead
+
+@api_router.get("/leads", response_model=List[Lead])
+async def get_leads():
+    leads = await db.leads.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    for l in leads:
+        if isinstance(l.get('created_at'), str):
+            l['created_at'] = datetime.fromisoformat(l['created_at'])
+    return leads
 
 # Include the router in the main app
 app.include_router(api_router)

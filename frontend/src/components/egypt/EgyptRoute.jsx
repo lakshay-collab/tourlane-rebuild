@@ -6,11 +6,11 @@ import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon, PinIcon
 const stop = (e) => e.preventDefault();
 
 export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) => (
-  <div className={`flex flex-wrap items-center gap-y-1.5 ${className}`} data-testid={testId}>
+  <div className={`flex flex-wrap items-center gap-x-1 gap-y-1.5 ${className}`} data-testid={testId}>
     {cities.map((c, i) => (
       <React.Fragment key={`${c}-${i}`}>
-        {i > 0 && <ChevronRight size={16} className="text-[#308BB6] mx-0.5 shrink-0" />}
-        <span className="inline-flex items-center gap-1 h-7 pl-1.5 pr-2.5 rounded-full bg-[#002131] eg-label-lg text-white whitespace-nowrap" data-testid={`${testId}-chip-${i}`}><PinIcon size={14} className="text-[#9ACDE5]" />{c}</span>
+        {i > 0 && <ChevronRight size={14} className="text-[#308BB6] mx-1 shrink-0" />}
+        <span className="inline-flex items-center gap-1 eg-label-lg text-[#002131] whitespace-nowrap" data-testid={`${testId}-chip-${i}`}><PinIcon size={14} className="text-[#308BB6]" />{c}</span>
       </React.Fragment>
     ))}
   </div>
@@ -20,7 +20,7 @@ const HEADER = 120;
 const BulletMark = ({ text }) => {
   const t = text.toLowerCase();
   const cls = 'mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0';
-  if (t.includes('flight')) return <span className={`${cls} bg-[#308BB6] text-white`}><Plane size={14} /></span>;
+  if (t.includes('flight') || t.includes('departure') || t.includes('fly ') || t.includes('airport')) return <span className={`${cls} bg-[#308BB6] text-white`}><Plane size={14} /></span>;
   if (t.includes('transfer')) return <span className={`${cls} bg-[#FB7F26] text-white`}><Car size={14} /></span>;
   return <span className={`${cls} bg-[#9ACDE5] text-[#002131]`}><span className="w-1.5 h-1.5 rounded-full bg-[#002131]" /></span>;
 };
@@ -30,7 +30,7 @@ function StopText({ s }) {
     <div className="md:w-[346px] shrink-0" data-testid="eg-route-stop">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <h3 className="eg-title-lg text-[#002131]" data-testid="eg-route-stop-name">{s.name}</h3>
-        <span className="inline-flex items-center h-7 px-2.5 rounded-full bg-[#308BB6] eg-label-lg text-white whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
+        <span className="eg-label-lg font-semibold text-[#174358] whitespace-nowrap" data-testid="eg-route-daylabel">{s.dayLabel}</span>
       </div>
       {s.subtitle && <RouteLine cities={s.subtitle.split(' → ')} className="mt-2" testId="eg-route-subtitle" />}
       <ul className="mt-4 flex flex-col gap-2.5" data-testid="eg-route-bullets">
@@ -97,7 +97,7 @@ function Accommodation({ a }) {
         <button type="button" onClick={() => setOpen(true)} className="relative w-[120px] sm:w-[160px] shrink-0 text-left" aria-label={`${route.viewPhotos}: ${a.name}`}><img src={a.images[0]} alt={a.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>
         <div className="p-4 flex flex-col justify-center gap-1 min-w-0">
           <h5 className="eg-title-md text-[#002131]" data-testid="eg-accommodation-name">{a.name}</h5>
-          <p className="eg-body-md text-[#174358]">{a.description}</p>
+          <p className="eg-body-md text-[#174358] capitalize">{a.description}</p>
           <button type="button" onClick={() => setOpen(true)} className="self-start inline-flex items-center gap-1 pt-1 eg-label-lg text-[#174358] underline" data-testid="eg-accommodation-photos"><GalleryIcon size={16} />{route.viewPhotos} ({a.images.length})</button>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function EgyptRoute({ onSummary, stops = route.stops }) {
       if (!head.current) return;
       const top = head.current.getBoundingClientRect().top;
       setStuck(top <= 0 && window.scrollY > 0);
-      const line = HEADER + 24;
+      const line = HEADER + 90;
       let idx = 0;
       refs.current.forEach((el, i) => { if (el && el.getBoundingClientRect().top <= line) idx = i; });
       setActive(idx);
@@ -160,7 +160,7 @@ export default function EgyptRoute({ onSummary, stops = route.stops }) {
 
   const goTo = (i) => {
     const el = refs.current[i];
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HEADER, behavior: 'smooth' });
+    if (el) { setActive(i); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - HEADER, behavior: 'smooth' }); }
   };
 
   return (
@@ -175,7 +175,7 @@ export default function EgyptRoute({ onSummary, stops = route.stops }) {
           {stops.map((st, i) => (
             <button key={st.letter} role="tab" aria-selected={active === i} onClick={() => goTo(i)} className={`relative h-14 ${i ? 'pl-3' : 'pl-1'} pr-3 flex items-center gap-2 whitespace-nowrap ${active === i ? 'text-[#002131]' : 'text-[#174358]'}`} data-testid={`eg-route-tab-${i}`}>
               <span className={`w-6 h-6 rounded-full border flex items-center justify-center eg-label-lg ${active === i ? 'bg-[#174358] border-[#174358] text-white' : 'bg-white border-[#C4CBD0] text-[#174358]'}`}>{st.letter}</span>
-              <span className="flex flex-col items-start leading-tight"><span className="eg-label-lg">{st.name}</span><span className="eg-body-sm text-[#6F777C]">{st.dayLabel}</span></span>
+              <span className="eg-label-lg">{st.name}</span>
               {active === i && <span className="absolute inset-x-0 -bottom-px h-0.5 bg-[#174358]" />}
             </button>
           ))}

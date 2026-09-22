@@ -4,7 +4,7 @@
 export const detail = {
   slug: 'luxor-strand-urlaub',
   ctaHref: '/l/aegypten/enquiry/passengers/',
-  cta: 'Customise this trip',
+  cta: 'Start customising',
   sub: 'Your travel plan – non-binding & tailor-made',
   banner: 'Worry-free planning: stable flight prices for over a year, plus flexible rebooking and cancellation options.',
   title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition',
@@ -15,7 +15,7 @@ export const detail = {
   tag: 'Culture',
   price: 144000,
   routeCode: 'EG-CAI-ASW-LXR-HRG-CAI · 11D',
-  routeLabel: 'Route',
+  routeLabel: 'This holiday takes you to',
   routeCodeLabel: 'Route code',
   routeCities: ['Cairo', 'Aswan', 'Edfu', 'Luxor', 'Hurghada', 'Cairo'],
   tags: ['Culture', 'Honeymoon', 'Luxury'],
@@ -27,7 +27,7 @@ export const detail = {
     'https://kiwi-cdn.tlservers.com/items%2F608dcfcc-6d40-4685-ae74-28b202065d17%2Fimage%2Fjpeg%2Fy9wSLsrUJaNZMRijYSTA4g%2FiStock-1208082130.jpg?w=640&q=75&auto=format&fit=max',
     'https://kiwi-cdn.tlservers.com/items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FgGF9ayHbRxAtvOQoxtnHjg%2FiStock-1355995823.jpg?w=640&q=75&auto=format&fit=max'
   ],
-  services: [['4 hotels', 'Accommodation'], ['12 activities', 'Activities'], ['9 transfers', 'Transport'], ['3 entry tickets', 'Entry tickets'], ['24/7 support', '24/7 Support'], ['Customisation', 'Customise', 'Expert customisation']],
+  services: [['4 hotels', 'Accommodation'], ['12 activities', 'Activities'], ['9 transfers', 'Transport'], ['25 meals', 'Meals'], ['24/7 support', '24/7 Support'], ['Customisation', 'Customise', 'Expert customisation']],
   expert: {
     name: 'Ria Banerjee',
     image: '/egypt/expert-ria.webp',
@@ -42,11 +42,11 @@ export const detail = {
 
 export const route = {
   h2: 'Your suggested itinerary',
-  sub: 'Adjustable with your expert at any time',
+  sub: 'Fully customisable with our holiday experts',
   summaryCta: 'View tour summary',
   summaryShort: 'Tour summary',
   accommodationHeading: 'Your accommodation',
-  accommodationCta: 'Customise this',
+  accommodationCta: 'Customise hotels',
   viewPhotos: 'View photos',
   programHeading: 'Your activities',
   programCta: 'Customise activities',
@@ -249,17 +249,18 @@ export const route = {
 
 export const experts = {
   h2: 'Why plan with our experts?',
-  count: '200+',
+  count: '',
   avatars: [
-    'https://tourlane-experts.imgix.net/7290O000000YqpN?w=80&q=70&auto=format&fit=max',
-    'https://www.tourlane.de/cfa-assets/experts/fallback/1.jpg?w=80&q=70',
-    'https://www.tourlane.de/cfa-assets/experts/fallback/2.jpg?w=80&q=70',
-    'https://www.tourlane.de/cfa-assets/experts/fallback/3.jpg?w=80&q=70'
+    '/team/asia-1.webp',
+    '/team/asia-2.webp',
+    '/team/asia-3.webp',
+    '/team/asia-4.webp',
+    '/team/asia-5.webp'
   ],
   stats: [
-    { h: '33+ hours of planning time saved', t: 'Sit back and relax – our experts take care of every detail.' },
-    { h: '12+ individual bookings handled for you', t: 'Hotels, flights, activities – we coordinate everything perfectly for your dream trip.' },
-    { h: '9+ transfers smoothly organised', t: 'From stop to stop – we ensure perfectly timed connections along your route.' }
+    { h: 'Crafted by holiday experts', t: 'Technology-enabled but human-led — real experts curate your trip so you save hours of planning.' },
+    { h: 'Customised to the T', t: 'Every day is tailored to you, then fine-tuned with your expert until it feels just right.' },
+    { h: 'Best prices, all bundled', t: 'Hotels, flights, activities, transfers, entry tickets and meals in one package — with the savings passed to you.' }
   ]
 };
 
@@ -297,10 +298,21 @@ export const brandFeatures = {
 export const recommended = { h2: 'Other Egypt holidays you may like' };
 
 export const planner = {
-  h3: 'Your trip, planned by experts',
+  h3: 'Build your Egypt trip with an expert',
   social: '4,00,000+ travellers trust Hi Tours',
-  question: 'How many people are you planning your trip for?',
-  next: 'Continue',
+  formTitle: 'Start customising your trip',
+  formSub: 'A few quick details and your Hi Tours expert takes it from here — free, no obligation.',
+  nameLabel: 'Full name',
+  namePlaceholder: 'e.g. Priya Sharma',
+  phoneLabel: 'Phone number',
+  phonePlaceholder: '98765 43210',
+  emailLabel: 'Email address',
+  emailPlaceholder: 'you@example.com',
+  cta: 'Start customising',
+  ctaIdle: 'Fill above to start customising',
+  sending: 'Sending…',
+  successTitle: 'Thank you!',
+  successText: 'Your request is in. A Hi Tours expert will reach out shortly to build your trip.',
   known: 'As seen in:',
   bg: '/egypt/planner-bg.jpg',
   decoration: '/egypt/L.svg',
@@ -309,11 +321,6 @@ export const planner = {
     { src: '/egypt/sueddeutsche-zeitung.svg', alt: 'Süddeutsche Zeitung', w: 96, h: 36 },
     { src: '/egypt/stern.svg', alt: 'Stern', w: 96, h: 33 },
     { src: '/egypt/die-zeit.svg', alt: 'Die Zeit', w: 123, h: 19 }
-  ],
-  rows: [
-    { label: 'Adults', sub: '13+ years', value: 2, min: 1 },
-    { label: 'Children', sub: '2 to 12 years', value: 0, min: 0 },
-    { label: 'Infants', sub: 'Under 2 years', value: 0, min: 0 }
   ]
 };
 

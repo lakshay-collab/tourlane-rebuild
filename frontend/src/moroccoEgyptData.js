@@ -49,7 +49,7 @@ export const cardImages = [featured, K.pyramids1, M.jemaaNight, C.chef1];
 export const detail = {
   slug: 'morocco-egypt-palaces-pyramids',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Customise this trip',
+  cta: 'Start customising',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Morocco & Egypt: Palaces, Medinas & Pyramids',
@@ -60,7 +60,7 @@ export const detail = {
   tag: 'Culture',
   price: 164000,
   routeCode: 'RAK-CMN-CAI · 8D',
-  routeLabel: 'Route',
+  routeLabel: 'This holiday takes you to',
   routeCodeLabel: 'Route code',
   routeCities: ['Marrakech', 'Casablanca', 'Chefchaouen', 'Cairo', 'Alexandria'],
   tags: ['Culture', 'Luxury'],
@@ -70,7 +70,7 @@ export const detail = {
     ['3 hotels', 'Accommodation'],
     ['8 activities', 'Activities'],
     ['8 transfers', 'Transport'],
-    ['Breakfast daily', 'Entry tickets'],
+    ['7 meals', 'Meals'],
     ['24/7 support', '24/7 Support'],
     ['Customisation', 'Customise', 'Expert customisation']
   ],
@@ -107,7 +107,7 @@ export const route = {
       ],
       accommodation: {
         name: 'La Mamounia, Marrakech',
-        description: '2 nights · breakfast · classic room (or similar 5★)',
+        description: '2 nights · breakfast · classic room',
         images: [M.mamounia, M.mogador, M.medina]
       },
       program: {
@@ -135,7 +135,7 @@ export const route = {
       ],
       accommodation: {
         name: 'Four Seasons Hotel Casablanca',
-        description: '2 nights · breakfast · superior room (or similar 5★)',
+        description: '2 nights · breakfast · superior room',
         images: [C.fourSeasons, C.radisson, C.coast]
       },
       program: {
@@ -165,7 +165,7 @@ export const route = {
       ],
       accommodation: {
         name: 'Grand Nile Tower, Cairo',
-        description: '3 nights · breakfast · Nile-view room (or similar 5★)',
+        description: '3 nights · breakfast · Nile-view room',
         images: [K.nileTower, K.safir, K.banner]
       },
       program: {

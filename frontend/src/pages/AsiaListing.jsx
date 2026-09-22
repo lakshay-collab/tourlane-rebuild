@@ -7,8 +7,11 @@ import EgyptTileRow from '../components/egypt/EgyptTileRow';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { ChevronDown, ChevronRight } from '../components/egypt/EgyptIcons';
 import TeamIntro from '../components/TeamIntro';
-import { features } from '../egyptListingData';
-import { team, tours, products, countries, whereTo, continents, reviews } from '../asiaListingData';
+import EgyptPlanner from '../components/egypt/EgyptPlanner';
+import { features, planner as egyptPlanner } from '../egyptListingData';
+import { hero, team, tours, products, countries, whereTo, continents, reviews } from '../asiaListingData';
+
+const asiaPlanner = { ...egyptPlanner, h3: 'Build your Asia trip with an expert', bg: hero.images[2].src };
 
 export default function AsiaListing() {
   const [allTours, setAllTours] = useState(false);
@@ -73,6 +76,8 @@ export default function AsiaListing() {
           <h2 className="eg-display-sm text-[#002131]">{continents.h2}</h2>
           <div className="mt-8"><EgyptTileRow items={continents.items} testId="as-continents-row" /></div>
         </section>
+
+        <EgyptPlanner className="eg-container mb-16" data={asiaPlanner} source="asia-listing" />
       </main>
       <ScrollTop className="bottom-24 right-4 md:bottom-10 md:right-12" />
       <Footer />
