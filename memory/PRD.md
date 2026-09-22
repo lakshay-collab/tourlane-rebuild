@@ -77,6 +77,13 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Old `egyptData.js` / `TourList.jsx` kept only for TourDetail.jsx (detail page out of scope now).
 - Tested: iteration_8 – 100% frontend pass (17 flows), 0 console errors.
 
+## Asia listing – aligned with Egypt listing + 3-photo hero + English (2026-06, latest)
+- `/asien` rebuilt to match Egypt listing system: Header (solid) → 3-photo collage hero (source Tourlane layout: mobile big-left + 2 stacked right, desktop 3 columns, h 220/282/292/328, rounded-t-xl) → cream panel (h1 'Asia holidays', 'The largest continent on Earth', Deep Water 'Plan for free' CTA) → rotating Hi Tours `TrustBar` (Trustpilot removed) → Egypt `StickyTabs` (now exported from EgyptHero with `tabs` + `testId` props): About Asia · Asia holidays · Countries ▾ (14, pin icons) · Travel guide ▾ (3) · Inspiration ▾ (5) → breadcrumb Home > Asia.
+- Sections: intro (#about) → 'Popular Asia holidays' (6 → Show more 18) with `EgyptProductCard` (numeric days/cities/hotels/activities/transfers placeholders, INR prices ~₹90/€, English tags) → Egypt features (3 SVG USPs, imported from egyptListingData) → `EgyptReviews` (new `items` prop; 3 Asia reviews – PLACEHOLDER copy) → 14 countries → 'Where to go in Asia?' (1 + toggle) → 11 continents → footer. Old lucide USP block removed.
+- `TagIcon` falls back to lucide via `tagNav` (Nature/Island hopping/Road trip/Luxury/Multi-country/Beach); EgyptNavIcons gained leaf/road/globe.
+- `asiaListingData.js` fully English (products, countries, continents, whereTo, tabs, reviews). document.title 'Asia holidays | Hi Tours'.
+- Tested: iteration_28 – 100% frontend pass at 1440 + 390 (0 console errors, no overflow, Egypt listing/detail regression OK).
+
 ## Egypt detail – TRUE pixel clone of /afrika/aegypten/luxor-strand-urlaub/ (2026-06, latest)
 - User: exact replica of the source product page for side-by-side comparison (pixel by pixel). Detail page rebuilt from live-source DOM/computed-style dumps at 1920×800 (Playwright).
 - Route: `/afrika/aegypten/:slug` → `pages/EgyptDetail.jsx` (only `luxor-strand-urlaub`; other slugs redirect to listing). Old TourDetail.jsx unused.

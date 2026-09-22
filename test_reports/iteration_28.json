@@ -1,0 +1,75 @@
+{
+  "summary": "Frontend-only Playwright validation of the new /asien (Asia listing) page at 1440x800 and 390x844, plus regression on /afrika/aegypten and /afrika/aegypten/luxor-strand-urlaub. All acceptance criteria from the review request were verified successfully with 0 console errors on both viewports.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "detailed_verification": {
+    "console_errors_desktop_asia": 0,
+    "console_errors_mobile_asia": 0,
+    "console_errors_egypt_regression": 0,
+    "desktop_no_overflow": "scrollWidth=1440 == innerWidth=1440",
+    "mobile_no_overflow": "scrollWidth=390 == innerWidth=390",
+    "hero_collage": {
+      "as-hero-collage_present": true,
+      "as-hero-image_count": 3,
+      "naturalWidths": [1400, 800, 800],
+      "as-hero-title": "Asia holidays",
+      "as-hero-cta": "Plan for free"
+    },
+    "trust_bar": {
+      "text": "Rated 4.7 on Google / Rated 4.9 on TripAdvisor",
+      "has_trustpilot": false
+    },
+    "sticky_tabs_present": ["as-tab-about","as-tab-tours","as-tab-countries","as-tab-guide","as-tab-inspiration"],
+    "dropdowns": {
+      "countries": {"items": 14, "with_svg_icon": 14, "escape_closes": true},
+      "guide": {"items": 3, "with_svg_icon": 3},
+      "inspiration": {"items": 5, "with_svg_icon": 5}
+    },
+    "products": {
+      "grid_present": true,
+      "initial_cards": 6,
+      "after_show_more": 18,
+      "after_show_less": 6,
+      "toggle_text_states": ["Show more", "Show less"],
+      "first_card": {"tag": "Culture", "tag_svg": true, "cities": "7 cities", "days": "22 days", "price": "From ₹1,55,700 per person"}
+    },
+    "features_section": {"as-features_present": true, "children": 3},
+    "reviews": {
+      "eg-reviews_present": true,
+      "summary": "Excellent 4.8 out of 5",
+      "cards": 3,
+      "asia_content_names": ["Priya & Arjun", "Rohan M.", "Sneha K."],
+      "cta": "Plan for free now"
+    },
+    "countries_row": {"present": true, "tiles": 14, "english_names": "Laos, Thailand, Vietnam, Japan, Indonesia, India, China, Cambodia, Malaysia, Maldives, Philippines, Singapore, Sri Lanka, South Korea"},
+    "where_to": {"present": true, "toggle_before": "Show more details", "toggle_after": "Show fewer details"},
+    "continents_row": {"present": true, "tiles": 11, "names": "Africa, Europe, Central America, North America, Oceania, South America, South Pacific, Middle East, Scandinavia, Southern Africa, Southeast Asia"},
+    "german_words_check": {"Rundreise": false, "Reiseziele": false, "Kostenlos": false, "Weitere": false, "Länder": false, "Wohin": false, "ab €": false},
+    "mobile": {
+      "hero_images": 3,
+      "scroll_top_button_visible_after_900px_scroll": true,
+      "reviews_present": true,
+      "footer_present": true
+    },
+    "regression_egypt": {
+      "eg-tab-about/tours/guide/inspiration/places": "all present",
+      "eg product cards": 6,
+      "reviews_on_listing": true,
+      "reviews_on_detail_page": true
+    }
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "test_credentials": "n/a - public frontend",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "New /asien page passes every acceptance check from iteration_28 review request. Egypt regression clean. If future changes touch AsiaHero, AsiaListing.jsx, asiaListingData.js or shared EgyptSections/EgyptHero exports, re-run the same testids: as-hero-collage, as-hero-image (x3), as-hero-title, as-hero-cta, as-trust-bar, as-tab-{about,tours,countries,guide,inspiration}, as-tab-dropdown-{countries,guide,inspiration}, as-tab-dropdown-item, as-product-grid, as-tours-more, as-features, as-countries-row, as-where-to, as-where-to-toggle, as-continents-row, plus reused eg-product-card / eg-reviews / eg-scroll-top."
+}
