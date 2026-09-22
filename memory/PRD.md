@@ -219,6 +219,7 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 ## Brand typography + showcase redesign (2026-06, latest)
 - Brand Kit typography now applied: Bricolage Grotesque = section/display titles only; Instrument Sans 600 = card/step/sub titles (t-headline-sm/md/lg, eg-card-title, eg-title-lg); Inter = body; Instrument Serif italic = quotes (`.t-quote`, `.eg-quote`). Google Fonts import extended with Instrument Serif.
 - TripShowcase: tags removed entirely; testimonial quote (t-quote) between value tiles and avatar; single-line "Crafted specially for **name**"; titles shortened to one mobile line (Canada road trip, Iceland adventure, Thailand with friends, Wild Namibia, Costa Rica Pura Vida; whitespace-nowrap <905px); tabs render BELOW the card on mobile (thumb reach) and above on desktop (showcase-tabs-mobile / showcase-tabs).
+- TripShowcase mobile (Jun 2026): 5-tile mosaic replaced by a horizontal snap-scroll strip of same-size landscape photos (16:10, 82% width, #tag bottom-left) → card ~240px shorter. Desktop mosaic unchanged (`showcase-mobile-strip` / `showcase-mosaic`).
 - Footer logo row: py-8 (equal 32px above/below), stacked logo + socials on mobile.
 - Tested: iteration_18 (footer/showcase), 19 (typography/tabs), 20 (single-line titles) – all pass.
 

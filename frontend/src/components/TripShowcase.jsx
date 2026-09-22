@@ -53,7 +53,15 @@ export default function TripShowcase() {
             </div>
           </div>
 
-          <div className="md:flex-1 flex gap-1 h-[420px] md:h-auto" data-testid="showcase-mosaic">
+          <div className="md:hidden flex gap-1.5 overflow-x-auto snap-x snap-mandatory no-scrollbar" data-testid="showcase-mobile-strip">
+            {trip.images.map((img) => (
+              <div key={img.tag} className="snap-start shrink-0 w-[82%] aspect-[16/10]">
+                <Tile img={img} className="w-full h-full" />
+              </div>
+            ))}
+          </div>
+
+          <div className="hidden md:flex md:flex-1 gap-1" data-testid="showcase-mosaic">
             <div className="w-1/3 flex flex-col gap-1">
               <Tile img={a} className="h-[55%]" />
               <Tile img={b} className="flex-1" />
