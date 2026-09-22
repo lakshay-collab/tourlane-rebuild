@@ -49,12 +49,11 @@ function Gallery({ detail }) {
   };
   const VideoFrame = ({ className }) => (
     <iframe
-      src={`https://player.vimeo.com/video/${video.vimeoId}?h=${video.h}&title=0&byline=0&portrait=0`}
-      className={className}
+      src={`https://player.vimeo.com/video/${video.vimeoId}?h=${video.h}&background=1&autoplay=1&loop=1&muted=1&autopause=0`}
+      className={`pointer-events-none ${className}`}
       title={video.label || detail.title}
       frameBorder="0"
-      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-      allowFullScreen
+      allow="autoplay; fullscreen; picture-in-picture"
       data-testid="eg-gallery-video"
     />
   );
@@ -62,12 +61,12 @@ function Gallery({ detail }) {
     <div className="relative" data-testid="eg-detail-gallery">
       {lb !== null && <Lightbox images={g} name={detail.title} start={lb} onClose={() => setLb(null)} />}
       <div onScroll={onScroll} className="md:hidden flex overflow-x-auto no-scrollbar snap-x snap-mandatory h-[240px] rounded-t-2xl" data-testid="eg-gallery-mobile">
-        {video && <div className="w-full h-full shrink-0 snap-center bg-black" data-testid="eg-gallery-video-mobile"><VideoFrame className="w-full h-full" /></div>}
+        {video && <div className="w-full h-full shrink-0 snap-center bg-black overflow-hidden" data-testid="eg-gallery-video-mobile"><VideoFrame className="w-full h-full scale-[1.08]" /></div>}
         {g.map((src, i) => <img key={i} src={src} alt={`${detail.alt} - Image ${i + 1}`} className="w-full h-full object-cover shrink-0 snap-center" loading={i ? 'lazy' : 'eager'} />)}
       </div>
       <div className="hidden md:grid grid-cols-2 gap-1 h-[328px] rounded-t-2xl overflow-hidden" data-testid="eg-gallery-desktop">
         {video
-          ? <div className="relative bg-black" data-testid="eg-gallery-video-desktop"><VideoFrame className="absolute inset-0 w-full h-full" /></div>
+          ? <div className="relative bg-black overflow-hidden" data-testid="eg-gallery-video-desktop"><VideoFrame className="absolute inset-0 w-full h-full scale-[1.08]" /></div>
           : <button type="button" onClick={() => setLb(0)} className="relative cursor-pointer" aria-label="Open photo 1" data-testid="eg-gallery-image-0"><img src={g[0]} alt={`${detail.alt} - main image`} className="absolute inset-0 w-full h-full object-cover" loading="eager" /></button>}
         <div className="grid grid-cols-2 grid-rows-2 gap-1">
           {g.slice(1, 5).map((src, i) => <button type="button" key={i} onClick={() => setLb(i + 1)} className="relative cursor-pointer" aria-label={`Open photo ${i + 2}`} data-testid={`eg-gallery-image-${i + 1}`}><img src={src} alt={`${detail.alt} - Image ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>)}
