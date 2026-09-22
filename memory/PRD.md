@@ -84,6 +84,21 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - `asiaListingData.js` fully English (products, countries, continents, whereTo, tabs, reviews). document.title 'Asia holidays | Hi Tours'.
 - Tested: iteration_28 – 100% frontend pass at 1440 + 390 (0 console errors, no overflow, Egypt listing/detail regression OK).
 
+## Search bar upgrade (2026-06, latest)
+- `SearchBar.jsx` (hero + adventure band): idle placeholder rotates every 3.5s between "Where would you like to go?" (MapPin) and "What's your travel style?" (Compass) with slide-up transition (`data-prompt`, `*-search-placeholder`, `*-search-icon`); mobile short copies "Where to?"/"Travel style?".
+- Results = destinations (58, thumbnails) + 12 travel styles (Sand icon circles + 'Travel style' tag; Northern Lights → /trip-styles/northern-lights, Egypt styles → travel-style routes; others placeholders). Picking anything shows a Sand chip with ✕ (`*-search-selected`, `*-search-clear`) instead of navigating; 'Plan for free' navigates if the pick has a route.
+- No match → EyeOff icon + "Destination not available" / "Try searching for a different destination or travel style for trip ideas." (`*-search-empty`). Copy in `mock.hero`.
+- Verified via Playwright screenshots (placeholder rotation, Australia chip + clear, empty state, Northern Lights navigation), 0 console errors.
+
+## Northern Lights trip-style page + specialist team blocks (2026-06, latest)
+- User: replicate tourlane.de/reisearten/inselhopping/ structure exactly (side-by-side check) but with Northern Lights as the travel style; route `/trip-styles/northern-lights`. Tourlane has no Northern Lights page (404) – products assembled from Tourlane Norway/Iceland/Finland/Sweden listings (20 winter/aurora trips, English titles, INR ~₹90/€; hotels/activities/transfers PLACEHOLDER counts).
+- Generic `pages/TripStyleListing.jsx` (`/trip-styles/:slug`, data map → unknown slug redirects `/`). Data: `src/northernLightsData.js` (hero 2 images, crumbs, team, tours, products, destinations 7, reviews 7). Composition mirrors source geometry at 1440 (collage 40/112/1360×328 2fr:1fr, gap 4, rounded-t-xl → cream panel #F6F4EB h1 + sub | CTA → TrustBar rounded-b → breadcrumb 'Trip styles > Northern Lights') → TeamIntro → 'Your Northern Lights trip with Hi Tours' 6→20 cards → 'The best destinations for the Northern Lights' 7-tile row → 3 USPs → 'What our customers say' (eg-display-lg) 7-review carousel → `AdventureCTA` search band → footer. Mobile: 2 equal hero columns h186, stacked panel.
+- `components/tripstyle/TripStyleHero.jsx`; `components/TeamIntro.jsx` (h2 + avatar stack + cards: Instrument Serif quote `.eg-team-quote` 19px + 56px portrait + name/role; desktop 3-col grid, mobile swipe row). Portraits generated (Gemini) → `/public/team/asia-1..5.webp`, `nl-1..5.webp` (320px, PLACEHOLDER names/quotes).
+- Asia page: 'Why go on an Asia holiday?' intro REPLACED by TeamIntro 'Who are our Asia specialists?' (5 members, first quote "Planning an Asia holiday shouldn't be a headache – that's my job, not yours."); tab 'About Asia' → 'Our specialists' (still #about).
+- Shared changes: `EgyptReviews` gained `items`, `row` (horizontal 384px carousel via EgyptTileRow, 316px mobile) and `h2Class` props + extracted `ReviewCard`; `EgyptTileRow` gained `itemWidth`/`renderItem` props (key = name||title); `TagIcon` lucide fallbacks now include Honeymoon/City breaks.
+- Scraper kept at `/app/tests/src/dump.py` (Playwright DOM+geometry dump; chromium installed via `python3 -m playwright install chromium`).
+- Tested: iteration_29 – all specs pass at 1440 + 390; the single HIGH issue (duplicate React keys in review carousel) fixed afterwards and re-verified (0 console errors, 7 cards).
+
 ## Egypt detail – TRUE pixel clone of /afrika/aegypten/luxor-strand-urlaub/ (2026-06, latest)
 - User: exact replica of the source product page for side-by-side comparison (pixel by pixel). Detail page rebuilt from live-source DOM/computed-style dumps at 1920×800 (Playwright).
 - Route: `/afrika/aegypten/:slug` → `pages/EgyptDetail.jsx` (only `luxor-strand-urlaub`; other slugs redirect to listing). Old TourDetail.jsx unused.

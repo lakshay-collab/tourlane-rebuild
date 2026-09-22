@@ -32,6 +32,11 @@ export const hero = {
   title: ['Exquisitely crafted luxury', 'honeymoons & holidays'],
   searchPlaceholder: 'Where would you like to go?',
   searchPlaceholderMobile: 'Where to?',
+  searchPlaceholderStyle: "What's your travel style?",
+  searchPlaceholderStyleMobile: 'Travel style?',
+  searchEmptyTitle: 'Destination not available',
+  searchEmptyText: 'Try searching for a different destination or travel style for trip ideas.',
+  searchStyleTag: 'Travel style',
   cta: 'Plan for free',
   subtitle:
     'Hi Tours creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',

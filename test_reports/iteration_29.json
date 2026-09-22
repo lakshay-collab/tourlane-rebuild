@@ -1,0 +1,73 @@
+{
+  "summary": "Frontend-only testing of /trip-styles/northern-lights (new page), /asien specialists rebuild, and Egypt regression at 1440x800 and 390x800. All structural and count-based specs pass. One CRITICAL issue: React duplicate-key console warnings on the Northern Lights page from the reviews list ('Sweden trip' and 'Norway trip' repeat as keys) - this violates the '0 console errors' requirement. Asia page and Egypt pages have 0 console errors and match spec exactly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "NorthernLightsReviews (northernLightsData.js reviews.items)", "issue": "React 'Encountered two children with the same key' warnings printed 22 times in console on /trip-styles/northern-lights. Keys 'Sweden trip' and 'Norway trip' are duplicated across the 7 review items - likely using review.tripLabel (or trip name) as the React key. Spec requires 0 console errors; this fails.", "selector": "[data-testid=\"eg-review-track\"] [data-testid=\"eg-review-card\"]", "priority": "HIGH"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_results": {
+    "/trip-styles/northern-lights": {
+      "console_errors": "22 duplicate-key React warnings (FAIL)",
+      "horizontal_overflow_desktop": false,
+      "horizontal_overflow_mobile": false,
+      "hero_images": 2,
+      "hero_desktop_left_vs_right_width": "904px vs 452px (~2x ratio, PASS)",
+      "hero_mobile_columns": "177px vs 177px equal (PASS)",
+      "ts-hero-title": "Northern Lights",
+      "ts-hero-cta": "Plan for free",
+      "ts-trust-bar": "Rated 4.7 on Google | Rated 4.9 on TripAdvisor (no Trustpilot) PASS",
+      "ts-breadcrumb": "Trip styles > Northern Lights PASS",
+      "team_h2": "Who are our Northern Lights specialists?",
+      "team_avatars": 5,
+      "team_members": 5,
+      "team_quotes": 5,
+      "products_initial": 6,
+      "show_more_expands_to": 20,
+      "show_less_collapses_to": 6,
+      "destinations_tiles": "7 (Tromsø, Lofoten, Rovaniemi, Finnish Lapland, Swedish Lapland, Kiruna & Abisko, Iceland) PASS",
+      "destinations_next_arrow_scrolls": "scrollLeft 0→288 on inner container PASS",
+      "features_count": 3,
+      "review_cards": 7,
+      "review_next_arrow_scrolls": "scrollLeft 0→384 PASS",
+      "eg-reviews-cta": true,
+      "adventure-section": true,
+      "footer": true,
+      "eg-scroll-top_after_scroll": true,
+      "/trip-styles/unknown-slug_redirects_to_home": true
+    },
+    "/asien": {
+      "console_errors": 0,
+      "why_go_section_removed": true,
+      "specialists_h2": "Who are our Asia specialists? PASS",
+      "team_members": 5,
+      "team_avatars_srcs": "/team/asia-1..5.webp (all naturalWidth 320) PASS",
+      "first_quote_contains_shouldnt_be_a_headache": true,
+      "as-tab-about_text": "Our specialists",
+      "as-tab-about_click_scrolls_to_#about": "scrollY=774, #about exists PASS",
+      "as-product-grid_initial": 6,
+      "review_cards": 3,
+      "as-countries-row": 14,
+      "as-continents-row": 11
+    },
+    "/afrika/aegypten": {"eg-reviews_present": true, "review_cards": 3, "console_errors": 0},
+    "/afrika/aegypten/luxor-strand-urlaub": {"eg-reviews_present": true, "review_cards": 3, "console_errors": 0}
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix duplicate React key warnings on /trip-styles/northern-lights reviews. In northernLightsData.js reviews.items, likely two entries share the same 'trip' label ('Sweden trip' and 'Norway trip'). Either give each review a unique 'id' field and use that as the React key in the reviews render, or ensure trip labels are unique across the 7 items."
+  ],
+  "critical_code_review_comments": [
+    "Reviews list rendering uses a non-unique field (trip name) as React key - always prefer a stable unique id.",
+    "The `[data-testid=\"ts-destinations-row\"]` wrapper is not itself the scrollable element; the inner `.overflow-x-auto` div is. This is fine functionally but a testing-friendly tweak would be to put the data-testid on the actual scrollable container (or expose both) so scrollLeft assertions are trivial."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "~97% (1 console-error failure out of 10 spec items)"},
+  "seed_data_creation": "",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Only remaining issue after main-agent fix is verifying that /trip-styles/northern-lights loads with 0 console errors at 1440x800 and 390x800. Everything else (structure, counts, hero ratio, show more/less, arrow scrolling, unknown-slug redirect, Asia specialists rebuild, Egypt regression) is verified passing.",
+  "rca of the issue": "React logs 'two children with the same key' 22 times when the Northern Lights reviews block renders. The duplicated keys are literally 'Sweden trip' and 'Norway trip', which strongly suggests the review-card map uses review.trip / tripLabel as its key. In northernLightsData.js reviews.items, at least two items share the same trip label for Sweden and two share Norway. Fix: add a unique `id` on each review item and use that id as the React key (or make the trip labels unique like 'Sweden trip - Kiruna' vs 'Sweden trip - Abisko')."
+}

@@ -36,7 +36,7 @@ export default function EgyptTileRow({ items, testId = 'eg-tile-row', itemWidth 
     <div className="relative -mx-3" data-testid={testId}>
       <div ref={ref} className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory">
         {items.map((it) => (
-          <div key={it.title || it.name} style={{ width: itemWidth }} className="shrink-0 px-3 snap-start">{renderItem ? renderItem(it) : <EgyptTile item={it} />}</div>
+          <div key={it.name || it.title} style={{ width: itemWidth }} className="shrink-0 px-3 snap-start">{renderItem ? renderItem(it) : <EgyptTile item={it} />}</div>
         ))}
       </div>
       {canPrev && <button type="button" onClick={() => go(-1)} className="eg-arrow absolute left-0 top-1/2 -translate-y-1/2 hidden md:inline-flex" aria-label="Zurück" data-testid={`${testId}-prev`}><ChevronLeft size={24} /></button>}
