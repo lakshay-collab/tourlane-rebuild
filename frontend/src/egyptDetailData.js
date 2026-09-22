@@ -1,4 +1,4 @@
-// Product #18 from the uploaded "Tourlane Products Itinerary" (Egypt Explorer — Grand Luxury Edition).
+// Product 18 from the uploaded Hi Tours Products Itinerary (Egypt Explorer — Grand Luxury Edition).
 // Entire detail page content in English.
 
 export const detail = {

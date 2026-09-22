@@ -2,7 +2,7 @@ import React from 'react';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { footer, trust } from '../../egyptDetailData';
 import { Kununu } from '../Footer';
-import { TourlaneLogo, TpStars, ChevronDown } from './EgyptIcons';
+import { HiToursLogo, TpStars, ChevronDown } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
 const icons = [Facebook, Instagram, Linkedin, Kununu];
@@ -12,7 +12,7 @@ export default function EgyptFooter() {
     <footer className="border-t border-[#C0C9C0]" data-testid="eg-footer">
       <div className="eg-wide py-10 flex flex-col lg:flex-row gap-6">
         <div className="lg:w-[526px] shrink-0 flex flex-col gap-6" data-testid="eg-footer-brand">
-          <a href="/" onClick={stop} aria-label="Tourlane" className="w-[141px]"><TourlaneLogo className="h-6 w-[141px]" /></a>
+          <a href="/" onClick={stop} aria-label="Hi Tours" className="w-[141px]"><HiToursLogo className="h-6 w-[141px]" /></a>
           <p className="eg-body-md text-[#1B1C17] max-w-[460px]">{footer.description}</p>
           <div className="flex items-center gap-4">
             {footer.socials.map((s, i) => { const Icon = icons[i]; return (

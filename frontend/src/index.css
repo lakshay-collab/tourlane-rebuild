@@ -60,7 +60,7 @@ body {
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 @layer components {
-  /* Tourlane type scale (Material 3 tokens) */
+  /* Type scale (Material 3 tokens) */
   .t-display-lg { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 57px; line-height: 64px; letter-spacing: -0.25px; font-weight: 500; }
   .t-display-md { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 45px; line-height: 52px; letter-spacing: 0; font-weight: 500; }
   .t-display-sm { font-family: 'Bricolage Grotesque', Inter, sans-serif; font-size: 36px; line-height: 44px; letter-spacing: 0; font-weight: 500; }

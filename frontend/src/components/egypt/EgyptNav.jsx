@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { nav, detail } from '../../egyptDetailData';
-import { TourlaneLogo, PhoneIcon, UserIcon, MenuIcon } from './EgyptIcons';
+import { HiToursLogo, PhoneIcon, UserIcon, MenuIcon } from './EgyptIcons';
 
 const stop = (e) => e.preventDefault();
 const Sep = () => <hr className="hidden lg:block w-px h-6 border-0 bg-[#C0C9C0]" />;
@@ -14,7 +14,7 @@ export default function EgyptNav() {
       </div>
       <nav className="relative z-40" data-testid="eg-nav">
         <div className="eg-wide h-[72px] flex items-center justify-between">
-          <a href="/" onClick={stop} aria-label="Tourlane" className="flex items-center h-full" data-testid="eg-nav-logo-link"><TourlaneLogo className="h-6 w-[139px]" data-testid="eg-nav-logo" /></a>
+          <a href="/" onClick={stop} aria-label="Hi Tours" className="flex items-center h-full" data-testid="eg-nav-logo-link"><HiToursLogo className="h-6 w-[139px]" data-testid="eg-nav-logo" /></a>
           <div className="hidden lg:flex items-center gap-4 h-full">
             <div className="flex items-center h-full -ml-2">
               {nav.links.map((l) => (

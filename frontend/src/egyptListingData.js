@@ -1,4 +1,4 @@
-// Egypt listing page content (English, INR). Structure mirrors tourlane.de/afrika/aegypten/.
+// Egypt listing page content (English, INR) for Hi Tours.
 import { productImages, placeImages, activityImages, themeImages, africaImages, reviewImages } from './egyptImages';
 
 export const hero = {

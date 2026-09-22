@@ -1,4 +1,4 @@
-// Image URLs reused from the Tourlane CDN (scraped from tourlane.de/afrika/aegypten/)
+// Image URLs served from CDN for Hi Tours Egypt pages
 export const productImages = [
   [
     "https://kiwi-cdn.tlservers.com/items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg?w=1080&q=60&auto=format&fit=max",

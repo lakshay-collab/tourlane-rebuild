@@ -1,4 +1,4 @@
-// Data for /asien clone of https://www.tourlane.de/asien/
+// Data for the Hi Tours /asien listing page
 const CT = 'https://images.ctfassets.net/bth3mlrehms2';
 
 export const banner = 'Sorglos planen: stabile Flugpreise seit über einem Jahr, sowie flexible Umbuchungs- und Stornierungsoptionen.';
@@ -7,7 +7,7 @@ export const hero = {
   h1: 'Asien Rundreise',
   sub: 'Der größte Kontinent der Erde',
   cta: 'Kostenlos Planen',
-  ctaHref: 'https://www.tourlane.de/l/asien/enquiry/passengers/',
+  ctaHref: '#',
   images: {
     xs: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=800&q=60&fm=webp`,
     s: `${CT}/iof6amVlsrr1jx8lzJpyg/83578dd1ab02d417fea84b6c4e7f47dd/Mu_Cang_Chai__Yen_Bai__Vietnam.png?w=1200&q=60&fm=webp`,

@@ -13,7 +13,7 @@ export const egyptImages = {
   golf: cf('1TY8uHaoDGdoCJuQUG0Esm/e6c466d992740d62ef1b996da0ece141/golfen_in_%C3%83_gypten.jpg'),
   alexandria: cf('o1S4xP8oedskdBeZ2qoqf/837df3b0b0699c5f7f2a5300cea56801/Citadelle_Alexandrie_EgypteTCG.jpg'),
   sharm: cf('7FCgimcOkGku6Rx5oKf1DT/80272b779a3009e8dbe10b66210d788e/Sharm_al-Sheikh_coastline__EgyptTCG.jpg'),
-  // Tourlane product / itinerary photos (public CDN)
+  // Hi Tours product / itinerary photos (public CDN)
   p1: kiwi('items%2F9dbcb14f-a83e-414f-8ed1-2f7f9b1173d7%2Fimage%2Fjpeg%2FPbCTUPKH54s1ML3VuZworA%2FiStock-1691038856.jpg'),
   p2: kiwi('items%2Fb8fb6a95-8fb3-4ef5-aa8e-fdbf751ddb01%2Fimage%2Fjpeg%2F9kORDM_-0K_Ej3bFpKTQYA%2Fpradeep-gopal-6ujdeqx-cho-unsplash.jpg'),
   p3: kiwi('items%2F7b743050-b17f-42b2-8179-d1e6fae370e8%2Fimage%2Fjpeg%2FjI5MNhhx8eaOMbuhVEEtJg%2FiStock-1305840978.jpg'),
