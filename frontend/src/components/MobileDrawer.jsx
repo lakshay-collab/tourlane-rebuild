@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { X, ArrowLeft, ArrowRight, MapPin, Route, Mountain, Percent, Info, Briefcase, Megaphone, Umbrella, Phone } from 'lucide-react';
+import { X, ArrowLeft, ArrowRight, MapPin, Sparkles, Percent, Info, Briefcase, Megaphone, Umbrella, Phone } from 'lucide-react';
 import { destinationTabs, destinations } from '../destinationsData';
+import { themeGroups } from '../themesData';
 import ExpertAdvicePanel from './ExpertAdvicePanel';
 
-const ICONS = { 'Destinations': MapPin, 'Trip types': Route, 'Activities': Mountain, 'Deals': Percent, 'About us': Info, 'Work with us': Briefcase, 'Press': Megaphone, 'Hi Tours Care': Umbrella, 'Expert advice': Phone };
-
-const SUB = {
-  'Trip types': ['Honeymoons', 'Family holidays', 'Road trips', 'Safari', 'Beach & relaxation', 'Adventure'],
-  'Activities': ['Wildlife safari', 'Hiking & trekking', 'Diving & snorkelling', 'Cultural tours', 'Food & wine']
-};
+const ICONS = { 'Destinations': MapPin, 'Themes': Sparkles, 'Deals': Percent, 'About us': Info, 'Work with us': Briefcase, 'Press': Megaphone, 'Hi Tours Care': Umbrella, 'Expert advice': Phone };
 
 const REGION_HREF = { 'Asia': '/asien' };
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien' };
 const regions = destinationTabs.filter((t) => t !== 'Top 10').map((name) => ({
   name,
   href: REGION_HREF[name] || null,
@@ -20,7 +16,7 @@ const regions = destinationTabs.filter((t) => t !== 'Top 10').map((name) => ({
 }));
 
 const SECTIONS = [
-  [{ label: 'Destinations', sub: true }, { label: 'Trip types', sub: true }, { label: 'Activities', sub: true }],
+  [{ label: 'Destinations', sub: true }, { label: 'Themes', sub: true }],
   [{ label: 'Deals' }, { label: 'About us' }, { label: 'Work with us' }, { label: 'Press' }, { label: 'Hi Tours Care' }],
   [{ label: 'Expert advice', sub: true }]
 ];
@@ -98,11 +94,28 @@ function DestinationsLevel({ close }) {
   );
 }
 
-function ListLevel({ label, close }) {
+function ThemesLevel({ close }) {
+  const [openGroup, setOpenGroup] = useState(themeGroups[0].key);
   return (
-    <ul role="menu" className="w-full" data-testid={`drawer-${tid(label)}`}>
-      <li><Row icon={ICONS[label]} label={label} href="#" onClick={(e) => e.preventDefault()} /></li>
-      {SUB[label].map((s) => <li key={s}><Row indent label={s} href="#" onClick={(e) => { e.preventDefault(); close(); }} testId="drawer-sub-item" /></li>)}
+    <ul role="menu" className="w-full" data-testid="drawer-themes">
+      <li><Row icon={Sparkles} label="Themes" href="#" onClick={(e) => e.preventDefault()} testId="drawer-themes-heading" /></li>
+      {themeGroups.map((g) => {
+        const isOpen = openGroup === g.key;
+        return (
+          <li key={g.key}>
+            <Row label={g.title} drop active={isOpen} onClick={() => setOpenGroup(isOpen ? null : g.key)} testId={`drawer-theme-group-${g.key}`} />
+            <div className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${isOpen ? 'max-h-[600px]' : 'max-h-0'}`}>
+              <ul>
+                {g.items.map((it) => (
+                  <li key={it.label}>
+                    <Row indent label={it.label} href={it.href || '#'} onClick={(e) => { if (!it.href || it.href === '#') e.preventDefault(); else close(); }} testId="drawer-theme-item" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -138,7 +151,7 @@ export default function MobileDrawer({ open, onClose }) {
           <div key={level || 'root'} className="w-full flex-1 overflow-y-auto animate-[hi-fade-in_200ms_ease-out]">
             {!level && <RootLevel go={setLevel} close={onClose} />}
             {level === 'Destinations' && <DestinationsLevel close={onClose} />}
-            {(level === 'Trip types' || level === 'Activities') && <ListLevel label={level} close={onClose} />}
+            {level === 'Themes' && <ThemesLevel close={onClose} />}
             {level === 'Expert advice' && <ExpertAdvicePanel />}
           </div>
         </nav>

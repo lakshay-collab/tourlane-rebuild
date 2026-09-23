@@ -332,3 +332,10 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Sidebar (desktop): sticky aside (max-h 100vh, internal scroll) with PriceCard + ExpertsCard (experts on the RIGHT per user); mobile experts card in main column (eg-detail-experts-mobile).
 - Palette rule (user): no Blush/"stale pink" on detail page; `.eg-arrow` now Sky/Harbor (hover Dusk). Use brand-kit colours: Ink chips, Lagoon days, Ember accents, Amber transfers, Dusk neutrals.
 - Tested: iteration_25 (found reviews CTA → fixed), 26 (dot index → fixed), 27 – all pass (1440 + 390).
+
+## 2026-06 — Nav mega-menus (Destinations + Themes)
+- Header desktop nav restructured to: Destinations (mega-menu) · Themes (mega-menu) · Deals · About us · Expert advice.
+- Destinations mega-menu: region list (from destinationsData.js) + country grid; Egypt→/afrika/aegypten, Sri Lanka & Asia→/asien, others '#'.
+- Themes mega-menu: groups Adventure / Travel styles / Culture & cities / Nature & water + featured Egypt honeymoons card. Items deep-link to /afrika/aegypten/holidays/<style> where a match exists.
+- New files: src/themesData.js, src/components/DesktopMenus.jsx. Mobile drawer updated with Themes level (src/components/MobileDrawer.jsx).
+- Deals page intentionally left out per user.
