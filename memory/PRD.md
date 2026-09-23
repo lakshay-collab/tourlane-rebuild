@@ -339,3 +339,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Themes mega-menu: groups Adventure / Travel styles / Culture & cities / Nature & water + featured Egypt honeymoons card. Items deep-link to /afrika/aegypten/holidays/<style> where a match exists.
 - New files: src/themesData.js, src/components/DesktopMenus.jsx. Mobile drawer updated with Themes level (src/components/MobileDrawer.jsx).
 - Deals page intentionally left out per user.
+
+## 2026-06 — New Thailand product: Siam Splendour (portrait reel hero)
+- Built from user ZIP (PDF + 6 portrait photos + 6 portrait reels + 9 hotel photos). Assets are Hi Tours-owned, served from `/public/thailand/` (photos → webp ≤1200px; reels re-encoded 960p H.264 CRF27 + VP9 webm fallback, muted; posters). Source ZIP kept only in /tmp (not in repo).
+- `src/thailandData.js`: slug `siam-splendour-thailand`, region asia, `media: 'portrait'`, title "Siam Splendour: 9-Day Thailand Odyssey" (user choice), price ₹63,650 ORIGINAL price (user choice – not the 10% discounted ₹57,285), 9 days / 4 cities, stats 3 hotels · 14 activities · 2 flights + 4 transfers · 9 meals, route A Bangkok D1–3 · B Chiang Mai→Chiang Rai→Doi Inthanon D3–6 · C Phuket→Phi Phi D6–9, glance 9 day rows, expert Ananya Iyer (/team/asia-2). `reels[]` = [reel4 Phi Phi video, Grand Palace, Doi Inthanon, reel2 Elephant video, Wachirathan, Karen village, Kinnari dance] (user: 2 reels).
+- NEW `components/egypt/ReelGallery.jsx`: adaptive hero used ONLY when `detail.media === 'portrait'` (Head in EgyptDetail.jsx picks ReelGallery vs Gallery). Ink strip, 9:16 rounded tiles (h 440 mobile / 464 desktop), snap-scroll, staggered eg-rise entrance, captions on gradient scrim, "Reel" glass badge, shared mute toggle, IntersectionObserver play/pause, desktop edge-aware arrows, "N photos" button top-right → Lightbox (`portrait` prop added to Lightbox in EgyptRoute.jsx), mobile dots.
+- Rest of the page = shared template unchanged. Egypt + Sri Lanka pages untouched (Sri Lanka keeps Vimeo gallery).
+- Asia listing: Thailand card is now first; Destinations mega-menu + mobile drawer 'Thailand' → the product page.
+- Remaining reels (reel1 dance, reel3 temples, reel5/6 waterfalls) are in /public/thailand but NOT used (user chose not to inline them in stops).
+- Tested: iteration_32 – all frontend checks pass (1440 + 390), videos play (webm in headless), lightbox, arrows, regressions on Egypt/Sri Lanka/Asia listing.
