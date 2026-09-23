@@ -12,6 +12,8 @@ import { CalendarIcon, PinIcon, ChevronRight, ChevronDown, ServiceIcon, CheckBad
 import { detail as detail0, route as route0, glance as glance0, crumbs as crumbs0, experts, brandFeatures, recommended, steps, trust, price, planner, reviewsHeading } from '../egyptDetailData';
 import { detail as detail1, route as route1, glance as glance1, crumbs as crumbs1 } from '../moroccoEgyptData';
 import { detail as detail2, route as route2, glance as glance2, crumbs as crumbs2 } from '../srilankaData';
+import { detail as detail3, route as route3, glance as glance3, crumbs as crumbs3 } from '../thailandData';
+import ReelGallery from '../components/egypt/ReelGallery';
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
@@ -22,7 +24,8 @@ import { ratings as trustBar } from '../mock';
 const BY_SLUG = {
   [detail0.slug]: { detail: detail0, route: route0, glance: glance0, crumbs: crumbs0 },
   [detail1.slug]: { detail: detail1, route: route1, glance: glance1, crumbs: crumbs1 },
-  [detail2.slug]: { detail: detail2, route: route2, glance: glance2, crumbs: crumbs2 }
+  [detail2.slug]: { detail: detail2, route: route2, glance: glance2, crumbs: crumbs2 },
+  [detail3.slug]: { detail: detail3, route: route3, glance: glance3, crumbs: crumbs3 }
 };
 
 const stop = (e) => e.preventDefault();
@@ -83,7 +86,7 @@ function Gallery({ detail }) {
 function Head({ detail }) {
   return (
     <div className="eg-wide" data-testid="eg-detail-head">
-      <Gallery detail={detail} />
+      {detail.media === 'portrait' ? <ReelGallery detail={detail} /> : <Gallery detail={detail} />}
       <div className="bg-[#F0EEE6] rounded-b-2xl p-4 md:p-6">
         <div className="flex flex-col gap-4">
             <h1 className="eg-card-title !text-[22px] !leading-[28px] sm:!text-[26px] sm:!leading-8 md:!text-[30px] md:!leading-9 text-[#002131]" data-testid="eg-detail-title">{detail.title}</h1>

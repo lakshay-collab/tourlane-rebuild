@@ -63,7 +63,7 @@ const SectionHead = ({ icon: Icon, title, cta, testId, extra }) => (
   </div>
 );
 
-export function Lightbox({ images, name, onClose, start = 0 }) {
+export function Lightbox({ images, name, onClose, start = 0, portrait = false }) {
   const [i, setI] = useState(start);
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -74,8 +74,8 @@ export function Lightbox({ images, name, onClose, start = 0 }) {
   return (
     <div className="fixed inset-0 z-[60] bg-[#002131]/90 flex flex-col items-center justify-center p-4" onClick={onClose} role="dialog" aria-modal="true" data-testid="eg-lightbox">
       <button type="button" onClick={onClose} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 text-[#002131] flex items-center justify-center" aria-label="Close" data-testid="eg-lightbox-close"><X size={20} /></button>
-      <div className="w-full max-w-[960px]" onClick={(e) => e.stopPropagation()}>
-        <div className="relative aspect-[3/2] rounded-xl overflow-hidden bg-black">
+      <div className={`w-full ${portrait ? 'max-w-[min(420px,calc((100vh-96px)*9/16))]' : 'max-w-[960px]'}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`relative ${portrait ? 'aspect-[9/16]' : 'aspect-[3/2]'} rounded-xl overflow-hidden bg-black`}>
           <img src={images[i]} alt={`${name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" data-testid="eg-lightbox-image" />
           <div className="absolute inset-0 flex items-center justify-between p-3">
             <button type="button" onClick={() => setI((v) => (v - 1 + images.length) % images.length)} className="eg-arrow" aria-label="Previous photo" data-testid="eg-lightbox-prev"><ChevronLeft size={24} /></button>

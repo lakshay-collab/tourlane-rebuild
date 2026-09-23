@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { destinationTabs, destinations } from '../destinationsData';
 import { themeGroups, themesFeatured } from '../themesData';
 
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien', 'Thailand': '/asien/siam-splendour-thailand' };
 const REGION_HREF = { 'Asia': '/asien' };
 
 const isInternal = (href) => href && href.startsWith('/');

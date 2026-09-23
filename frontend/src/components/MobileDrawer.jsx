@@ -7,7 +7,7 @@ import ExpertAdvicePanel from './ExpertAdvicePanel';
 const ICONS = { 'Destinations': MapPin, 'Themes': Sparkles, 'Deals': Percent, 'About us': Info, 'Work with us': Briefcase, 'Press': Megaphone, 'Hi Tours Care': Umbrella, 'Expert advice': Phone };
 
 const REGION_HREF = { 'Asia': '/asien' };
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien', 'Thailand': '/asien/siam-splendour-thailand' };
 const regions = destinationTabs.filter((t) => t !== 'Top 10').map((name) => ({
   name,
   href: REGION_HREF[name] || null,

@@ -1,5 +1,6 @@
 // Asia listing page content (English, INR) for Hi Tours – mirrors the Egypt listing structure.
 import { cardImages as srilankaCardImages } from './srilankaData';
+import { cardImages as thailandCardImages } from './thailandData';
 const CT = 'https://images.ctfassets.net/bth3mlrehms2';
 
 export const hero = {
@@ -52,6 +53,7 @@ export const tours = {
 const P = (title, tag, days, cities, hotels, activities, transfers, price, alt, images) => ({ title, tag, days, stops: cities, cities, hotels, activities, transfers, price, alt, images });
 
 export const products = [
+  { title: 'Siam Splendour: 9-Day Thailand Odyssey', tag: 'Culture', days: 9, stops: 4, cities: 4, hotels: 3, activities: 14, transfers: 4, meals: 9, price: 63650, alt: 'Phi Phi Islands, Thailand', slug: 'siam-splendour-thailand', href: '/asien/siam-splendour-thailand', images: thailandCardImages },
   { title: 'Emerald Isle Explorer: 9-day Sri Lanka culture & wildlife journey', tag: 'Culture', days: 9, stops: 6, cities: 6, hotels: 6, activities: 14, transfers: 7, meals: 9, price: 94472, alt: 'Sigiriya Lion Rock, Sri Lanka', slug: 'emerald-isle-explorer-sri-lanka', href: '/asien/emerald-isle-explorer-sri-lanka', images: srilankaCardImages },
   P('Khao Lak holiday for beach lovers and adventurers', 'Culture', 22, 7, 7, 14, 12, 155700, 'Khao Lak, Thailand', [
     `${CT}/5Hm10TrqCIgW8kcP3h2twj/c76291902631d2211aaafd7f4b68c726/Thailand__Khao_Lak__Sandbank.jpg?w=1080&q=60&fm=webp`,
