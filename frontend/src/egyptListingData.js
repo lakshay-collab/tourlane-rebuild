@@ -1,6 +1,13 @@
 // Egypt listing page content (English, INR) for Hi Tours.
 import { productImages, placeImages, activityImages, themeImages, africaImages, reviewImages } from './egyptImages';
 import { cardImages as moroccoEgyptCardImages } from './moroccoEgyptData';
+import { cardImages as gfImages } from './tours/egyptGrandFestivalData';
+import { cardImages as mmImages } from './tours/misrMayaData';
+import { cardImages as mkjImages } from './tours/misrKaJaaduData';
+import { cardImages as npImages } from './tours/nilePharaohsData';
+import { cardImages as pfImages } from './tours/pharaohsFeluccasData';
+import { cardImages as ndImages } from './tours/nileDarshanData';
+import { cardImages as nnImages } from './tours/nileNoorData';
 
 export const holidaysPath = '/afrika/aegypten/holidays';
 
@@ -79,12 +86,13 @@ export const tours = {
 export const products = [
   { slug: 'luxor-strand-urlaub', tag: 'Culture', styles: ['Culture', 'Luxury', 'Nile cruise', 'Beach', 'Honeymoon'], title: 'Egypt Explorer: Pyramids, Nile & Red Sea Beach Retreat — Grand Luxury Edition', days: 11, stops: 5, hotels: 4, cities: 5, activities: 12, transfers: 9, meals: 25, price: 144000, images: productImages[0] },
   { slug: 'morocco-egypt-palaces-pyramids', tag: 'Culture', styles: ['Culture', 'Luxury'], title: 'Morocco & Egypt: Palaces, Medinas & Pyramids', days: 8, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 8, meals: 7, price: 164000, images: moroccoEgyptCardImages },
-  { slug: 'rundreise-7-tage', tag: 'Short trips', styles: ['Short trips', 'Culture'], title: 'Unforgettable holiday in Egypt', days: 7, stops: 1, hotels: 1, cities: 1, activities: 5, transfers: 2, price: 121500, images: productImages[1] },
-  { slug: 'urlaub-am-meer', tag: null, styles: ['Culture'], title: 'Egypt round trip: experience fascinating culture', days: 8, stops: 3, hotels: 3, cities: 3, activities: 7, transfers: 6, price: 135000, images: productImages[2] },
-  { slug: 'pyramiden-urlaub', tag: 'Culture', styles: ['Culture', 'Honeymoon'], title: 'Egypt: experience the fascinating pyramids', days: 9, stops: 3, hotels: 3, cities: 3, activities: 8, transfers: 6, price: 157500, images: productImages[3] },
-  { slug: 'familienurlaub', tag: 'Family', styles: ['Family', 'Nile cruise'], title: 'Egypt family holiday: adventure for kids', days: 11, stops: 4, hotels: 4, cities: 4, activities: 10, transfers: 8, price: 197000, images: productImages[4] },
-  { slug: 'rundreise-badeurlaub', tag: 'Culture', styles: ['Beach', 'Culture', 'Nile cruise'], title: 'Round trip and beach holiday in Egypt', days: 11, stops: 6, hotels: 6, cities: 6, activities: 11, transfers: 10, price: 245500, images: productImages[5] },
-  { slug: 'rundreise-10-tage', tag: 'Culture', styles: ['Culture', 'Nile cruise', 'Luxury'], title: 'Egypt round trip: 11 days of adventure', days: 11, stops: 6, hotels: 6, cities: 6, activities: 12, transfers: 10, price: 249000, images: productImages[6] }
+  { slug: 'egypt-grand-festival', tag: 'Culture', styles: ['Culture', 'Short trips'], title: 'Egypt Grand Festival: Pyramids, Sphinx & the Mediterranean Coast', days: 5, stops: 4, hotels: 1, cities: 6, activities: 19, transfers: 7, meals: 4, price: 36621, images: gfImages },
+  { slug: 'misr-maya-nile-cruise', tag: 'Nile cruise', styles: ['Nile cruise', 'Luxury', 'Culture'], title: 'Misr Maya: Cairo, Aswan & Luxor with a 5-Star Nile Cruise', days: 8, stops: 4, hotels: 3, cities: 5, activities: 19, transfers: 4, meals: 13, price: 240912, images: mmImages },
+  { slug: 'misr-ka-jaadu', tag: 'Culture', styles: ['Culture', 'Nile cruise', 'Luxury'], title: 'Misr Ka Jaadu: Pyramids, Nile Cruise & the World of the Pharaohs', days: 8, stops: 4, hotels: 2, cities: 6, activities: 20, transfers: 4, meals: 17, price: 202490, images: mkjImages },
+  { slug: 'nile-pharaohs-voyage', tag: 'Nile cruise', styles: ['Nile cruise', 'Culture'], title: "Nile Pharaohs' Voyage: Luxor to Aswan Cruise", days: 5, stops: 5, hotels: 1, cities: 5, activities: 9, transfers: 3, meals: 13, price: 72448, images: npImages },
+  { slug: 'pharaohs-feluccas', tag: 'Luxury', styles: ['Luxury', 'Nile cruise', 'Culture'], title: 'Pharaohs & Feluccas: A Royal Egyptian Sojourn', days: 8, stops: 5, hotels: 2, cities: 5, activities: 17, transfers: 3, meals: 15, price: 382878, images: pfImages },
+  { slug: 'nile-darshan', tag: 'Culture', styles: ['Culture', 'Beach', 'Family'], title: "Nile Darshan: Egypt's Royal Odyssey", days: 9, stops: 5, hotels: 4, cities: 6, activities: 25, transfers: 4, meals: 5, price: 99091, images: ndImages },
+  { slug: 'nile-noor-cruise', tag: 'Nile cruise', styles: ['Nile cruise', 'Short trips'], title: 'Nile Noor: A Royal 4-Day Nile Cruise & Temple Trail', days: 4, stops: 4, hotels: 1, cities: 4, activities: 9, transfers: 2, meals: 9, price: 65486, images: nnImages }
 ].map((p) => ({ ...p, alt: p.title, href: `/afrika/aegypten/${p.slug}/` }));
 
 export const formatInr = (n) => `₹${n.toLocaleString('en-IN')}`;

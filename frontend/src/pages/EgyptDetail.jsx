@@ -13,6 +13,13 @@ import { detail as detail0, route as route0, glance as glance0, crumbs as crumbs
 import { detail as detail1, route as route1, glance as glance1, crumbs as crumbs1 } from '../moroccoEgyptData';
 import { detail as detail2, route as route2, glance as glance2, crumbs as crumbs2 } from '../srilankaData';
 import { detail as detail3, route as route3, glance as glance3, crumbs as crumbs3 } from '../thailandData';
+import { detail as detailGF, route as routeGF, glance as glanceGF, crumbs as crumbsGF } from '../tours/egyptGrandFestivalData';
+import { detail as detailMM, route as routeMM, glance as glanceMM, crumbs as crumbsMM } from '../tours/misrMayaData';
+import { detail as detailMKJ, route as routeMKJ, glance as glanceMKJ, crumbs as crumbsMKJ } from '../tours/misrKaJaaduData';
+import { detail as detailNP, route as routeNP, glance as glanceNP, crumbs as crumbsNP } from '../tours/nilePharaohsData';
+import { detail as detailPF, route as routePF, glance as glancePF, crumbs as crumbsPF } from '../tours/pharaohsFeluccasData';
+import { detail as detailND, route as routeND, glance as glanceND, crumbs as crumbsND } from '../tours/nileDarshanData';
+import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as crumbsNN } from '../tours/nileNoorData';
 import ReelGallery from '../components/egypt/ReelGallery';
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
@@ -25,7 +32,14 @@ const BY_SLUG = {
   [detail0.slug]: { detail: detail0, route: route0, glance: glance0, crumbs: crumbs0 },
   [detail1.slug]: { detail: detail1, route: route1, glance: glance1, crumbs: crumbs1 },
   [detail2.slug]: { detail: detail2, route: route2, glance: glance2, crumbs: crumbs2 },
-  [detail3.slug]: { detail: detail3, route: route3, glance: glance3, crumbs: crumbs3 }
+  [detail3.slug]: { detail: detail3, route: route3, glance: glance3, crumbs: crumbs3 },
+  [detailGF.slug]: { detail: detailGF, route: routeGF, glance: glanceGF, crumbs: crumbsGF },
+  [detailMM.slug]: { detail: detailMM, route: routeMM, glance: glanceMM, crumbs: crumbsMM },
+  [detailMKJ.slug]: { detail: detailMKJ, route: routeMKJ, glance: glanceMKJ, crumbs: crumbsMKJ },
+  [detailNP.slug]: { detail: detailNP, route: routeNP, glance: glanceNP, crumbs: crumbsNP },
+  [detailPF.slug]: { detail: detailPF, route: routePF, glance: glancePF, crumbs: crumbsPF },
+  [detailND.slug]: { detail: detailND, route: routeND, glance: glanceND, crumbs: crumbsND },
+  [detailNN.slug]: { detail: detailNN, route: routeNN, glance: glanceNN, crumbs: crumbsNN }
 };
 
 const stop = (e) => e.preventDefault();
