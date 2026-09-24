@@ -207,8 +207,8 @@ export const showcase = {
 export const adventure = {
   heading: 'Start your next adventure',
   images: {
-    left: 'https://tourlane-dm-images.imgix.net/hp/middle-left.png?w=760&q=60&auto=format&fit=max',
-    right: 'https://tourlane-dm-images.imgix.net/hp/middle-right.png?w=820&q=60&auto=format&fit=max'
+    left: '/home/adventure-left.webp',
+    right: '/home/adventure-right.webp'
   }
 };
 

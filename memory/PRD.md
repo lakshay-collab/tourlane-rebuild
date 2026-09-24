@@ -375,3 +375,7 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Egypt landing `/afrika/aegypten` shows top 6 by original design (`products.slice(0,6)` in EgyptListing.jsx) + "View all" → `/holidays` shows all 9. Left as-is (do-not-change-design). All 9 reachable via /holidays and direct `/afrika/aegypten/<slug>`.
 - Legacy `egyptData.js` still references old placeholder slugs but is unused (only imported by unused TourDetail.jsx) — harmless.
 - Tested: iteration_34 – all 7 new detail pages + 2 regressions pass (titles, tabs, included tiles, expert, glance, 0 broken images, 0 console errors, no overflow 1920/390); /holidays shows 9 cards.
+
+## 2026-09-24 — Homepage "Start your next adventure" banner
+- Replaced the two Tourlane imgix collage images with user-supplied banner (cut into transparent left/right clusters): `/public/home/adventure-left.webp`, `/public/home/adventure-right.webp`, referenced from `mock.js` (`adventure.images`).
+- `AdventureCTA.jsx` layout/width/style untouched.
