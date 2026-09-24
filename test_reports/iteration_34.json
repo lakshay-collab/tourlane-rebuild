@@ -1,0 +1,49 @@
+{
+  "summary": "Frontend-only regression + acceptance testing for the 7 new Egypt products slotted into the existing template. All 9 Egypt detail pages (7 new + 2 existing) load fully with title, days/cities chips, route line, price, What's-included tiles, expert card, and itinerary tabs; no broken images and no red console errors. Itinerary tab switching and 'View tour summary' glance toggle work. No horizontal overflow at 1920 or 390. Asia regression (Sri Lanka & Thailand listing) still loads. One observation: the Egypt landing /afrika/aegypten only surfaces the FIRST 6 products (products.slice(0,6)) via the existing template, with a 'View all' button routing to /afrika/aegypten/holidays where all 9 are visible. The review request expected 8 cards on /afrika/aegypten - this is a mismatch with the existing (untouched) landing template, not a functional defect.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "observations": [
+    {
+      "screen": "/afrika/aegypten (Egypt landing)",
+      "note": "Landing shows only the first 6 products (existing design: products.slice(0,6) in /app/frontend/src/pages/EgyptListing.jsx line 50-79 with a 'View all' -> /afrika/aegypten/holidays). Cards rendered: Egypt Explorer, Morocco & Egypt, Egypt Grand Festival, Misr Maya, Misr Ka Jaadu, Nile Pharaohs' Voyage. Pharaohs & Feluccas, Nile Darshan, Nile Noor are NOT on landing (only on /holidays). Review request expected 8 cards on landing - either update expectation, or change landing to slice(0,9), or reorder products so priority ones appear on landing.",
+      "priority": "INFO"
+    }
+  ],
+  "detail_pages_tested": {
+    "egypt-grand-festival": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false},
+    "misr-maya-nile-cruise": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false, "overflow_390": false},
+    "misr-ka-jaadu": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false},
+    "nile-pharaohs-voyage": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false},
+    "pharaohs-feluccas": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false},
+    "nile-darshan": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false},
+    "nile-noor-cruise": {"title_ok": true, "tabs": 5, "incl_tiles": 8, "expert": true, "glance": true, "broken_images": 0, "overflow_1920": false, "overflow_390": false},
+    "luxor-strand-urlaub (regression)": {"title_ok": true, "tabs": 6, "incl_tiles": 8, "broken_images": 0},
+    "morocco-egypt-palaces-pyramids (regression)": {"title_ok": true, "tabs": 4, "incl_tiles": 8, "broken_images": 0}
+  },
+  "listing_pages_tested": {
+    "/afrika/aegypten": {"cards_shown": 6, "console_errors": 0, "overflow_1920": false, "overflow_390": false, "note": "Existing template shows top 6 only"},
+    "/afrika/aegypten/holidays": {"cards_shown": 9, "all_new_slugs_present": true, "broken_images": 0}
+  },
+  "interactions_tested": {
+    "itinerary_tab_switching": "Tabs 0-3 clickable, aria-selected updates correctly on misr-maya-nile-cruise",
+    "glance_toggle": "eg-glance-toggle toggles eg-detail-glance content",
+    "card_click_navigation": "Verified via direct URL navigation for all 9 slugs; hrefs resolve correctly"
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Decide expected UX for /afrika/aegypten: either accept the existing '6 cards + View all' template (in which case update the review-request expectation), or expand the slice on the landing page to surface all 7 new products directly (existing code: EgyptListing.jsx line 50 `products.slice(0, 6)`)."
+  ],
+  "critical_code_review_comments": [
+    "EgyptListing.jsx hardcodes slice(0,6). If product count grows past 6, users must click through to /holidays to discover the rest. Consider making the listing count configurable, or ensure the ordering of products in egyptListingData.js places the marketing-priority tours in the first 6 slots."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only run)", "frontend": "100% (all pages/interactions passed; landing-count is a spec mismatch, not a bug)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All 7 new Egypt detail pages and the 2 existing ones render correctly under /afrika/aegypten/<slug>. The 9-product /holidays listing works. Only 6 cards appear on the Egypt landing by original design (EgyptListing.jsx slice(0,6)); Pharaohs & Feluccas, Nile Darshan, Nile Noor are visible only via /holidays or direct URL. No console errors, no broken images, no horizontal overflow at 1920/390."
+}

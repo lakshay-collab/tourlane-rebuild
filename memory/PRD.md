@@ -359,3 +359,19 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - EgyptRoute StopCarousel: `md:h-auto md:min-h-[268px] md:self-stretch` + row `md:items-stretch` → stop image always matches bullet-column height (Thailand Bangkok stop 396px).
 - Tested: iteration_33 – 100% frontend pass (desktop + mobile, all pages, menus, regressions).
 - About tweaks (user): removed 'Experience the best of Asia & Africa' grid and the 'Hi Tours media kit' title; CTA band replaced with the homepage `AdventureCTA` ("Start your next adventure" search banner). Homepage Destinations: country cards use COUNTRY_HREF (Egypt/Thailand/Sri Lanka), 'View all Asia holidays' pill under the grid (REGION_HREF – only Asia has a page); Destinations mega-menu region buttons navigate when a region page exists (Asia → /asien). Verified via screenshots.
+
+## 2026-06 — 7 new Egypt products from uploaded ZIP (Archive.zip)
+- User uploaded Archive.zip = 7 tour folders (each = one Egypt product). Task: extract images + content, build detail pages "nicely" using the EXISTING template — do NOT change any landing/detail design.
+- Owned images extracted, converted to webp (max-width 1400, q82) → `/app/frontend/public/egypt-tours/<slug>/` (~9.6 MB total). Source ZIP kept only in /tmp (not in repo).
+- 7 new data files in `/app/frontend/src/tours/` (each exports detail/route/glance/crumbs/cardImages, same schema as moroccoEgyptData.js). Prices = the 10% "Massi"-discounted INR from each package:
+  - `egypt-grand-festival` — Egypt Grand Festival (5d, Cairo/Giza/Saqqara/Memphis/Alexandria) ₹36,621 — egyptGrandFestivalData.js
+  - `misr-maya-nile-cruise` — Misr Maya: Cairo/Aswan/Luxor + 5★ Nile cruise (8d) ₹2,40,912 — misrMayaData.js (only 3 photos + map in source; images reused across stops)
+  - `misr-ka-jaadu` — Misr Ka Jaadu: Pyramids, Nile cruise & Pharaohs (8d, +Alexandria) ₹2,02,490 — misrKaJaaduData.js (13 photos)
+  - `nile-pharaohs-voyage` — Nile Pharaohs' Voyage: Luxor→Aswan cruise (5d) ₹72,448 — nilePharaohsData.js (25 photos)
+  - `pharaohs-feluccas` — Pharaohs & Feluccas (8d, +Abu Simbel, felucca) ₹3,82,878 — pharaohsFeluccasData.js
+  - `nile-darshan` — Nile Darshan: Royal Odyssey (9d, +Hurghada/Red Sea) ₹99,091 — nileDarshanData.js
+  - `nile-noor-cruise` — Nile Noor: 4-day Aswan→Luxor cruise ₹65,486 — nileNoorData.js
+- Wiring: `EgyptDetail.jsx` BY_SLUG now has 11 slugs (7 new imported from src/tours/). `egyptListingData.js` `products` array: the 6 fake placeholder cards (rundreise-*, urlaub-am-meer, etc.) REPLACED by the 7 new real products (kept luxor-strand-urlaub + morocco-egypt) → 9 products total. Expert = shared Ria Banerjee for all.
+- Egypt landing `/afrika/aegypten` shows top 6 by original design (`products.slice(0,6)` in EgyptListing.jsx) + "View all" → `/holidays` shows all 9. Left as-is (do-not-change-design). All 9 reachable via /holidays and direct `/afrika/aegypten/<slug>`.
+- Legacy `egyptData.js` still references old placeholder slugs but is unused (only imported by unused TourDetail.jsx) — harmless.
+- Tested: iteration_34 – all 7 new detail pages + 2 regressions pass (titles, tabs, included tiles, expert, glance, 0 broken images, 0 console errors, no overflow 1920/390); /holidays shows 9 cards.
