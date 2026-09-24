@@ -1,0 +1,21 @@
+{
+  "summary": "Frontend-only regression for Hi Tours: Header nav (Deals removed, About us→/about), Destinations mega-menu (region list + country image tiles + featured, Asia/Africa tiles verified), Themes mega-menu (4 groups w/ thumbnails, no featured, no blurbs), /about page (hero, title, About Hi Tours + press email, media kit carousel arrows change slide, backed/office/recognized 4 logos, 3 why-items, 3 steps, CTA→/asien, 9 destinations incl. Egypt, 12 FAQ with default first-open and click-toggle), /care page (hero, Plan-for-free CTA→/asien, intro checks, comparison graphic with 25/50/75/90/100% for Assure and 75/90/100% for Flex, Assure 5 bullets, Flex labels incl. UPGRADE FEE and ₹4,999, ISO 45001 badge loaded), Mobile drawer at 390 (Destinations/Themes/About us/Work with us/Press/Hi Tours Care/Expert advice, no Deals, hrefs /about & /care correct, no horizontal overflow on /about and /care), Itinerary fix on Thailand Bangkok stop (gallery height 396 = stop text height 396, >=268). Regression stop galleries on Sri Lanka (268) and Egypt Luxor (324) render fine. Homepage/Egypt listing/Thailand hero unchanged. All acceptance criteria PASS.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Egypt product detail page emits harmless 401s from third-party image hosts (existing, not a regression)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All 7 acceptance items verified via Playwright at 1440x900 and mobile 390x844. Bangkok stop-gallery height now matches stop text column exactly (396px). Carousel arrow next changes opacity-100 image index. FAQ default-first-open + toggle behavior confirmed. Care graphic contains all required % cells on both rows and Flex labels + ₹4,999.",
+  "rca of the issue": "n/a"
+}
