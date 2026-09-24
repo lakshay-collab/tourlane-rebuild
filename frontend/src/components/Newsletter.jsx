@@ -57,6 +57,13 @@ export default function Newsletter() {
           </div>
         </div>
         <img
+          src={newsletter.imageLeft}
+          alt=""
+          className="hidden lg:block absolute left-[31px] -top-[45px] h-[77px] w-auto pointer-events-none select-none"
+          loading="lazy"
+          data-testid="newsletter-image-left"
+        />
+        <img
           src={newsletter.image}
           alt=""
           className="hidden lg:block absolute right-0 bottom-0 h-[460px] w-auto pointer-events-none select-none"

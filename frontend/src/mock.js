@@ -254,7 +254,8 @@ export const newsletter = {
     { icon: 'percent', text: 'Exclusive offers & benefits' },
     { icon: 'headset', text: 'Insider tips from experts' }
   ],
-  image: 'https://tourlane-dm-images.imgix.net/hp/newsletter.png?w=900&q=60&auto=format&fit=max'
+  image: '/home/newsletter-right.webp',
+  imageLeft: '/home/newsletter-left.webp'
 };
 
 export const footer = {
