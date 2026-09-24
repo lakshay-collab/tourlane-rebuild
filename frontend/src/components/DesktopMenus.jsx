@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { destinationTabs, destinations } from '../destinationsData';
 import { themeGroups } from '../themesData';
@@ -18,6 +18,7 @@ const Go = ({ href, onNavigate, className, children, testId }) => isInternal(hre
   : <a href="#" onClick={(e) => e.preventDefault()} className={className} data-testid={testId}>{children}</a>;
 
 export function DestinationsMenu({ onNavigate }) {
+  const navigate = useNavigate();
   const [active, setActive] = useState(destinationTabs[0]);
   const list = destinations[active] || [];
   const feature = list.find((d) => COUNTRY_HREF[d.name]) || list[0];
@@ -27,7 +28,7 @@ export function DestinationsMenu({ onNavigate }) {
         <ul className="w-[200px] shrink-0 flex flex-col gap-0.5 border-r border-outline-variant pr-5" data-testid="menu-destinations-regions">
           {destinationTabs.map((t) => (
             <li key={t}>
-              <button type="button" onMouseEnter={() => setActive(t)} onFocus={() => setActive(t)} onClick={() => setActive(t)}
+              <button type="button" onMouseEnter={() => setActive(t)} onFocus={() => setActive(t)} onClick={() => { if (REGION_HREF[t]) { navigate(REGION_HREF[t]); onNavigate?.(); } else setActive(t); }}
                 className={`flex items-center justify-between w-full text-left px-3 py-2 rounded-lg t-label-lg transition-colors ${active === t ? 'bg-surface-highest text-onsurface' : 'text-onsurface-variant hover:bg-onsurface/[0.06]'}`}
                 data-testid={`menu-region-${t.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
                 {t}<ArrowRight size={16} strokeWidth={2} className={`transition-opacity ${active === t ? 'opacity-100' : 'opacity-0'}`} />

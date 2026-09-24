@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import AdventureCTA from '../components/AdventureCTA';
 import { ChevronDown, ChevronLeft, ChevronRight } from '../components/egypt/EgyptIcons';
-import { hero, about, mediaKit, backed, office, recognized, why, steps, cta, best, faq } from '../aboutData';
+import { hero, about, mediaKit, backed, office, recognized, why, steps, faq } from '../aboutData';
 
 const Collage = ({ images, children }) => (
   <section className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-10 pt-1" data-testid="about-hero">
@@ -21,7 +21,6 @@ function MediaKit() {
   const f = mediaKit.founder;
   return (
     <section className="eg-container flex flex-col gap-8" data-testid="about-media-kit">
-      <h2 className="eg-display-sm text-[#002131]">{mediaKit.h2}</h2>
       <div className="grid md:grid-cols-[1fr_1.15fr] gap-6 md:gap-10 items-center">
         <div className="flex flex-col gap-5" data-testid="about-founder-quote">
           <span className="text-[64px] leading-none font-serif text-[#308BB6]">“</span>
@@ -112,21 +111,7 @@ export default function About() {
             ))}
           </div>
         </section>
-        <section className="w-full bg-[#F0EEE6] py-16 md:py-24" data-testid="about-cta">
-          <div className="eg-container flex flex-col items-center gap-8 text-center">
-            <h2 className="eg-display-sm text-[#002131]">{cta.h2}</h2>
-            <Link to={cta.href} className="eg-btn-filled h-12 px-7 eg-title-md" data-testid="about-cta-button">{cta.button}</Link>
-          </div>
-        </section>
-        <section className="eg-container flex flex-col gap-8" data-testid="about-best">
-          <div className="flex flex-col gap-4"><h2 className="eg-display-sm text-[#002131]">{best.h2}</h2><p className="eg-body-lg text-[#002131]">{best.text}</p></div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {best.items.map((d) => {
-              const inner = <><div className="relative aspect-[262/287] rounded-xl overflow-hidden bg-[#EAE8E0]"><img src={d.src} alt={d.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /></div><h3 className="mt-3 eg-title-md text-[#002131]">{d.name}</h3></>;
-              return d.href.startsWith('/') ? <Link key={d.name} to={d.href} className="group block" data-testid="about-destination">{inner}</Link> : <a key={d.name} href="#" onClick={(e) => e.preventDefault()} className="group block" data-testid="about-destination">{inner}</a>;
-            })}
-          </div>
-        </section>
+        <div className="-mt-16 md:-mt-24" data-testid="about-cta"><AdventureCTA /></div>
         <Faq />
       </main>
       <Footer />
