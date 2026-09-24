@@ -12,11 +12,11 @@ export default function AdventureCTA() {
             <SearchBar id="adventure" />
           </div>
         </div>
-        <div className="flex items-end justify-between gap-2 mt-6 md:mt-0 md:absolute md:bottom-0 md:left-0 md:w-full pointer-events-none">
+        <div className="relative z-[2] flex items-end justify-between gap-2 mt-6 md:mt-0 md:absolute md:bottom-0 md:left-0 md:w-full pointer-events-none">
           <img
             src={adventure.images.left}
             alt=""
-            className="w-[162px] h-[198px] sm:w-[229px] sm:h-[280px] md:w-[210px] md:h-[256px] lg:w-[341px] lg:h-[416px] xl:w-[373px] xl:h-[456px] object-contain object-left-bottom"
+            className="w-[162px] h-[198px] sm:w-[229px] sm:h-[280px] md:w-[210px] md:h-[256px] lg:w-[341px] lg:h-[416px] xl:w-[373px] xl:h-[456px] object-contain object-left-bottom translate-y-[5.3%]"
             loading="lazy"
           />
           <img
