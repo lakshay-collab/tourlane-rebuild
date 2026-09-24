@@ -348,3 +348,4 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Asia listing: Thailand card is now first; Destinations mega-menu + mobile drawer 'Thailand' → the product page.
 - Remaining reels (reel1 dance, reel3 temples, reel5/6 waterfalls) are in /public/thailand but NOT used (user chose not to inline them in stops).
 - Tested: iteration_32 – all frontend checks pass (1440 + 390), videos play (webm in headless), lightbox, arrows, regressions on Egypt/Sri Lanka/Asia listing.
+- FIX (user: "first two should be reels, rest photos"): ReelGallery now = 2 portrait reels (left, 9:16, h-400) + standard 2×2 landscape photo grid (desktop); mobile = swipe row: 2 reels (62% width) then full-width photos, dots. `detail.gallery` (8 photos incl. hotels) feeds the grid/lightbox; `reels[]` holds only the 2 videos. Verified by screenshot 1440 + 390, videos playing.

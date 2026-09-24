@@ -36,15 +36,10 @@ export const detail = {
   routeCities: ['Bangkok', 'Chiang Mai', 'Chiang Rai', 'Doi Inthanon', 'Phuket'],
   tags: ['Culture', 'Beach'],
   stats: { days: 9, cities: 4, hotels: 3, activities: 14, transfers: 4 },
-  gallery: [PHI, PALACE, FALLS, WACHI, ELEPHANT, DANCE],
+  gallery: [PALACE, H[8], FALLS, H[5], DANCE, WACHI, ELEPHANT, PHI],
   reels: [
     { type: 'video', src: P('reel4.mp4'), webm: P('reel4.webm'), poster: P('reel4-poster.jpg'), label: 'Phi Phi Islands' },
-    { type: 'image', src: PALACE, label: 'Grand Palace, Bangkok' },
-    { type: 'image', src: FALLS, label: 'Doi Inthanon National Park' },
-    { type: 'video', src: P('reel2.mp4'), webm: P('reel2.webm'), poster: P('reel2-poster.jpg'), label: 'Elephant sanctuary, Chiang Mai' },
-    { type: 'image', src: WACHI, label: 'Wachirathan Waterfall' },
-    { type: 'image', src: ELEPHANT, label: 'Karen village welcome' },
-    { type: 'image', src: DANCE, label: 'Kinnari dance, Chiang Mai' }
+    { type: 'video', src: P('reel2.mp4'), webm: P('reel2.webm'), poster: P('reel2-poster.jpg'), label: 'Elephant sanctuary, Chiang Mai' }
   ],
   services: [
     ['3 hotels', 'Accommodation'],
