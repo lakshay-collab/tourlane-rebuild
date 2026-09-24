@@ -14,8 +14,7 @@ const MENUS = [
   { key: 'themes', label: 'Themes' }
 ];
 const LINKS = [
-  { label: 'Deals', href: '#' },
-  { label: 'About us', href: '#' }
+  { label: 'About us', href: '/about' }
 ];
 
 export default function Header({ overlay = false }) {
@@ -87,9 +86,9 @@ export default function Header({ overlay = false }) {
           </div>
         ))}
         {LINKS.map((l) => (
-          <a key={l.label} href={l.href} onClick={(e) => { if (l.href === '#') e.preventDefault(); }} className={`t-body-md ${textCls} hover:opacity-75 transition-opacity whitespace-nowrap px-4`} data-testid={`nav-${l.label.toLowerCase().replace(/\s/g, '-')}`}>
+          <Link key={l.label} to={l.href} className={`t-body-md ${textCls} hover:opacity-75 transition-opacity whitespace-nowrap px-4`} data-testid={`nav-${l.label.toLowerCase().replace(/\s/g, '-')}`}>
             {l.label}
-          </a>
+          </Link>
         ))}
         <span className={`h-6 w-px ${dividerCls} mx-4`} />
         <div className="relative h-full flex items-center" ref={adviceRef} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>

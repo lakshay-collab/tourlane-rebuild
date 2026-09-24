@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { X, ArrowLeft, ArrowRight, MapPin, Sparkles, Percent, Info, Briefcase, Megaphone, Umbrella, Phone } from 'lucide-react';
+import { X, ArrowLeft, ArrowRight, MapPin, Sparkles, Info, Briefcase, Megaphone, Umbrella, Phone } from 'lucide-react';
 import { destinationTabs, destinations } from '../destinationsData';
 import { themeGroups } from '../themesData';
 import ExpertAdvicePanel from './ExpertAdvicePanel';
 
-const ICONS = { 'Destinations': MapPin, 'Themes': Sparkles, 'Deals': Percent, 'About us': Info, 'Work with us': Briefcase, 'Press': Megaphone, 'Hi Tours Care': Umbrella, 'Expert advice': Phone };
+const ICONS = { 'Destinations': MapPin, 'Themes': Sparkles, 'About us': Info, 'Work with us': Briefcase, 'Press': Megaphone, 'Hi Tours Care': Umbrella, 'Expert advice': Phone };
 
 const REGION_HREF = { 'Asia': '/asien' };
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien', 'Thailand': '/asien/siam-splendour-thailand' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien/emerald-isle-explorer-sri-lanka', 'Thailand': '/asien/siam-splendour-thailand' };
 const regions = destinationTabs.filter((t) => t !== 'Top 10').map((name) => ({
   name,
   href: REGION_HREF[name] || null,
@@ -17,7 +17,7 @@ const regions = destinationTabs.filter((t) => t !== 'Top 10').map((name) => ({
 
 const SECTIONS = [
   [{ label: 'Destinations', sub: true }, { label: 'Themes', sub: true }],
-  [{ label: 'Deals' }, { label: 'About us' }, { label: 'Work with us' }, { label: 'Press' }, { label: 'Hi Tours Care' }],
+  [{ label: 'About us', href: '/about' }, { label: 'Work with us' }, { label: 'Press', href: '/about' }, { label: 'Hi Tours Care', href: '/care' }],
   [{ label: 'Expert advice', sub: true }]
 ];
 
@@ -54,9 +54,9 @@ function RootLevel({ go, close }) {
       {SECTIONS.map((section, si) => (
         <React.Fragment key={si}>
           {si > 0 && <Divider />}
-          {section.map(({ label, sub }) => (
+          {section.map(({ label, sub, href }) => (
             <li key={label} className="w-full">
-              <Row icon={ICONS[label]} label={label} arrow={sub} onClick={sub ? () => go(label) : close} testId={`mobile-nav-${tid(label)}`} />
+              <Row icon={ICONS[label]} label={label} arrow={sub} href={href} onClick={sub ? () => go(label) : close} testId={`mobile-nav-${tid(label)}`} />
             </li>
           ))}
         </React.Fragment>

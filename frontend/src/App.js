@@ -6,6 +6,8 @@ import EgyptHolidays from './pages/EgyptHolidays';
 import EgyptDetail from './pages/EgyptDetail';
 import AsiaListing from './pages/AsiaListing';
 import TripStyleListing from './pages/TripStyleListing';
+import About from './pages/About';
+import Care from './pages/Care';
 
 const StyleRedirect = () => <Navigate to={`/afrika/aegypten/holidays/${useParams().style}`} replace />;
 
@@ -23,6 +25,8 @@ function App() {
           <Route path="/asien" element={<AsiaListing />} />
           <Route path="/asien/:slug" element={<EgyptDetail />} />
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/care" element={<Care />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -46,7 +46,7 @@ function StopCarousel({ images, name }) {
   const [i, setI] = useState(0);
   const n = images.length;
   return (
-    <div className="relative flex-1 min-w-0 h-[220px] md:h-[268px] rounded-xl overflow-hidden bg-[#EAE8E0]" data-testid="eg-stop-gallery">
+    <div className="relative flex-1 min-w-0 h-[220px] md:h-auto md:min-h-[268px] md:self-stretch rounded-xl overflow-hidden bg-[#EAE8E0]" data-testid="eg-stop-gallery">
       <img src={images[i]} alt={`${name} ${i + 1}`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
       <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none">
         <button type="button" onClick={() => setI((v) => Math.max(0, v - 1))} disabled={i === 0} className="eg-arrow pointer-events-auto disabled:opacity-40" aria-label="Back" data-testid="eg-stop-prev"><ChevronLeft size={24} /></button>
@@ -184,7 +184,7 @@ export default function EgyptRoute({ onSummary, stops = route.stops }) {
       <div className="px-4 md:px-10 pt-8 pb-7 flex flex-col divide-y divide-[#DDD9CE]">
         {stops.map((s, i) => (
           <section key={s.letter} ref={(el) => { refs.current[i] = el; }} id={`stop-${i}`} className="py-8 first:pt-0 last:pb-0 flex flex-col gap-8" data-testid={`eg-route-section-${i}`}>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+            <div className="flex flex-col md:flex-row md:items-stretch gap-6 md:gap-8">
               <StopText s={s} />
               <StopCarousel images={s.images} name={s.name} />
             </div>
