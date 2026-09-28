@@ -217,10 +217,10 @@ export const experts = {
   cta: 'Discover the Hi Tours experts',
   items: [
     { name: 'Gurpreet', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: '/experts/gurpreet.webp' },
-    { name: 'Karan Malhotra', role: 'Travel expert for Egypt', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: '/experts/abhay.webp' },
     { name: 'Aditya', role: 'Travel expert for Sri Lanka', experience: '3 years of experience', specialties: ['Family-friendly travel', 'Road trips'], photo: '/experts/devendra.webp' },
-    { name: 'Rahul', role: 'Travel expert for Italy', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: '/experts/aditya.webp' },
+    { name: 'Rahul', role: 'Travel expert for Switzerland', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: '/experts/aditya.webp' },
     { name: 'Sharon', role: 'Travel expert for Thailand', experience: '3 years of experience', specialties: ['Honeymoons', 'Active travel'], photo: '/experts/sharon.webp' },
+    { name: 'Karan Malhotra', role: 'Travel expert for Egypt', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: '/experts/abhay.webp' },
     { name: 'Raghav', role: 'Travel expert for Italy', experience: '6 years of experience', specialties: ['Culture tips', 'Culinary recommendations'], photo: '/experts/raghav.webp' },
     { name: 'Riya', role: 'Travel expert for Vietnam', experience: '1 year of experience', specialties: ['Road trips', 'Active travel'], photo: '/experts/riya.webp' }
   ]
