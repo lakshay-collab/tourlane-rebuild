@@ -216,13 +216,13 @@ export const experts = {
   heading: 'Meet our travel experts',
   cta: 'Discover the Hi Tours experts',
   items: [
-    { name: 'Laura Behrens', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: cf('57uKXaXzLj1c75yT6j72F0/2ba3f1e3b4e191cb0b75b7bfed96ffc2/TravelExperts_T3_Final1.png', 'w=720&q=60&fm=webp') },
-    { name: 'Karan Malhotra', role: 'Travel expert for New Zealand', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: cf('3VnsobU9pjKBtPbNAr8qYw/0e8af52d777d1801f4cc0f86d2df00bb/TravelExperts_T3_Final2.png', 'w=720&q=60&fm=webp') },
-    { name: 'Mireia Sanchez', role: 'Travel expert for Sri Lanka', experience: '3 years of experience', specialties: ['Family-friendly travel', 'Road trips'], photo: cf('6mQY5mgYB1JdFpHMY1y8zg/b35d05f39d536184dfc0a084b2b617b1/TravelExperts_T3_Final8.png', 'w=720&q=60&fm=webp') },
-    { name: 'Marvin Luczynski', role: 'Travel expert for Italy', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: cf('6dj19HFS24bMnaTPUOYwvO/dd8a83d4a408d194ef29b0863111b8aa/TravelExperts_T3_Final4.png', 'w=720&q=60&fm=webp') },
-    { name: 'Camille Mollon', role: 'Travel expert for Oman', experience: '3 years of experience', specialties: ['Honeymoons', 'Active travel'], photo: cf('6hXNLgdY7gTFcq085c40aL/954a76020254ce67810a819915a6d657/TravelExperts_T3_Final7.png', 'w=720&q=60&fm=webp') },
-    { name: 'Constant Le Dantec', role: 'Travel expert for Peru', experience: '6 years of experience', specialties: ['Culture tips', 'Culinary recommendations'], photo: cf('qQMkjDq6JJBlQU8t0W5Cm/f845620f8fb28eda56049e9428042079/TravelExperts_T3_Final10.png', 'w=720&q=60&fm=webp') },
-    { name: 'Isabel Blaes', role: 'Travel expert for Iceland', experience: '1 year of experience', specialties: ['Road trips', 'Active travel'], photo: cf('6lFFfNcD6qTC3hvOtCWkI1/2b6a2ba274d3e46a89c17e8838ba3ed5/TravelExperts_T3_Final3.png', 'w=720&q=60&fm=webp') }
+    { name: 'Laura Behrens', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: '/experts/gurpreet.webp' },
+    { name: 'Karan Malhotra', role: 'Travel expert for New Zealand', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: '/experts/abhay.webp' },
+    { name: 'Mireia Sanchez', role: 'Travel expert for Sri Lanka', experience: '3 years of experience', specialties: ['Family-friendly travel', 'Road trips'], photo: '/experts/devendra.webp' },
+    { name: 'Marvin Luczynski', role: 'Travel expert for Italy', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: '/experts/aditya.webp' },
+    { name: 'Camille Mollon', role: 'Travel expert for Oman', experience: '3 years of experience', specialties: ['Honeymoons', 'Active travel'], photo: '/experts/sharon.webp' },
+    { name: 'Constant Le Dantec', role: 'Travel expert for Peru', experience: '6 years of experience', specialties: ['Culture tips', 'Culinary recommendations'], photo: '/experts/raghav.webp' },
+    { name: 'Isabel Blaes', role: 'Travel expert for Iceland', experience: '1 year of experience', specialties: ['Road trips', 'Active travel'], photo: '/experts/riya.webp' }
   ]
 };
 
