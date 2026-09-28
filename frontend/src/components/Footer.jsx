@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Youtube, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { footer, trust } from '../mock';
 import { BoxStars } from './Rating';
+
+const FOOTER_HREFS = { 'About us': '/about' };
 
 const Spotify = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M12 2a10 10 0 100 20 10 10 0 000-20m4.586 14.424a.62.62 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.215c3.809-.871 7.077-.496 9.712 1.115a.623.623 0 01.207.857m1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.13-9.965-1.166a.779.779 0 11-.452-1.491c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 01.257 1.071m.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.935.935 0 11-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.936.936 0 01-.956 1.61z"/></svg>
@@ -76,7 +79,9 @@ export default function Footer() {
             <FooterColumn key={col.title} title={col.title}>
               <ul className="space-y-2 sm:w-[200px]">
                 {col.links.map((l) => (
-                  <li key={l}><button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button></li>
+                  <li key={l}>{FOOTER_HREFS[l]
+                    ? <Link to={FOOTER_HREFS[l]} className="t-body-md text-onsurface hover:underline text-left" data-testid={`footer-link-${l.toLowerCase().replace(/\s/g, '-')}`}>{l}</Link>
+                    : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
                 ))}
               </ul>
             </FooterColumn>

@@ -2,12 +2,12 @@ import React from 'react';
 import { adventure } from '../mock';
 import SearchBar from './SearchBar';
 
-export default function AdventureCTA() {
+export default function AdventureCTA({ heading = adventure.heading }) {
   return (
     <section className="pt-16 md:pt-24" data-testid="adventure-section">
       <div className="relative w-full bg-surface-container h-auto sm:h-[560px] md:h-[416px] lg:h-[352px] xl:h-[376px] flex flex-col justify-between">
         <div className="relative z-[1] flex flex-col items-center gap-10 lg:gap-8 xl:gap-12 pt-16 lg:pt-12 xl:pt-[72px] px-[13px] sm:px-8">
-          <h2 className="t-section text-center text-onsurface sm:w-[536px] md:w-full">{adventure.heading}</h2>
+          <h2 className="t-section text-center text-onsurface sm:w-[536px] md:w-full">{heading}</h2>
           <div className="w-full sm:w-[536px] md:w-[552px]">
             <SearchBar id="adventure" />
           </div>

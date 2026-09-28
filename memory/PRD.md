@@ -379,3 +379,12 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 ## 2026-09-24 — Homepage "Start your next adventure" banner
 - Replaced the two Tourlane imgix collage images with user-supplied banner (cut into transparent left/right clusters): `/public/home/adventure-left.webp`, `/public/home/adventure-right.webp`, referenced from `mock.js` (`adventure.images`).
 - `AdventureCTA.jsx` layout/width/style untouched.
+
+## 2026-09-28 — Homepage content swaps + About page rebuild
+- Newsletter banner: user birds (left) + family/palms (right) cutouts in /public/home/newsletter-*.webp.
+- Experts: 7 Drive portraits in /public/experts/, names/roles updated (Gurpreet, Karan Malhotra/Egypt, Aditya, Rahul/Switzerland, Sharon/Thailand, Raghav/Italy, Riya/Vietnam), Karan 5th.
+- Ambassadors ("Talking Travel with Hi Tours"): single slide /public/home/on-the-road.webp, both arrows removed.
+- Moments: 10 Drive photos (/public/moments/, object-contain) + testimonial lines/names from user sheet.
+- Features ("planned by pros"): 3 Drive line icons /public/pros-*.png.
+- About page (/about) rebuilt as 1:1 copy of tourlane.com/about-us (brand swapped to Hi Tours): hero collage, Welcome, Recognized by (CNBC/Forbes/Lonely Planet + BBB/ASTA), Why Choose, 3 step cards, AdventureCTA with "Start planning your own Hi Tours" heading (AdventureCTA now accepts `heading` prop), destination carousel (Hi Tours destinations), 12 FAQs. Old media-kit/backed/office sections removed. aboutData.js rewritten.
+- Footer "Hi Tours" column: "About us" link (-> /about) added first; Footer supports FOOTER_HREFS map.

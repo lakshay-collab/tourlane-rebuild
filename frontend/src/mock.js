@@ -102,16 +102,16 @@ export const moments = {
     cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=64&q=60&fm=webp')
   ],
   items: [
-    { title: 'Riding the train through the tea fields of Sri Lanka', name: 'Sophia and Jonas', image: '/moments/forest_family.webp' },
-    { title: 'Discovering that giraffes have blue-black tongues', name: 'Petra', image: '/moments/kangaroo.webp' },
-    { title: 'Travelling alone for the first time to finally see sequoias', name: 'Sven', image: '/moments/santorini.webp' },
-    { title: 'Feeding the giant tortoises in the Seychelles', name: 'Josephine', image: '/moments/tortoise.webp' },
-    { title: 'Sleeping under the starry sky of Botswana', name: 'Daniel and Laura', image: '/moments/northern_lights.webp' },
-    { title: 'Showing a 6-year-old the Grand Canyon from above', name: 'Miriam, Sebastian and Noah', image: '/moments/family_trip.webp' },
-    { title: 'Relaxing with a mud mask in Iceland’s lagoons', name: 'Gauthier', image: '/moments/alps.webp' },
-    { title: 'Travelling Namibia with three generations', name: 'Karina and her family', image: '/moments/eiffel_family.webp' },
-    { title: 'Celebrating a milestone birthday in the rainforest', name: 'Gregor', image: '/moments/panda.webp' },
-    { title: 'Finally seeing the Big Five on safari', name: 'Karl-Heinz, Michael and Susanne', image: '/moments/safari.webp' }
+    { title: 'Our Sri Lanka escape took us deep into nature and gave the whole family memories to cherish.', name: 'The Sharma Family', image: '/moments/forest_family.webp' },
+    { title: "Driving along Australia's Great Ocean Road and spotting wildlife along the way was unforgettable.", name: 'Kavya', image: '/moments/kangaroo.webp' },
+    { title: 'Watching the Santorini sunset over the Aegean Sea was the perfect end to our Greece getaway.', name: 'Simran & Aditya', image: '/moments/santorini.webp' },
+    { title: 'Getting so close to the giant tortoises made our Seychelles trip even more unforgettable.', name: 'Ishita', image: '/moments/tortoise.webp' },
+    { title: "Standing under the Northern Lights in Tromsø was one of those travel moments we'll never forget.", name: 'Meera & Kunal', image: '/moments/northern_lights.webp' },
+    { title: 'Nothing brought us closer than exploring the snow-covered mountains together as a family.', name: 'The Shah Family', image: '/moments/family_trip.webp' },
+    { title: 'Exploring the Swiss Alps in summer gave us the perfect mix of adventure and slow days.', name: 'Ananya & Rohan', image: '/moments/alps.webp' },
+    { title: 'Our Paris family holiday was filled with beautiful views, great food and memories together.', name: 'The Mehra Family', image: '/moments/eiffel_family.webp' },
+    { title: 'Seeing a giant panda up close in Chengdu was easily one of our favourite travel memories.', name: 'Ishita', image: '/moments/panda.webp' },
+    { title: 'Our Maasai Mara safari brought us closer to wildlife than we had ever imagined.', name: 'Rahul & Priya', image: '/moments/safari.webp' }
   ]
 };
 
@@ -258,7 +258,7 @@ export const newsletter = {
 export const footer = {
   description: 'Hi Tours creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
   columns: [
-    { title: 'Hi Tours', links: ['Travel with us', 'Work with us', 'Partnerships', 'Reviews', 'Press', 'App', 'Service portal'] },
+    { title: 'Hi Tours', links: ['About us', 'Travel with us', 'Work with us', 'Partnerships', 'Reviews', 'Press', 'App', 'Service portal'] },
     { title: 'Destinations', links: ['Costa Rica', 'Iceland', 'South Africa', 'Tanzania', 'Namibia', 'Canada', 'USA', 'Thailand', 'Japan', 'Australia', 'More destinations', 'Travel calendar'] }
   ],
   care: { title: 'Hi Tours Care', lines: ['Book worry-free', 'Flexible rebooking and cancellation'], cta: 'Learn more' },
