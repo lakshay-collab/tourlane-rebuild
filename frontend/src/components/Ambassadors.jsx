@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { ChevronLeft } from 'lucide-react';
 import { ambassadors } from '../mock';
 
 export default function Ambassadors() {
-  const [idx, setIdx] = useState(0);
-  const n = ambassadors.images.length;
+  const [idx] = useState(0);
   return (
     <section className="pt-16 md:pt-20" data-testid="ambassadors-section">
       <div className="tl-container">
@@ -24,9 +22,6 @@ export default function Ambassadors() {
                 ))}
               </div>
             </div>
-            <button onClick={() => setIdx((idx - 1 + n) % n)} className="arrow-btn absolute left-4 top-1/2 -translate-y-1/2" aria-label="Previous" data-testid="ambassadors-prev">
-              <ChevronLeft size={20} />
-            </button>
           </div>
         </div>
       </div>
