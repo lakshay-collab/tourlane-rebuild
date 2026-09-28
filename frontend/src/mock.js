@@ -102,16 +102,16 @@ export const moments = {
     cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=64&q=60&fm=webp')
   ],
   items: [
-    { title: 'Our Sri Lanka escape took us deep into nature and gave the whole family memories to cherish.', name: 'The Sharma Family', image: '/moments/forest_family.webp' },
-    { title: "Driving along Australia's Great Ocean Road and spotting wildlife along the way was unforgettable.", name: 'Kavya', image: '/moments/kangaroo.webp' },
-    { title: 'Watching the Santorini sunset over the Aegean Sea was the perfect end to our Greece getaway.', name: 'Simran & Aditya', image: '/moments/santorini.webp' },
-    { title: 'Getting so close to the giant tortoises made our Seychelles trip even more unforgettable.', name: 'Ishita', image: '/moments/tortoise.webp' },
-    { title: "Standing under the Northern Lights in Tromsø was one of those travel moments we'll never forget.", name: 'Meera & Kunal', image: '/moments/northern_lights.webp' },
-    { title: 'Nothing brought us closer than exploring the snow-covered mountains together as a family.', name: 'The Shah Family', image: '/moments/family_trip.webp' },
-    { title: 'Exploring the Swiss Alps in summer gave us the perfect mix of adventure and slow days.', name: 'Ananya & Rohan', image: '/moments/alps.webp' },
-    { title: 'Our Paris family holiday was filled with beautiful views, great food and memories together.', name: 'The Mehra Family', image: '/moments/eiffel_family.webp' },
-    { title: 'Seeing a giant panda up close in Chengdu was easily one of our favourite travel memories.', name: 'Ishita', image: '/moments/panda.webp' },
-    { title: 'Our Maasai Mara safari brought us closer to wildlife than we had ever imagined.', name: 'Rahul & Priya', image: '/moments/safari.webp' }
+    { title: 'Sri Lanka gave our family the perfect escape into nature', name: 'The Sharma Family', image: '/moments/forest_family.webp' },
+    { title: 'Spotting a wild koala made my solo Australia trip even more special', name: 'Kavya', image: '/moments/kangaroo.webp' },
+    { title: 'That Santorini sunset was the perfect ending to our Greece getaway', name: 'Simran & Aditya', image: '/moments/santorini.webp' },
+    { title: 'Getting close to the giant tortoises made Seychelles truly special.', name: 'Ishita', image: '/moments/tortoise.webp' },
+    { title: 'Seeing the Northern Lights in Tromsø felt like a dream come true', name: 'Meera & Kunal', image: '/moments/northern_lights.webp' },
+    { title: "Exploring New Zealand's mountains together was a family memory to cherish", name: 'The Shah Family', image: '/moments/family_trip.webp' },
+    { title: 'The Swiss Alps in summer were the perfect mix of adventure and calm', name: 'Ananya & Rohan', image: '/moments/alps.webp' },
+    { title: "Paris with our family gave us memories we'll always cherish", name: 'The Mehra Family', image: '/moments/eiffel_family.webp' },
+    { title: 'Meeting pandas up close was our favourite memory from Chengdu', name: 'Ishita', image: '/moments/panda.webp' },
+    { title: 'Our Maasai Mara safari brought us closer to the wild than ever', name: 'Rahul & Priya', image: '/moments/safari.webp' }
   ]
 };
 
