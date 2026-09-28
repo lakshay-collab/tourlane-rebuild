@@ -102,16 +102,16 @@ export const moments = {
     cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=64&q=60&fm=webp')
   ],
   items: [
-    { title: 'Riding the train through the tea fields of Sri Lanka', name: 'Sophia and Jonas', image: cf('1dQ7d5CgcY0b4H47L6ZFco/da54c9701bb26be3c0b83cf61efcfa0d/Hi ToursMoments2_TGrading_ResizedHQ_10__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Discovering that giraffes have blue-black tongues', name: 'Petra', image: cf('x9b7lqPNy2lQx7yhJjDXi/8f867b8ef57c91370ccfdd0f855dfaca/Hi ToursMoments2_TGrading_ResizedHQ__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Travelling alone for the first time to finally see sequoias', name: 'Sven', image: cf('3h3BnZFYsZclZv4Q9y4WEJ/6f77d190f67214e1ce70c367a333d387/Hi ToursMoments2_TGrading_ResizedHQ_9__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Feeding the giant tortoises in the Seychelles', name: 'Josephine', image: cf('6IClyztxwJ0cagUFzZxl72/0d433c2a885d2775596ee0089f7d5ef1/jose_phiiine_Seychelles.png', 'w=520&q=60&fm=webp') },
-    { title: 'Sleeping under the starry sky of Botswana', name: 'Daniel and Laura', image: cf('6z7P0FZ5GShUpT5Z5t9jeV/18757623b9f838bbf9d2d388f618c5c3/Hi ToursMoments2_TGrading_ResizedHQ_4.png', 'w=520&q=60&fm=webp') },
-    { title: 'Showing a 6-year-old the Grand Canyon from above', name: 'Miriam, Sebastian and Noah', image: cf('6xpboCcJswsUTdugksbGJP/4a02c2377400555ac65ff3240d4c4e99/Grand_canyon.jpg', 'w=520&q=60&fm=webp') },
-    { title: 'Relaxing with a mud mask in Iceland’s lagoons', name: 'Gauthier', image: cf('2kpFC0Gsi00VzrDASMLD7y/fd37e9928cb47782062fcad51c0ad384/Hi ToursMoments2_TGrading_ResizedHQ_8__1_.png', 'w=520&q=60&fm=webp') },
-    { title: 'Travelling Namibia with three generations', name: 'Karina and her family', image: cf('2qXzDmsIm4yphVesAT7GAH/b91211db32330a966e999146a8a41230/Hi ToursMoments2_TGrading_ResizedHQ_5.png', 'w=520&q=60&fm=webp') },
-    { title: 'Celebrating a milestone birthday in the rainforest', name: 'Gregor', image: cf('7qfRHsMsKGbKwqYEJQrHyN/6222ee23dab05d6d251ecf053b1069eb/Hi ToursMoments2_TGrading_ResizedHQ_7.png', 'w=520&q=60&fm=webp') },
-    { title: 'Finally seeing the Big Five on safari', name: 'Karl-Heinz, Michael and Susanne', image: cf('6kTfWQ3BBlANQNE9nSHQ3C/773f286b7aa097be5705cd19d2e41be6/Hi ToursMoments2_TGrading_ResizedHQ_2.png', 'w=520&q=60&fm=webp') }
+    { title: 'Riding the train through the tea fields of Sri Lanka', name: 'Sophia and Jonas', image: '/moments/forest_family.webp' },
+    { title: 'Discovering that giraffes have blue-black tongues', name: 'Petra', image: '/moments/kangaroo.webp' },
+    { title: 'Travelling alone for the first time to finally see sequoias', name: 'Sven', image: '/moments/santorini.webp' },
+    { title: 'Feeding the giant tortoises in the Seychelles', name: 'Josephine', image: '/moments/tortoise.webp' },
+    { title: 'Sleeping under the starry sky of Botswana', name: 'Daniel and Laura', image: '/moments/northern_lights.webp' },
+    { title: 'Showing a 6-year-old the Grand Canyon from above', name: 'Miriam, Sebastian and Noah', image: '/moments/family_trip.webp' },
+    { title: 'Relaxing with a mud mask in Iceland’s lagoons', name: 'Gauthier', image: '/moments/alps.webp' },
+    { title: 'Travelling Namibia with three generations', name: 'Karina and her family', image: '/moments/eiffel_family.webp' },
+    { title: 'Celebrating a milestone birthday in the rainforest', name: 'Gregor', image: '/moments/panda.webp' },
+    { title: 'Finally seeing the Big Five on safari', name: 'Karl-Heinz, Michael and Susanne', image: '/moments/safari.webp' }
   ]
 };
 
