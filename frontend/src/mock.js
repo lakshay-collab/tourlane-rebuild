@@ -67,7 +67,7 @@ export const features = {
 };
 
 export const ambassadors = {
-  heading: 'On the road with Hi Tours',
+  heading: 'Talking Travel with Hi Tours',
   subheading: 'Voices from TV, media and culture',
   text:
     'Those who travel a lot know what matters. That is why well-known personalities trust Hi Tours – to experience extraordinary trips planned individually, personally and down to the last detail.',
