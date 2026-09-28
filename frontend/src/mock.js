@@ -72,10 +72,7 @@ export const ambassadors = {
   text:
     'Those who travel a lot know what matters. That is why well-known personalities trust Hi Tours – to experience extraordinary trips planned individually, personally and down to the last detail.',
   cta: 'Learn more',
-  images: [
-    cf('6ukED2YGVhw5AgrnKYAwe6/64dfa5b7f35b779d8b0fe3b8d1355b84/Ambassadors_Homepage_Module_01.png', 'w=1400&q=70&fm=webp'),
-    cf('5kYtSQxnWHsYulaVFu9GhC/ef4a6ed7d4548aab56f8c4764f260e87/Ambassadors_Homepage_Module_02.png', 'w=1400&q=70&fm=webp')
-  ]
+  images: ['/home/on-the-road.webp']
 };
 
 export const comparison = {

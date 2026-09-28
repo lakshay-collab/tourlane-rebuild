@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { ambassadors } from '../mock';
 
 export default function Ambassadors() {
@@ -26,9 +26,6 @@ export default function Ambassadors() {
             </div>
             <button onClick={() => setIdx((idx - 1 + n) % n)} className="arrow-btn absolute left-4 top-1/2 -translate-y-1/2" aria-label="Previous" data-testid="ambassadors-prev">
               <ChevronLeft size={20} />
-            </button>
-            <button onClick={() => setIdx((idx + 1) % n)} className="arrow-btn absolute right-4 top-1/2 -translate-y-1/2" aria-label="Next" data-testid="ambassadors-next">
-              <ChevronRight size={20} />
             </button>
           </div>
         </div>
