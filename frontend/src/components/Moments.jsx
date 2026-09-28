@@ -24,8 +24,8 @@ export default function Moments() {
               <img src={m.image} alt={m.title} className="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#002131]/80 via-[#002131]/20 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                <h3 className="text-[11px] leading-[15px] font-medium">{m.title}</h3>
-                <p className="text-[11px] leading-[15px] text-white/80 mt-1 font-normal">{m.name}</p>
+                <h3 className="text-[12px] leading-[16px] font-medium">{m.title}</h3>
+                <p className="text-[12px] leading-[16px] text-white/80 mt-1 font-normal">{m.name}</p>
               </div>
             </article>
           ))}
