@@ -216,13 +216,13 @@ export const experts = {
   heading: 'Meet our travel experts',
   cta: 'Discover the Hi Tours experts',
   items: [
-    { name: 'Laura Behrens', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: '/experts/gurpreet.webp' },
+    { name: 'Gurpreet', role: 'Travel expert for South Africa', experience: '6 years of experience', specialties: ['Honeymoons', 'Safari'], photo: '/experts/gurpreet.webp' },
     { name: 'Karan Malhotra', role: 'Travel expert for New Zealand', experience: '15 years of experience', specialties: ['Active travel', 'Culture tips'], photo: '/experts/abhay.webp' },
-    { name: 'Mireia Sanchez', role: 'Travel expert for Sri Lanka', experience: '3 years of experience', specialties: ['Family-friendly travel', 'Road trips'], photo: '/experts/devendra.webp' },
-    { name: 'Marvin Luczynski', role: 'Travel expert for Italy', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: '/experts/aditya.webp' },
-    { name: 'Camille Mollon', role: 'Travel expert for Oman', experience: '3 years of experience', specialties: ['Honeymoons', 'Active travel'], photo: '/experts/sharon.webp' },
-    { name: 'Constant Le Dantec', role: 'Travel expert for Peru', experience: '6 years of experience', specialties: ['Culture tips', 'Culinary recommendations'], photo: '/experts/raghav.webp' },
-    { name: 'Isabel Blaes', role: 'Travel expert for Iceland', experience: '1 year of experience', specialties: ['Road trips', 'Active travel'], photo: '/experts/riya.webp' }
+    { name: 'Aditya', role: 'Travel expert for Sri Lanka', experience: '3 years of experience', specialties: ['Family-friendly travel', 'Road trips'], photo: '/experts/devendra.webp' },
+    { name: 'Rahul', role: 'Travel expert for Italy', experience: '5 years of experience', specialties: ['Road trips', 'Culinary recommendations'], photo: '/experts/aditya.webp' },
+    { name: 'Sharon', role: 'Travel expert for Oman', experience: '3 years of experience', specialties: ['Honeymoons', 'Active travel'], photo: '/experts/sharon.webp' },
+    { name: 'Raghav', role: 'Travel expert for Peru', experience: '6 years of experience', specialties: ['Culture tips', 'Culinary recommendations'], photo: '/experts/raghav.webp' },
+    { name: 'Riya', role: 'Travel expert for Iceland', experience: '1 year of experience', specialties: ['Road trips', 'Active travel'], photo: '/experts/riya.webp' }
   ]
 };
 
