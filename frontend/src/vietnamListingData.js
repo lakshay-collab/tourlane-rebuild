@@ -68,9 +68,9 @@ export const reviews = {
   h2: 'What customers say about booking Vietnam with Hi Tours',
   count: 'based on 420 Vietnam reviews',
   items: [
-    { name: 'Camelia', title: 'A dream come true in Vietnam', date: '3 May 2026', stars: 5, image: '/vietnam/reviews/friends-trip.webp', text: 'We wanted a very special trip – a honeymoon made up for 25 years later. Vietnam and Cambodia were exactly that. We felt like we were in a dream: inspiring, educational and delicious. I will not forget a single minute of it.' },
-    { name: 'Nicolas', title: 'A unique trip through Vietnam', date: '14 April 2026', stars: 5, image: '/vietnam/reviews/halong-bay-couple.webp', text: 'WOW! Vietnam was simply amazing. Everything planned with our travel expert – flights, transfers, excursions – worked perfectly. I travelled alone but never felt alone or lost. Happy to book again.' },
-    { name: 'Christina', title: 'Everything perfectly organised', date: '29 March 2026', stars: 5, image: '/vietnam/reviews/hoi-an.webp', text: 'We had a wonderful time in Vietnam. Thanks to the excellent organisation by Hi Tours and the local partner we could really enjoy the trip and hardly had to worry about anything, while still having time for spontaneous activities. The advice before the trip was great too.' }
+    { name: 'Prajakta and Sneha', title: 'A dream come true in Vietnam', date: '3 May 2026', stars: 5, image: '/vietnam/reviews/friends-trip.webp', text: 'We wanted a very special trip – a honeymoon made up for 25 years later. Vietnam and Cambodia were exactly that. We felt like we were in a dream: inspiring, educational and delicious. I will not forget a single minute of it.' },
+    { name: 'Shubham and Arpita', title: 'A unique trip through Vietnam', date: '14 April 2026', stars: 5, image: '/vietnam/reviews/halong-bay-couple.webp', text: 'WOW! Vietnam was simply amazing. Everything planned with our travel expert – flights, transfers, excursions – worked perfectly. I travelled alone but never felt alone or lost. Happy to book again.' },
+    { name: 'Apporva', title: 'Everything perfectly organised', date: '29 March 2026', stars: 5, image: '/vietnam/reviews/hoi-an.webp', text: 'We had a wonderful time in Vietnam. Thanks to the excellent organisation by Hi Tours and the local partner we could really enjoy the trip and hardly had to worry about anything, while still having time for spontaneous activities. The advice before the trip was great too.' }
   ]
 };
 
