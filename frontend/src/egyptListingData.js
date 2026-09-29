@@ -148,6 +148,8 @@ export const reviews = {
     { name: 'Anna F.', title: 'Excellently organised', date: '22 June 2025', stars: 5, image: reviewImages[2], text: 'Our trip was excellently organised from start to finish – a heartfelt thank you for that! We were particularly impressed by the consistently outstanding service, both in the preparation and on site. A big compliment to our local guide, who was there for us at any time of day. When we unexpectedly had to leave early, we were helped immediately and without any fuss.' }
   ]
 };
+const egyptReviewNames = { Lysann: 'Swati', Iris: 'Rahul & Priya', 'Anna F.': 'Nancy' };
+export const egyptReviewItems = reviews.items.map((r) => ({ ...r, name: egyptReviewNames[r.name] || r.name }));
 
 const placeNames = ['Alexandria', 'Aswan', 'Hurghada', 'Cairo', 'Luxor', 'Sharm El-Sheikh'];
 export const places = { h2: 'Discover these places in Egypt', items: placeNames.map((title, i) => ({ title, alt: title, tag: null, href: `#place-${i}`, image: placeImages[i] })) };

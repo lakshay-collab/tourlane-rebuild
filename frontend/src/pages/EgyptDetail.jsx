@@ -47,9 +47,9 @@ const destinationFor = (d) => {
     reviewItems: extra.reviews?.items || (name === 'Egypt' ? egyptReviewItems : undefined)
   };
 };
-import { products, formatInr, styles, reviews as egyptReviews } from '../egyptListingData';
+import { products, formatInr, styles, egyptReviewItems as egyptReviewItems0 } from '../egyptListingData';
 const EGYPT_REVIEW_IMAGES = ['/egypt/reviews/camel.webp', '/egypt/reviews/couple-pyramid.webp', '/egypt/reviews/karnak-temple.webp'];
-const egyptReviewItems = egyptReviews.items.map((r, i) => ({ ...r, image: EGYPT_REVIEW_IMAGES[i] || r.image }));
+const egyptReviewItems = egyptReviewItems0.map((r, i) => ({ ...r, image: EGYPT_REVIEW_IMAGES[i] || r.image }));
 import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
 
