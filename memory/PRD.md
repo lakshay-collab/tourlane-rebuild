@@ -423,3 +423,9 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-29: DesignEscapeModal visual upgrade: two-panel (46% destination image = itinerary gallery[0] with gradient + "PLAN YOUR ESCAPE / <Destination>" label; form panel), 960px max, rounded-3xl, white glass close button; mobile = image top (200px) + scrollable form. Logic/testids unchanged.
 - 2026-09-29: DesignEscapeModal backdrop only: replaced flat dark-grey look (root `.eg` cream bg + 60% navy) with live blurred page — `.dye-backdrop` = rgba(0,33,49,.28) + backdrop-filter blur(12px) saturate(1.15), fade-in; `.eg.dye-root` bg transparent; `@supports not` fallback 55% tint (index.css). Form card untouched. Verified via screenshot desktop+mobile.
 
+
+## 2026-09-29 — Kraya CRM lead sync
+- `POST /api/leads` now forwards every lead server-side to Kraya (`KRAYA_API_KEY`, `KRAYA_LEADS_URL` in backend/.env, never in frontend). Payload: name, phone (country_code+phone), email, Destination, stage "New Lead", pipeline "Leads".
+- Server validation (name/phone/email/destination → 400 with user-facing message); planner leads without destination fall back to trip_title/source.
+- Kraya failure → lead stored with `kraya_status: failed` and 502 returned; DesignEscapeModal shows the server message instead of success. Duplicate guard: same email+phone+destination synced within 2 min returns the existing lead (no second Kraya call); modal also ignores clicks while sending.
+- Verified: one controlled UI submission ("Hi Tours Website Test", website-test@hitours.in) → Kraya 200 OK; double-click created one lead; error path confirmed with an invalid URL. `.env` added to .gitignore.

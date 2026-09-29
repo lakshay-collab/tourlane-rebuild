@@ -1,5 +1,8 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
+import httpx
+import re
+from datetime import timedelta
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
@@ -42,7 +45,7 @@ class LeadCreate(BaseModel):
     phone: str
     email: str
     destination: str = ""
-    country_code: str = "+91"
+    country_code: str = ""
     trip_title: str = ""
     source: str = ""
     passengers: Optional[Dict[str, int]] = None
@@ -54,11 +57,42 @@ class Lead(BaseModel):
     phone: str
     email: str
     destination: str = ""
-    country_code: str = "+91"
+    country_code: str = ""
     trip_title: str = ""
     source: str = ""
     passengers: Optional[Dict[str, int]] = None
+    kraya_status: str = "pending"
+    kraya_lead_id: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]{2,}$")
+PHONE_RE = re.compile(r"^\+?[0-9][0-9\s().-]{6,17}$")
+KRAYA_USER_ERROR = "We couldn't submit your request right now. Please try again in a moment."
+
+def validate_lead(lead: "LeadCreate"):
+    lead.name, lead.phone, lead.email, lead.destination = lead.name.strip(), lead.phone.strip(), lead.email.strip(), lead.destination.strip()
+    if not lead.name:
+        raise HTTPException(400, "Please enter your name")
+    if not PHONE_RE.match(lead.phone):
+        raise HTTPException(400, "Please enter a valid phone number")
+    if not EMAIL_RE.match(lead.email):
+        raise HTTPException(400, "Please enter a valid email address")
+    if not lead.destination:
+        raise HTTPException(400, "Destination is required")
+
+async def push_lead_to_kraya(lead: Lead) -> str:
+    api_key, url = os.environ['KRAYA_API_KEY'], os.environ['KRAYA_LEADS_URL']
+    payload = {"name": lead.name, "phone": f"{lead.country_code}{lead.phone}", "email": lead.email, "Destination": lead.destination, "stage": "New Lead", "pipeline": "Leads"}
+    async with httpx.AsyncClient(timeout=httpx.Timeout(15.0, connect=5.0)) as http:
+        res = await http.post(url, json=payload, headers={"X-KRAYA-API-KEY": api_key, "Content-Type": "application/json"})
+    if res.is_error:
+        raise RuntimeError(f"Kraya {res.status_code}: {res.text[:300]}")
+    try:
+        body = res.json()
+    except ValueError:
+        return ""
+    data = body.get("data", body) if isinstance(body, dict) else {}
+    return str(data.get("id") or data.get("_id") or data.get("leadId") or "") if isinstance(data, dict) else ""
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -91,11 +125,28 @@ async def get_status_checks():
 
 @api_router.post("/leads", response_model=Lead)
 async def create_lead(input: LeadCreate):
+    if not input.destination:
+        input.destination = input.trip_title or input.source
+    validate_lead(input)
+    since = (datetime.now(timezone.utc) - timedelta(minutes=2)).isoformat()
+    dup = await db.leads.find_one({"email": input.email, "phone": input.phone, "destination": input.destination, "kraya_status": "synced", "created_at": {"$gte": since}}, {"_id": 0})
+    if dup:
+        logger.info(f"Duplicate lead ignored: {input.email} / {input.destination}")
+        dup['created_at'] = datetime.fromisoformat(dup['created_at'])
+        return dup
     lead = Lead(**input.model_dump())
+    try:
+        lead.kraya_lead_id = await push_lead_to_kraya(lead)
+        lead.kraya_status = "synced"
+    except (httpx.HTTPError, RuntimeError) as exc:
+        lead.kraya_status = "failed"
+        logger.error(f"Kraya sync failed for {lead.email}: {exc}")
     doc = lead.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.leads.insert_one(doc)
-    logger.info(f"New lead captured: {lead.name} / {lead.country_code}{lead.phone} / {lead.email} / trip='{lead.trip_title}' / destination='{lead.destination}'")
+    logger.info(f"New lead captured: {lead.name} / {lead.country_code}{lead.phone} / {lead.email} / destination='{lead.destination}' / kraya={lead.kraya_status}")
+    if lead.kraya_status != "synced":
+        raise HTTPException(502, KRAYA_USER_ERROR)
     return lead
 
 @api_router.get("/leads", response_model=List[Lead])

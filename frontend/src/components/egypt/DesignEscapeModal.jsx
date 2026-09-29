@@ -26,6 +26,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   const [form, setForm] = useState({ name: '', phone: '', email: '' });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (!open) return undefined;
@@ -36,21 +37,25 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
     return () => { document.body.style.overflow = overflow; window.removeEventListener('keydown', onKey); };
   }, [open, onClose]);
 
-  useEffect(() => { if (!open) { setForm({ name: '', phone: '', email: '' }); setErrors({}); setStatus('idle'); } }, [open]);
+  useEffect(() => { if (!open) { setForm({ name: '', phone: '', email: '' }); setErrors({}); setStatus('idle'); setSubmitError(''); } }, [open]);
 
   if (!open) return null;
   const set = (k) => (e) => { setForm((f) => ({ ...f, [k]: e.target.value })); if (errors[k]) setErrors((er) => ({ ...er, [k]: '' })); };
   const submit = async (e) => {
     e.preventDefault();
+    if (status === 'sending') return;
     const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination };
     const errs = validate(lead);
     setErrors(errs);
     if (Object.values(errs).some(Boolean)) return;
     setStatus('sending');
+    setSubmitError('');
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { ...lead, trip_title: tripTitle || '', source: 'design-your-escape' });
       setStatus('done');
-    } catch {
+    } catch (err) {
+      const detail = err?.response?.data?.detail;
+      setSubmitError(typeof detail === 'string' ? detail : '');
       setStatus('error');
     }
   };
@@ -89,7 +94,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
               <Field label="Phone" error={errors.phone}><input type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={set('phone')} placeholder="Enter your phone number" className={cls('phone')} data-testid="dye-phone" /></Field>
               <Field label="Email" error={errors.email}><input type="email" autoComplete="email" value={form.email} onChange={set('email')} placeholder="Enter your email address" className={cls('email')} data-testid="dye-email" /></Field>
               <Field label="Destination" error={errors.destination}><input type="text" value={destination} readOnly aria-readonly="true" className={`${inputCls} border-[#E4E3DB] bg-[#F0EEE6] text-[#174358] cursor-default`} data-testid="dye-destination" /></Field>
-              {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">Something went wrong – please try again.</p>}
+              {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">{submitError || 'Something went wrong – please try again.'}</p>}
               <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-14 w-full eg-title-md disabled:opacity-70 mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Start Planning'}</button>
               <p className="eg-body-sm text-[#6F777C] text-center">No obligation · Your details stay with Hi Tours</p>
             </form>
