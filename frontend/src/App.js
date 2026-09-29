@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Home from './pages/Home';
 import EgyptListing from './pages/EgyptListing';
 import EgyptHolidays from './pages/EgyptHolidays';
@@ -13,10 +14,18 @@ import Care from './pages/Care';
 
 const StyleRedirect = () => <Navigate to={`/afrika/aegypten/holidays/${useParams().style}`} replace />;
 
+// Reset scroll to the top on every route change (hash links keep their in-page target).
+const ScrollToTop = () => {
+  const { pathname, hash } = useLocation();
+  useEffect(() => { if (!hash) window.scrollTo(0, 0); }, [pathname, hash]);
+  return null;
+};
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/afrika/aegypten" element={<EgyptListing />} />
