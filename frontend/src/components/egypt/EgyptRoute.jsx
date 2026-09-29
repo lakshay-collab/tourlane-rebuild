@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { detail, route } from '../../egyptDetailData';
+import { route } from '../../egyptDetailData';
 import { X, Plane, Car } from 'lucide-react';
 import { ChevronLeft, ChevronRight, HotelIcon, ExploreIcon, GalleryIcon, PinIcon } from './EgyptIcons';
 
-const stop = (e) => e.preventDefault();
 
 export const RouteLine = ({ cities, className = '', testId = 'eg-route-line' }) => (
   <div className={`flex flex-wrap items-center gap-x-1 gap-y-1.5 ${className}`} data-testid={testId}>
@@ -56,10 +55,9 @@ function StopCarousel({ images, name }) {
   );
 }
 
-const SectionHead = ({ icon: Icon, title, cta, testId, extra }) => (
+const SectionHead = ({ icon: Icon, title, extra }) => (
   <div className="flex items-center justify-between gap-3">
     <div className="flex items-center gap-2 min-w-0"><Icon size={24} className="text-[#174358] shrink-0" /><h4 className="eg-title-md md:eg-title-lg text-[#002131]">{title}</h4>{extra}</div>
-    <a href={detail.ctaHref} onClick={stop} className="inline-flex items-center h-8 px-3 rounded-full bg-[#E75E26] hover:bg-[#812F0E] eg-label-lg text-white whitespace-nowrap shrink-0 transition-colors" data-testid={testId}>{cta}</a>
   </div>
 );
 
@@ -92,7 +90,7 @@ function Accommodation({ a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="flex flex-col gap-3" data-testid="eg-stop-accommodation">
-      <SectionHead icon={HotelIcon} title={route.accommodationHeading} cta={route.accommodationCta} testId="eg-accommodation-cta" />
+      <SectionHead icon={HotelIcon} title={route.accommodationHeading} />
       <div className="flex bg-[#FBF9F1] border border-[#C4CBD0] rounded-xl overflow-hidden" data-testid="eg-accommodation-card">
         <button type="button" onClick={() => setOpen(true)} className="relative w-[120px] sm:w-[160px] shrink-0 text-left" aria-label={`${route.viewPhotos}: ${a.name}`}><img src={a.images[0]} alt={a.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" /></button>
         <div className="p-4 flex flex-col justify-center gap-1 min-w-0">
@@ -111,7 +109,7 @@ function Activities({ items }) {
   const scroll = (d) => track.current && track.current.scrollBy({ left: d * 292, behavior: 'smooth' });
   return (
     <div className="flex flex-col gap-3 min-w-0" data-testid="eg-stop-activities">
-      <SectionHead icon={ExploreIcon} title={route.programHeading} cta={route.programCta} testId="eg-activities-cta" extra={<span className="eg-body-md text-[#174358]">({items.length})</span>} />
+      <SectionHead icon={ExploreIcon} title={route.programHeading} extra={<span className="eg-body-md text-[#174358]">({items.length})</span>} />
       <div className="relative">
         <div ref={track} className="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0" data-testid="eg-activities-track">
           {items.map((a) => (

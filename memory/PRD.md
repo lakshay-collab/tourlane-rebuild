@@ -429,3 +429,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Server validation (name/phone/email/destination → 400 with user-facing message); planner leads without destination fall back to trip_title/source.
 - Kraya failure → lead stored with `kraya_status: failed` and 502 returned; DesignEscapeModal shows the server message instead of success. Duplicate guard: same email+phone+destination synced within 2 min returns the existing lead (no second Kraya call); modal also ignores clicks while sending.
 - Verified: one controlled UI submission ("Hi Tours Website Test", website-test@hitours.in) → Kraya 200 OK; double-click created one lead; error path confirmed with an invalid URL. `.env` added to .gitignore.
+
+- 2026-09-29: Removed "Customise hotels" / "Customise activities" orange pill CTAs from itinerary route sections site-wide (`EgyptRoute.jsx` SectionHead, `egyptDetailData.js` accommodationCta/programCta). Headings unchanged.
