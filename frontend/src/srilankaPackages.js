@@ -49,7 +49,7 @@ export const packages = [
     itinerary: [KANDY_ARRIVAL, KANDY_NUWARA(2), NUWARA_BENTOTA(3), GALLE_DAY(4), BENTOTA_COLOMBO(5), DEPART(6)],
     pricing: PRICING(43199, 86398, 25920), price: 43199,
     inclusions: INCL(5), exclusions: EXCL,
-    gallery: [IMG.hill, IMG.kandyTemple, IMG.tea, IMG.turtles, IMG.coast], alt: 'Misty hill station above the tea country, Sri Lanka'
+    gallery: [IMG.kandyTemple, IMG.hill, IMG.tea, IMG.turtles, IMG.coast], alt: 'Temple of the Sacred Tooth Relic at dusk, Kandy, Sri Lanka'
   },
   {
     slug: 'sri-lanka-ancient-citadels-coastal-paradises-7d6n', name: 'Sri Lanka Classic: Ancient Citadels to Coastal Paradises', code: '6N/7D Hill Country, Culture & Coastal Highlights', days: 7, nights: 6, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'],
