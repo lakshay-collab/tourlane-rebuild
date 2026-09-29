@@ -49,6 +49,8 @@ class LeadCreate(BaseModel):
     trip_title: str = ""
     source: str = ""
     passengers: Optional[Dict[str, int]] = None
+    travel_dates: str = ""
+    traveller_count: str = ""
 
 class Lead(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -61,6 +63,8 @@ class Lead(BaseModel):
     trip_title: str = ""
     source: str = ""
     passengers: Optional[Dict[str, int]] = None
+    travel_dates: str = ""
+    traveller_count: str = ""
     kraya_status: str = "pending"
     kraya_lead_id: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -80,9 +84,24 @@ def validate_lead(lead: "LeadCreate"):
     if not lead.destination:
         raise HTTPException(400, "Destination is required")
 
+def kraya_phone(lead: "Lead") -> str:
+    digits = re.sub(r"\D", "", f"{lead.country_code}{lead.phone}")
+    return f"91{digits}" if len(digits) == 10 else digits
+
+def traveller_count(lead: "Lead") -> str:
+    if lead.traveller_count:
+        return lead.traveller_count
+    if not lead.passengers:
+        return ""
+    return ", ".join(f"{n} {label}" for label, n in lead.passengers.items() if n)
+
 async def push_lead_to_kraya(lead: Lead) -> str:
     api_key, url = os.environ['KRAYA_API_KEY'], os.environ['KRAYA_LEADS_URL']
-    payload = {"name": lead.name, "phone": f"{lead.country_code}{lead.phone}", "email": lead.email, "Destination": lead.destination, "stage": "New Lead", "pipeline": "Leads"}
+    payload = {
+        "name": lead.name, "phone": kraya_phone(lead), "email": lead.email, "Destination": lead.destination,
+        "Lead Source": "Website", "Travel Dates": lead.travel_dates, "Traveller Count": traveller_count(lead),
+        "stage": "New Lead", "pipeline": "Leads",
+    }
     async with httpx.AsyncClient(timeout=httpx.Timeout(15.0, connect=5.0)) as http:
         res = await http.post(url, json=payload, headers={"X-KRAYA-API-KEY": api_key, "Content-Type": "application/json"})
     if res.is_error:
