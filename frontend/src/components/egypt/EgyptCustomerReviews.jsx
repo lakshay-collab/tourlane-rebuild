@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { customerReviews as d } from '../../egyptListingData';
+import { customerReviews as egyptCustomerReviews } from '../../egyptListingData';
 import { BoxStars } from '../Rating';
 import { HotelIcon, TicketIcon, CarIcon, UserIcon, PhoneIcon, SparkleLeft, SparkleRight, SparklesIcon } from './EgyptIcons';
 
@@ -45,7 +45,8 @@ const ReviewCard = ({ r }) => {
   );
 };
 
-export default function EgyptCustomerReviews({ className = 'eg-wide mt-12 md:mt-16' }) {
+export default function EgyptCustomerReviews({ className = 'eg-wide mt-12 md:mt-16', data = egyptCustomerReviews }) {
+  const d = data;
   return (
     <section className={className} data-testid="eg-customer-reviews">
       <h2 className="eg-display-sm text-[#002131] text-center">{d.h2}</h2>

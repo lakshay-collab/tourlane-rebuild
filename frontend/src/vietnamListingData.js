@@ -1,5 +1,5 @@
 // Vietnam destination landing – same template/data shape as egyptListingData (destination = Vietnam, continent = Asia).
-import { features, planner as egyptPlanner, reviews as egyptReviews } from './egyptListingData';
+import { features, planner as egyptPlanner, reviews as egyptReviews, customerReviews as egyptCustomerReviews } from './egyptListingData';
 import { vietnamProducts } from './tours/vietnamToursData';
 
 const CT = 'https://images.ctfassets.net/bth3mlrehms2';
@@ -71,6 +71,16 @@ export const reviews = {
     { name: 'Nicolas', title: 'A unique trip through Vietnam', date: '14 April 2026', stars: 5, image: ct('2hggRcJJIUBpnLKSukA9nB/66ac7e66a4fcbe61ef782ec2b3ae15cf/Vietnam_VangVieng_Reisfelder.jpg').replace('w=1080', 'w=500'), text: 'WOW! Vietnam was simply amazing. Everything planned with our travel expert – flights, transfers, excursions – worked perfectly. I travelled alone but never felt alone or lost. Happy to book again.' },
     { name: 'Christina', title: 'Everything perfectly organised', date: '29 March 2026', stars: 5, image: ct('TKNjhrPNRWkSQBMowEUEr/6f74539faaf319b93fcfa1fe0cf9f202/Vietnam__Sapa__Wanderung.jpg').replace('w=1080', 'w=500'), text: 'We had a wonderful time in Vietnam. Thanks to the excellent organisation by Hi Tours and the local partner we could really enjoy the trip and hardly had to worry about anything, while still having time for spontaneous activities. The advice before the trip was great too.' }
   ]
+};
+
+// Destination-specific version of the holidays-page customer reviews block (same structure as Egypt's).
+export const customerReviews = {
+  ...egyptCustomerReviews,
+  h2: 'Our customers about their Vietnam trip',
+  summary: 'Amazing Vietnam trip – flights, transfers and excursions worked perfectly and every stop was a highlight.',
+  photos: [reviews.items[0].image.replace('w=500', 'w=600'), reviews.items[1].image.replace('w=500', 'w=300'), reviews.items[2].image.replace('w=500', 'w=300'), ct('3Z7A5HXNMctqsB6GE2jphI/4cef5ccca7d896a0b4f88281499fec30/Halong_Bucht_Vietnam.jpg').replace('w=1080', 'w=450')],
+  planExpert: '/experts/riya.webp',
+  items: reviews.items.map((r) => ({ initial: r.name[0], name: r.name, date: r.date, title: r.title, source: 'Trustpilot', text: r.text }))
 };
 
 const placeList = [
@@ -153,6 +163,6 @@ export const related = { h2: `More destinations in ${destination.continent}`, it
 export const vietnam = {
   pageTitle: 'Vietnam Honeymoons and holidays | Hi Tours',
   hero, crumbs, intro, tours, products, features, places, activities, themes, related, holidaysPath, holidaysCrumbs, plan, faq, planner,
-  reviews: { ...egyptReviews, ...reviews },
+  reviews: { ...egyptReviews, ...reviews }, customerReviews,
   plannerSource: 'vietnam-planner'
 };

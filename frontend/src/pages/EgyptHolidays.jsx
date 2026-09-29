@@ -11,9 +11,9 @@ import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptCustomerReviews from '../components/egypt/EgyptCustomerReviews';
 import { EgyptFaq } from '../components/egypt/EgyptSections';
 import { ChevronRight } from '../components/egypt/EgyptIcons';
-import { hero as egHero, tours as egTours, products as egProducts, sorts, styles, styleBySlug, holidaysPath as egHolidaysPath, holidaysCrumbs as egCrumbs, faq as egFaq, planner as egPlanner } from '../egyptListingData';
+import { hero as egHero, tours as egTours, products as egProducts, sorts, styles, styleBySlug, holidaysPath as egHolidaysPath, holidaysCrumbs as egCrumbs, faq as egFaq, planner as egPlanner, customerReviews as egCustomerReviews } from '../egyptListingData';
 
-const egyptHolidays = { hero: egHero, tours: egTours, products: egProducts, holidaysPath: egHolidaysPath, holidaysCrumbs: egCrumbs, faq: egFaq, planner: egPlanner, plannerSource: 'egypt-holidays', testId: 'egypt-holidays-page' };
+const egyptHolidays = { hero: egHero, tours: egTours, products: egProducts, holidaysPath: egHolidaysPath, holidaysCrumbs: egCrumbs, faq: egFaq, planner: egPlanner, plannerSource: 'egypt-holidays', testId: 'egypt-holidays-page', customerReviews: egCustomerReviews };
 
 const Chip = ({ label, value, onClear, testId }) => (
   <span className="inline-flex items-center gap-1 rounded-lg border border-[#C4CBD0] bg-white pl-3 pr-1.5 py-1 eg-label-lg text-[#002131]" data-testid={testId}>
@@ -148,7 +148,7 @@ export default function EgyptHolidays({ d = egyptHolidays }) {
         </section>
 
         <div id="planner" className="scroll-mt-20"><EgyptPlanner data={planner} source={d.plannerSource} /></div>
-        <EgyptCustomerReviews />
+        <EgyptCustomerReviews data={d.customerReviews} />
         <EgyptFaq centered className="eg-container mt-12 md:mt-16 mb-16" data={faq} />
       </main>
       <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
