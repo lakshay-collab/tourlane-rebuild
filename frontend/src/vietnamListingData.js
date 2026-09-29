@@ -51,7 +51,7 @@ export const tours = {
   readLess: 'Read less'
 };
 
-const P = (slug, title, tag, days, cities, hotels, activities, transfers, meals, price, alt, images) => ({ slug, title, tag, days, stops: cities, cities, hotels, activities, transfers, meals, price, alt, images, href: holidaysPath });
+const P = (slug, title, tag, days, cities, hotels, activities, transfers, meals, price, alt, images) => ({ slug, title, tag, days, stops: cities, cities, hotels, activities, transfers, meals, price, alt, images, href: `/asien/${slug}` });
 
 export const products = [
   P('vietnam-2-weeks', 'Vietnam in 2 weeks: from Hanoi to Ho Chi Minh City', 'Culture', 14, 6, 6, 11, 10, 13, 218700, 'Imperial City, Hue, Vietnam', [

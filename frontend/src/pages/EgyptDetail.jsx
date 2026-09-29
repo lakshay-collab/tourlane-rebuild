@@ -21,6 +21,8 @@ import { detail as detailPF, route as routePF, glance as glancePF, crumbs as cru
 import { detail as detailND, route as routeND, glance as glanceND, crumbs as crumbsND } from '../tours/nileDarshanData';
 import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as crumbsNN } from '../tours/nileNoorData';
 import ReelGallery from '../components/egypt/ReelGallery';
+import { vietnamBySlug } from '../tours/vietnamToursData';
+import { products as vietnamProducts } from '../vietnamListingData';
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
@@ -39,7 +41,8 @@ const BY_SLUG = {
   [detailNP.slug]: { detail: detailNP, route: routeNP, glance: glanceNP, crumbs: crumbsNP },
   [detailPF.slug]: { detail: detailPF, route: routePF, glance: glancePF, crumbs: crumbsPF },
   [detailND.slug]: { detail: detailND, route: routeND, glance: glanceND, crumbs: crumbsND },
-  [detailNN.slug]: { detail: detailNN, route: routeNN, glance: glanceNN, crumbs: crumbsNN }
+  [detailNN.slug]: { detail: detailNN, route: routeNN, glance: glanceNN, crumbs: crumbsNN },
+  ...vietnamBySlug
 };
 
 const stop = (e) => e.preventDefault();
@@ -127,8 +130,8 @@ const Crumbs = ({ crumbs }) => (
           {c.href
             ? (c.href.startsWith('/afrika/aegypten')
                 ? <Link to="/afrika/aegypten" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
-                : c.href === '/asien'
-                  ? <Link to="/asien" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
+                : (c.href === '/asien' || c.href === '/asien/vietnam')
+                  ? <Link to={c.href} className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
                   : <a href={c.href} onClick={stop} className="eg-body-md text-[#174358] hover:underline">{c.label}</a>)
             : <span className="eg-label-lg text-[#002131] truncate max-w-[220px] sm:max-w-none">{c.label}</span>}
         </li>
@@ -284,8 +287,9 @@ const Features = () => (
 );
 
 const Recommended = ({ detail }) => {
-  const pool = detail.region === 'asia' ? asiaProducts : products;
-  const title = detail.region === 'asia' ? 'Other Asia holidays you may like' : recommended.h2;
+  const isVn = detail.slug in vietnamBySlug;
+  const pool = isVn ? vietnamProducts : detail.region === 'asia' ? asiaProducts : products;
+  const title = isVn ? 'Other Vietnam holidays you may like' : detail.region === 'asia' ? 'Other Asia holidays you may like' : recommended.h2;
   return (
     <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
       <h2 className="eg-display-sm text-[#002131]">{title}</h2>
