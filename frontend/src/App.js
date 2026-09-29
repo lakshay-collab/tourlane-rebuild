@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
 import Home from './pages/Home';
 import EgyptListing from './pages/EgyptListing';
 import EgyptHolidays from './pages/EgyptHolidays';
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
+        <WhatsAppWidget />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/afrika/aegypten" element={<EgyptListing />} />

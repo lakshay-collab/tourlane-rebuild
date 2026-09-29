@@ -151,7 +151,7 @@ export default function EgyptHolidays({ d = egyptHolidays }) {
         <EgyptCustomerReviews data={d.customerReviews} />
         <EgyptFaq centered className="eg-container mt-12 md:mt-16 mb-16" data={faq} />
       </main>
-      <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
+      <ScrollTop className="bottom-40 left-4 md:bottom-10 md:left-12" />
       <MobileToursBars title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} cta={hero} />
       <Footer />
     </div>

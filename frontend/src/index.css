@@ -3,6 +3,9 @@
 
 /* Egypt/Asia listing scope: Hi Tours brand tokens (Bricolage Grotesque / Inter / Instrument Sans, Ink + Harbor + Ember) */
 .eg { font-family: 'Inter', 'Instrument Sans', Arial, sans-serif; color: #002131; background: #FBF9F1; font-size: 16px; line-height: 24px; letter-spacing: .2px; }
+:root { --wa-bottom: 96px; }
+@media (min-width: 768px) { :root { --wa-bottom: 32px; } }
+:root.wa-lift { --wa-bottom: 104px; }
 .eg.dye-root { background: transparent; }
 .dye-backdrop { background: rgba(0, 33, 49, 0.28); -webkit-backdrop-filter: blur(12px) saturate(1.15); backdrop-filter: blur(12px) saturate(1.15); animation: dye-fade .28s ease-out; }
 @supports not (backdrop-filter: blur(1px)) { .dye-backdrop { background: rgba(0, 33, 49, 0.55); } }

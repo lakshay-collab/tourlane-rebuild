@@ -128,7 +128,7 @@ export default function DestinationListing({ d, testId = 'egypt-listing-page' })
           <div className="mt-8"><EgyptTileRow items={related.items} testId="eg-africa-row" /></div>
         </section>
       </main>
-      <ScrollTop className="bottom-28 right-4 md:bottom-10 md:right-12" />
+      <ScrollTop className="bottom-28 left-4 md:bottom-10 md:left-12" />
       <MobileToursBars filters={false} cta={hero} />
       <Footer />
     </div>

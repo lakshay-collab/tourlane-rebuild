@@ -62,7 +62,7 @@ export default function TripStyleListing() {
 
         <AdventureCTA />
       </main>
-      <ScrollTop className="bottom-24 right-4 md:bottom-10 md:right-12" />
+      <ScrollTop className="bottom-24 left-4 md:bottom-10 md:left-12" />
       <Footer />
     </div>
   );
