@@ -23,6 +23,16 @@ import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as cru
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
 import { products as vietnamProducts, planner as vietnamPlanner } from '../vietnamListingData';
+import { planner as srilankaPlanner } from '../srilankaListingData';
+
+// Pick the planner (heading + background) from the itinerary's destination.
+const DESTINATIONS = [['Vietnam', () => vietnamPlanner], ['Sri Lanka', () => srilankaPlanner], ['Thailand', (d) => ({ ...planner, h3: 'Plan your Thailand trip', bg: d.gallery?.[0] })], ['Morocco', (d) => ({ ...planner, h3: 'Plan your Morocco trip', bg: d.gallery?.[0] })]];
+const plannerFor = (d) => {
+  if (d.slug in vietnamBySlug) return vietnamPlanner;
+  const hay = `${d.title} ${d.slug} ${(d.routeCities || []).join(' ')}`;
+  const hit = DESTINATIONS.find(([name]) => hay.toLowerCase().includes(name.toLowerCase()));
+  return hit ? hit[1](d) : planner;
+};
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
@@ -365,7 +375,7 @@ export default function EgyptDetail() {
             </aside>
           </div>
           <Glance open={summaryOpen} setOpen={setSummaryOpen} glance={glance} stops={route.stops} />
-          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={detail.slug in vietnamBySlug ? vietnamPlanner : planner} tripTitle={detail.title} source="egypt-detail" />
+          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={plannerFor(detail)} tripTitle={detail.title} source="egypt-detail" />
           <Features />
           <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
           <Recommended detail={detail} />
