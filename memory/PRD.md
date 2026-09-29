@@ -433,3 +433,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-29: Removed "Customise hotels" / "Customise activities" orange pill CTAs from itinerary route sections site-wide (`EgyptRoute.jsx` SectionHead, `egyptDetailData.js` accommodationCta/programCta). Headings unchanged.
 
 - 2026-09-29: DesignEscapeModal images swapped to Drive folder assets (Egypt.png/Vietnam.png/Sri Lanka.png → `/public/escape/*.webp`, 1400x1750). `escapeImage(destination, fallback)` in the modal picks by normalised destination name; other destinations (Thailand, Morocco…) fall back to the itinerary gallery[0] as before. Form untouched. Verified all 3 destinations desktop + mobile.
+
+- 2026-09-29: Egypt package (itinerary) pages: review card images replaced with Drive assets (`/public/egypt/reviews/{camel,couple-pyramid,karnak-temple,luxor-balloon}.webp`). Wired in `EgyptDetail.jsx` (`egyptReviewItems`, Egypt-only). 3 cards → first 3 images in folder order; `luxor-balloon` unused. Listing pages & other destinations untouched. Verified via screenshot.
