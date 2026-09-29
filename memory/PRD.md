@@ -439,3 +439,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-29: Egypt review names → Swati / Rahul & Priya / Nancy (`egyptReviewItems` in egyptListingData; used by EgyptListing + Egypt package pages only). Sri Lanka review images → Drive assets `/public/sri-lanka/reviews/{ella,kandy-ella-train,beach,udawalawe}.webp` (first 3 used, folder order; `udawalawe` spare). ReviewCard now supports optional `pos` (objectPosition) per item; "Our customers about their Sri Lanka trip" photo strip pinned to old URLs (unchanged).
 
 - 2026-09-29: Route-level `ScrollToTop` in App.js (useLocation → window.scrollTo(0,0) on pathname change; hash links exempt). Verified 6 client-side navigations from deep scroll positions all land at scrollY 0.
+
+- 2026-09-29: Vietnam review images → Drive assets `/public/vietnam/reviews/{friends-trip,halong-bay-couple,hoi-an,vietnam}.webp` (first 3 used, folder order; `vietnam.webp` spare). Holidays-page customer photo strip pinned to old URLs.
