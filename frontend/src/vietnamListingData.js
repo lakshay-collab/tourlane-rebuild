@@ -65,7 +65,8 @@ export const products = vietnamProducts;
 export const planner = { ...egyptPlanner, h3: 'Plan your Vietnam trip', bg: ct('5ujKcctP43Y7HHOFAKvWIU/4e29a70d5c0657d946762c42bd2f1eb5/Sapa_Vietname.jpg').replace('w=1080', 'w=2000') };
 
 export const reviews = {
-  h2: 'Customers about Hi Tours',
+  h2: 'What customers say about booking Vietnam with Hi Tours',
+  count: 'based on 420 Vietnam reviews',
   items: [
     { name: 'Camelia', title: 'A dream come true in Vietnam', date: '3 May 2026', stars: 5, image: '/vietnam/reviews/friends-trip.webp', text: 'We wanted a very special trip – a honeymoon made up for 25 years later. Vietnam and Cambodia were exactly that. We felt like we were in a dream: inspiring, educational and delicious. I will not forget a single minute of it.' },
     { name: 'Nicolas', title: 'A unique trip through Vietnam', date: '14 April 2026', stars: 5, image: '/vietnam/reviews/halong-bay-couple.webp', text: 'WOW! Vietnam was simply amazing. Everything planned with our travel expert – flights, transfers, excursions – worked perfectly. I travelled alone but never felt alone or lost. Happy to book again.' },

@@ -97,7 +97,7 @@ export default function DestinationListing({ d, testId = 'egypt-listing-page' })
         </section>
 
         <EgyptPlanner data={planner} source={d.plannerSource} />
-        <EgyptReviews h2={reviews.h2} items={reviews.items} />
+        <EgyptReviews h2={reviews.h2} items={reviews.items} count={reviews.count} centered={Boolean(reviews.count)} />
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="places" data-testid="eg-places">
           <h2 className="eg-display-sm text-[#002131]">{places.h2}</h2>
