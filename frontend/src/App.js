@@ -5,6 +5,7 @@ import EgyptListing from './pages/EgyptListing';
 import EgyptHolidays from './pages/EgyptHolidays';
 import EgyptDetail from './pages/EgyptDetail';
 import AsiaListing from './pages/AsiaListing';
+import VietnamListing from './pages/VietnamListing';
 import TripStyleListing from './pages/TripStyleListing';
 import About from './pages/About';
 import Care from './pages/Care';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/afrika/aegypten/travel-style/:style" element={<StyleRedirect />} />
           <Route path="/afrika/aegypten/:slug" element={<EgyptDetail />} />
           <Route path="/asien" element={<AsiaListing />} />
+          <Route path="/asien/vietnam" element={<VietnamListing />} />
           <Route path="/asien/:slug" element={<EgyptDetail />} />
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
           <Route path="/about" element={<About />} />

@@ -106,7 +106,7 @@ export default function EgyptFilterBar({ title, ...pills }) {
   );
 }
 
-export function MobileToursBars({ title, filters = true, ...pills }) {
+export function MobileToursBars({ title, filters = true, cta = hero, ...pills }) {
   const inTours = useToursInView();
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -124,7 +124,7 @@ export function MobileToursBars({ title, filters = true, ...pills }) {
       )}
       <div className={`md:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] flex flex-col gap-3 transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-mobile-cta" aria-hidden={!show}>
         {filters && <FilterPills {...pills} up testPrefix="eg-mobile-filter" />}
-        <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{hero.stickyCta}</a>
+        <a href={cta.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{cta.stickyCta}</a>
       </div>
     </>
   );

@@ -12,23 +12,26 @@ export const scrollToId = (id) => {
   window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
 };
 
-const guide = themes.items.filter((t) => t.tag === 'Travel guide');
-const inspiration = themes.items.filter((t) => t.tag === 'Inspiration');
+const buildTabs = (d) => {
+  const guide = d.themes.items.filter((t) => t.tag === 'Travel guide');
+  const inspiration = d.themes.items.filter((t) => t.tag === 'Inspiration');
+  return [
+    { key: 'about', label: d.hero.tabAbout || 'About Egypt', target: 'about' },
+    { key: 'tours', label: d.hero.tabTours || 'Egypt holidays', target: 'tours' },
+    { key: 'guide', label: 'Travel guide', items: guide.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
+    { key: 'inspiration', label: 'Inspiration', items: inspiration.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
+    { key: 'places', label: 'Places', items: d.places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) }
+  ];
+};
 
-const buildTabs = () => [
-  { key: 'about', label: 'About Egypt', target: 'about' },
-  { key: 'tours', label: 'Egypt holidays', target: 'tours' },
-  { key: 'guide', label: 'Travel guide', items: guide.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
-  { key: 'inspiration', label: 'Inspiration', items: inspiration.map((t) => ({ id: t.title, label: t.title, icon: t.icon, href: t.href })) },
-  { key: 'places', label: 'Places', items: places.items.map((p) => ({ id: p.title, label: p.title, icon: 'pin', href: p.href })) }
-];
+const egyptData = { hero, crumbs, places, themes };
 
-export function StickyTabs({ tabs: tabsProp, testId = 'eg' }) {
+export function StickyTabs({ tabs: tabsProp, testId = 'eg', data = egyptData }) {
   const [active, setActive] = useState('about');
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(16);
   const wrapRef = useRef(null);
-  const tabs = tabsProp || buildTabs();
+  const tabs = tabsProp || buildTabs(data);
 
   useEffect(() => {
     const onScroll = () => {
@@ -119,35 +122,37 @@ export function ScrollTop({ className = 'bottom-10 right-12' }) {
   );
 }
 
-const HeroCopy = ({ title, sub = hero.sub }) => (
+const HeroCopy = ({ title, h = hero, sub = h.sub }) => (
   <>
     <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance]" data-testid="eg-hero-title">{title}</h1>
     <div className="flex flex-col items-center gap-2">
-      <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-hero-cta">{hero.cta}</a>
+      <a href={h.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-hero-cta">{h.cta}</a>
       <p className="eg-body-sm text-white/90 max-w-[300px] md:max-w-none">{sub}</p>
     </div>
   </>
 );
 
-export default function EgyptHero({ style, title: titleProp, showTabs = true, crumbs: crumbList = crumbs }) {
-  const title = titleProp || (style ? hero.styleH1(style) : hero.h1);
+export default function EgyptHero({ style, title: titleProp, showTabs = true, crumbs: crumbList, data = egyptData }) {
+  const h = data.hero;
+  const title = titleProp || (style ? h.styleH1(style) : h.h1);
+  const crumbItems = crumbList || data.crumbs;
   return (
     <>
       <div className="relative">
         <Header overlay />
         <section className="relative h-[520px] sm:h-[560px] md:h-[600px] lg:h-[640px] bg-[#EAE8E0]" data-testid="eg-hero">
-          <img src={hero.image} alt="Pyramids of Giza, Egypt" className="absolute inset-0 w-full h-full object-cover" loading="eager" data-testid="eg-hero-image" />
+          <img src={h.image} alt={h.imageAlt || 'Pyramids of Giza, Egypt'} className="absolute inset-0 w-full h-full object-cover" loading="eager" data-testid="eg-hero-image" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.5)_0%,rgba(0,33,49,0.15)_45%,rgba(0,33,49,0.5)_100%)] pointer-events-none" />
-          <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-6 md:gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy title={title} /></div>
+          <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-6 md:gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy title={title} h={h} /></div>
         </section>
       </div>
 
       <div data-testid="eg-trust-bar"><TrustBar /></div>
 
-      {showTabs && <StickyTabs />}
+      {showTabs && <StickyTabs data={data} />}
 
       <nav className="mt-8 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[60px] flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
-        {crumbList.map((c, i) => (
+        {crumbItems.map((c, i) => (
           <React.Fragment key={c.label}>
             {i > 0 && <ChevronRight size={20} className="text-[#174358]" />}
             {c.to ? <Link to={c.to} className="hover:underline">{c.label}</Link>

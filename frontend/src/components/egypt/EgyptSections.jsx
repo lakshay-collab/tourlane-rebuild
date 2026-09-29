@@ -65,8 +65,9 @@ export function EgyptReviews({ centered = false, className = 'eg-container mt-12
   );
 }
 
-export function EgyptPlan() {
+export function EgyptPlan({ data = plan }) {
   const [open, setOpen] = useState(false);
+  const plan = data;
   return (
     <section className="eg-container mt-12 md:mt-16" data-testid="eg-plan">
       <h2 className="eg-display-sm text-[#002131]">{plan.h2}</h2>
@@ -89,8 +90,9 @@ export function EgyptPlan() {
   );
 }
 
-export function EgyptFaq({ centered = false, className = 'eg-container mt-12 md:mt-16' }) {
+export function EgyptFaq({ centered = false, className = 'eg-container mt-12 md:mt-16', data = faq }) {
   const [open, setOpen] = useState(null);
+  const faq = data;
   return (
     <section className={className} id="faq" data-testid="eg-faq">
       <h2 className={`eg-display-sm text-[#002131] ${centered ? 'text-center' : ''}`}>{faq.h2}</h2>
