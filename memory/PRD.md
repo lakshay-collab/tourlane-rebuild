@@ -395,3 +395,10 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Vietnam linked from Destinations mega menu / mobile drawer and About page carousel.
 - Homepage tweaks: Moments cards use object-cover, 12px text; "Talking Travel" collage edge-to-edge; "planned by pros" sketch icons (Drive).
 - Tested: iteration_35 all pass (Vietnam + Egypt regression).
+
+## 2026-09-29 — WorkDrive Vietnam packages (data-only)
+- Source: user ZIP of Zoho WorkDrive (7 AVEX Vietnam quotation PDFs + Vietnam Price.docx). Folder contained ONLY Vietnam packages.
+- New structured model `src/vietnamPackages.js` (destination → packages[] → itinerary days, stays/hotels, seasonal INR pricing by star category, inclusions, exclusions, gallery). Adapters in `src/tours/vietnamToursData.js` produce listing cards + detail-template data. Replaced the 6 placeholder Vietnam tours with the 7 real packages (slugs: hanoi-sapa-5d4n, north-vietnam-ninh-binh-6d5n, north-vietnam-6d5n, north-central-vietnam-highlights-6d5n, vietnam-highlights-reverse-halong-8d7n, north-central-vietnam-phu-quoc-8d7n, vietnam-full-package-9d8n).
+- Vietnam holidays page /asien/vietnam/holidays(+/:style) via parametrised EgyptHolidays (d prop). Detail pages use Vietnam planner + Vietnam recommendations. Inclusions/exclusions/seasonal pricing surface inside the existing Tour summary "Read more" text (no UI change). PDF covers saved to /public/vietnam-packages/.
+- Prices shown = 3-star September INR (per person, double sharing) from Vietnam Price.docx. Supplier USD quotes kept in data (pricing.supplier).
+- Tested: iteration_36 all pass.

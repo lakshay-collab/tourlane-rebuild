@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only testing of Vietnam packages integration (data-only). All 9 review-request acceptance criteria PASS. /asien/vietnam/holidays lists exactly 7 cards with correct hrefs and prices (₹28,049 / ₹59,999 / ₹48,249 / ₹61,749 / ₹97,649 / ₹99,999 / ₹1,28,799). /asien/vietnam Top-selling section shows first 6 cards; 'View all Vietnam holidays' -> /asien/vietnam/holidays. All 7 detail pages open at correct URLs with matching h1, gallery images (no broken), price sidebar From ₹, What's included tiles, itinerary A/B/C… chips, Tour summary with Read more revealing Included:/Not included:/Pricing (…). Day table row counts verified: hanoi-sapa=5, ninh-binh=6, north-vietnam=6, north-central-highlights=6, halong-reverse=8, phu-quoc=8, full-package=9. Detail planner shows 'Plan your Vietnam trip' (no 'Plan your Egypt trip'). Browser back from detail returns to /asien/vietnam/holidays. Filter by 'Beach' -> /asien/vietnam/holidays/beach with 6 cards (hanoi-sapa excluded); Filter 'Family' -> /asien/vietnam/holidays/family with 7 cards. Regression: /afrika/aegypten (6 cards), /afrika/aegypten/holidays (9 cards), /afrika/aegypten/nile-pharaohs-voyage (Plan your Egypt trip planner) and /asien (Asia holidays) all intact. No console/page errors on Vietnam pages; no horizontal overflow at 1920px or 390px.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/asien/vietnam/holidays and all 7 Vietnam detail pages", "issues": ["EgyptCustomerReviews component renders hardcoded Egypt-branded headings on Vietnam surface: 'Our customers about their Egypt trip' (holidays page) and 'What customers say about booking Egypt with Hi Tours' (detail page). Vietnam landing /asien/vietnam correctly overrides this to 'Customers about Hi Tours', but the holidays/detail pages still leak Egypt copy. Not explicitly listed as an AC failure, but a visible cross-destination regression."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/iteration_36.json"],
+  "action_items": [
+    "Optional: parametrise EgyptCustomerReviews heading (or accept a `destinationName` prop) so /asien/vietnam/holidays and Vietnam detail pages show 'Vietnam trip' / 'booking Vietnam with Hi Tours' instead of Egypt copy. Landing page already handles this via reviews override."
+  ],
+  "critical_code_review_comments": [
+    "components/egypt/EgyptCustomerReviews is imported by both EgyptHolidays.jsx and EgyptDetail.jsx and is used for Vietnam too via the same pages. It ships hardcoded 'Egypt trip' / 'booking Egypt' strings. Consider taking destination name as a prop, or replacing headings from the passed `d` config (planner already uses `d.planner`).",
+    "vietnamToursData.js `build()` includes special-case for 'Ha Long Bay' overnight matching 'On board' — clean but implicit; consider surfacing this rule in vietnamPackages.js as an explicit overnight property (e.g., overnight: 'Ha Long Bay (cruise)').",
+    "toProduct filters activities via regex — brittle if new bullet copy changes; consider tagging bullets in source data with an activity flag."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100% on ACs; 1 minor visual regression"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Vietnam packages driven by /app/frontend/src/vietnamPackages.js -> vietnamToursData.js -> vietnamListingData.js. 7 slugs live under /asien/<slug>. VietnamHolidays and VietnamListing wrappers reuse EgyptHolidays/DestinationListing. EgyptCustomerReviews still shows Egypt copy on non-Egypt pages; only /asien/vietnam overrides via reviews merge. eg-glance-table is the desktop table element, not the toggle button — to open the day table, click text 'View tour summary'. testids used: eg-product-image-link, eg-product-grid, eg-view-all, eg-detail-glance, eg-glance-readmore, eg-glance-table, eg-glance-day, eg-price-services, eg-filter-cta, eg-planner. Vimeo iframe on /afrika/aegypten/holidays still shows a 'couldn't verify security' banner (known env restriction).",
+  "rca of the issue": "N/A — no functional bug. Minor Egypt-string leak on Vietnam holidays/detail pages is due to hardcoded strings inside components/egypt/EgyptCustomerReviews.jsx that don't accept a destination override."
+}
