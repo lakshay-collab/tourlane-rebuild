@@ -287,9 +287,9 @@ export const glance = {
 export const brandFeatures = {
   h2: 'Why book with Hi Tours',
   items: [
-    { icon: '/egypt/StarLike.svg', title: 'Real travel experts', text: 'Benefit from our local expertise and award-winning service.' },
-    { icon: '/egypt/Tickets.svg', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your return home.' },
-    { icon: '/egypt/Destination.svg', title: 'Travel made easy', text: 'Whether multi-stop or multi-country, we make your travel wishes come true.' }
+    { icon: '/pros/experts.png', title: 'Real travel experts', text: 'Benefit from our local expertise and award-winning service.' },
+    { icon: '/pros/organised.png', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your return home.' },
+    { icon: '/pros/easy.png', title: 'Travel made easy', text: 'Whether multi-stop or multi-country, we make your travel wishes come true.' }
   ]
 };
 

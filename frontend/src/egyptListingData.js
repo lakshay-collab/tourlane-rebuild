@@ -98,9 +98,9 @@ export const products = [
 export const formatInr = (n) => `₹${n.toLocaleString('en-IN')}`;
 
 export const features = [
-  { icon: '/egypt/StarLike.svg', title: 'Real travel experts', text: 'Benefit from our local expert knowledge and award-winning service.' },
-  { icon: '/egypt/Tickets.svg', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your journey home.' },
-  { icon: '/egypt/Destination.svg', title: 'Travel made easy', text: 'Multi-stop or multi-country, we make your travel wishes come true.' }
+  { icon: '/pros/experts.png', title: 'Real travel experts', text: 'Benefit from our local expert knowledge and award-winning service.' },
+  { icon: '/pros/organised.png', title: 'Fully organised', text: 'We take care of every detail – from inspiration to your journey home.' },
+  { icon: '/pros/easy.png', title: 'Travel made easy', text: 'Multi-stop or multi-country, we make your travel wishes come true.' }
 ];
 
 export const planner = {

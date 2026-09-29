@@ -441,3 +441,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-29: Route-level `ScrollToTop` in App.js (useLocation → window.scrollTo(0,0) on pathname change; hash links exempt). Verified 6 client-side navigations from deep scroll positions all land at scrollY 0.
 
 - 2026-09-29: Vietnam review images → Drive assets `/public/vietnam/reviews/{friends-trip,halong-bay-couple,hoi-an,vietnam}.webp` (first 3 used, folder order; `vietnam.webp` spare). Holidays-page customer photo strip pinned to old URLs.
+
+- 2026-09-29: Feature-block vector icons (StarLike/Tickets/Destination.svg + homepage pros-*.png) replaced site-wide with Drive hand-drawn icons → `/public/pros/{experts,organised,easy}.png` (trimmed, transparent, 480px). Referenced from egyptListingData.features, egyptDetailData.brandFeatures, mock.js features. Vietnam review headline now centred "What customers say about booking Vietnam with Hi Tours" + count (DestinationListing passes `reviews.count`/centered when present). Vietnam names → Prajakta and Sneha / Shubham and Arpita / Apporva.
