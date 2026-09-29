@@ -1,0 +1,21 @@
+{
+  "summary": "Frontend testing for the new Sri Lanka destination landing page at /asien/sri-lanka using the shared Egypt/Vietnam DestinationListing template, plus /asien/sri-lanka/holidays via EgyptHolidays. All acceptance criteria pass: hero H1, sticky tabs, breadcrumb, section order/data-testids, product card content and link, view-all navigation, places/related rows, interactions (learn more, quote toggle, tours read more, themes more, plan toggle, faq accordion), no console errors, no horizontal overflow at 1920px or 390px. Emerald Isle Explorer detail page reused as-is (₹94,472, 9 days, 6 cities, gallery hero). Navigation entry points (homepage Asia destination-card, mega menu, Vietnam related row, /asien country tile) all link to /asien/sri-lanka. Regression against /asien/vietnam (6 shown), /asien/vietnam/holidays (7 cards), /afrika/aegypten and /asien all fine.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "srilankaListingData.js reuses `features` (with /egypt/*.svg brand/media logo assets and tourlaner team webp images) verbatim from egyptListingData; identical situation exists on the Vietnam page (accepted in iteration_35). Asset filenames live under /egypt/ but they render as shared brand assets and are not user-visible Egypt-branded imagery. If desired, main agent could move these shared assets to a neutral /brand/ path in a future cleanup - not blocking."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Sri Lanka listing verified. Verified data-testids: eg-intro, eg-tours, eg-features, eg-planner, eg-reviews, eg-places, eg-activities, eg-plan, eg-themes, eg-faq, eg-africa (all present, count=1). Product grid has exactly 1 card (Emerald Isle Explorer @ ₹94,472, 9 days · 6 cities, href /asien/emerald-isle-explorer-sri-lanka). Bounding boxes match Egypt at 1920px: product 360x463, place 262x287, theme 360x327, activity 264x413. /asien/sri-lanka/holidays shows h1 'Sri Lanka tours & holidays', 'Browse 1 package idea', 1 card. Places row: Colombo, Kandy, Ella, Galle, Sigiriya, Nuwara Eliya, Bentota. Related row: Vietnam, Thailand, Indonesia, Japan, Maldives, Cambodia, Malaysia, Singapore, Philippines (no Sri Lanka, no African countries). Vietnam tile in related -> /asien/vietnam. Homepage Asia destination-card 'Sri Lanka' -> /asien/sri-lanka. Mega menu 'Sri Lanka' -> /asien/sri-lanka. Vietnam page related 'Sri Lanka' -> /asien/sri-lanka. /asien Sri Lanka anchor -> /asien/sri-lanka. Regression: Vietnam listing shows 6 cards (7 total), Vietnam holidays 7 cards, /afrika/aegypten and /asien load fine. Emerald Isle direct load OK. Zero page/console errors. Horizontal overflow 0px at 1920 and 390. The 14 img srcs containing '/egypt' are shared brand assets (StarLike/Tickets/Destination svgs, tourlaner*.webp team photos, media logos) that also appear on the Vietnam page - accepted convention.",
+  "rca of the issue": "No issues found."
+}

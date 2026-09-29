@@ -402,3 +402,8 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Vietnam holidays page /asien/vietnam/holidays(+/:style) via parametrised EgyptHolidays (d prop). Detail pages use Vietnam planner + Vietnam recommendations. Inclusions/exclusions/seasonal pricing surface inside the existing Tour summary "Read more" text (no UI change). PDF covers saved to /public/vietnam-packages/.
 - Prices shown = 3-star September INR (per person, double sharing) from Vietnam Price.docx. Supplier USD quotes kept in data (pricing.supplier).
 - Tested: iteration_36 all pass.
+
+## 2026-09-29 — Sri Lanka destination landing
+- New `/asien/sri-lanka` (SriLankaListing.jsx + srilankaListingData.js) on the shared DestinationListing template; `/asien/sri-lanka/holidays(+/:style)` via EgyptHolidays. Places: Colombo, Kandy, Ella, Galle, Sigiriya, Nuwara Eliya, Bentota. Related: Asia (Vietnam, Thailand linked).
+- Existing Emerald Isle Explorer package preserved: same slug/href/data (referenced from asiaListingData; only `styles` added). Sri Lanka country links (menus, homepage cards, search, About, Asia listing tile) now point to /asien/sri-lanka; package URL unchanged.
+- Tested: iteration_37 all pass.
