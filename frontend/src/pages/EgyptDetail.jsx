@@ -23,7 +23,8 @@ import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as cru
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
 import { products as vietnamProducts, planner as vietnamPlanner, reviews as vietnamReviews } from '../vietnamListingData';
-import { planner as srilankaPlanner, reviews as srilankaReviews } from '../srilankaListingData';
+import { planner as srilankaPlanner, reviews as srilankaReviews, products as srilankaProducts } from '../srilankaListingData';
+import { srilankaBySlug } from '../tours/srilankaToursData';
 
 // Resolve the itinerary's destination (name, planner, reviews) so shared sections adapt automatically.
 const DESTINATIONS = [
@@ -64,7 +65,8 @@ const BY_SLUG = {
   [detailPF.slug]: { detail: detailPF, route: routePF, glance: glancePF, crumbs: crumbsPF },
   [detailND.slug]: { detail: detailND, route: routeND, glance: glanceND, crumbs: crumbsND },
   [detailNN.slug]: { detail: detailNN, route: routeNN, glance: glanceNN, crumbs: crumbsNN },
-  ...vietnamBySlug
+  ...vietnamBySlug,
+  ...srilankaBySlug
 };
 
 const stop = (e) => e.preventDefault();
@@ -310,8 +312,9 @@ const Features = () => (
 
 const Recommended = ({ detail }) => {
   const isVn = detail.slug in vietnamBySlug;
-  const pool = isVn ? vietnamProducts : detail.region === 'asia' ? asiaProducts : products;
-  const title = isVn ? 'Other Vietnam holidays you may like' : detail.region === 'asia' ? 'Other Asia holidays you may like' : recommended.h2;
+  const isSl = detail.slug in srilankaBySlug || detail.slug === 'emerald-isle-explorer-sri-lanka';
+  const pool = isVn ? vietnamProducts : isSl ? srilankaProducts : detail.region === 'asia' ? asiaProducts : products;
+  const title = isVn ? 'Other Vietnam holidays you may like' : isSl ? 'Other Sri Lanka holidays you may like' : detail.region === 'asia' ? 'Other Asia holidays you may like' : recommended.h2;
   return (
     <section className="eg-container flex flex-col gap-8" data-testid="eg-detail-recommended">
       <h2 className="eg-display-sm text-[#002131]">{title}</h2>

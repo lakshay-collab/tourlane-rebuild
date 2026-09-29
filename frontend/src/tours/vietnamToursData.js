@@ -1,19 +1,21 @@
 // Adapters: Vietnam packages (vietnamPackages.js, WorkDrive source) → listing product cards + EgyptDetail template data.
 import { packages, cityImages } from '../vietnamPackages';
 
-const EXPERT = { name: 'Riya', image: '/experts/riya.webp', role: 'Vietnam expert at Hi Tours', createdBy: 'Trip created by', more: 'Read more', less: 'Read less' };
 const LETTERS = 'ABCDEFGHIJ';
 const uniq = (a) => [...new Set(a)];
 const countMeals = (it) => it.reduce((n, d) => n + (d.meals ? d.meals.split(',').length : 0), 0);
 const fmt = (n) => `₹${n.toLocaleString('en-IN')}`;
 
-export const toProduct = (p) => {
+// Generic adapters – ctx: { cityImages, expert, ctaHref, crumbs, base, cruiseCity }
+export const createAdapters = (ctx) => {
+const { cityImages, expert: EXPERT, ctaHref, crumbs: crumbBase, base, cruiseCity = 'Ha Long Bay' } = ctx;
+const toProduct = (p) => {
   const cities = uniq(p.stays.map((s) => s[0]));
   const activities = p.itinerary.flatMap((d) => d.bullets).filter((b) => !/transfer|arrival|breakfast at|free time|free day|check-out|day at leisure|onward flight/i.test(b)).length;
   return {
     slug: p.slug, title: p.name, tag: p.tag, styles: p.styles, days: p.days, stops: cities.length, cities: cities.length,
     hotels: p.stays.length, activities, transfers: p.itinerary.length, meals: countMeals(p.itinerary),
-    price: p.price, alt: p.alt, images: p.gallery, href: `/asien/${p.slug}`
+    price: p.price, alt: p.alt, images: p.gallery, href: `${base}/${p.slug}`
   };
 };
 
@@ -28,7 +30,7 @@ const build = (p) => {
   const cities = uniq(p.stays.map((s) => s[0]));
   const stayFor = (city) => (p.stays.find((s) => s[0] === city) || [])[2] || '—';
   const stops = p.stays.map(([city, dayLabel, hotel], i) => {
-    const days = p.itinerary.filter((d) => d.overnight === city || (city === 'Ha Long Bay' && (d.overnight === 'On board' || /Ha Long/i.test(d.title))));
+    const days = p.itinerary.filter((d) => d.overnight === city || (city === cruiseCity && (d.overnight === 'On board' || d.title.includes(cruiseCity))));
     const bullets = uniq(days.flatMap((d) => d.bullets)).slice(0, 5);
     const images = cityImages(city);
     return {
@@ -41,7 +43,7 @@ const build = (p) => {
   const excl = `Not included: ${p.exclusions.join('; ')}.`;
   return {
     detail: {
-      slug: p.slug, region: 'asia', ctaHref: '/l/vietnam/enquiry/passengers/', cta: 'Start customising',
+      slug: p.slug, region: 'asia', ctaHref, cta: 'Start customising',
       sub: 'Your travel plan – no obligation & tailor-made',
       banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
       title: p.name, alt: p.alt, days: `${p.days} days / ${p.nights} nights`, stations: `${cities.length} stops`, transport: p.inclusions.some((x) => /flight/i.test(x)) ? 'Domestic flights, transfers & guided tours' : 'Transfers & guided tours',
@@ -58,13 +60,20 @@ const build = (p) => {
       h2: 'Tour summary', short: p.summary, readMore: 'Read more', readLess: 'Read less', hide: 'Hide tour summary',
       intro: `${incl} ${excl}`, intro2: pricingText(p),
       accommodationHeading: 'Accommodation', highlightsHeading: 'Key highlights', dayHeading: 'Day', routeHeading: 'Route',
-      days: p.itinerary.map((d) => ({ title: `Day ${d.day}: ${d.title}${d.meals ? ` (${d.meals})` : ''}`, text: d.bullets[0], hotel: d.overnight ? (d.overnight === 'On board' ? stayFor('Ha Long Bay') : stayFor(d.overnight)) : 'Departure', highlights: d.bullets.slice(1, 4).length ? d.bullets.slice(1, 4) : d.bullets })),
+      days: p.itinerary.map((d) => ({ title: `Day ${d.day}: ${d.title}${d.meals ? ` (${d.meals})` : ''}`, text: d.bullets[0], hotel: d.overnight ? (d.overnight === 'On board' ? stayFor(cruiseCity) : stayFor(d.overnight)) : 'Departure', highlights: d.bullets.slice(1, 4).length ? d.bullets.slice(1, 4) : d.bullets })),
       outro: excl
     },
-    crumbs: [{ label: 'Destinations', href: '/reiseziele/' }, { label: 'Asia', href: '/asien' }, { label: 'Vietnam', href: '/asien/vietnam' }, { label: p.name }]
+    crumbs: [...crumbBase, { label: p.name }]
   };
 };
+return { toProduct, build };
+};
 
+const { toProduct, build } = createAdapters({
+  cityImages, base: '/asien', ctaHref: '/l/vietnam/enquiry/passengers/',
+  expert: { name: 'Riya', image: '/experts/riya.webp', role: 'Vietnam expert at Hi Tours', createdBy: 'Trip created by', more: 'Read more', less: 'Read less' },
+  crumbs: [{ label: 'Destinations', href: '/reiseziele/' }, { label: 'Asia', href: '/asien' }, { label: 'Vietnam', href: '/asien/vietnam' }]
+});
 export const vietnamProducts = packages.map(toProduct);
 export const vietnamTours = packages.map(build);
 export const vietnamBySlug = Object.fromEntries(vietnamTours.map((t) => [t.detail.slug, t]));
