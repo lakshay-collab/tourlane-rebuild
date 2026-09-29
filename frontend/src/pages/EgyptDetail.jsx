@@ -404,7 +404,7 @@ export default function EgyptDetail() {
         </div>
       </main>
       <StickyBar detail={detail} inr={inr} onCta={openLead} />
-      <DesignEscapeModal open={leadOpen} onClose={closeLead} destination={dest.name} tripTitle={detail.title} />
+      <DesignEscapeModal open={leadOpen} onClose={closeLead} destination={dest.name} tripTitle={detail.title} image={detail.gallery?.[0]} imageAlt={detail.alt} />
       <ScrollTop className="bottom-24 right-4 md:bottom-[104px] md:right-10" />
       <Footer />
     </div>
