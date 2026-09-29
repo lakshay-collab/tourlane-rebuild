@@ -22,16 +22,28 @@ import { detail as detailND, route as routeND, glance as glanceND, crumbs as cru
 import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as crumbsNN } from '../tours/nileNoorData';
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
-import { products as vietnamProducts, planner as vietnamPlanner } from '../vietnamListingData';
-import { planner as srilankaPlanner } from '../srilankaListingData';
+import { products as vietnamProducts, planner as vietnamPlanner, reviews as vietnamReviews } from '../vietnamListingData';
+import { planner as srilankaPlanner, reviews as srilankaReviews } from '../srilankaListingData';
 
-// Pick the planner (heading + background) from the itinerary's destination.
-const DESTINATIONS = [['Vietnam', () => vietnamPlanner], ['Sri Lanka', () => srilankaPlanner], ['Thailand', (d) => ({ ...planner, h3: 'Plan your Thailand trip', bg: d.gallery?.[0] })], ['Morocco', (d) => ({ ...planner, h3: 'Plan your Morocco trip', bg: d.gallery?.[0] })]];
-const plannerFor = (d) => {
-  if (d.slug in vietnamBySlug) return vietnamPlanner;
-  const hay = `${d.title} ${d.slug} ${(d.routeCities || []).join(' ')}`;
-  const hit = DESTINATIONS.find(([name]) => hay.toLowerCase().includes(name.toLowerCase()));
-  return hit ? hit[1](d) : planner;
+// Resolve the itinerary's destination (name, planner, reviews) so shared sections adapt automatically.
+const DESTINATIONS = [
+  ['Vietnam', (d) => ({ planner: vietnamPlanner, reviews: vietnamReviews })],
+  ['Sri Lanka', (d) => ({ planner: srilankaPlanner, reviews: srilankaReviews })],
+  ['Thailand', (d) => ({ planner: { ...planner, h3: 'Plan your Thailand trip', bg: d.gallery?.[0] } })],
+  ['Morocco', (d) => ({ planner: { ...planner, h3: 'Plan your Morocco trip', bg: d.gallery?.[0] } })]
+];
+const destinationFor = (d) => {
+  const hay = d.slug in vietnamBySlug ? 'vietnam' : `${d.title} ${d.slug} ${(d.routeCities || []).join(' ')}`.toLowerCase();
+  const hit = DESTINATIONS.find(([name]) => hay.includes(name.toLowerCase()));
+  const name = hit ? hit[0] : 'Egypt';
+  const extra = hit ? hit[1](d) : {};
+  return {
+    name,
+    planner: extra.planner || planner,
+    reviewsH2: reviewsHeading.replace('Egypt', name),
+    reviewsCount: trust.count.replace('Egypt', name),
+    reviewItems: extra.reviews?.items
+  };
 };
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
@@ -355,6 +367,7 @@ export default function EgyptDetail() {
   if (!data) return <Navigate to="/afrika/aegypten" replace />;
   const { detail, route, glance, crumbs } = data;
   const inr = formatInr(detail.price);
+  const dest = destinationFor(detail);
   return (
     <div className="eg" data-testid="egypt-detail-page">
       <Header />
@@ -375,9 +388,9 @@ export default function EgyptDetail() {
             </aside>
           </div>
           <Glance open={summaryOpen} setOpen={setSummaryOpen} glance={glance} stops={route.stops} />
-          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={plannerFor(detail)} tripTitle={detail.title} source="egypt-detail" />
+          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={dest.planner} tripTitle={detail.title} source="egypt-detail" />
           <Features />
-          <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
+          <EgyptReviews centered className="eg-container" h2={dest.reviewsH2} count={dest.reviewsCount} items={dest.reviewItems} cta={detail.cta} />
           <Recommended detail={detail} />
           <Steps />
         </div>
