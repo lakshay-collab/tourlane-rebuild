@@ -20,7 +20,7 @@ export const ReviewSummary = ({ className = '', count }) => (
 const ReviewCard = ({ r, className = '' }) => (
   <article className={`shrink-0 snap-start ${className}`} data-testid="eg-review-card">
     <div className="relative h-[200px] md:h-[225px] rounded-xl overflow-hidden">
-      <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover" style={r.pos ? { objectPosition: r.pos } : undefined} loading="lazy" />
       <div className="absolute inset-x-0 bottom-0 h-12 bg-[linear-gradient(rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.65)_100%)]" />
       <p className="absolute left-0 bottom-3 px-4 eg-title-md text-white">{r.title}</p>
     </div>

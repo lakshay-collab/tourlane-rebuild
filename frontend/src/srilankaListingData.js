@@ -72,9 +72,9 @@ export const reviews = {
   ...egyptReviews,
   h2: 'Customers about Hi Tours',
   items: [
-    { name: 'Iris', title: 'Recommendation', date: '13 October 2025', stars: 5, image: ct('54HxN7XjxWJIEbomRTlOjz/f78d77d857d450d34e468eff0a228bb7/Sigiriya_Sri_Lanka.png').replace('w=1080', 'w=500'), text: 'Great contact with our travel expert while planning – quick and competent, and our wishes were taken into account. When one hotel in Sri Lanka turned out differently than described, the hotline was reachable, helpful and sorted a change without fuss; the extra cost was refunded afterwards.' },
-    { name: 'Viola', title: 'A wonderful Sri Lanka round trip as a family', date: '29 April 2025', stars: 5, image: ct('3LUvuCLQpxscwG17oRV4tH/1c3561d56269ee5177e6a3711f564eeb/Sri_Lanka-Family-1.jpg').replace('w=1080', 'w=500'), text: 'We had a great, well-organised round trip through Sri Lanka. The hotels were good to very good, the activities were chosen to suit our family and the highlight was our local guide, who showed us his home country. Rumesh, if you read this: thank you – you do a super job!' },
-    { name: 'Astrid', title: 'A dream trip at a high level', date: '12 February 2024', stars: 5, image: ct('1pJVEFtmaAbZ2hILLe7SiM/b3124bf63641293841dee93466bc29de/iStock-1199024368.jpg').replace('w=1080', 'w=500'), text: 'The trip was perfectly planned and took all our wishes into account. Every hotel was of a high standard, very clean and centrally located, and the excursions were very well organised. Our first trip with Hi Tours and certainly not the last.' }
+    { name: 'Iris', title: 'Recommendation', date: '13 October 2025', stars: 5, image: '/sri-lanka/reviews/ella.webp', text: 'Great contact with our travel expert while planning – quick and competent, and our wishes were taken into account. When one hotel in Sri Lanka turned out differently than described, the hotline was reachable, helpful and sorted a change without fuss; the extra cost was refunded afterwards.' },
+    { name: 'Viola', title: 'A wonderful Sri Lanka round trip as a family', date: '29 April 2025', stars: 5, image: '/sri-lanka/reviews/kandy-ella-train.webp', pos: '50% 40%', text: 'We had a great, well-organised round trip through Sri Lanka. The hotels were good to very good, the activities were chosen to suit our family and the highlight was our local guide, who showed us his home country. Rumesh, if you read this: thank you – you do a super job!' },
+    { name: 'Astrid', title: 'A dream trip at a high level', date: '12 February 2024', stars: 5, image: '/sri-lanka/reviews/beach.webp', pos: '50% 80%', text: 'The trip was perfectly planned and took all our wishes into account. Every hotel was of a high standard, very clean and centrally located, and the excursions were very well organised. Our first trip with Hi Tours and certainly not the last.' }
   ]
 };
 
@@ -83,7 +83,7 @@ export const customerReviews = {
   ...egyptCustomerReviews,
   h2: 'Our customers about their Sri Lanka trip',
   summary: 'Wonderful Sri Lanka round trip – hotels, guide and organisation were excellent and the trip was a dream.',
-  photos: [reviews.items[0].image.replace('w=500', 'w=600'), reviews.items[1].image.replace('w=500', 'w=300'), reviews.items[2].image.replace('w=500', 'w=300'), ct('5UXyem5q8ccxNZDahYXQZV/c066a2d74db93b0fb689ceb3d5ab1ba5/Sri_Lanka__Elefantenherde_im_Fluss.jpg').replace('w=1080', 'w=450')],
+  photos: [ct('54HxN7XjxWJIEbomRTlOjz/f78d77d857d450d34e468eff0a228bb7/Sigiriya_Sri_Lanka.png').replace('w=1080', 'w=600'), ct('3LUvuCLQpxscwG17oRV4tH/1c3561d56269ee5177e6a3711f564eeb/Sri_Lanka-Family-1.jpg').replace('w=1080', 'w=300'), ct('1pJVEFtmaAbZ2hILLe7SiM/b3124bf63641293841dee93466bc29de/iStock-1199024368.jpg').replace('w=1080', 'w=300'), ct('5UXyem5q8ccxNZDahYXQZV/c066a2d74db93b0fb689ceb3d5ab1ba5/Sri_Lanka__Elefantenherde_im_Fluss.jpg').replace('w=1080', 'w=450')],
   planExpert: '/team/asia-5.webp',
   items: reviews.items.map((r) => ({ initial: r.name[0], name: r.name, date: r.date, title: r.title, source: 'Trustpilot', text: r.text }))
 };
