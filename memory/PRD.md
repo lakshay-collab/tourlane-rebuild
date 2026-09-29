@@ -421,3 +421,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Backend: LeadCreate/Lead gained `destination` field; POST /api/leads stores {name, phone, email, destination, trip_title, source:"design-your-escape"} in Mongo `leads`; GET /api/leads lists.
 - Tested: iteration_40 all pass (4 destinations, validation, persistence, mobile).
 - 2026-09-29: DesignEscapeModal visual upgrade: two-panel (46% destination image = itinerary gallery[0] with gradient + "PLAN YOUR ESCAPE / <Destination>" label; form panel), 960px max, rounded-3xl, white glass close button; mobile = image top (200px) + scrollable form. Logic/testids unchanged.
+- 2026-09-29: DesignEscapeModal backdrop only: replaced flat dark-grey look (root `.eg` cream bg + 60% navy) with live blurred page — `.dye-backdrop` = rgba(0,33,49,.28) + backdrop-filter blur(12px) saturate(1.15), fade-in; `.eg.dye-root` bg transparent; `@supports not` fallback 55% tint (index.css). Form card untouched. Verified via screenshot desktop+mobile.
+

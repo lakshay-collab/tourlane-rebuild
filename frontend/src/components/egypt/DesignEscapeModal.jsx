@@ -57,8 +57,8 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   const cls = (k) => `${inputCls} ${errors[k] ? 'border-[#B3261E]' : 'border-[#C4CBD0]'}`;
 
   return (
-    <div className="eg fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="dye-title" data-testid="dye-modal">
-      <button type="button" aria-label="Close" onClick={onClose} className="absolute inset-0 bg-[#002131]/60 backdrop-blur-[3px]" data-testid="dye-overlay" />
+    <div className="eg dye-root fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="dye-title" data-testid="dye-modal">
+      <button type="button" aria-label="Close" onClick={onClose} className="dye-backdrop absolute inset-0" data-testid="dye-overlay" />
       <div className="relative w-full sm:max-w-[960px] max-h-[94vh] overflow-y-auto sm:overflow-hidden rounded-t-3xl sm:rounded-3xl bg-[#FBF9F1] shadow-[0_32px_80px_rgba(0,33,49,0.45)] flex flex-col sm:flex-row" data-testid="dye-card">
         <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white/90 text-[#002131] shadow-[0_4px_14px_rgba(0,33,49,0.25)] hover:bg-white transition-colors" data-testid="dye-close"><X size={20} /></button>
 
