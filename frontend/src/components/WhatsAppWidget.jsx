@@ -1,5 +1,5 @@
 const WA_NUMBER = '918920606060';
-const WA_TEXT = 'Hi, Plan My Dream Trip 🧳';
+const WA_TEXT = 'Hi, I’d like to plan my dream trip. Can you help me?';
 const href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`;
 
 export const WhatsAppWidget = () => (
