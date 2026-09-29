@@ -41,6 +41,7 @@ class LeadCreate(BaseModel):
     name: str
     phone: str
     email: str
+    destination: str = ""
     country_code: str = "+91"
     trip_title: str = ""
     source: str = ""
@@ -52,6 +53,7 @@ class Lead(BaseModel):
     name: str
     phone: str
     email: str
+    destination: str = ""
     country_code: str = "+91"
     trip_title: str = ""
     source: str = ""
@@ -93,7 +95,7 @@ async def create_lead(input: LeadCreate):
     doc = lead.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.leads.insert_one(doc)
-    logger.info(f"New lead captured: {lead.name} / {lead.country_code}{lead.phone} / {lead.email} / trip='{lead.trip_title}'")
+    logger.info(f"New lead captured: {lead.name} / {lead.country_code}{lead.phone} / {lead.email} / trip='{lead.trip_title}' / destination='{lead.destination}'")
     return lead
 
 @api_router.get("/leads", response_model=List[Lead])

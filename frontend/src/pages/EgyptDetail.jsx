@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -22,6 +22,7 @@ import { detail as detailND, route as routeND, glance as glanceND, crumbs as cru
 import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as crumbsNN } from '../tours/nileNoorData';
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
+import DesignEscapeModal from '../components/egypt/DesignEscapeModal';
 import { products as vietnamProducts, planner as vietnamPlanner, reviews as vietnamReviews } from '../vietnamListingData';
 import { planner as srilankaPlanner, reviews as srilankaReviews, products as srilankaProducts } from '../srilankaListingData';
 import { srilankaBySlug } from '../tours/srilankaToursData';
@@ -71,7 +72,8 @@ const BY_SLUG = {
 
 const stop = (e) => e.preventDefault();
 
-const Cta = ({ detail, className = '', testId }) => <a href={detail.ctaHref} onClick={stop} title={detail.cta} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{detail.cta}</a>;
+const CTA_LABEL = 'Design Your Escape';
+const Cta = ({ detail, className = '', testId, onClick }) => <a href={detail.ctaHref} onClick={(e) => { stop(e); onClick?.(); }} title={CTA_LABEL} className={`eg-btn-filled h-12 px-7 eg-title-md ${className}`} data-testid={testId}>{CTA_LABEL}</a>;
 
 const Ratings = ({ className = '' }) => (
   <div className={`flex flex-wrap items-center justify-center gap-x-6 gap-y-2 ${className}`} data-testid="eg-ratings-row">
@@ -164,7 +166,7 @@ const Crumbs = ({ crumbs }) => (
   </nav>
 );
 
-const PriceCard = ({ detail, inr }) => (
+const PriceCard = ({ detail, inr, onCta }) => (
   <div className="bg-white rounded-2xl border border-[#C4CBD0] p-5 md:p-6 flex flex-col gap-4" data-testid="eg-detail-price">
     <div className="flex flex-col gap-4">
       <div className="flex flex-col shrink-0">
@@ -172,7 +174,7 @@ const PriceCard = ({ detail, inr }) => (
         <span className="eg-price text-[#174358]" data-testid="eg-detail-price-value">{inr}</span>
         <span className="eg-body-md text-[#6F777C]">{price.perPerson}</span>
       </div>
-      <Cta detail={detail} className="w-full !h-16 !text-[18px]" testId="eg-detail-price-cta" />
+      <Cta detail={detail} className="w-full !h-16 !text-[18px]" testId="eg-detail-price-cta" onClick={onCta} />
     </div>
     <hr className="border-[#E4E3DB]" />
     <div className="flex flex-col gap-3">
@@ -339,7 +341,7 @@ const Steps = () => (
   </section>
 );
 
-function StickyBar({ detail, inr }) {
+function StickyBar({ detail, inr, onCta }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 500);
@@ -352,7 +354,7 @@ function StickyBar({ detail, inr }) {
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
         <div className="px-4 py-3 md:py-0 md:px-0 md:pl-6 flex items-center justify-between md:justify-end gap-3">
           <div className="flex flex-col"><span className="eg-body-sm text-[#6F777C]">{price.from}</span><span className="eg-price !text-[20px] !leading-6 md:!text-[22px] text-[#174358]">{inr}</span><span className="eg-body-sm text-[#6F777C]">{price.perPerson}</span></div>
-          <Cta detail={detail} className="w-auto !h-14 !px-8 eg-title-lg" testId="eg-sticky-cta" />
+          <Cta detail={detail} className="w-auto !h-14 !px-8 eg-title-lg" testId="eg-sticky-cta" onClick={onCta} />
         </div>
       </div>
     </div>
@@ -362,6 +364,9 @@ function StickyBar({ detail, inr }) {
 export default function EgyptDetail() {
   const { slug } = useParams();
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const [leadOpen, setLeadOpen] = useState(false);
+  const openLead = useCallback(() => setLeadOpen(true), []);
+  const closeLead = useCallback(() => setLeadOpen(false), []);
   const showSummary = () => {
     setSummaryOpen(true);
     requestAnimationFrame(() => { const el = document.getElementById('summary'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' }); });
@@ -377,7 +382,7 @@ export default function EgyptDetail() {
       <main className="flex flex-col gap-8 pb-28 md:pb-[100px]">
         <Head detail={detail} />
         <Crumbs crumbs={crumbs} />
-        <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard detail={detail} inr={inr} /></div>
+        <div className="eg-wide md:hidden" data-testid="eg-detail-mobile-price"><PriceCard detail={detail} inr={inr} onCta={openLead} /></div>
         <div className="flex flex-col gap-14 md:gap-[72px]">
           <div className="eg-wide flex flex-col md:flex-row gap-8">
             <div className="flex-1 min-w-0 flex flex-col gap-8">
@@ -386,7 +391,7 @@ export default function EgyptDetail() {
               <div className="md:hidden"><ExpertsCard testId="eg-detail-experts-mobile" /></div>
             </div>
             <aside className="hidden md:flex w-[384px] shrink-0 flex-col gap-6 self-start sticky top-6 max-h-[calc(100vh-24px)] overflow-y-auto no-scrollbar" data-testid="eg-detail-sidebar">
-              <PriceCard detail={detail} inr={inr} />
+              <PriceCard detail={detail} inr={inr} onCta={openLead} />
               <ExpertsCard />
             </aside>
           </div>
@@ -398,7 +403,8 @@ export default function EgyptDetail() {
           <Steps />
         </div>
       </main>
-      <StickyBar detail={detail} inr={inr} />
+      <StickyBar detail={detail} inr={inr} onCta={openLead} />
+      <DesignEscapeModal open={leadOpen} onClose={closeLead} destination={dest.name} tripTitle={detail.title} />
       <ScrollTop className="bottom-24 right-4 md:bottom-[104px] md:right-10" />
       <Footer />
     </div>
