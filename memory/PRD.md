@@ -413,3 +413,4 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Emerald Isle Explorer preserved as card #1 and detail page untouched.
 - EgyptDetail now resolves destination (`destinationFor`) → planner heading/bg, reviews heading/count/items, recommended pool (Vietnam / Sri Lanka / Thailand / Morocco / Egypt fallback).
 - Tested: iteration_38 all pass.
+- 2026-09-29: +2 Sri Lanka packages from PDFs: sri-lanka-urban-vibes-southern-shores-5d4n (₹69,200; Best Western + Club Bentota) and sri-lanka-premium-urban-explorations-watersports-5d4n (₹70,598; Morven Hotel + EKHO Surf). Sri Lanka now = Emerald Isle + 6 PDF packages (7 total). Self-tested: cards, detail pages, lazy-load on holidays page.

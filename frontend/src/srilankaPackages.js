@@ -33,6 +33,14 @@ const GALLE_DAY = (n) => D(n, 'Galle excursion – Galle Fort, Madu River, Turtl
 const BENTOTA_COLOMBO = (n) => D(n, 'Bentota to Colombo – Gangaramaya Temple, city tour', 'B, D', ['Drive to Colombo, Sri Lanka’s vibrant commercial capital', 'City tour: Independence Square, Gangaramaya Temple, Galle Face Green and key landmarks', 'Shopping for tea, spices, gemstones, handicrafts and souvenirs; evening at leisure'], 'Colombo');
 const DEPART = (n) => D(n, 'Colombo hotel to Colombo Airport – departure transfer', 'B', ['Check out and transfer to Bandaranaike International Airport for your departure flight'], null);
 
+const URBAN_ITIN = [
+  D(1, 'Colombo Airport to Colombo hotel – Independence Square, Gangaramaya Temple, Galle Face Green', 'D', ['Arrive at Bandaranaike International Airport and meet your representative; transfer to Colombo and check in', 'City tour covering Independence Square, Gangaramaya Temple, Galle Face Green and major landmarks', 'Colombo’s shopping districts for tea, spices, gemstones, handicrafts, clothing and souvenirs', 'Evening at leisure'], 'Colombo'),
+  D(2, 'Colombo – leisure day', 'B, D', ['Full day at leisure exploring Colombo'], 'Colombo'),
+  D(3, 'Colombo hotel to Bentota – water sports activities in Bentota', 'B, D', ['Proceed to Bentota, Sri Lanka’s premier beach resort destination, and check in', 'Afternoon water sports activities and the coastal charm of Bentota'], 'Bentota'),
+  D(4, 'Galle excursion – Galle Fort, Madu River, Turtle Hatchery', 'B, D', ['Historic Galle and the UNESCO-listed Galle Fort – colonial streets, boutiques and ocean views', 'Balapitiya: scenic Madu River boat safari through mangroves and islands', 'Turtle Hatchery Conservation Centre; return to Bentota'], 'Bentota'),
+  D(5, 'Bentota to Colombo Airport – departure transfer', 'B', ['Check out and transfer to Bandaranaike International Airport for your departure flight'], null)
+];
+
 export const packages = [
   {
     slug: 'sri-lanka-hill-stations-heritage-forts-6d5n', name: 'Sri Lanka Classic: Hill Stations & Heritage Forts', code: '5N/6D Hill Country & Coastal Highlights', days: 6, nights: 5, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'],
@@ -83,5 +91,24 @@ export const packages = [
     pricing: PRICING(66598, 133196, 39959), price: 66598,
     inclusions: INCL(4).slice(0, 3), exclusions: EXCL,
     gallery: [IMG.coast, IMG.galle, IMG.turtles, IMG.kandy, IMG.colombo], alt: 'Aerial view of the south coast, Sri Lanka'
+  }
+,
+  {
+    slug: 'sri-lanka-urban-vibes-southern-shores-5d4n', name: 'Sri Lanka Classic: Urban Vibes & Southern Shores', code: '4N/5D Sri Lanka Urban & Coastal Highlights', days: 5, nights: 4, tag: 'Beach', styles: ['Beach', 'Short trips', 'Family', 'Honeymoon'],
+    summary: 'Two nights in Colombo with a city tour and a free day, then two nights on Bentota beach with water sports, Galle Fort, the Madu River safari and the turtle hatchery.',
+    stays: [['Colombo', 'Nights 1–2', 'Best Western (Standard room, half board)'], ['Bentota', 'Nights 3–4', 'Club Bentota (Standard room, half board)']],
+    itinerary: URBAN_ITIN,
+    pricing: PRICING(69200, 138400, 41520), price: 69200,
+    inclusions: INCL(4), exclusions: EXCL,
+    gallery: [IMG.colomboNight, IMG.coast, IMG.turtles, IMG.galle, IMG.bentota], alt: 'Colombo skyline at night, Sri Lanka'
+  },
+  {
+    slug: 'sri-lanka-premium-urban-explorations-watersports-5d4n', name: 'Sri Lanka Premium: Refined Urban Explorations & Watersports', code: '4N/5D Sri Lanka Urban & Coastal Highlights (Premium)', days: 5, nights: 4, tag: 'Luxury', styles: ['Luxury', 'Beach', 'Short trips', 'Honeymoon'],
+    summary: 'The premium take on Colombo and Bentota: Morven Hotel in the city, EKHO Surf on the beach, with water sports, Galle Fort, the Madu River and the turtle hatchery.',
+    stays: [['Colombo', 'Nights 1–2', 'Morven Hotel (Standard room, half board)'], ['Bentota', 'Nights 3–4', 'EKHO Surf (Standard room, half board)']],
+    itinerary: URBAN_ITIN,
+    pricing: PRICING(70598, 141196, 42359), price: 70598,
+    inclusions: INCL(4), exclusions: EXCL,
+    gallery: [IMG.coast, IMG.colombo, IMG.bentota, IMG.turtles, IMG.galle], alt: 'Aerial view of the south coast, Sri Lanka'
   }
 ];
