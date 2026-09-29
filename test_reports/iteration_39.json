@@ -1,0 +1,26 @@
+{
+  "summary": "Tested customer-reviews block on Sri Lanka, Vietnam and Egypt holidays pages. Initial run: ALL THREE pages crashed with runtime error 'd is not defined' (Emergent runtime error overlay). Root cause: ReviewCard subcomponent in EgyptCustomerReviews.jsx is defined at module scope but referenced d.readMore/d.readLess where d is only in scope inside the parent EgyptCustomerReviews component. Fixed by threading readMore/readLess through props. After the fix all three pages render correctly and content is country-specific: Sri Lanka heading 'Our customers about their Sri Lanka trip', summary mentions Sri Lanka, reviewers Iris/Viola/Astrid, no 'Egypt' text in block; Vietnam heading 'Our customers about their Vietnam trip', reviewers Camelia/Nicolas/Christina, no 'Egypt'; Egypt heading unchanged 'Our customers about their Egypt trip', reviewer Sibel present. 4.5 rating and '7,618 reviews' shown on all three; 4 photos rendered with 0 broken; 5 category ratings; Read more toggles between 'Read more' and 'Read less'; 'Show more reviews' clickable. Regression: Sri Lanka hero CTA still shows 'Browse 7 package ideas' and detail page (/asien/emerald-isle-explorer-sri-lanka) loads with correct H1. Mobile 390x844 on Sri Lanka: no horizontal overflow (scrollWidth==clientWidth==390), block renders correctly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "EgyptCustomerReviews.jsx ReviewCard", "issue": "ReferenceError 'd is not defined' crashed Sri Lanka, Vietnam AND Egypt holidays pages via Emergent runtime error overlay. ReviewCard is at module scope but referenced parent's `d` closure. FIXED by passing readMore/readLess as props.", "selector": "[data-testid=eg-cr-card-more]", "priority": "CRITICAL"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix has already been applied by testing agent (props threading in EgyptCustomerReviews.jsx). Please review the change and confirm it aligns with intended design; consider adding a lightweight test to catch module-scope closure bugs in future."
+  ],
+  "critical_code_review_comments": [
+    "ReviewCard was reading `d.readLess`/`d.readMore` from the enclosing scope even though it is defined at module level; this pattern is easy to overlook. Prefer defining subcomponents either inside the parent (to capture closure) or explicitly threading required props (current fix).",
+    "The old JSX still contained the exact readMore/readLess bug BEFORE this change per iteration history — recommend adding a smoke test rendering all 3 holidays pages headlessly to catch top-level crashes."
+  ],
+  "updated_files": ["/app/frontend/src/components/egypt/EgyptCustomerReviews.jsx"],
+  "success_rate": {"backend": "n/a", "frontend": "100% after fix"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "EgyptCustomerReviews.jsx now takes optional `data` prop; ReviewCard receives readMore/readLess via props. All 3 holidays pages verified. If main agent tweaks the component further, retest all 3 pages for the same trio of assertions (heading country name, summary country name, reviewer names, no 'Egypt' leak in SL/VN).",
+  "rca of the issue": "Reproduction: navigate to /asien/sri-lanka/holidays (also VN and Egypt) — Emergent runtime error 'd is not defined' displayed. Cause: EgyptCustomerReviews.jsx line 42 referenced `d.readLess`/`d.readMore` inside ReviewCard, which is declared at module scope (outside the parent component that owns `d = data`). At render time `d` is not in scope → ReferenceError. Mitigation applied: added readMore/readLess props to ReviewCard and passed them from the parent's map."
+}

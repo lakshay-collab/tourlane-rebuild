@@ -19,7 +19,7 @@ const Category = ({ c }) => {
   );
 };
 
-const ReviewCard = ({ r }) => {
+const ReviewCard = ({ r, readMore, readLess }) => {
   const [open, setOpen] = useState(false);
   return (
     <article className="rounded-2xl bg-[#F6F4EB] p-4 md:pl-4 md:pr-4 md:py-6 flex gap-4" data-testid="eg-cr-card">
@@ -39,7 +39,7 @@ const ReviewCard = ({ r }) => {
         </div>
         <p className="mt-2 eg-title-md text-[#002131]" data-testid="eg-cr-card-title">{r.title}</p>
         <p className={`mt-2 eg-body-lg text-[#002131] ${open ? '' : 'eg-clamp-2'}`} data-testid="eg-cr-card-text">{r.text}</p>
-        <button type="button" onClick={() => setOpen((v) => !v)} className="mt-0.5 eg-body-lg font-medium underline text-[#002131]" data-testid="eg-cr-card-more">{open ? d.readLess : d.readMore}</button>
+        <button type="button" onClick={() => setOpen((v) => !v)} className="mt-0.5 eg-body-lg font-medium underline text-[#002131]" data-testid="eg-cr-card-more">{open ? readLess : readMore}</button>
       </div>
     </article>
   );
@@ -111,7 +111,7 @@ export default function EgyptCustomerReviews({ className = 'eg-wide mt-12 md:mt-
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14" /></svg>
             </button>
           </div>
-          <div className="mt-6 flex flex-col gap-4" data-testid="eg-cr-list">{d.items.map((r, i) => <ReviewCard key={i} r={r} />)}</div>
+          <div className="mt-6 flex flex-col gap-4" data-testid="eg-cr-list">{d.items.map((r, i) => <ReviewCard key={i} r={r} readMore={d.readMore} readLess={d.readLess} />)}</div>
           <button type="button" className="mt-6 inline-flex items-center gap-1 h-11 px-4 rounded-full eg-body-lg font-medium text-[#174358] hover:bg-[rgba(23,67,88,0.08)]" data-testid="eg-cr-more">{d.more}<ChevronRight size={20} /></button>
         </div>
       </div>
