@@ -62,7 +62,7 @@ export const best = {
   items: [
     { ...pick('Africa', 'Egypt'), href: '/afrika/aegypten' },
     { ...pick('Asia', 'Thailand'), href: '/asien/siam-splendour-thailand' },
-    { ...pick('Asia', 'Sri Lanka'), href: '/asien/emerald-isle-explorer-sri-lanka' },
+    { ...pick('Asia', 'Sri Lanka'), href: '/asien/sri-lanka' },
     { ...pick('Asia', 'Maldives'), href: '/asien' },
     { ...pick('Asia', 'Vietnam'), href: '/asien/vietnam' },
     { ...pick('Asia', 'Japan'), href: '/asien' },

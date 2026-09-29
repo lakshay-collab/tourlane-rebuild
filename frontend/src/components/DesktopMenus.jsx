@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { destinationTabs, destinations } from '../destinationsData';
 import { themeGroups } from '../themesData';
 
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien/emerald-isle-explorer-sri-lanka', 'Thailand': '/asien/siam-splendour-thailand', 'Vietnam': '/asien/vietnam' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien/sri-lanka', 'Thailand': '/asien/siam-splendour-thailand', 'Vietnam': '/asien/vietnam' };
 const REGION_HREF = { 'Asia': '/asien' };
 const REGION_TAGLINE = {
   'Top 10': 'Our most-loved destinations right now', 'Africa': 'Pyramids, safaris and Indian Ocean islands', 'Asia': 'Temples, tea hills and turquoise bays',

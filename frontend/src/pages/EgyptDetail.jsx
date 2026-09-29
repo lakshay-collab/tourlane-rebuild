@@ -130,7 +130,7 @@ const Crumbs = ({ crumbs }) => (
           {c.href
             ? (c.href.startsWith('/afrika/aegypten')
                 ? <Link to="/afrika/aegypten" className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
-                : (c.href === '/asien' || c.href === '/asien/vietnam')
+                : (c.href === '/asien' || c.href === '/asien/vietnam' || c.href === '/asien/sri-lanka')
                   ? <Link to={c.href} className="eg-body-md text-[#174358] hover:underline">{c.label}</Link>
                   : <a href={c.href} onClick={stop} className="eg-body-md text-[#174358] hover:underline">{c.label}</a>)
             : <span className="eg-label-lg text-[#002131] truncate max-w-[220px] sm:max-w-none">{c.label}</span>}

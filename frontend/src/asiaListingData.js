@@ -162,7 +162,7 @@ export const countries = {
     { title: 'Maldives', href: '#', image: `${CT}/3hsuR5UvfamJlqKCTM81Ii/b43e484beb8b92c43047174a4a3e7be8/Maldiven__Holzsteg.jpg?w=1080&q=60&fm=webp` },
     { title: 'Philippines', href: '#', image: `${CT}/1o2rtINxvG8y4nqhK5Bvgp/d09a493b9ea9c4db223ad37ba237b646/Philippinen_Palawan_Coron_Lagoone_TCG.png?w=1080&q=60&fm=webp` },
     { title: 'Singapore', href: '#', image: `${CT}/4B5tE96BHxRVFYUVJQibEE/efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg?w=1080&q=60&fm=webp` },
-    { title: 'Sri Lanka', href: '#', image: `${CT}/6etzBcZlvbOLHqzCOq0NES/764d862634b04fbcd521a3ad01740f1d/iStock-1779897953.jpg?w=1080&q=60&fm=webp` },
+    { title: 'Sri Lanka', href: '/asien/sri-lanka', image: `${CT}/6etzBcZlvbOLHqzCOq0NES/764d862634b04fbcd521a3ad01740f1d/iStock-1779897953.jpg?w=1080&q=60&fm=webp` },
     { title: 'South Korea', href: '#', image: `${CT}/2eRk3wUlchhuTsWYZUzJVg/8b62f957e2292414759f5afd848a72b1/South_Korea-Roadtrip-1.jpg?w=1080&q=60&fm=webp` }
   ]
 };

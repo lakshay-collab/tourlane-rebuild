@@ -147,7 +147,8 @@ const asiaList = [
   ['Singapore', ct('4B5tE96BHxRVFYUVJQibEE/efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg')],
   ['Philippines', ct('1o2rtINxvG8y4nqhK5Bvgp/d09a493b9ea9c4db223ad37ba237b646/Philippinen_Palawan_Coron_Lagoone_TCG.png')]
 ];
-export const related = { h2: `More destinations in ${destination.continent}`, items: asiaList.map(([title, image]) => ({ title, alt: title, tag: null, href: '#', image })) };
+const ASIA_HREF = { 'Sri Lanka': '/asien/sri-lanka', Thailand: '/asien/siam-splendour-thailand' };
+export const related = { h2: `More destinations in ${destination.continent}`, items: asiaList.map(([title, image]) => ({ title, alt: title, tag: null, href: ASIA_HREF[title] || '#', image })) };
 
 export const vietnam = {
   pageTitle: 'Vietnam Honeymoons and holidays | Hi Tours',
