@@ -22,6 +22,9 @@ const Field = ({ label, error, children }) => (
 );
 
 // Reusable lead-capture popup. `destination` comes from the itinerary being viewed.
+const ESCAPE_IMAGES = { egypt: '/escape/egypt.webp', vietnam: '/escape/vietnam.webp', srilanka: '/escape/sri-lanka.webp' };
+const escapeImage = (destination, fallback) => ESCAPE_IMAGES[(destination || '').toLowerCase().replace(/[^a-z]/g, '')] || fallback;
+
 export default function DesignEscapeModal({ open, onClose, destination, tripTitle, image, imageAlt }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '' });
   const [errors, setErrors] = useState({});
@@ -68,7 +71,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
         <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white/90 text-[#002131] shadow-[0_4px_14px_rgba(0,33,49,0.25)] hover:bg-white transition-colors" data-testid="dye-close"><X size={20} /></button>
 
         <div className="relative h-[200px] sm:h-auto sm:w-[46%] shrink-0 bg-[#EAE8E0]" data-testid="dye-image-panel">
-          {image && <img src={image} alt={imageAlt || destination} className="absolute inset-0 w-full h-full object-cover" data-testid="dye-image" />}
+          {escapeImage(destination, image) && <img src={escapeImage(destination, image)} alt={imageAlt || destination} className="absolute inset-0 w-full h-full object-cover" data-testid="dye-image" />}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.15)_0%,rgba(0,33,49,0.25)_45%,rgba(0,33,49,0.78)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
             <p className="eg-label-lg uppercase tracking-[0.18em] text-white/80">Plan your escape</p>
