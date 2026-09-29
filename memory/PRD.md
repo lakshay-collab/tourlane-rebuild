@@ -407,3 +407,9 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - New `/asien/sri-lanka` (SriLankaListing.jsx + srilankaListingData.js) on the shared DestinationListing template; `/asien/sri-lanka/holidays(+/:style)` via EgyptHolidays. Places: Colombo, Kandy, Ella, Galle, Sigiriya, Nuwara Eliya, Bentota. Related: Asia (Vietnam, Thailand linked).
 - Existing Emerald Isle Explorer package preserved: same slug/href/data (referenced from asiaListingData; only `styles` added). Sri Lanka country links (menus, homepage cards, search, About, Asia listing tile) now point to /asien/sri-lanka; package URL unchanged.
 - Tested: iteration_37 all pass.
+
+## 2026-09-29 — Sri Lanka PDF packages + destination-aware detail sections
+- 4 Hi Tours quotation PDFs → `src/srilankaPackages.js` (same model as Vietnam) + adapters `tours/srilankaToursData.js` (generic `createAdapters` now lives in vietnamToursData.js). Slugs: sri-lanka-hill-stations-heritage-forts-6d5n (₹43,199), sri-lanka-ancient-citadels-coastal-paradises-7d6n (₹98,998), sri-lanka-cultural-coastal-journey-6d5n (₹84,998), sri-lanka-culture-coast-colonial-charm-5d4n (₹66,598). Prices = per person double sharing, Nov–19 Dec 2026, excl. GST (from PDFs). PDF photos saved to /public/srilanka-packages/.
+- Emerald Isle Explorer preserved as card #1 and detail page untouched.
+- EgyptDetail now resolves destination (`destinationFor`) → planner heading/bg, reviews heading/count/items, recommended pool (Vietnam / Sri Lanka / Thailand / Morocco / Egypt fallback).
+- Tested: iteration_38 all pass.

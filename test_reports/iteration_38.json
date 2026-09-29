@@ -1,0 +1,17 @@
+{
+  "summary": "Frontend-only regression for Sri Lanka additions. Verified /asien/sri-lanka lists 5 cards in required order with exact hrefs (emerald-isle-explorer-sri-lanka, sri-lanka-hill-stations-heritage-forts-6d5n, sri-lanka-ancient-citadels-coastal-paradises-7d6n, sri-lanka-cultural-coastal-journey-6d5n, sri-lanka-culture-coast-colonial-charm-5d4n) and prices (₹94,472 / ₹43,199 / ₹98,998 / ₹84,998 / ₹66,598) and durations (9/6/7/6/5 days). All 5 product cards have identical bounding boxes (360×463.16 desktop, 358×461.89 mobile) and identical image containers (358×225.16 desktop, 356×223.89 mobile). Each of the 4 new detail pages loads with correct h1, ₹price, gallery (0 broken images), What's included tiles, itinerary chips (A/B/C/D…), Tour summary toggle opens table with correct day count (6/7/6/5 visible TR rows plus mirrored mobile divs — same pattern as Vietnam reference), Read more reveals Included/Not included/Pricing sections, planner 'Plan your Sri Lanka trip', reviews section, and 'Other Sri Lanka holidays you may like' shows the other 4 cards. Emerald Isle regression intact (h1 starts 'Emerald Isle Explorer', price ₹94,472). /asien/sri-lanka/holidays shows 'Browse 5 package ideas' with 5 cards; Filter by → Short trips → 1 card ('Culture, Coast & Colonial Charm', 'Browse 1 package idea'); Beach → 4 cards ('Browse 4 package ideas', Emerald Isle excluded). No horizontal overflow at 1920 or 390 on /asien/sri-lanka. Card navigation and browser back work. Regression: /asien/vietnam shows 6 of 7 cards initially, /asien/hanoi-sapa-5d4n loads with 'Plan your Vietnam trip', /afrika/aegypten shows 6 cards, /asien loads correctly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Data-only change is clean: srilankaPackages.js is source of truth; srilankaToursData.js reuses the generic vietnamToursData.createAdapters, keeping DRY. Emerald Isle package remains referenced from asiaProducts and is not duplicated.",
+    "Console shows two 401 responses from a third-party embed (previously noted as Vimeo iframe security in iteration_37 context) — no impact on functionality."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Detail pages use data-testid=eg-glance-toggle to expand the Tour summary table; eg-glance-day is applied both to mobile-collapsed divs (hidden lg) and desktop table TRs, so total count is 2×days (matches Vietnam reference). The holidays page filter is inside a 'Filter by' dropdown that must be opened before selecting a style. All 5 Sri Lanka slugs and prices are correct."
+}
