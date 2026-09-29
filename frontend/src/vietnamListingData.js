@@ -1,10 +1,9 @@
 // Vietnam destination landing – same template/data shape as egyptListingData (destination = Vietnam, continent = Asia).
 import { features, planner as egyptPlanner, reviews as egyptReviews } from './egyptListingData';
+import { vietnamProducts } from './tours/vietnamToursData';
 
 const CT = 'https://images.ctfassets.net/bth3mlrehms2';
 const CT2 = 'https://images.ctfassets.net/rc3dlxapnu6k';
-const KW = 'https://kiwi-cdn.tlservers.com/items%2F';
-const kw = (p) => `${KW}${p}?w=1080&q=60&auto=format&fit=max`;
 const ct = (p) => `${CT}/${p}?w=1080&q=60&fm=webp`;
 const ct2 = (p) => `${CT2}/${p}?w=1080&q=60&fm=webp`;
 
@@ -61,49 +60,7 @@ export const tours = {
   readLess: 'Read less'
 };
 
-const P = (slug, title, tag, days, cities, hotels, activities, transfers, meals, price, alt, images, styles = [tag]) => ({ slug, title, tag, styles, days, stops: cities, cities, hotels, activities, transfers, meals, price, alt, images, href: `/asien/${slug}` });
-
-export const products = [
-  P('vietnam-2-weeks', 'Vietnam in 2 weeks: from Hanoi to Ho Chi Minh City', 'Culture', 14, 6, 6, 11, 10, 13, 218700, 'Imperial City, Hue, Vietnam', [
-    ct('JDASnNCaoB20TSwhQc4iE/420a9d60e73d9bcb592723cdc22f4abf/Vietnam__Th%E1%BB%ABa_Thi%C3%AAn_Hu%E1%BA%BF__Hu%E1%BA%BF__Kaiserstadt.jpg'),
-    ct('4oRJ8JDJy6fZfVRUgAtjgy/a6e0956ec4af80390b64a389a0c3acf1/Vietnam__Qu%E1%BA%A3ng_Nam__H%E1%BB%99i_An..jpg'),
-    kw('33ffa874-e537-4476-9ee4-24b879d95262%2Fimage%2Fjpeg%2FETa0z3kdrqBASIH2haKnnQ%2Fspenser-sembrat-xc8W2ZCv4j4-unsplash1.jpg'),
-    kw('8312e35b-0d02-4d3d-b811-0c370c169dbe%2Fimage%2Fjpeg%2FcdIOQ00kOZOHJzN-4nf5fA%2F1787661595021_shutterstock_111845090-cropped.jpg'),
-    kw('5e9692e9-9d7d-451a-9810-777beceb3555%2Fimage%2Fjpeg%2FqDDT4Wixflj3L_b0l9cgNQ%2Fistock-1730801216.jpg')
-  ], ['Culture', 'Honeymoon']),
-  P('vietnam-cambodia-14-days', 'Vietnam & Cambodia: 14 days in Southeast Asia', 'Multi-country', 14, 5, 5, 12, 9, 12, 191700, 'Bayon temple faces, Angkor, Cambodia', [
-    ct('4keSsuacghypAJkpQ5NNXQ/21d76fdf15777b7b69a23eca59340cb7/Tempel-von-Bayon_Angkor_Kambodscha.png'),
-    ct('3cz9ZdWGSaLYlWHCHaeIf8/041206670b85f0d72d0c4d706b270df9/Kambodscha__Siem_Reap__Angkor_Wat.jpg'),
-    kw('33ffa874-e537-4476-9ee4-24b879d95262%2Fimage%2Fjpeg%2FfVvjdhD0QGd1H5L2E4vv2g%2Fjosh-stewart-GZkvTnGxL-E-unsplash.jpg'),
-    ct('7bbMD4iPanI1rE91pLSdqm/547e1b9cf11e715878d98171b392b20e/Kambodscha__Battambang__Wat_Ek_Phnom.jpg')
-  ], ['Culture', 'Luxury']),
-  P('vietnam-with-kids', 'Family holiday: Vietnam with kids', 'Family', 12, 3, 3, 9, 6, 11, 218700, 'Glowing lantern boats, Hoi An, Vietnam', [
-    ct('2ec5zYEqTuCtsvZTUafUQs/b91bb18a48cf35494e3944635bf2e44a/Vietna_HoiAn_Boote.jpg'),
-    kw('33ffa874-e537-4476-9ee4-24b879d95262%2Fimage%2Fjpeg%2Fwx9DsdADFbAmXlArRlrBnQ%2Fistock-2164433115.jpg'),
-    kw('2e4a5b21-f19f-48b8-93b8-4f89c24e61b9%2Fimage%2Fjpeg%2FFcPjTmiE1KR8A3Zu5HvNGw%2Fthanh-soledas-xguz4hlc5qu-unsplash.jpg'),
-    kw('2e4a5b21-f19f-48b8-93b8-4f89c24e61b9%2Fimage%2Fjpeg%2FrBLAiKhKmax7hEGu1CYfKw%2Faiph-doan-Sx45hrP74VE-unsplash.jpg'),
-    kw('87fc24d1-a9a8-41ca-b33a-986acd865c63%2Fimage%2Fjpeg%2FDizi2jOIgWrESa524H1h_w%2Ftron-le-eilpdni_pv4-unsplash.jpg')
-  ], ['Family', 'Beach']),
-  P('vietnam-cambodia-6-days', 'Vietnam & Cambodia: peaceful beauty in 6 days', 'Short trips', 6, 3, 3, 6, 4, 5, 128700, 'Tra Su forest, Mekong Delta, Vietnam', [
-    kw('ab422e95-1494-479e-8bc5-69d62b90d470%2Fimage%2Fjpeg%2FBF8lwQZ_XlHDeilEIAixgw%2Ftrasu01.jpg'),
-    kw('badaf0f6-578d-4d4b-b050-ba51503fdb3e%2Fimage%2Fjpeg%2F6i4djHwzC6XE9FJjUpG1CQ%2Fcan_tho_-pcruciatti-_shutterstock_59891257.jpg'),
-    kw('ab422e95-1494-479e-8bc5-69d62b90d470%2Fimage%2Fjpeg%2FqiyxLaIxZ0XCOXwJUeUzEw%2Fthoaingochau03.jpg'),
-    kw('742ab243-3f63-4588-914a-6acaecaafff9%2Fimage%2Fjpeg%2FZHuD6v_zY-j7tohecQF7xw%2Fphnom_penh-istock-173912273.jpg')
-  ], ['Short trips', 'Culture']),
-  P('vietnam-10-days', 'Vietnam in 10 days: nature & history', 'Culture', 10, 4, 4, 9, 6, 9, 276300, 'Hue from above, Vietnam', [
-    ct('62B2Sk2PBjhW4UqGOAwCFy/7b0ac59dc466f20c779fc174bffd330e/Vietnam__Hue.jpg'),
-    kw('2e4a5b21-f19f-48b8-93b8-4f89c24e61b9%2Fimage%2Fjpeg%2FFcPjTmiE1KR8A3Zu5HvNGw%2Fthanh-soledas-xguz4hlc5qu-unsplash.jpg'),
-    kw('5e9692e9-9d7d-451a-9810-777beceb3555%2Fimage%2Fjpeg%2Fp-FOZ_0wwVmhv60B7hyNlg%2Fistock-2148429063.jpg'),
-    kw('33ffa874-e537-4476-9ee4-24b879d95262%2Fimage%2Fjpeg%2Fwx9DsdADFbAmXlArRlrBnQ%2Fistock-2164433115.jpg')
-  ], ['Culture', 'Honeymoon', 'Luxury']),
-  P('vietnam-3-weeks', 'Vietnam in 3 weeks: highlights from north to south', 'Nature', 21, 8, 8, 16, 14, 20, 405000, 'Rice terraces, Mu Cang Chai, Vietnam', [
-    kw('2f2495e9-20e3-4c3c-8c65-70f87272cacc%2Fimage%2Fjpeg%2FQ2wQ6ttpnaH8Ih2K5L5WIA%2Fshutterstock_22662214211.jpg'),
-    kw('9f1fe4ef-06a1-4adc-966f-3530fa9790a4%2Fimage%2Fjpeg%2FyejfX_9ca567s15Qv1X8Wg%2Fmai_chau-istock-1185211529.jpg'),
-    kw('6d86277b-f666-4d59-b2e8-d31e3d3e1f4e%2Fimage%2Fjpeg%2FBYvY9GVVs-p_Yomff5v_KQ%2Fvietnam_-_ninh_binh_sunset_-_istock.jpg'),
-    kw('5e9692e9-9d7d-451a-9810-777beceb3555%2Fimage%2Fjpeg%2FlHQyLl3UY8ZbHho_B3i_4A%2Fveronica-reverse-wmo1t2nfbk8-unsplash.jpg'),
-    kw('2e4a5b21-f19f-48b8-93b8-4f89c24e61b9%2Fimage%2Fjpeg%2FZmWTE5g2-QKTFDwc2sz4eA%2Fhoi-an-photographer-5k1gbepqii4-unsplash.jpg')
-  ], ['Culture', 'Beach', 'Honeymoon'])
-];
+export const products = vietnamProducts;
 
 export const planner = { ...egyptPlanner, h3: 'Plan your Vietnam trip', bg: ct('5ujKcctP43Y7HHOFAKvWIU/4e29a70d5c0657d946762c42bd2f1eb5/Sapa_Vietname.jpg').replace('w=1080', 'w=2000') };
 

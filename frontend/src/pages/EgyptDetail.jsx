@@ -22,7 +22,7 @@ import { detail as detailND, route as routeND, glance as glanceND, crumbs as cru
 import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as crumbsNN } from '../tours/nileNoorData';
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
-import { products as vietnamProducts } from '../vietnamListingData';
+import { products as vietnamProducts, planner as vietnamPlanner } from '../vietnamListingData';
 import { products, formatInr, styles } from '../egyptListingData';
 import { products as asiaProducts } from '../asiaListingData';
 import { NavIcon } from '../components/egypt/EgyptNavIcons';
@@ -365,7 +365,7 @@ export default function EgyptDetail() {
             </aside>
           </div>
           <Glance open={summaryOpen} setOpen={setSummaryOpen} glance={glance} stops={route.stops} />
-          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={planner} tripTitle={detail.title} source="egypt-detail" />
+          <EgyptPlanner className="eg-wide" titleClass="eg-headline-lg" data={detail.slug in vietnamBySlug ? vietnamPlanner : planner} tripTitle={detail.title} source="egypt-detail" />
           <Features />
           <EgyptReviews centered className="eg-container" h2={reviewsHeading} count={trust.count} cta={detail.cta} />
           <Recommended detail={detail} />
