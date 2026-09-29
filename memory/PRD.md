@@ -415,3 +415,8 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Tested: iteration_38 all pass.
 - 2026-09-29: +2 Sri Lanka packages from PDFs: sri-lanka-urban-vibes-southern-shores-5d4n (₹69,200; Best Western + Club Bentota) and sri-lanka-premium-urban-explorations-watersports-5d4n (₹70,598; Morven Hotel + EKHO Surf). Sri Lanka now = Emerald Isle + 6 PDF packages (7 total). Self-tested: cards, detail pages, lazy-load on holidays page.
 - 2026-09-29: Holidays-page customer reviews block (EgyptCustomerReviews) now takes `data`; Sri Lanka/Vietnam listing data export `customerReviews` (heading, summary, photos, expert, 3 items). Testing agent fixed a scope bug (ReviewCard readMore/readLess props). iteration_39 pass.
+
+## 2026-09-29 — "Design Your Escape" lead popup
+- Detail-page CTAs (sidebar price card + sticky bar) relabelled "Design Your Escape" (same eg-btn-filled style) and open reusable `components/egypt/DesignEscapeModal.jsx`. Destination auto-detected via `destinationFor(detail)` (Sri Lanka / Vietnam / Egypt / Thailand / Morocco) and shown read-only. Validation inline; Esc / overlay / × close; body scroll locked while open.
+- Backend: LeadCreate/Lead gained `destination` field; POST /api/leads stores {name, phone, email, destination, trip_title, source:"design-your-escape"} in Mongo `leads`; GET /api/leads lists.
+- Tested: iteration_40 all pass (4 destinations, validation, persistence, mobile).
