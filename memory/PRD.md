@@ -388,3 +388,10 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - Features ("planned by pros"): 3 Drive line icons /public/pros-*.png.
 - About page (/about) rebuilt as 1:1 copy of tourlane.com/about-us (brand swapped to Hi Tours): hero collage, Welcome, Recognized by (CNBC/Forbes/Lonely Planet + BBB/ASTA), Why Choose, 3 step cards, AdventureCTA with "Start planning your own Hi Tours" heading (AdventureCTA now accepts `heading` prop), destination carousel (Hi Tours destinations), 12 FAQs. Old media-kit/backed/office sections removed. aboutData.js rewritten.
 - Footer "Hi Tours" column: "About us" link (-> /about) added first; Footer supports FOOTER_HREFS map.
+
+## 2026-09-29 — Vietnam destination landing (data-driven template)
+- Egypt listing refactored into shared template `pages/DestinationListing.jsx` (takes `d` data object). `EgyptListing.jsx` is now a thin wrapper passing egyptListingData. EgyptHero/StickyTabs, EgyptPlan, EgyptFaq, MobileToursBars accept data props (Egypt defaults).
+- New `/asien/vietnam` (VietnamListing.jsx + vietnamListingData.js): Vietnam hero (Ha Long Bay), intro/expert quote (Riya), 6 Vietnam products (link to /asien — no detail pages yet), planner, 3 reviews, "Discover these places in Vietnam" (Hanoi, HCMC, Ha Long Bay, Da Nang, Hoi An, Sapa), activities, plan, 8 guide/inspiration tiles, FAQ, "More destinations in Asia" (Japan, Thailand, Indonesia, Sri Lanka, Maldives, Cambodia, Malaysia, Singapore, Philippines). Section titles derive from destination.name/continent.
+- Vietnam linked from Destinations mega menu / mobile drawer and About page carousel.
+- Homepage tweaks: Moments cards use object-cover, 12px text; "Talking Travel" collage edge-to-edge; "planned by pros" sketch icons (Drive).
+- Tested: iteration_35 all pass (Vietnam + Egypt regression).

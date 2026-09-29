@@ -1,0 +1,24 @@
+{
+  "summary": "Frontend-only testing of new /asien/vietnam Vietnam destination landing page (built from shared DestinationListing template) plus Egypt /afrika/aegypten regression. All 10 acceptance criteria PASS. Vietnam page renders correct hero, breadcrumb, sticky tabs, section order identical to Egypt, 6 product cards, correct Places (Hanoi/HCMC/Ha Long Bay/Da Nang/Hoi An/Sapa), correct More-Asia related (Japan/Thailand/Indonesia/Sri Lanka/Maldives/Cambodia/Malaysia/Singapore/Philippines with no Vietnam overlap). No Egypt words in body, no broken images, no console errors, no horizontal overflow at 1920/390. All interactions (learn-more, expert-quote, tours-readmore, themes 3->8, plan-toggle reveals 6 sections, FAQ accordion) work. View-all -> /asien; Egypt view-all still -> /afrika/aegypten/holidays. Card dimensions match Egypt (places 262x287, theme 358x225, activity 262x287) except product card container height differs by ~24px which is content-driven (Egypt titles wrap 3 lines vs Vietnam 2). Row arrows scroll (+288px). Mobile sticky CTA reads 'Plan your Vietnam trip'. Nav mega-menu Asia -> Vietnam tile links to /asien/vietnam; About page carousel Vietnam card links to /asien/vietnam.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Vietnam listing (desktop)", "issues": ["Product card wrapper heights differ from Egypt by ~24px (V=463, E=487) because Egypt product titles are longer and wrap to 3 lines while Vietnam titles wrap to 2. Image + card widths are identical (360). Content-driven, not a template regression, but if perfect visual parity is required consider min-height on eg-product-card title area."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/iteration_35.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "The shared /public/egypt/ folder holds generic brand assets (Tourlaner portraits, press logos, star/ticket/destination SVGs) that are reused on all destination pages. The literal '/egypt/' path leaks brand-neutral assets into a URL that suggests Egypt-specific content. Recommend renaming to /public/brand/ or /public/shared/ to avoid confusion and to satisfy strict 'no /egypt/ image src on Vietnam page' style rules.",
+    "DestinationListing.jsx (137 lines) is well below the 700-line ceiling and cleanly parameterised via `d`; good refactor. Consider extracting the inline ExpertQuote and MoreButton helpers into components/egypt/ for further reuse.",
+    "vietnamListingData.js reuses egyptListingData.features/planner/reviews via imports which is efficient but couples data files - fine for now, but if features/reviews later differ per destination this will need decoupling."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Vietnam landing page at /asien/vietnam is a thin wrapper over shared DestinationListing template driven by vietnamListingData.js. Section order, tile counts, testids all mirror Egypt. Product cards intentionally link to /asien (no Vietnam detail pages). Tile links (places/related/activities/themes) intentionally inert (href='#' with preventDefault). Row arrow next testids are `${row-testid}-next` (e.g. eg-places-row-next, eg-africa-row-next) and only appear when scrollable at current viewport."
+}
