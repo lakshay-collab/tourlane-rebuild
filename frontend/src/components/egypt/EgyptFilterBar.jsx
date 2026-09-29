@@ -86,7 +86,7 @@ const useToursInView = () => {
   return inView;
 };
 
-export default function EgyptFilterBar({ title, ...pills }) {
+export default function EgyptFilterBar({ title, cta = hero, ...pills }) {
   const [stuck, setStuck] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function EgyptFilterBar({ title, ...pills }) {
       <div className="flex items-center gap-3 h-16">
         {stuck && <span className="eg-title-md text-[#002131] whitespace-nowrap truncate min-w-0 flex-1 animate-[hi-fade-in_150ms_ease-out]" data-testid="eg-filter-title">{title}</span>}
         <FilterPills {...pills} />
-        <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled ml-auto h-11 px-6 eg-title-md" data-testid="eg-filter-cta">{hero.stickyCta}</a>
+        <a href={cta.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled ml-auto h-11 px-6 eg-title-md" data-testid="eg-filter-cta">{cta.stickyCta}</a>
       </div>
     </div>
   );

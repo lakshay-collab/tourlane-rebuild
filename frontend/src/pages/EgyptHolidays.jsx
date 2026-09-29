@@ -11,7 +11,9 @@ import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptCustomerReviews from '../components/egypt/EgyptCustomerReviews';
 import { EgyptFaq } from '../components/egypt/EgyptSections';
 import { ChevronRight } from '../components/egypt/EgyptIcons';
-import { hero, tours, products, sorts, styles, styleBySlug, styleLanding, holidaysPath, holidaysCrumbs } from '../egyptListingData';
+import { hero as egHero, tours as egTours, products as egProducts, sorts, styles, styleBySlug, holidaysPath as egHolidaysPath, holidaysCrumbs as egCrumbs, faq as egFaq, planner as egPlanner } from '../egyptListingData';
+
+const egyptHolidays = { hero: egHero, tours: egTours, products: egProducts, holidaysPath: egHolidaysPath, holidaysCrumbs: egCrumbs, faq: egFaq, planner: egPlanner, plannerSource: 'egypt-holidays', testId: 'egypt-holidays-page' };
 
 const Chip = ({ label, value, onClear, testId }) => (
   <span className="inline-flex items-center gap-1 rounded-lg border border-[#C4CBD0] bg-white pl-3 pr-1.5 py-1 eg-label-lg text-[#002131]" data-testid={testId}>
@@ -38,19 +40,19 @@ const sortFns = {
   'days-desc': (a, b) => b.days - a.days
 };
 
-const VideoHero = ({ video, title, count }) => (
+const VideoHero = ({ video, image, title, count }) => (
   <div className="relative">
     <Header overlay />
     <section className="relative h-[520px] sm:h-[560px] md:h-[600px] lg:h-[640px] overflow-hidden bg-[#002131]" data-testid="eg-holidays-video">
-      <img src={hero.image} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
-      <iframe
+      <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+      {video && <iframe
         src={`https://player.vimeo.com/video/${video.vimeoId}?h=${video.h}&background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&playsinline=1&dnt=1`}
         title={video.label}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[177.78vh] min-w-full h-[56.25vw] min-h-full"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         data-testid="eg-holidays-video-iframe"
-      />
+      />}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.55)_0%,rgba(0,33,49,0.2)_45%,rgba(0,33,49,0.6)_100%)] pointer-events-none" />
       <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-4 md:gap-5 px-4 text-center" data-testid="eg-hero-copy">
         <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance] eg-rise" data-testid="eg-hero-title">{title}</h1>
@@ -61,7 +63,9 @@ const VideoHero = ({ video, title, count }) => (
   </div>
 );
 
-export default function EgyptHolidays() {
+export default function EgyptHolidays({ d = egyptHolidays }) {
+  const { hero, tours, products, holidaysPath, holidaysCrumbs, faq, planner } = d;
+  const styleLanding = (slug) => `${holidaysPath}/${slug}`;
   const navigate = useNavigate();
   const { style: styleSlug } = useParams();
   const [params] = useSearchParams();
@@ -78,14 +82,14 @@ export default function EgyptHolidays() {
 
   useEffect(() => {
     if (styleSlug && !styleBySlug(styleSlug)) navigate(holidaysPath, { replace: true });
-  }, [styleSlug, navigate]);
+  }, [styleSlug, navigate, holidaysPath]);
   useEffect(() => { document.title = `${title} | Hi Tours`; }, [title]);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const list = useMemo(() => {
     const f = style ? products.filter((p) => p.styles.includes(style)) : products;
     return sort ? [...f].sort(sortFns[sort]) : f;
-  }, [style, sort]);
+  }, [style, sort, products]);
   const mobile = useIsMobile();
   const page = mobile ? 3 : 6;
   const [count, setCount] = useState(page);
@@ -107,9 +111,9 @@ export default function EgyptHolidays() {
   const crumbs = style ? [...holidaysCrumbs.slice(0, 2), { label: holidaysCrumbs[2].label, to: holidaysPath }, { label: style }] : holidaysCrumbs;
 
   return (
-    <div className="eg" data-testid="egypt-holidays-page">
+    <div className="eg" data-testid={d.testId}>
       <main>
-        <VideoHero video={hero.video} title={style ? hero.styleH1(style) : hero.holidaysH1} count={tours.browse(list.length)} />
+        <VideoHero video={hero.video} image={hero.image} title={style ? hero.styleH1(style) : hero.holidaysH1} count={tours.browse(list.length)} />
         <div className="eg-container mt-6 md:mt-8">
           <nav className="hidden sm:flex items-center gap-1 eg-body-md text-[#174358]" aria-label="Breadcrumb" data-testid="eg-breadcrumb">
             {crumbs.map((c, i) => (
@@ -122,7 +126,7 @@ export default function EgyptHolidays() {
         </div>
 
         <section className="eg-container mt-2 md:mt-4 scroll-mt-20" id="tours" data-testid="eg-tours">
-          <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
+          <EgyptFilterBar title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} cta={hero} />
           {(style || sort) && (
             <div className="mt-4 md:mt-2 flex flex-wrap items-center gap-2" data-testid="eg-active-filters">
               {style && <Chip label={tours.filterLabel} value={style} onClear={() => setStyle(null)} testId="eg-filter-chip-style" />}
@@ -143,12 +147,12 @@ export default function EgyptHolidays() {
           )}
         </section>
 
-        <div id="planner" className="scroll-mt-20"><EgyptPlanner source="egypt-holidays" /></div>
+        <div id="planner" className="scroll-mt-20"><EgyptPlanner data={planner} source={d.plannerSource} /></div>
         <EgyptCustomerReviews />
-        <EgyptFaq centered className="eg-container mt-12 md:mt-16 mb-16" />
+        <EgyptFaq centered className="eg-container mt-12 md:mt-16 mb-16" data={faq} />
       </main>
       <ScrollTop className="bottom-40 right-4 md:bottom-10 md:right-12" />
-      <MobileToursBars title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} />
+      <MobileToursBars title={title} style={style} sort={sort} onStyle={setStyle} onSort={setSort} cta={hero} />
       <Footer />
     </div>
   );
