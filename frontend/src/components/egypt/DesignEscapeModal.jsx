@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { X } from 'lucide-react';
+import { X, Minus, Plus, ChevronDown } from 'lucide-react';
+
+const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', 'Just exploring'];
+const EMPTY_FORM = { name: '', phone: '', email: '', travellers: 2, when: '' };
 
 const inputCls = 'h-12 sm:h-[52px] w-full rounded-xl border bg-white px-4 eg-body-lg text-[#002131] placeholder:text-[#8A9297] transition-[border-color,box-shadow] focus:border-[#308BB6] focus:shadow-[0_0_0_3px_rgba(48,139,182,0.18)] focus:outline-none';
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -10,7 +13,8 @@ const validate = (f) => ({
   name: f.name.trim() ? '' : 'Please enter your name',
   phone: !f.phone.trim() ? 'Please enter your phone number' : PHONE.test(f.phone.trim()) ? '' : 'Please enter a valid phone number',
   email: !f.email.trim() ? 'Please enter your email address' : EMAIL.test(f.email.trim()) ? '' : 'Please enter a valid email address',
-  destination: f.destination ? '' : 'Destination could not be detected'
+  destination: f.destination ? '' : 'Destination could not be detected',
+  when: f.when ? '' : 'Please select when you are travelling'
 });
 
 const Field = ({ label, error, children }) => (
@@ -26,7 +30,7 @@ const ESCAPE_IMAGES = { egypt: '/escape/egypt.webp', vietnam: '/escape/vietnam.w
 const escapeImage = (destination, fallback) => ESCAPE_IMAGES[(destination || '').toLowerCase().replace(/[^a-z]/g, '')] || fallback;
 
 export default function DesignEscapeModal({ open, onClose, destination, tripTitle, image, imageAlt }) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '' });
+  const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
   const [submitError, setSubmitError] = useState('');
@@ -40,21 +44,21 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
     return () => { document.body.style.overflow = overflow; window.removeEventListener('keydown', onKey); };
   }, [open, onClose]);
 
-  useEffect(() => { if (!open) { setForm({ name: '', phone: '', email: '' }); setErrors({}); setStatus('idle'); setSubmitError(''); } }, [open]);
+  useEffect(() => { if (!open) { setForm(EMPTY_FORM); setErrors({}); setStatus('idle'); setSubmitError(''); } }, [open]);
 
   if (!open) return null;
   const set = (k) => (e) => { setForm((f) => ({ ...f, [k]: e.target.value })); if (errors[k]) setErrors((er) => ({ ...er, [k]: '' })); };
   const submit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination };
+    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when };
     const errs = validate(lead);
     setErrors(errs);
     if (Object.values(errs).some(Boolean)) return;
     setStatus('sending');
     setSubmitError('');
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { ...lead, trip_title: tripTitle || '', source: 'design-your-escape' });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, traveller_count: `${form.travellers} ${form.travellers === 1 ? 'traveller' : 'travellers'}`, trip_title: tripTitle || '', source: 'design-your-escape' });
       setStatus('done');
     } catch (err) {
       const detail = err?.response?.data?.detail;
@@ -63,6 +67,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
     }
   };
   const cls = (k) => `${inputCls} ${errors[k] ? 'border-[#B3261E]' : 'border-[#C4CBD0]'}`;
+  const step = (d) => setForm((f) => ({ ...f, travellers: Math.min(20, Math.max(1, f.travellers + d)) }));
 
   return (
     <div className="eg dye-root fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="dye-title" data-testid="dye-modal">
@@ -96,6 +101,25 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
               <Field label="Name" error={errors.name}><input type="text" autoComplete="name" value={form.name} onChange={set('name')} placeholder="Enter your name" className={cls('name')} data-testid="dye-name" /></Field>
               <Field label="Phone" error={errors.phone}><input type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={set('phone')} placeholder="Enter your phone number" className={cls('phone')} data-testid="dye-phone" /></Field>
               <Field label="Email" error={errors.email}><input type="email" autoComplete="email" value={form.email} onChange={set('email')} placeholder="Enter your email address" className={cls('email')} data-testid="dye-email" /></Field>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="flex flex-col gap-1 sm:gap-1.5">
+                  <span className="eg-label-lg text-[#002131]" id="dye-travellers-label">Number of Travelers</span>
+                  <div className={`${inputCls} flex items-center justify-between !px-1.5 border-[#C4CBD0]`} role="group" aria-labelledby="dye-travellers-label" data-testid="dye-travellers">
+                    <button type="button" onClick={() => step(-1)} disabled={form.travellers <= 1} aria-label="Fewer travellers" className="w-9 h-9 rounded-lg flex items-center justify-center text-[#174358] hover:bg-[rgba(23,67,88,0.08)] disabled:opacity-30 transition-colors" data-testid="dye-travellers-minus"><Minus size={18} /></button>
+                    <span className="eg-body-lg text-[#002131] tabular-nums" data-testid="dye-travellers-value">{form.travellers}</span>
+                    <button type="button" onClick={() => step(1)} disabled={form.travellers >= 20} aria-label="More travellers" className="w-9 h-9 rounded-lg flex items-center justify-center text-[#174358] hover:bg-[rgba(23,67,88,0.08)] disabled:opacity-30 transition-colors" data-testid="dye-travellers-plus"><Plus size={18} /></button>
+                  </div>
+                </div>
+                <Field label="When are you travelling?" error={errors.when}>
+                  <div className="relative">
+                    <select value={form.when} onChange={set('when')} className={`${cls('when')} appearance-none pr-10 ${form.when ? '' : 'text-[#8A9297]'}`} data-testid="dye-when">
+                      <option value="" disabled>Select</option>
+                      {WHEN_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
+                    <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
+                  </div>
+                </Field>
+              </div>
               <Field label="Destination" error={errors.destination}><input type="text" value={destination} readOnly aria-readonly="true" className={`${inputCls} border-[#E4E3DB] bg-[#F0EEE6] text-[#174358] cursor-default`} data-testid="dye-destination" /></Field>
               {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">{submitError || 'Something went wrong – please try again.'}</p>}
               <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-12 sm:h-14 w-full eg-title-md disabled:opacity-70 sm:mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Start Planning'}</button>

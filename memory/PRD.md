@@ -455,3 +455,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-30: DesignEscapeModal mobile: sheet fixed at 94vh, image panel 40% (object-contain, centered, blurred same-image fill behind), form 60% scrollable. Desktop unchanged (object-cover). "Start customising" CTAs → "Design Your Escape" in all data files (formTitle heading left as is).
 
 - 2026-09-30: DesignEscapeModal mobile re-tuned for 9:16: sheet h-[calc(100dvh-12px)], image panel clamp(112px,18dvh,170px) full-width object-cover (no side bands), compact spacing (py-3, gap-2.5, inputs h-12, button h-12) so heading + 4 fields + CTA fit a ~700px viewport without scrolling (≈40px scroll on 640px). Desktop unchanged.
+
+- 2026-09-30: DesignEscapeModal: added "Number of Travelers" (−/+ stepper, 1–20, default 2 → `traveller_count` "N travellers") and "When are you travelling?" (select: Within a week / 10 to 15 days / Within a month / Just exploring, required → `travel_dates`), in a 2-col row above Destination. Both flow to Kraya "Traveller Count"/"Travel Dates".
