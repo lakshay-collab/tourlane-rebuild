@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { X, Minus, Plus, ChevronDown } from 'lucide-react';
 
-const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', 'Just exploring'];
-const EMPTY_FORM = { name: '', phone: '', email: '', adults: 2, children: 0, when: '' };
+const SPECIFIC = 'Specific month';
+const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', SPECIFIC, 'Just exploring'];
+const upcomingMonths = () => {
+  const now = new Date();
+  return Array.from({ length: 12 }, (_, i) => new Date(now.getFullYear(), now.getMonth() + 1 + i, 1).toLocaleString('en-GB', { month: 'long', year: 'numeric' }));
+};
+const EMPTY_FORM = { name: '', phone: '', email: '', adults: 2, children: 0, when: '', month: '' };
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const travellerCount = (f) => [plural(f.adults, 'adult', 'adults'), f.children ? plural(f.children, 'child', 'children') : ''].filter(Boolean).join(', ');
 
@@ -16,7 +21,8 @@ const validate = (f) => ({
   phone: !f.phone.trim() ? 'Please enter your phone number' : PHONE.test(f.phone.trim()) ? '' : 'Please enter a valid phone number',
   email: !f.email.trim() ? 'Please enter your email address' : EMAIL.test(f.email.trim()) ? '' : 'Please enter a valid email address',
   destination: f.destination ? '' : 'Destination could not be detected',
-  when: f.when ? '' : 'Please select when you are travelling'
+  when: f.when ? '' : 'Please select when you are travelling',
+  month: f.when === SPECIFIC && !upcomingMonths().includes(f.month) ? 'Please choose an upcoming month' : ''
 });
 
 const Field = ({ label, error, children }) => (
@@ -65,14 +71,14 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   const submit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when };
+    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when, month: form.month };
     const errs = validate(lead);
     setErrors(errs);
     if (Object.values(errs).some(Boolean)) return;
     setStatus('sending');
     setSubmitError('');
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, traveller_count: travellerCount(form), trip_title: tripTitle || '', source: 'design-your-escape' });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when === SPECIFIC ? form.month : form.when, traveller_count: travellerCount(form), trip_title: tripTitle || '', source: 'design-your-escape' });
       setStatus('done');
     } catch (err) {
       const detail = err?.response?.data?.detail;
@@ -118,15 +124,28 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
                 <Stepper label="Adults" value={form.adults} min={1} onChange={(v) => setForm((f) => ({ ...f, adults: v }))} testId="dye-adults" />
                 <Stepper label="Children" value={form.children} min={0} onChange={(v) => setForm((f) => ({ ...f, children: v }))} testId="dye-children" />
               </div>
-              <Field label="When are you travelling?" error={errors.when}>
-                <div className="relative">
-                  <select value={form.when} onChange={set('when')} className={`${cls('when')} appearance-none pr-10 ${form.when ? '' : 'text-[#8A9297]'}`} data-testid="dye-when">
-                    <option value="" disabled>Select</option>
-                    {WHEN_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
-                  </select>
-                  <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
-                </div>
-              </Field>
+              <div className={`grid gap-3 sm:gap-4 ${form.when === SPECIFIC ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                <Field label="When are you travelling?" error={errors.when}>
+                  <div className="relative">
+                    <select value={form.when} onChange={set('when')} className={`${cls('when')} appearance-none pr-10 ${form.when ? '' : 'text-[#8A9297]'}`} data-testid="dye-when">
+                      <option value="" disabled>Select</option>
+                      {WHEN_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
+                    <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
+                  </div>
+                </Field>
+                {form.when === SPECIFIC && (
+                  <Field label="Which month?" error={errors.month}>
+                    <div className="relative">
+                      <select value={form.month} onChange={set('month')} className={`${cls('month')} appearance-none pr-10 ${form.month ? '' : 'text-[#8A9297]'}`} data-testid="dye-month">
+                        <option value="" disabled>Select month</option>
+                        {upcomingMonths().map((m) => <option key={m} value={m}>{m}</option>)}
+                      </select>
+                      <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
+                    </div>
+                  </Field>
+                )}
+              </div>
               <Field label="Destination" error={errors.destination}><input type="text" value={destination} readOnly aria-readonly="true" className={`${inputCls} border-[#E4E3DB] bg-[#F0EEE6] text-[#174358] cursor-default`} data-testid="dye-destination" /></Field>
               {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">{submitError || 'Something went wrong – please try again.'}</p>}
               <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-12 sm:h-14 w-full eg-title-md disabled:opacity-70 sm:mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Get Quote'}</button>
