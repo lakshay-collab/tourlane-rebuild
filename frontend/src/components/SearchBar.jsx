@@ -84,6 +84,7 @@ export default function SearchBar({ id = 'hero', className = '' }) {
     setSelected(d);
     setValue('');
     setFocused(false);
+    if (d.to) navigate(d.to);
   };
 
   const clear = () => {
