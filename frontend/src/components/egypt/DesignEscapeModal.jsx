@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { X, Minus, Plus, ChevronDown } from 'lucide-react';
 
-const SPECIFIC = 'Specific month';
+const SPECIFIC = 'Custom';
 const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', SPECIFIC, 'Just exploring'];
 const upcomingMonths = () => {
   const now = new Date();

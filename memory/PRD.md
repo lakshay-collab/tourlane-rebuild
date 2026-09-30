@@ -462,4 +462,4 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 
 - 2026-09-30: DesignEscapeModal: single traveller stepper → Adults (default 2, min 1) + Children (default 0) steppers side by side; "When are you travelling?" moved full-width below them; Flight Assistance field removed from the form (backend field kept, unused). traveller_count → e.g. "2 adults, 1 child". Submit button label "Get Quote". Homepage "Get started for free" button removed (Features.jsx).
 
-- 2026-09-30: "When are you travelling?" gained "Specific month" option (after Within a month) → reveals "Which month?" select listing the next 12 upcoming months (computed from today); required + validated against that list. Kraya Travel Dates receives the month (e.g. "December 2026").
+- 2026-09-30: "When are you travelling?" gained "Custom" option (after Within a month) → reveals "Which month?" select listing the next 12 upcoming months (computed from today); required + validated against that list. Kraya Travel Dates receives the month (e.g. "December 2026").
