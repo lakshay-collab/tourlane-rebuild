@@ -70,7 +70,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
       <div className="relative w-full h-[calc(100dvh-12px)] sm:h-auto sm:max-w-[960px] sm:max-h-[94vh] overflow-hidden rounded-t-3xl sm:rounded-3xl bg-[#FBF9F1] shadow-[0_32px_80px_rgba(0,33,49,0.45)] flex flex-col sm:flex-row" data-testid="dye-card">
         <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white/90 text-[#002131] shadow-[0_4px_14px_rgba(0,33,49,0.25)] hover:bg-white transition-colors" data-testid="dye-close"><X size={20} /></button>
 
-        <div className="relative h-[clamp(112px,18dvh,170px)] sm:h-auto sm:w-[46%] shrink-0 bg-[#EAE8E0] overflow-hidden" data-testid="dye-image-panel">
+        <div className="relative flex-1 min-h-[112px] sm:flex-none sm:min-h-0 sm:h-auto sm:w-[46%] bg-[#EAE8E0] overflow-hidden" data-testid="dye-image-panel">
           {escapeImage(destination, image) && <img src={escapeImage(destination, image)} alt={imageAlt || destination} className="absolute inset-0 w-full h-full object-cover" data-testid="dye-image" />}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.15)_0%,rgba(0,33,49,0.25)_45%,rgba(0,33,49,0.78)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 p-4 sm:p-8 text-white">
@@ -80,7 +80,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
           </div>
         </div>
 
-        <div className="flex-1 min-h-0 overflow-y-auto px-5 py-3 sm:px-10 sm:py-10 sm:max-h-[94vh]">
+        <div className="shrink min-h-0 overflow-y-auto px-5 py-3 sm:px-10 sm:py-10 sm:flex-1 sm:max-h-[94vh]">
           {status === 'done' ? (
             <div className="h-full flex flex-col justify-center py-6 text-center sm:text-left" data-testid="dye-success">
               <h2 className="eg-headline-lg text-[#002131]">Thank you, {form.name.trim().split(' ')[0]}!</h2>
