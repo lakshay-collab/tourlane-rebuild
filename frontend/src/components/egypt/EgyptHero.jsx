@@ -122,14 +122,8 @@ export function ScrollTop({ className = 'bottom-10 right-12' }) {
   );
 }
 
-const HeroCopy = ({ title, h = hero, sub = h.sub }) => (
-  <>
-    <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance]" data-testid="eg-hero-title">{title}</h1>
-    <div className="flex flex-col items-center gap-2">
-      <a href={h.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md" data-testid="eg-hero-cta">{h.cta}</a>
-      <p className="eg-body-sm text-white/90 max-w-[300px] md:max-w-none">{sub}</p>
-    </div>
-  </>
+const HeroCopy = ({ title }) => (
+  <h1 className="eg-display-lg text-white drop-shadow-[0_2px_12px_rgba(0,33,49,0.45)] [text-wrap:balance]" data-testid="eg-hero-title">{title}</h1>
 );
 
 export default function EgyptHero({ style, title: titleProp, showTabs = true, crumbs: crumbList, data = egyptData }) {
@@ -143,7 +137,7 @@ export default function EgyptHero({ style, title: titleProp, showTabs = true, cr
         <section className="relative h-[520px] sm:h-[560px] md:h-[600px] lg:h-[640px] bg-[#EAE8E0]" data-testid="eg-hero">
           <img src={h.image} alt={h.imageAlt || 'Pyramids of Giza, Egypt'} className="absolute inset-0 w-full h-full object-cover" loading="eager" data-testid="eg-hero-image" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.5)_0%,rgba(0,33,49,0.15)_45%,rgba(0,33,49,0.5)_100%)] pointer-events-none" />
-          <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-6 md:gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy title={title} h={h} /></div>
+          <div className="absolute inset-0 pt-[112px] md:pt-[108px] flex flex-col items-center justify-center gap-6 md:gap-8 px-4 text-center" data-testid="eg-hero-copy"><HeroCopy title={title} /></div>
         </section>
       </div>
 

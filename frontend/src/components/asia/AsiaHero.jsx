@@ -27,10 +27,6 @@ export default function AsiaHero() {
             <div className="flex-1">
               <h1 className="eg-display-lg text-[#002131] [text-wrap:balance]" data-testid="as-hero-title">{hero.h1}</h1>
             </div>
-            <div className="flex flex-col items-center gap-2 md:shrink-0">
-              <a href={hero.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-12 px-6 eg-title-md w-full md:w-auto" data-testid="as-hero-cta">{hero.cta}</a>
-              <p className="eg-body-sm text-[#174358] text-center italic" data-testid="as-hero-note">{hero.note}</p>
-            </div>
           </div>
         </div>
       </section>
