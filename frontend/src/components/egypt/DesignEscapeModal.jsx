@@ -67,11 +67,12 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   return (
     <div className="eg dye-root fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="dye-title" data-testid="dye-modal">
       <button type="button" aria-label="Close" onClick={onClose} className="dye-backdrop absolute inset-0" data-testid="dye-overlay" />
-      <div className="relative w-full sm:max-w-[960px] max-h-[94vh] overflow-y-auto sm:overflow-hidden rounded-t-3xl sm:rounded-3xl bg-[#FBF9F1] shadow-[0_32px_80px_rgba(0,33,49,0.45)] flex flex-col sm:flex-row" data-testid="dye-card">
+      <div className="relative w-full h-[94vh] sm:h-auto sm:max-w-[960px] max-h-[94vh] overflow-hidden rounded-t-3xl sm:rounded-3xl bg-[#FBF9F1] shadow-[0_32px_80px_rgba(0,33,49,0.45)] flex flex-col sm:flex-row" data-testid="dye-card">
         <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white/90 text-[#002131] shadow-[0_4px_14px_rgba(0,33,49,0.25)] hover:bg-white transition-colors" data-testid="dye-close"><X size={20} /></button>
 
-        <div className="relative h-[200px] sm:h-auto sm:w-[46%] shrink-0 bg-[#EAE8E0]" data-testid="dye-image-panel">
-          {escapeImage(destination, image) && <img src={escapeImage(destination, image)} alt={imageAlt || destination} className="absolute inset-0 w-full h-full object-cover" data-testid="dye-image" />}
+        <div className="relative h-[40%] sm:h-auto sm:w-[46%] shrink-0 bg-[#EAE8E0] overflow-hidden" data-testid="dye-image-panel">
+          {escapeImage(destination, image) && <img src={escapeImage(destination, image)} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover scale-110 blur-md opacity-70 sm:hidden" data-testid="dye-image-blur" />}
+          {escapeImage(destination, image) && <img src={escapeImage(destination, image)} alt={imageAlt || destination} className="absolute inset-0 w-full h-full object-contain sm:object-cover" data-testid="dye-image" />}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,33,49,0.15)_0%,rgba(0,33,49,0.25)_45%,rgba(0,33,49,0.78)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
             <p className="eg-label-lg uppercase tracking-[0.18em] text-white/80">Plan your escape</p>
@@ -80,7 +81,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
           </div>
         </div>
 
-        <div className="flex-1 px-5 py-7 sm:px-10 sm:py-10 sm:max-h-[94vh] sm:overflow-y-auto">
+        <div className="flex-1 min-h-0 overflow-y-auto px-5 py-7 sm:px-10 sm:py-10 sm:max-h-[94vh]">
           {status === 'done' ? (
             <div className="h-full flex flex-col justify-center py-6 text-center sm:text-left" data-testid="dye-success">
               <h2 className="eg-headline-lg text-[#002131]">Thank you, {form.name.trim().split(' ')[0]}!</h2>
