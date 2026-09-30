@@ -459,3 +459,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-30: DesignEscapeModal: added "Number of Travelers" (−/+ stepper, 1–20, default 2 → `traveller_count` "N travellers") and "When are you travelling?" (select: Within a week / 10 to 15 days / Within a month / Just exploring, required → `travel_dates`), in a 2-col row above Destination. Both flow to Kraya "Traveller Count"/"Travel Dates".
 
 - 2026-09-30: Added required "Flight Assistance" select (I’ll book my flights myself / Hi Tours should arrange my flights) to DesignEscapeModal, full-width above Destination; stored as `flight_assistance` on the lead (Mongo). NOT yet sent to Kraya — awaiting Kraya field name.
+
+- 2026-09-30: DesignEscapeModal: single traveller stepper → Adults (default 2, min 1) + Children (default 0) steppers side by side; "When are you travelling?" moved full-width below them; Flight Assistance field removed from the form (backend field kept, unused). traveller_count → e.g. "2 adults, 1 child". Submit button label "Get Quote". Homepage "Get started for free" button removed (Features.jsx).

@@ -3,8 +3,9 @@ import axios from 'axios';
 import { X, Minus, Plus, ChevronDown } from 'lucide-react';
 
 const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', 'Just exploring'];
-const FLIGHT_OPTIONS = ['I’ll book my flights myself', 'Hi Tours should arrange my flights'];
-const EMPTY_FORM = { name: '', phone: '', email: '', travellers: 2, when: '', flights: '' };
+const EMPTY_FORM = { name: '', phone: '', email: '', adults: 2, children: 0, when: '' };
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const travellerCount = (f) => [plural(f.adults, 'adult', 'adults'), f.children ? plural(f.children, 'child', 'children') : ''].filter(Boolean).join(', ');
 
 const inputCls = 'h-12 sm:h-[52px] w-full rounded-xl border bg-white px-4 eg-body-lg text-[#002131] placeholder:text-[#8A9297] transition-[border-color,box-shadow] focus:border-[#308BB6] focus:shadow-[0_0_0_3px_rgba(48,139,182,0.18)] focus:outline-none';
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -15,8 +16,7 @@ const validate = (f) => ({
   phone: !f.phone.trim() ? 'Please enter your phone number' : PHONE.test(f.phone.trim()) ? '' : 'Please enter a valid phone number',
   email: !f.email.trim() ? 'Please enter your email address' : EMAIL.test(f.email.trim()) ? '' : 'Please enter a valid email address',
   destination: f.destination ? '' : 'Destination could not be detected',
-  when: f.when ? '' : 'Please select when you are travelling',
-  flights: f.flights ? '' : 'Please select a flight option'
+  when: f.when ? '' : 'Please select when you are travelling'
 });
 
 const Field = ({ label, error, children }) => (
@@ -25,6 +25,18 @@ const Field = ({ label, error, children }) => (
     {children}
     {error && <span className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-error">{error}</span>}
   </label>
+);
+
+const stepBtn = 'w-9 h-9 rounded-lg flex items-center justify-center text-[#174358] hover:bg-[rgba(23,67,88,0.08)] disabled:opacity-30 transition-colors';
+const Stepper = ({ label, value, min, max = 20, onChange, testId }) => (
+  <div className="flex flex-col gap-1 sm:gap-1.5">
+    <span className="eg-label-lg text-[#002131]" id={`${testId}-label`}>{label}</span>
+    <div className={`${inputCls} flex items-center justify-between !px-1.5 border-[#C4CBD0]`} role="group" aria-labelledby={`${testId}-label`} data-testid={testId}>
+      <button type="button" onClick={() => onChange(value - 1)} disabled={value <= min} aria-label={`Fewer ${label.toLowerCase()}`} className={stepBtn} data-testid={`${testId}-minus`}><Minus size={18} /></button>
+      <span className="eg-body-lg text-[#002131] tabular-nums" data-testid={`${testId}-value`}>{value}</span>
+      <button type="button" onClick={() => onChange(value + 1)} disabled={value >= max} aria-label={`More ${label.toLowerCase()}`} className={stepBtn} data-testid={`${testId}-plus`}><Plus size={18} /></button>
+    </div>
+  </div>
 );
 
 // Reusable lead-capture popup. `destination` comes from the itinerary being viewed.
@@ -53,14 +65,14 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   const submit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when, flights: form.flights };
+    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when };
     const errs = validate(lead);
     setErrors(errs);
     if (Object.values(errs).some(Boolean)) return;
     setStatus('sending');
     setSubmitError('');
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, flight_assistance: form.flights, traveller_count: `${form.travellers} ${form.travellers === 1 ? 'traveller' : 'travellers'}`, trip_title: tripTitle || '', source: 'design-your-escape' });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, traveller_count: travellerCount(form), trip_title: tripTitle || '', source: 'design-your-escape' });
       setStatus('done');
     } catch (err) {
       const detail = err?.response?.data?.detail;
@@ -69,7 +81,6 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
     }
   };
   const cls = (k) => `${inputCls} ${errors[k] ? 'border-[#B3261E]' : 'border-[#C4CBD0]'}`;
-  const step = (d) => setForm((f) => ({ ...f, travellers: Math.min(20, Math.max(1, f.travellers + d)) }));
 
   return (
     <div className="eg dye-root fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="dye-title" data-testid="dye-modal">
@@ -104,29 +115,14 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
               <Field label="Phone" error={errors.phone}><input type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={set('phone')} placeholder="Enter your phone number" className={cls('phone')} data-testid="dye-phone" /></Field>
               <Field label="Email" error={errors.email}><input type="email" autoComplete="email" value={form.email} onChange={set('email')} placeholder="Enter your email address" className={cls('email')} data-testid="dye-email" /></Field>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="flex flex-col gap-1 sm:gap-1.5">
-                  <span className="eg-label-lg text-[#002131]" id="dye-travellers-label">Number of Travelers</span>
-                  <div className={`${inputCls} flex items-center justify-between !px-1.5 border-[#C4CBD0]`} role="group" aria-labelledby="dye-travellers-label" data-testid="dye-travellers">
-                    <button type="button" onClick={() => step(-1)} disabled={form.travellers <= 1} aria-label="Fewer travellers" className="w-9 h-9 rounded-lg flex items-center justify-center text-[#174358] hover:bg-[rgba(23,67,88,0.08)] disabled:opacity-30 transition-colors" data-testid="dye-travellers-minus"><Minus size={18} /></button>
-                    <span className="eg-body-lg text-[#002131] tabular-nums" data-testid="dye-travellers-value">{form.travellers}</span>
-                    <button type="button" onClick={() => step(1)} disabled={form.travellers >= 20} aria-label="More travellers" className="w-9 h-9 rounded-lg flex items-center justify-center text-[#174358] hover:bg-[rgba(23,67,88,0.08)] disabled:opacity-30 transition-colors" data-testid="dye-travellers-plus"><Plus size={18} /></button>
-                  </div>
-                </div>
-                <Field label="When are you travelling?" error={errors.when}>
-                  <div className="relative">
-                    <select value={form.when} onChange={set('when')} className={`${cls('when')} appearance-none pr-10 ${form.when ? '' : 'text-[#8A9297]'}`} data-testid="dye-when">
-                      <option value="" disabled>Select</option>
-                      {WHEN_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                    <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
-                  </div>
-                </Field>
+                <Stepper label="Adults" value={form.adults} min={1} onChange={(v) => setForm((f) => ({ ...f, adults: v }))} testId="dye-adults" />
+                <Stepper label="Children" value={form.children} min={0} onChange={(v) => setForm((f) => ({ ...f, children: v }))} testId="dye-children" />
               </div>
-              <Field label="Flight Assistance" error={errors.flights}>
+              <Field label="When are you travelling?" error={errors.when}>
                 <div className="relative">
-                  <select value={form.flights} onChange={set('flights')} className={`${cls('flights')} appearance-none pr-10 ${form.flights ? '' : 'text-[#8A9297]'}`} data-testid="dye-flights">
+                  <select value={form.when} onChange={set('when')} className={`${cls('when')} appearance-none pr-10 ${form.when ? '' : 'text-[#8A9297]'}`} data-testid="dye-when">
                     <option value="" disabled>Select</option>
-                    {FLIGHT_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                    {WHEN_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
                   <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
                 </div>
