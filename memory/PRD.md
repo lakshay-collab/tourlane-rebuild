@@ -465,3 +465,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-30: "When are you travelling?" gained "Custom" option (after Within a month) → reveals "Which month?" select listing the next 12 upcoming months (computed from today); required + validated against that list. Kraya Travel Dates receives the month (e.g. "December 2026").
 
 - 2026-09-30: About page "Why Choose Hi Tours?" images replaced with Drive assets → `/public/about/{planning,expertise,support}.webp` (matched by filename to the three items). Hero collage, press logos, badges unchanged (no matching assets in folder). Homepage search: picking a suggestion navigates immediately (SearchBar.pick).
+
+- 2026-09-30: WhatsApp widget: on package pages EgyptDetail (StickyBar effect) sets `document.documentElement.dataset.waPackage = detail.title`; widget onClick reads it at click time and opens "Hi, I am interested in your {title}"; otherwise default message unchanged. Preview 502 seen by user was a transient pod restart (all services back, 200).

@@ -1,10 +1,20 @@
 const WA_NUMBER = '918920606060';
 const WA_TEXT = 'Hi, I’d like to plan my dream trip. Can you help me?';
-const href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`;
+const waHref = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+const href = waHref(WA_TEXT);
+
+// On package pages EgyptDetail exposes the opened itinerary title via data-wa-package.
+const onClick = (e) => {
+  const pkg = document.documentElement.dataset.waPackage;
+  if (!pkg) return;
+  e.preventDefault();
+  window.open(waHref(`Hi, I am interested in your ${pkg}`), '_blank', 'noopener,noreferrer');
+};
 
 export const WhatsAppWidget = () => (
   <a
     href={href}
+    onClick={onClick}
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Chat on WhatsApp"

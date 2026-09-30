@@ -356,6 +356,10 @@ function StickyBar({ detail, inr, onCta }) {
     document.documentElement.classList.toggle('wa-lift', show);
     return () => document.documentElement.classList.remove('wa-lift');
   }, [show]);
+  useEffect(() => {
+    document.documentElement.dataset.waPackage = detail.title;
+    return () => { delete document.documentElement.dataset.waPackage; };
+  }, [detail.title]);
   return (
     <div className={`fixed bottom-0 inset-x-0 z-30 bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-detail-sticky-bar">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row md:justify-end md:items-center md:py-3 md:px-10">
