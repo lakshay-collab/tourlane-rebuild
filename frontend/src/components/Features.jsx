@@ -17,9 +17,6 @@ export default function Features() {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-2 md:mt-0">
-          <button className="btn-filled" data-testid="features-cta">{features.cta}</button>
-        </div>
       </div>
     </section>
   );
