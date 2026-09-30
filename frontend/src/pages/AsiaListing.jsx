@@ -4,6 +4,7 @@ import AsiaHero from '../components/asia/AsiaHero';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import { SortPill, priceSortFns } from '../components/egypt/EgyptFilterBar';
+import { usePageLead } from '../components/egypt/LeadModalProvider';
 import EgyptTileRow from '../components/egypt/EgyptTileRow';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { ChevronDown, ChevronRight } from '../components/egypt/EgyptIcons';
@@ -15,6 +16,7 @@ import { hero, team, tours, products, countries, whereTo, continents, reviews } 
 const asiaPlanner = { ...egyptPlanner, h3: 'Build your Asia trip with an expert', bg: hero.images[2].src };
 
 export default function AsiaListing() {
+  usePageLead('Asia', hero.images[0].src, hero.images[0].alt);
   const [allTours, setAllTours] = useState(false);
   const [sort, setSort] = useState(null);
   const sorted = useMemo(() => (sort ? [...products].sort(priceSortFns[sort]) : products), [sort]);

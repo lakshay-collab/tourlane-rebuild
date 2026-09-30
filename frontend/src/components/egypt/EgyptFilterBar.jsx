@@ -4,6 +4,7 @@ import { styles, sorts, hero, tours } from '../../egyptListingData';
 import { ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 import { scrollToId } from './EgyptHero';
+import { useLeadModal } from './LeadModalProvider';
 
 const menus = (style, sort, sortItems) => [
   { key: 'styles', label: tours.filterBy, pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
@@ -94,6 +95,7 @@ const useToursInView = () => {
 };
 
 export default function EgyptFilterBar({ title, cta = hero, ...pills }) {
+  const { openLead } = useLeadModal();
   const [stuck, setStuck] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
@@ -107,13 +109,14 @@ export default function EgyptFilterBar({ title, cta = hero, ...pills }) {
       <div className="flex items-center gap-3 h-16">
         {stuck && <span className="eg-title-md text-[#002131] whitespace-nowrap truncate min-w-0 flex-1 animate-[hi-fade-in_150ms_ease-out]" data-testid="eg-filter-title">{title}</span>}
         <FilterPills {...pills} />
-        <a href={cta.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled ml-auto h-11 px-6 eg-title-md" data-testid="eg-filter-cta">{cta.stickyCta}</a>
+        <a href={cta.ctaHref} onClick={(e) => { e.preventDefault(); openLead(); }} className="eg-btn-filled ml-auto h-11 px-6 eg-title-md" data-testid="eg-filter-cta">{cta.stickyCta}</a>
       </div>
     </div>
   );
 }
 
 export function MobileToursBars({ title, filters = true, cta = hero, ...pills }) {
+  const { openLead } = useLeadModal();
   const inTours = useToursInView();
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -131,7 +134,7 @@ export function MobileToursBars({ title, filters = true, cta = hero, ...pills })
       )}
       <div className={`md:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] bg-[#FBF9F1]/95 backdrop-blur border-t border-[#E4E3DB] flex flex-col gap-3 transition-transform duration-300 ${show ? 'translate-y-0' : 'translate-y-full'}`} data-testid="eg-mobile-cta" aria-hidden={!show}>
         {filters && <FilterPills {...pills} up testPrefix="eg-mobile-filter" />}
-        <a href={cta.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{cta.stickyCta}</a>
+        <a href={cta.ctaHref} onClick={(e) => { e.preventDefault(); openLead(); }} className="eg-btn-filled w-full h-14 eg-title-lg" data-testid="eg-mobile-cta-button">{cta.stickyCta}</a>
       </div>
     </>
   );

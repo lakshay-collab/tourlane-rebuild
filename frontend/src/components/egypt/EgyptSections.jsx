@@ -1,3 +1,4 @@
+import { useLeadModal } from './LeadModalProvider';
 import React, { useEffect, useState } from 'react';
 import { reviews, plan, faq, trust } from '../../egyptListingData';
 import { BoxStars, BRAND_BLUE } from '../Rating';
@@ -46,6 +47,7 @@ const useMobile = () => {
 
 export function EgyptReviews({ centered = false, className = 'eg-container mt-12 md:mt-16', h2 = reviews.h2, count, cta = reviews.cta, items = reviews.items, row = false, h2Class }) {
   const mobile = useMobile();
+  const { openLead } = useLeadModal();
   return (
     <section className={className} id="reviews" data-testid="eg-reviews">
       <h2 className={h2Class || (centered ? 'eg-headline-md text-[#002131] text-center' : 'eg-display-sm text-[#002131]')}>{h2}</h2>
@@ -58,7 +60,7 @@ export function EgyptReviews({ centered = false, className = 'eg-container mt-12
         </div>
       )}
       <div className="mt-8 flex flex-col items-center gap-2">
-        <a href={reviews.ctaHref} onClick={(e) => e.preventDefault()} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{cta}</a>
+        <a href={reviews.ctaHref} onClick={(e) => { e.preventDefault(); openLead(); }} className="eg-btn-filled h-10 px-14 eg-label-lg" data-testid="eg-reviews-cta">{cta}</a>
         {!centered && <p className="eg-body-sm text-[#002131] text-center">{reviews.sub}</p>}
       </div>
     </section>

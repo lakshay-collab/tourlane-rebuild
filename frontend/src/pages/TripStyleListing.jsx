@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import AdventureCTA from '../components/AdventureCTA';
 import TeamIntro from '../components/TeamIntro';
 import TripStyleHero from '../components/tripstyle/TripStyleHero';
+import { usePageLead } from '../components/egypt/LeadModalProvider';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptTileRow from '../components/egypt/EgyptTileRow';
@@ -18,6 +19,7 @@ export default function TripStyleListing() {
   const { slug } = useParams();
   const data = styles[slug];
   const [allTours, setAllTours] = useState(false);
+  usePageLead(data?.hero.h1 || '', data?.hero.images?.[0]?.src, data?.hero.images?.[0]?.alt);
   useEffect(() => { if (data) document.title = `${data.hero.h1} holidays | Hi Tours`; }, [data]);
   if (!data) return <Navigate to="/" replace />;
   const { hero, crumbs, team, tours, products, destinations, reviews } = data;

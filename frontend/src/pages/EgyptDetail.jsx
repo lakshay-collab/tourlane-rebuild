@@ -23,6 +23,7 @@ import { detail as detailNN, route as routeNN, glance as glanceNN, crumbs as cru
 import ReelGallery from '../components/egypt/ReelGallery';
 import { vietnamBySlug } from '../tours/vietnamToursData';
 import DesignEscapeModal from '../components/egypt/DesignEscapeModal';
+import { usePageLead } from '../components/egypt/LeadModalProvider';
 import { products as vietnamProducts, planner as vietnamPlanner, reviews as vietnamReviews } from '../vietnamListingData';
 import { planner as srilankaPlanner, reviews as srilankaReviews, products as srilankaProducts } from '../srilankaListingData';
 import { srilankaBySlug } from '../tours/srilankaToursData';
@@ -378,10 +379,11 @@ export default function EgyptDetail() {
     requestAnimationFrame(() => { const el = document.getElementById('summary'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' }); });
   };
   const data = BY_SLUG[slug];
+  const dest = data ? destinationFor(data.detail) : null;
+  usePageLead(dest?.name || '', data?.detail.gallery?.[0], data?.detail.alt);
   if (!data) return <Navigate to="/afrika/aegypten" replace />;
   const { detail, route, glance, crumbs } = data;
   const inr = formatInr(detail.price);
-  const dest = destinationFor(detail);
   return (
     <div className="eg" data-testid="egypt-detail-page">
       <Header />

@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { ScrollTop, scrollToId } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
 import EgyptFilterBar, { MobileToursBars } from '../components/egypt/EgyptFilterBar';
+import { usePageLead } from '../components/egypt/LeadModalProvider';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptCustomerReviews from '../components/egypt/EgyptCustomerReviews';
 import { EgyptFaq } from '../components/egypt/EgyptSections';
@@ -65,6 +66,7 @@ const VideoHero = ({ video, image, title, count }) => (
 
 export default function EgyptHolidays({ d = egyptHolidays }) {
   const { hero, tours, products, holidaysPath, holidaysCrumbs, faq, planner } = d;
+  usePageLead(holidaysCrumbs[1].label, hero.image, hero.imageAlt);
   const styleLanding = (slug) => `${holidaysPath}/${slug}`;
   const navigate = useNavigate();
   const { style: styleSlug } = useParams();
