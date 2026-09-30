@@ -19,7 +19,7 @@ export const detail = {
   slug: 'nile-pharaohs-voyage',
   region: 'africa',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: "Nile Pharaohs' Voyage: Luxor to Aswan Cruise",

@@ -15,7 +15,7 @@ export const detail = {
   slug: 'misr-ka-jaadu',
   region: 'africa',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Misr Ka Jaadu: Pyramids, Nile Cruise & the World of the Pharaohs',

@@ -15,7 +15,7 @@ export const detail = {
   slug: 'misr-maya-nile-cruise',
   region: 'africa',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Misr Maya: Cairo, Aswan & Luxor with a 5-Star Nile Cruise',

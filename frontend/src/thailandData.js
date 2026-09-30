@@ -20,7 +20,7 @@ export const detail = {
   media: 'portrait',
   listHref: '/asien',
   ctaHref: '/l/thailand/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Siam Splendour: 9-Day Thailand Odyssey',

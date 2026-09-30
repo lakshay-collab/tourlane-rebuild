@@ -49,7 +49,7 @@ export const cardImages = [featured, K.pyramids1, M.jemaaNight, C.chef1];
 export const detail = {
   slug: 'morocco-egypt-palaces-pyramids',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Morocco & Egypt: Palaces, Medinas & Pyramids',

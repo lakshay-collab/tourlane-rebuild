@@ -43,7 +43,7 @@ const build = (p) => {
   const excl = `Not included: ${p.exclusions.join('; ')}.`;
   return {
     detail: {
-      slug: p.slug, region: 'asia', ctaHref, cta: 'Start customising',
+      slug: p.slug, region: 'asia', ctaHref, cta: 'Design Your Escape',
       sub: 'Your travel plan – no obligation & tailor-made',
       banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
       title: p.name, alt: p.alt, days: `${p.days} days / ${p.nights} nights`, stations: `${cities.length} stops`, transport: p.inclusions.some((x) => /flight/i.test(x)) ? 'Domestic flights, transfers & guided tours' : 'Transfers & guided tours',

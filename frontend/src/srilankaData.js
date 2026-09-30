@@ -43,7 +43,7 @@ export const detail = {
   region: 'asia',
   listHref: '/asien',
   ctaHref: '/l/sri-lanka/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Emerald Isle Explorer: A 9-Day Sri Lanka Culture & Wildlife Experience with a Stay in Yala National Park',

@@ -19,7 +19,7 @@ export const detail = {
   slug: 'egypt-grand-festival',
   region: 'africa',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: 'Egypt Grand Festival: Pyramids, Sphinx & the Mediterranean Coast',

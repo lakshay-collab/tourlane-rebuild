@@ -14,7 +14,7 @@ export const detail = {
   slug: 'nile-darshan',
   region: 'africa',
   ctaHref: '/l/egypt/enquiry/passengers/',
-  cta: 'Start customising',
+  cta: 'Design Your Escape',
   sub: 'Your travel plan – no obligation & tailor-made',
   banner: 'Worry-free planning: flexible rebooking and cancellation options on your land programme.',
   title: "Nile Darshan: Egypt's Royal Odyssey",
