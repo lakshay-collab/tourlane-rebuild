@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import EgyptHero, { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
-import { MobileToursBars } from '../components/egypt/EgyptFilterBar';
+import { MobileToursBars, SortPill, priceSortFns } from '../components/egypt/EgyptFilterBar';
 import EgyptPlanner from '../components/egypt/EgyptPlanner';
 import EgyptTileRow, { EgyptTile } from '../components/egypt/EgyptTileRow';
 import { EgyptReviews, EgyptPlan, EgyptFaq } from '../components/egypt/EgyptSections';
@@ -48,7 +48,8 @@ export default function DestinationListing({ d, testId = 'egypt-listing-page' })
   const [leaving, setLeaving] = useState(false);
   const navigate = useNavigate();
   useEffect(() => { document.title = d.pageTitle; }, [d.pageTitle]);
-  const top = products.slice(0, 6);
+  const [sort, setSort] = useState(null);
+  const top = useMemo(() => (sort ? [...products].sort(priceSortFns[sort]) : products).slice(0, 6), [products, sort]);
   const viewAll = (e) => {
     e.preventDefault();
     setLeaving(true);
@@ -76,7 +77,8 @@ export default function DestinationListing({ d, testId = 'egypt-listing-page' })
             {readMore && tours.intro.map((x, i) => (Array.isArray(x) ? <b key={`m${i}`} className="font-semibold">{x[0]}</b> : x))}
             {' '}<button type="button" onClick={() => setReadMore((v) => !v)} className="eg-body-lg font-semibold text-[#174358] hover:underline" data-testid="eg-tours-readmore">{readMore ? tours.readLess : tours.readMore}</button>
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
+          <div className="mt-8 flex justify-end" data-testid="eg-sort-row"><SortPill sort={sort} onSort={setSort} /></div>
+          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="eg-product-grid">
             {top.map((p, i) => <div key={p.slug || p.title} className={i >= 4 ? 'hidden sm:block' : ''}><EgyptProductCard p={p} /></div>)}
           </div>
           <div className="mt-8 flex justify-center">

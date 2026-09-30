@@ -5,16 +5,19 @@ import { ChevronDown } from './EgyptIcons';
 import { NavIcon } from './EgyptNavIcons';
 import { scrollToId } from './EgyptHero';
 
-const menus = (style, sort) => [
+const menus = (style, sort, sortItems) => [
   { key: 'styles', label: tours.filterBy, pick: 'style', items: styles.map((s) => ({ id: s.key, label: s.key, icon: s.icon, selected: style === s.key })) },
-  { key: 'sort', label: tours.sortBy, pick: 'sort', items: sorts.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
+  { key: 'sort', label: tours.sortBy, pick: 'sort', items: sortItems.map((s) => ({ id: s.key, label: s.label, icon: s.icon, selected: sort === s.key })) }
 ];
 
-export function FilterPills({ style, sort, onStyle, onSort, up = false, testPrefix = 'eg-filter' }) {
+export const priceSorts = sorts.filter((s) => s.key.startsWith('price-'));
+export const priceSortFns = { 'price-asc': (a, b) => a.price - b.price, 'price-desc': (a, b) => b.price - a.price };
+
+export function FilterPills({ style, sort, onStyle, onSort, up = false, testPrefix = 'eg-filter', menuKeys = ['styles', 'sort'], sortItems = sorts, alignRight = false }) {
   const [open, setOpen] = useState(null);
   const [left, setLeft] = useState(0);
   const ref = useRef(null);
-  const list = menus(style, sort);
+  const list = menus(style, sort, sortItems).filter((m) => menuKeys.includes(m.key));
 
   useEffect(() => {
     const onDoc = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(null); };
@@ -56,7 +59,7 @@ export function FilterPills({ style, sort, onStyle, onSort, up = false, testPref
         );
       })}
       {openMenu && (
-        <div role="menu" style={{ left }} className={`absolute ${up ? 'bottom-full mb-2' : 'top-full mt-2'} z-30 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]`} data-testid={`${testPrefix}-dropdown-${openMenu.key}`}>
+        <div role="menu" style={alignRight ? { right: 0 } : { left }} className={`absolute ${up ? 'bottom-full mb-2' : 'top-full mt-2'} z-30 w-[280px] max-h-[364px] overflow-y-auto no-scrollbar rounded-lg bg-[#F0EEE6] shadow-[0_1px_2px_rgba(0,0,0,0.3),0_2px_6px_2px_rgba(0,0,0,0.15)] animate-[hi-fade-in_150ms_ease-out]`} data-testid={`${testPrefix}-dropdown-${openMenu.key}`}>
           {openMenu.items.map((it) => (
             <button key={it.id} type="button" role="menuitemradio" aria-checked={!!it.selected} onClick={() => pick(openMenu, it)} className="w-full flex items-center gap-3 px-4 py-3 text-left eg-body-lg text-[#002131] hover:bg-[rgba(23,67,88,0.08)] transition-colors" data-testid={`${testPrefix}-item`}>
               <NavIcon name={it.icon} />
@@ -69,6 +72,10 @@ export function FilterPills({ style, sort, onStyle, onSort, up = false, testPref
     </div>
   );
 }
+
+export const SortPill = ({ sort, onSort, testPrefix = 'eg-sort' }) => (
+  <FilterPills sort={sort} onSort={onSort} onStyle={() => {}} menuKeys={['sort']} sortItems={priceSorts} testPrefix={testPrefix} alignRight />
+);
 
 const useToursInView = () => {
   const [inView, setInView] = useState(false);

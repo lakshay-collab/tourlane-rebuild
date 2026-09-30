@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Footer from '../components/Footer';
 import AsiaHero from '../components/asia/AsiaHero';
 import { ScrollTop } from '../components/egypt/EgyptHero';
 import EgyptProductCard from '../components/egypt/EgyptProductCard';
+import { SortPill, priceSortFns } from '../components/egypt/EgyptFilterBar';
 import EgyptTileRow from '../components/egypt/EgyptTileRow';
 import { EgyptReviews } from '../components/egypt/EgyptSections';
 import { ChevronDown, ChevronRight } from '../components/egypt/EgyptIcons';
@@ -15,6 +16,8 @@ const asiaPlanner = { ...egyptPlanner, h3: 'Build your Asia trip with an expert'
 
 export default function AsiaListing() {
   const [allTours, setAllTours] = useState(false);
+  const [sort, setSort] = useState(null);
+  const sorted = useMemo(() => (sort ? [...products].sort(priceSortFns[sort]) : products), [sort]);
   const [moreWhereTo, setMoreWhereTo] = useState(false);
   useEffect(() => { document.title = 'Asia holidays | Hi Tours'; }, []);
   return (
@@ -26,8 +29,9 @@ export default function AsiaListing() {
 
         <section className="eg-container mt-12 md:mt-16 scroll-mt-20" id="tours" data-testid="as-tours">
           <h2 className="eg-display-sm text-[#002131]">{tours.h2}</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="as-product-grid">
-            {(allTours ? products : products.slice(0, 6)).map((p) => <EgyptProductCard key={p.title} p={p} />)}
+          <div className="mt-8 flex justify-end" data-testid="as-sort-row"><SortPill sort={sort} onSort={setSort} testPrefix="as-sort" /></div>
+          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-testid="as-product-grid">
+            {(allTours ? sorted : sorted.slice(0, 6)).map((p) => <EgyptProductCard key={p.title} p={p} />)}
           </div>
           <div className="mt-8 flex justify-center">
             <button type="button" onClick={() => setAllTours((v) => !v)} className="eg-btn-outlined eg-label-lg" data-testid="as-tours-more">
