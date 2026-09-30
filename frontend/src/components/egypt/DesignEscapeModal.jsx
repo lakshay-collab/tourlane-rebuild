@@ -133,7 +133,7 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
               </Field>
               <Field label="Destination" error={errors.destination}><input type="text" value={destination} readOnly aria-readonly="true" className={`${inputCls} border-[#E4E3DB] bg-[#F0EEE6] text-[#174358] cursor-default`} data-testid="dye-destination" /></Field>
               {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">{submitError || 'Something went wrong – please try again.'}</p>}
-              <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-12 sm:h-14 w-full eg-title-md disabled:opacity-70 sm:mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Start Planning'}</button>
+              <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-12 sm:h-14 w-full eg-title-md disabled:opacity-70 sm:mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Get Quote'}</button>
               <p className="eg-body-sm text-[#6F777C] text-center">No obligation · Your details stay with Hi Tours</p>
             </form>
           )}
