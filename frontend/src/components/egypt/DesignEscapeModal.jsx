@@ -3,7 +3,8 @@ import axios from 'axios';
 import { X, Minus, Plus, ChevronDown } from 'lucide-react';
 
 const WHEN_OPTIONS = ['Within a week', '10 to 15 days', 'Within a month', 'Just exploring'];
-const EMPTY_FORM = { name: '', phone: '', email: '', travellers: 2, when: '' };
+const FLIGHT_OPTIONS = ['I’ll book my flights myself', 'Hi Tours should arrange my flights'];
+const EMPTY_FORM = { name: '', phone: '', email: '', travellers: 2, when: '', flights: '' };
 
 const inputCls = 'h-12 sm:h-[52px] w-full rounded-xl border bg-white px-4 eg-body-lg text-[#002131] placeholder:text-[#8A9297] transition-[border-color,box-shadow] focus:border-[#308BB6] focus:shadow-[0_0_0_3px_rgba(48,139,182,0.18)] focus:outline-none';
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -14,7 +15,8 @@ const validate = (f) => ({
   phone: !f.phone.trim() ? 'Please enter your phone number' : PHONE.test(f.phone.trim()) ? '' : 'Please enter a valid phone number',
   email: !f.email.trim() ? 'Please enter your email address' : EMAIL.test(f.email.trim()) ? '' : 'Please enter a valid email address',
   destination: f.destination ? '' : 'Destination could not be detected',
-  when: f.when ? '' : 'Please select when you are travelling'
+  when: f.when ? '' : 'Please select when you are travelling',
+  flights: f.flights ? '' : 'Please select a flight option'
 });
 
 const Field = ({ label, error, children }) => (
@@ -51,14 +53,14 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
   const submit = async (e) => {
     e.preventDefault();
     if (status === 'sending') return;
-    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when };
+    const lead = { name: form.name.trim(), phone: form.phone.trim(), email: form.email.trim(), destination, when: form.when, flights: form.flights };
     const errs = validate(lead);
     setErrors(errs);
     if (Object.values(errs).some(Boolean)) return;
     setStatus('sending');
     setSubmitError('');
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, traveller_count: `${form.travellers} ${form.travellers === 1 ? 'traveller' : 'travellers'}`, trip_title: tripTitle || '', source: 'design-your-escape' });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/leads`, { name: lead.name, phone: lead.phone, email: lead.email, destination, travel_dates: form.when, flight_assistance: form.flights, traveller_count: `${form.travellers} ${form.travellers === 1 ? 'traveller' : 'travellers'}`, trip_title: tripTitle || '', source: 'design-your-escape' });
       setStatus('done');
     } catch (err) {
       const detail = err?.response?.data?.detail;
@@ -120,6 +122,15 @@ export default function DesignEscapeModal({ open, onClose, destination, tripTitl
                   </div>
                 </Field>
               </div>
+              <Field label="Flight Assistance" error={errors.flights}>
+                <div className="relative">
+                  <select value={form.flights} onChange={set('flights')} className={`${cls('flights')} appearance-none pr-10 ${form.flights ? '' : 'text-[#8A9297]'}`} data-testid="dye-flights">
+                    <option value="" disabled>Select</option>
+                    {FLIGHT_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                  <ChevronDown size={20} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#174358]" />
+                </div>
+              </Field>
               <Field label="Destination" error={errors.destination}><input type="text" value={destination} readOnly aria-readonly="true" className={`${inputCls} border-[#E4E3DB] bg-[#F0EEE6] text-[#174358] cursor-default`} data-testid="dye-destination" /></Field>
               {status === 'error' && <p className="eg-body-sm text-[#B3261E]" role="alert" data-testid="dye-submit-error">{submitError || 'Something went wrong – please try again.'}</p>}
               <button type="submit" disabled={status === 'sending'} className="eg-btn-filled h-12 sm:h-14 w-full eg-title-md disabled:opacity-70 sm:mt-1" data-testid="dye-submit">{status === 'sending' ? 'Sending…' : 'Start Planning'}</button>

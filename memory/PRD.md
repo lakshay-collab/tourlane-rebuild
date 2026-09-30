@@ -457,3 +457,5 @@ Migrate/clone https://www.tourlane.de/ into Emergent as a pixel-faithful, fully 
 - 2026-09-30: DesignEscapeModal mobile re-tuned for 9:16: sheet h-[calc(100dvh-12px)], image panel clamp(112px,18dvh,170px) full-width object-cover (no side bands), compact spacing (py-3, gap-2.5, inputs h-12, button h-12) so heading + 4 fields + CTA fit a ~700px viewport without scrolling (≈40px scroll on 640px). Desktop unchanged.
 
 - 2026-09-30: DesignEscapeModal: added "Number of Travelers" (−/+ stepper, 1–20, default 2 → `traveller_count` "N travellers") and "When are you travelling?" (select: Within a week / 10 to 15 days / Within a month / Just exploring, required → `travel_dates`), in a 2-col row above Destination. Both flow to Kraya "Traveller Count"/"Travel Dates".
+
+- 2026-09-30: Added required "Flight Assistance" select (I’ll book my flights myself / Hi Tours should arrange my flights) to DesignEscapeModal, full-width above Destination; stored as `flight_assistance` on the lead (Mongo). NOT yet sent to Kraya — awaiting Kraya field name.

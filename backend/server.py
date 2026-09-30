@@ -51,6 +51,7 @@ class LeadCreate(BaseModel):
     passengers: Optional[Dict[str, int]] = None
     travel_dates: str = ""
     traveller_count: str = ""
+    flight_assistance: str = ""
 
 class Lead(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -65,6 +66,7 @@ class Lead(BaseModel):
     passengers: Optional[Dict[str, int]] = None
     travel_dates: str = ""
     traveller_count: str = ""
+    flight_assistance: str = ""
     kraya_status: str = "pending"
     kraya_lead_id: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
