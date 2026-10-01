@@ -103,34 +103,98 @@
 #====================================================================================================
 
 
-user_problem_statement: "Verify content-only change to 'This could be your next dream trip' showcase section on homepage - should display exactly 5 trip tabs (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) with complete trip details, stats, quotes, customer info, and photo mosaics. All images must load correctly including Singapore's Unsplash URLs."
+user_problem_statement: "Verify Malaysia and Singapore destination landing pages (cloned from Vietnam) at /asien/malaysia and /asien/singapore. Pages must be structurally identical to Vietnam with only destination content/images changed. Test at desktop 1920px and mobile 390px. Verify: page loads, hero heading, all sections render (hero, breadcrumbs, about intro with expert quote, tours/package cards with 3 packages each, features, discover places, activities, testimonials, how-to-plan accordion, travel guide themes grid, related destinations, newsletter, footer), package titles and images, first package card navigation to detail page, broken images check, console errors. Also test /asien/malaysia/holidays and /asien/singapore/holidays variants. Regression test /asien/vietnam."
 
 frontend:
-  - task: "Trip Showcase Section Content Verification"
+  - task: "Malaysia Landing Page (/asien/malaysia)"
     implemented: true
     working: true
-    file: "/app/frontend/src/components/TripShowcase.jsx, /app/frontend/src/mock.js"
+    file: "/app/frontend/src/pages/MalaysiaListing.jsx, /app/frontend/src/malaysiaListingData.js, /app/frontend/src/malaysiaPackages.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Expected: Hero heading 'Malaysia Honeymoons and holidays', 3 package cards (Kuala Lumpur & Penang, Highlands & Islands, Borneo Wildlife), all sections present, no broken images, first package navigates to detail page."
         - working: true
           agent: "testing"
-          comment: "VERIFIED - All requirements met: (1) Section heading correct: 'This could be your next dream trip', (2) Desktop tabs (data-testid='showcase-tabs') display exactly 5 tabs in correct order: Vietnam, Sri Lanka, Thailand, Singapore, Malaysia, (3) Mobile tabs (data-testid='showcase-tabs-mobile') display same 5 tabs in correct order, (4) ALL 5 tabs tested with complete content verified: Vietnam honeymoon (15 days, 7 hotels, 11 activities, 6 transfers), Sri Lanka family tour (12 days, 6 hotels, 9 activities, 5 transfers), Thailand island escape (14 days, 7 hotels, 10 activities, 6 transfers), Singapore city break (6 days, 4 hotels, 9 activities, 4 transfers), Malaysia discovery (13 days, 7 hotels, 10 activities, 6 transfers), (5) Each tab displays: trip title (data-testid='showcase-title'), 4 stat chips (data-testid='showcase-stats'), quote (data-testid='showcase-quote'), customer line (data-testid='showcase-customer'), CTA button (data-testid='showcase-cta'), (6) ALL 25 mosaic images load successfully across all tabs (5 images per tab), (7) Singapore tab: ALL 5 images load correctly including 3 Unsplash URLs (#GardensByTheBay, #SupertreeGrove, #BayFront) and 2 CDN images (#MarinaBay, #Chinatown), (8) Desktop layout (1920px): card dimensions 1360x560px with left info panel + right photo mosaic (data-testid='showcase-mosaic'), desktop mosaic visible, mobile strip hidden, (9) Mobile layout (390px): mobile photo strip visible (data-testid='showcase-mobile-strip'), desktop mosaic hidden, mobile tabs visible, no horizontal overflow (body width 390px), (10) No console errors detected. Screenshots captured: showcase-vietnam-desktop.png, showcase-singapore-desktop.png, showcase-srilanka-desktop.png, showcase-malaysia-desktop.png, showcase-mobile.png"
+          comment: "VERIFIED ✓ Desktop 1920px: (1) Document title 'Malaysia Honeymoons and holidays | Hi Tours' contains Malaysia, (2) Hero heading correct: 'Malaysia Honeymoons and holidays', (3) Breadcrumbs present: Destinations > Asia > Malaysia, (4) About Malaysia section with expert quote found, (5) 3 package cards found with correct titles and prices: Card 1: 'Kuala Lumpur & Penang: Classic Malaysia' ₹46,999, Card 2: 'Highlands & Islands of Malaysia' ₹74,999, Card 3: 'Borneo Wildlife Malaysia: Sabah & Kuching' ₹68,999, (6) All sections present: 'Discover these places in Malaysia', activities, testimonials/reviews, 'How to plan', travel guide/inspiration, 'More destinations in Asia', (7) NO broken images found, (8) First package card navigation WORKS: clicked first card → navigated to /asien/kuala-lumpur-penang-malaysia-6d5n → detail page loads with gallery, itinerary/route, and price, (9) NO console errors, (10) Mobile 390px: hero heading correct, all 3 package cards visible, NO horizontal overflow (body width 390px = viewport). Screenshots: malaysia-desktop-full.png, malaysia-detail-page.png, malaysia-mobile-390.png"
+
+  - task: "Singapore Landing Page (/asien/singapore)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/SingaporeListing.jsx, /app/frontend/src/singaporeListingData.js, /app/frontend/src/singaporePackages.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Expected: Hero heading 'Singapore Honeymoons and holidays', 3 package cards (Singapore City Break, Singapore with Kids, Singapore Stopover), all sections present including Unsplash images, first package navigates to detail page."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Desktop 1920px: (1) Document title 'Singapore Honeymoons and holidays | Hi Tours' contains Singapore, (2) Hero heading correct: 'Singapore Honeymoons and holidays', (3) Breadcrumbs present: Destinations > Asia > Singapore, (4) About Singapore section with expert quote found, (5) 3 package cards found with correct titles and prices: Card 1: 'Singapore City Break' ₹52,999, Card 2: 'Singapore with Kids' ₹58,999, Card 3: 'Singapore Stopover' ₹34,999, (6) All sections present: 'Discover these places in Singapore', activities, testimonials/reviews, 'How to plan', travel guide/inspiration, 'More destinations in Asia', (7) NO broken images found, (8) UNSPLASH IMAGES: 14 total Unsplash images, ALL 14 loaded successfully, 0 broken - Gardens by the Bay, Supertrees, Marina Bay aerial images all load correctly, (9) First package card navigation WORKS: clicked first card → navigated to /asien/singapore-city-break-4d3n → detail page loads with gallery, itinerary/route, and price, (10) NO console errors, (11) Mobile 390px: hero heading correct, all 3 package cards visible, NO horizontal overflow (body width 390px = viewport). Screenshots: singapore-desktop-full.png, singapore-detail-page.png, singapore-mobile-390.png"
+
+  - task: "Malaysia Holidays Variant (/asien/malaysia/holidays)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/MalaysiaListing.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Verify page loads without errors."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Page loads successfully: (1) Document title 'Malaysia tours & holidays | Hi Tours', (2) H1 heading present, (3) Package content with prices present, (4) NO console errors. Page loads without errors."
+
+  - task: "Singapore Holidays Variant (/asien/singapore/holidays)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/SingaporeListing.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Verify page loads without errors."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Page loads successfully: (1) Document title 'Singapore tours & holidays | Hi Tours', (2) H1 heading present, (3) Package content with prices present, (4) NO console errors. Page loads without errors."
+
+  - task: "Vietnam Landing Page Regression (/asien/vietnam)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/VietnamListing.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Regression test. Verify Vietnam page still loads correctly with hero 'Vietnam Honeymoons and holidays', package cards, and no console errors."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Regression test PASSED: (1) Hero heading correct: 'Vietnam Honeymoons and holidays', (2) 6 package cards present (unchanged), (3) NO console errors. Vietnam page remains unchanged and fully functional."
 
 metadata:
   created_by: "testing_agent"
-  version: "1.1"
-  test_sequence: 2
+  version: "1.2"
+  test_sequence: 4
   run_ui: true
 
 test_plan:
-  current_focus:
-    - "Trip Showcase Section Content Verification"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "testing"
-      message: "Trip Showcase section verification COMPLETE. All 5 trip tabs (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) render correctly in the expected order on both desktop and mobile. Each tab displays complete trip information: title, 4 stat chips (days/hotels/activities/transfers), quote, customer line, and CTA button. ALL 25 mosaic images load successfully across all 5 tabs, including Singapore's 3 Unsplash URLs which load perfectly. Desktop layout shows correct card height (~560px) with left panel + right mosaic. Mobile layout is fully responsive with horizontal photo strip and mobile tabs, no overflow. No console errors. Content-only change verified successfully."
+      message: "Starting comprehensive testing of Malaysia and Singapore destination landing pages. Will verify all sections, package cards, images (including Singapore Unsplash URLs), navigation to detail pages, and regression test Vietnam page. Testing at desktop 1920px and mobile 390px viewports."
+    - agent: "testing"
+      message: "TESTING COMPLETE ✓ All 5 tasks passed successfully. Malaysia landing page: hero heading correct, 3 package cards with correct titles/prices (Kuala Lumpur & Penang ₹46,999, Highlands & Islands ₹74,999, Borneo Wildlife ₹68,999), all sections present, NO broken images, first package navigation works to detail page, NO console errors, mobile responsive. Singapore landing page: hero heading correct, 3 package cards with correct titles/prices (Singapore City Break ₹52,999, Singapore with Kids ₹58,999, Singapore Stopover ₹34,999), all sections present, ALL 14 Unsplash images load successfully (Gardens by the Bay, Supertrees, Marina Bay), first package navigation works to detail page, NO console errors, mobile responsive. Malaysia holidays variant loads correctly. Singapore holidays variant loads correctly. Vietnam regression test PASSED - page unchanged with correct hero heading and 6 package cards. Both pages are structurally identical to Vietnam with only destination content/images changed as required. Ready for main agent to summarize and finish."

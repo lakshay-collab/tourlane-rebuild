@@ -27,11 +27,17 @@ import { usePageLead } from '../components/egypt/LeadModalProvider';
 import { products as vietnamProducts, planner as vietnamPlanner, reviews as vietnamReviews } from '../vietnamListingData';
 import { planner as srilankaPlanner, reviews as srilankaReviews, products as srilankaProducts } from '../srilankaListingData';
 import { srilankaBySlug } from '../tours/srilankaToursData';
+import { planner as malaysiaPlanner, reviews as malaysiaReviews } from '../malaysiaListingData';
+import { malaysiaBySlug } from '../tours/malaysiaToursData';
+import { planner as singaporePlanner, reviews as singaporeReviews } from '../singaporeListingData';
+import { singaporeBySlug } from '../tours/singaporeToursData';
 
 // Resolve the itinerary's destination (name, planner, reviews) so shared sections adapt automatically.
 const DESTINATIONS = [
   ['Vietnam', (d) => ({ planner: vietnamPlanner, reviews: vietnamReviews })],
   ['Sri Lanka', (d) => ({ planner: srilankaPlanner, reviews: srilankaReviews })],
+  ['Malaysia', (d) => ({ planner: malaysiaPlanner, reviews: malaysiaReviews })],
+  ['Singapore', (d) => ({ planner: singaporePlanner, reviews: singaporeReviews })],
   ['Thailand', (d) => ({ planner: { ...planner, h3: 'Plan your Thailand trip', bg: d.gallery?.[0] } })],
   ['Morocco', (d) => ({ planner: { ...planner, h3: 'Plan your Morocco trip', bg: d.gallery?.[0] } })]
 ];
@@ -70,7 +76,9 @@ const BY_SLUG = {
   [detailND.slug]: { detail: detailND, route: routeND, glance: glanceND, crumbs: crumbsND },
   [detailNN.slug]: { detail: detailNN, route: routeNN, glance: glanceNN, crumbs: crumbsNN },
   ...vietnamBySlug,
-  ...srilankaBySlug
+  ...srilankaBySlug,
+  ...malaysiaBySlug,
+  ...singaporeBySlug
 };
 
 const stop = (e) => e.preventDefault();

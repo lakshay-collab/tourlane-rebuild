@@ -10,6 +10,8 @@ import EgyptDetail from './pages/EgyptDetail';
 import AsiaListing from './pages/AsiaListing';
 import VietnamListing, { VietnamHolidays } from './pages/VietnamListing';
 import SriLankaListing, { SriLankaHolidays } from './pages/SriLankaListing';
+import MalaysiaListing, { MalaysiaHolidays } from './pages/MalaysiaListing';
+import SingaporeListing, { SingaporeHolidays } from './pages/SingaporeListing';
 import TripStyleListing from './pages/TripStyleListing';
 import About from './pages/About';
 import Care from './pages/Care';
@@ -44,6 +46,12 @@ function App() {
           <Route path="/asien/sri-lanka" element={<SriLankaListing />} />
           <Route path="/asien/sri-lanka/holidays" element={<SriLankaHolidays />} />
           <Route path="/asien/sri-lanka/holidays/:style" element={<SriLankaHolidays />} />
+          <Route path="/asien/malaysia" element={<MalaysiaListing />} />
+          <Route path="/asien/malaysia/holidays" element={<MalaysiaHolidays />} />
+          <Route path="/asien/malaysia/holidays/:style" element={<MalaysiaHolidays />} />
+          <Route path="/asien/singapore" element={<SingaporeListing />} />
+          <Route path="/asien/singapore/holidays" element={<SingaporeHolidays />} />
+          <Route path="/asien/singapore/holidays/:style" element={<SingaporeHolidays />} />
           <Route path="/asien/:slug" element={<EgyptDetail />} />
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
           <Route path="/about" element={<About />} />
