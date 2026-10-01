@@ -94,3 +94,17 @@ export const destinations = {
     { name: 'United Arab Emirates', src: img('3EnNa2rJ23mDnHSFxFaXU', 'ad7d721a9a162a0b8d5ef044fce3d7cb/Emirates_Palace_Abu_Dhabi__VAE.jpg') }
   ]
 };
+
+
+// Home "Destinations" section – dedicated list (content-only, design unchanged).
+export const homeDestinationTabs = ['Asia'];
+
+export const homeDestinations = {
+  'Asia': [
+    { name: 'Vietnam', src: img('6KpaBlYiRchxRrYsS84QgO', 'dfb8fec25316c0c719d2aa7a5794dc31/NinhBinhProvinz_Tempel.jpg') },
+    { name: 'Sri Lanka', src: img('6etzBcZlvbOLHqzCOq0NES', '764d862634b04fbcd521a3ad01740f1d/iStock-1779897953.jpg') },
+    { name: 'Thailand', src: img('27MnAH4RS1zTSFygAmnq5i', '97ec55278a94f2ab56c26847396201ba/Thailand_Natur.jpg') },
+    { name: 'Singapore', src: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxTaW5nYXBvcmUlMjBNYXJpbmElMjBCYXl8ZW58MHx8fHwxNzkwODUyMzQzfDA&ixlib=rb-4.1.0&q=85&w=520' },
+    { name: 'Malaysia', src: img('X7b0PdKpWDMzl19jytcJ6', 'd0aad3d91b3ffaaf161f205c7660fe5f/Malaysia_Ipoh_Tempel.jpg') }
+  ]
+};
