@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { hero } from '../mock';
 import { destinations } from '../destinationsData';
 
-const ROUTES = { 'Egypt': '/afrika/aegypten', 'Asia': '/asien', 'Vietnam': '/asien/vietnam', 'Thailand': '/asien/siam-splendour-thailand', 'Sri Lanka': '/asien/sri-lanka' };
+const ROUTES = { 'Egypt': '/afrika/aegypten', 'Asia': '/asien', 'Vietnam': '/asien/vietnam', 'Thailand': '/asien/siam-splendour-thailand', 'Sri Lanka': '/asien/sri-lanka', 'Malaysia': '/asien/malaysia', 'Singapore': '/asien/singapore', 'Kazakhstan': '/asien/kazakhstan', 'Bhutan': '/asien/bhutan' };
 const ASIA_IMG = 'https://images.ctfassets.net/bth3mlrehms2/27MnAH4RS1zTSFygAmnq5i/97ec55278a94f2ab56c26847396201ba/Thailand_Natur.jpg?w=160&q=60&fm=webp';
 
 const STYLES = [

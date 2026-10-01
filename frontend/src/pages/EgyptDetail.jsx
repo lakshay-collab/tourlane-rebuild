@@ -31,6 +31,10 @@ import { planner as malaysiaPlanner, reviews as malaysiaReviews } from '../malay
 import { malaysiaBySlug } from '../tours/malaysiaToursData';
 import { planner as singaporePlanner, reviews as singaporeReviews } from '../singaporeListingData';
 import { singaporeBySlug } from '../tours/singaporeToursData';
+import { planner as kazakhstanPlanner, reviews as kazakhstanReviews } from '../kazakhstanListingData';
+import { kazakhstanBySlug } from '../tours/kazakhstanToursData';
+import { planner as bhutanPlanner, reviews as bhutanReviews } from '../bhutanListingData';
+import { bhutanBySlug } from '../tours/bhutanToursData';
 
 // Resolve the itinerary's destination (name, planner, reviews) so shared sections adapt automatically.
 const DESTINATIONS = [
@@ -38,6 +42,8 @@ const DESTINATIONS = [
   ['Sri Lanka', (d) => ({ planner: srilankaPlanner, reviews: srilankaReviews })],
   ['Malaysia', (d) => ({ planner: malaysiaPlanner, reviews: malaysiaReviews })],
   ['Singapore', (d) => ({ planner: singaporePlanner, reviews: singaporeReviews })],
+  ['Kazakhstan', (d) => ({ planner: kazakhstanPlanner, reviews: kazakhstanReviews })],
+  ['Bhutan', (d) => ({ planner: bhutanPlanner, reviews: bhutanReviews })],
   ['Thailand', (d) => ({ planner: { ...planner, h3: 'Plan your Thailand trip', bg: d.gallery?.[0] } })],
   ['Morocco', (d) => ({ planner: { ...planner, h3: 'Plan your Morocco trip', bg: d.gallery?.[0] } })]
 ];
@@ -78,7 +84,9 @@ const BY_SLUG = {
   ...vietnamBySlug,
   ...srilankaBySlug,
   ...malaysiaBySlug,
-  ...singaporeBySlug
+  ...singaporeBySlug,
+  ...kazakhstanBySlug,
+  ...bhutanBySlug
 };
 
 const stop = (e) => e.preventDefault();

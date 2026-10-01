@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { homeDestinationTabs as destinationTabs, homeDestinations as destinations } from '../destinationsData';
 import { destinationsHeading } from '../mock';
 
-const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien/sri-lanka', 'Thailand': '/asien/siam-splendour-thailand', 'Vietnam': '/asien/vietnam' };
+const COUNTRY_HREF = { 'Egypt': '/afrika/aegypten', 'Sri Lanka': '/asien/sri-lanka', 'Thailand': '/asien/siam-splendour-thailand', 'Vietnam': '/asien/vietnam', 'Malaysia': '/asien/malaysia', 'Singapore': '/asien/singapore', 'Kazakhstan': '/asien/kazakhstan', 'Bhutan': '/asien/bhutan' };
 const REGION_HREF = { 'Asia': '/asien' };
 
 export default function Destinations() {

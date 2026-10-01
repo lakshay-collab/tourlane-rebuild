@@ -181,10 +181,70 @@ frontend:
           agent: "testing"
           comment: "VERIFIED ✓ Regression test PASSED: (1) Hero heading correct: 'Vietnam Honeymoons and holidays', (2) 6 package cards present (unchanged), (3) NO console errors. Vietnam page remains unchanged and fully functional."
 
+  - task: "Kazakhstan Landing Page (/asien/kazakhstan)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/KazakhstanListing.jsx, /app/frontend/src/kazakhstanListingData.js, /app/frontend/src/kazakhstanPackages.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Expected: Hero heading 'Kazakhstan Honeymoons and holidays', 3 package cards (Almaty & Mountains, Highlights Almaty & Astana, Nature & Lakes), all sections present, no broken images, first package navigates to detail page, searchable and clickable in navigation."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Desktop 1920px: (1) Document title 'Kazakhstan Honeymoons and holidays | Hi Tours' contains Kazakhstan, (2) Hero heading correct: 'Kazakhstan Honeymoons and holidays', (3) Breadcrumbs present: Destinations > Asia > Kazakhstan, (4) About Kazakhstan section with expert quote found, (5) 3 package cards found with correct titles and prices: Card 1: 'Almaty & the Mountains of Kazakhstan' ₹72,999, Card 2: 'Highlights of Kazakhstan: Almaty & Astana' ₹98,999, Card 3: 'Kazakhstan Nature & Lakes' ₹84,999, (6) All sections present: 'Discover these places in Kazakhstan', activities, testimonials/reviews, 'How to plan', travel guide/inspiration, 'More destinations in Asia', (7) NO broken images found, (8) First package card navigation WORKS: clicked first card → navigated to /asien/almaty-mountains-kazakhstan-6d5n → detail page loads with gallery (59 images), itinerary (4 day elements), and price, (9) NO console errors, (10) Mobile 390px: hero heading correct, all 3 package cards visible, NO horizontal overflow (body width 390px = viewport), (11) SEARCHABLE: Kazakhstan search works - suggestion appears, navigates to /asien/kazakhstan, (12) DESKTOP MEGA MENU: Kazakhstan tile present in Asia region, href /asien/kazakhstan correct, navigation works, (13) MOBILE DRAWER: Kazakhstan present in Destinations > Asia, href correct, navigation works. Screenshots: kazakhstan-desktop-1920.png, kazakhstan-mobile-390.png"
+
+  - task: "Bhutan Landing Page (/asien/bhutan)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/BhutanListing.jsx, /app/frontend/src/bhutanListingData.js, /app/frontend/src/bhutanPackages.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Expected: Hero heading 'Bhutan Honeymoons and holidays', 3 package cards (Tiger's Nest & Happy Valleys, Grand Tour, Honeymoon Escape), all sections present including Unsplash images, first package navigates to detail page, searchable and clickable in navigation."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Desktop 1920px: (1) Document title 'Bhutan Honeymoons and holidays | Hi Tours' contains Bhutan, (2) Hero heading correct: 'Bhutan Honeymoons and holidays', (3) Breadcrumbs present: Destinations > Asia > Bhutan, (4) About Bhutan section with expert quote found, (5) 3 package cards found with correct titles and prices: Card 1: 'Bhutan: Tiger's Nest & Happy Valleys' ₹89,999, Card 2: 'Grand Tour of Bhutan' ₹1,34,999, Card 3: 'Bhutan Honeymoon Escape' ₹76,999, (6) All sections present: 'Discover these places in Bhutan', activities, testimonials/reviews, 'How to plan', travel guide/inspiration, 'More destinations in Asia', (7) NO broken images found, (8) First package card navigation WORKS: clicked first card → navigated to /asien/bhutan-tigers-nest-happy-valleys-6d5n → detail page loads with gallery, itinerary, and price, (9) NO console errors, (10) Mobile 390px: hero heading correct, all 3 package cards visible, NO horizontal overflow (body width 390px = viewport), (11) SEARCHABLE: Bhutan search works - suggestion appears, navigates to /asien/bhutan, (12) DESKTOP MEGA MENU: Bhutan tile present in Asia region, href /asien/bhutan correct, navigation works, (13) MOBILE DRAWER: Bhutan present in Destinations > Asia, href correct, navigation works. Screenshots: bhutan-desktop-1920.png, bhutan-mobile-390.png"
+
+  - task: "Kazakhstan Holidays Variant (/asien/kazakhstan/holidays)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/KazakhstanListing.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Verify page loads without errors."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Page loads successfully: (1) Document title 'Kazakhstan tours & holidays | Hi Tours', (2) H1 heading present, (3) Package content with prices present, (4) NO console errors. Page loads without errors."
+
+  - task: "Bhutan Holidays Variant (/asien/bhutan/holidays)"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/BhutanListing.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "testing"
+          comment: "Ready for testing. Verify page loads without errors."
+        - working: true
+          agent: "testing"
+          comment: "VERIFIED ✓ Page loads successfully: (1) Document title 'Bhutan tours & holidays | Hi Tours', (2) H1 heading present, (3) Package content with prices present, (4) NO console errors. Page loads without errors."
+
 metadata:
   created_by: "testing_agent"
-  version: "1.2"
-  test_sequence: 4
+  version: "1.3"
+  test_sequence: 5
   run_ui: true
 
 test_plan:
@@ -198,3 +258,13 @@ agent_communication:
       message: "Starting comprehensive testing of Malaysia and Singapore destination landing pages. Will verify all sections, package cards, images (including Singapore Unsplash URLs), navigation to detail pages, and regression test Vietnam page. Testing at desktop 1920px and mobile 390px viewports."
     - agent: "testing"
       message: "TESTING COMPLETE ✓ All 5 tasks passed successfully. Malaysia landing page: hero heading correct, 3 package cards with correct titles/prices (Kuala Lumpur & Penang ₹46,999, Highlands & Islands ₹74,999, Borneo Wildlife ₹68,999), all sections present, NO broken images, first package navigation works to detail page, NO console errors, mobile responsive. Singapore landing page: hero heading correct, 3 package cards with correct titles/prices (Singapore City Break ₹52,999, Singapore with Kids ₹58,999, Singapore Stopover ₹34,999), all sections present, ALL 14 Unsplash images load successfully (Gardens by the Bay, Supertrees, Marina Bay), first package navigation works to detail page, NO console errors, mobile responsive. Malaysia holidays variant loads correctly. Singapore holidays variant loads correctly. Vietnam regression test PASSED - page unchanged with correct hero heading and 6 package cards. Both pages are structurally identical to Vietnam with only destination content/images changed as required. Ready for main agent to summarize and finish."
+    - agent: "user"
+      message: "Bug report: Singapore and Malaysia are not clickable or searchable in the navigation and search."
+    - agent: "main"
+      message: "Added route mappings and added Singapore to the destinations list. Requesting testing agent to verify the bug fix."
+    - agent: "testing"
+      message: "BUG FIX VERIFICATION COMPLETE ✓ Tested Malaysia and Singapore navigation at desktop 1920px and mobile 390px. All 6 tests PASSED: (1) Hero search bar - Malaysia: searchable, suggestion appears, navigates to /asien/malaysia with correct hero heading, (2) Hero search bar - Singapore: searchable, suggestion appears, navigates to /asien/singapore with correct hero heading, (3) Desktop mega menu - Malaysia: tile present in Asia region (hover over Destinations → hover over Asia tab), clickable, navigates to /asien/malaysia, (4) Desktop mega menu - Singapore: tile present in Asia region, clickable, navigates to /asien/singapore, (5) Mobile drawer - Malaysia: present in Destinations > Asia, clickable, navigates to /asien/malaysia, (6) Mobile drawer - Singapore: present in Destinations > Asia, clickable, navigates to /asien/singapore. NO console errors. Bug fix successful - both destinations are now fully searchable and clickable in all navigation contexts."
+    - agent: "user"
+      message: "New task: Verify Kazakhstan and Bhutan destination landing pages (cloned from Vietnam template) at /asien/kazakhstan and /asien/bhutan. Pages must be clickable and searchable like other destinations. Test at desktop 1920px and mobile 390px. Verify: page loads, hero heading, all sections, 3 package cards each, first package navigation to detail page, broken images check, console errors, /asien/kazakhstan/holidays and /asien/bhutan/holidays variants, search functionality, desktop mega menu, mobile drawer. Regression test Vietnam, Malaysia, Singapore."
+    - agent: "testing"
+      message: "COMPREHENSIVE TESTING COMPLETE ✓ All Kazakhstan and Bhutan tests PASSED. Kazakhstan landing page (/asien/kazakhstan): hero heading 'Kazakhstan Honeymoons and holidays' correct, document title contains Kazakhstan, breadcrumbs present, About section with expert quote found, 3 package cards with correct titles/prices (Almaty & Mountains ₹72,999, Highlights Almaty & Astana ₹98,999, Nature & Lakes ₹84,999), all sections present (Discover places in Kazakhstan, activities, testimonials, how-to-plan, travel guide, related destinations), NO broken images, first package navigates to /asien/almaty-mountains-kazakhstan-6d5n with gallery (59 images), itinerary (4 days), and price, NO console errors, mobile 390px responsive with no horizontal overflow. Bhutan landing page (/asien/bhutan): hero heading 'Bhutan Honeymoons and holidays' correct, document title contains Bhutan, breadcrumbs present, About section with expert quote found, 3 package cards with correct titles/prices (Tiger's Nest & Happy Valleys ₹89,999, Grand Tour ₹1,34,999, Honeymoon Escape ₹76,999), all sections present (Discover places in Bhutan, activities, testimonials, how-to-plan, travel guide, related destinations), NO broken images, first package navigates to /asien/bhutan-tigers-nest-happy-valleys-6d5n with gallery, itinerary, and price, NO console errors, mobile 390px responsive. Holidays variants: /asien/kazakhstan/holidays and /asien/bhutan/holidays both load correctly. CLICKABLE + SEARCHABLE: (1) Search - Kazakhstan: searchable, suggestion appears, navigates to /asien/kazakhstan ✓, (2) Search - Bhutan: searchable, suggestion appears, navigates to /asien/bhutan ✓, (3) Desktop mega menu - Kazakhstan: tile present in Asia region, href /asien/kazakhstan correct, navigation works ✓, (4) Desktop mega menu - Bhutan: tile present in Asia region, href /asien/bhutan correct, navigation works ✓, (5) Mobile drawer - Kazakhstan: present in Destinations > Asia, href correct, navigation works ✓, (6) Mobile drawer - Bhutan: present in Destinations > Asia, href correct, navigation works ✓. REGRESSION: Vietnam, Malaysia, Singapore all load correctly with correct hero headings and NO console errors. Screenshots captured: kazakhstan-desktop-1920.png, bhutan-desktop-1920.png, kazakhstan-mobile-390.png, bhutan-mobile-390.png. Both Kazakhstan and Bhutan pages are fully functional, searchable, and clickable in all navigation contexts (search bar, desktop mega menu, mobile drawer). Ready for main agent to summarize and finish."

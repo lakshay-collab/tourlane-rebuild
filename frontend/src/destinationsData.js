@@ -40,6 +40,9 @@ export const destinations = {
     { name: 'China', src: img('3FwBvWPMIiVGThJdqClYD1', 'bb67524f6b951541a23d6950859c4e6f/China_Jinshanling_ChinesischeMauer_TCG.png') },
     { name: 'Cambodia', src: img('3zbplvZU8SZYLZqdmaPsZv', 'c16250ef83321324f10fbf00c9b058a1/Kambodscha_AngkorWat.jpg') },
     { name: 'Malaysia', src: img('X7b0PdKpWDMzl19jytcJ6', 'd0aad3d91b3ffaaf161f205c7660fe5f/Malaysia_Ipoh_Tempel.jpg') },
+    { name: 'Singapore', src: img('4B5tE96BHxRVFYUVJQibEE', 'efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg') },
+    { name: 'Kazakhstan', src: 'https://images.unsplash.com/photo-1530480667809-b655d4dc3aaa?crop=entropy&cs=srgb&fm=jpg&q=60&w=520' },
+    { name: 'Bhutan', src: 'https://images.unsplash.com/photo-1638246439638-b37095b34879?crop=entropy&cs=srgb&fm=jpg&q=60&w=520' },
     { name: 'Maldives', src: img('3hsuR5UvfamJlqKCTM81Ii', 'b43e484beb8b92c43047174a4a3e7be8/Maldiven__Holzsteg.jpg') },
     { name: 'Philippines', src: img('1o2rtINxvG8y4nqhK5Bvgp', 'd09a493b9ea9c4db223ad37ba237b646/Philippinen_Palawan_Coron_Lagoone_TCG.png') },
     { name: 'Sri Lanka', src: img('6etzBcZlvbOLHqzCOq0NES', '764d862634b04fbcd521a3ad01740f1d/iStock-1779897953.jpg') }
