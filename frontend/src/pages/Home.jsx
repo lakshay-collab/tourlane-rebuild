@@ -11,6 +11,7 @@ import TripShowcase from '../components/TripShowcase';
 import AdventureCTA from '../components/AdventureCTA';
 import Experts from '../components/Experts';
 import Testimonials from '../components/Testimonials';
+import Destinations from '../components/Destinations';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 
@@ -32,6 +33,7 @@ export default function Home() {
         <AdventureCTA />
         <Experts />
         <Testimonials />
+        <Destinations />
         <Newsletter />
       </main>
       <Footer />
