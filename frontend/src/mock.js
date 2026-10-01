@@ -125,7 +125,7 @@ export const steps = {
 
 const trip = (o) => ({
   ...o,
-  images: o.images.map(([path, tag]) => ({ src: cf(path, 'w=700&q=60&fm=webp'), tag }))
+  images: o.images.map(([path, tag]) => ({ src: /^https?:\/\//.test(path) ? path : cf(path, 'w=700&q=60&fm=webp'), tag }))
 });
 
 export const showcase = {
@@ -133,36 +133,36 @@ export const showcase = {
   createdFor: 'Crafted specially for',
   trips: [
     trip({
-      tab: 'Canada', title: 'Canada road trip', cta: 'Plan your Canada trip now',
-      duration: '13 days', stops: '7 stops', transport: 'Rental car', activities: 8, hotels: 6, transfers: 5,
-      tags: [['bed', 'Boutique hotels'], ['tower', 'CN Tower'], ['car', 'Vintage cars'], ['family', 'Family-friendly'], ['plane', 'Stopover in Iceland']],
-      customer: "Daniel & Laura's family road trip", quote: 'Every stop was planned for us – the kids still talk about the vintage-car day in Toronto and the Niagara boat ride.', avatar: cf('1W5rwBgpzW3Oknz3zEG8lI/1b40a54517258274685f32a3e9f1bb78/usa_family.jpg', 'w=128&q=60&fm=webp'),
+      tab: 'Vietnam', title: 'Vietnam honeymoon', cta: 'Plan your Vietnam trip now',
+      duration: '15 days', stops: '8 stops', transport: 'Private driver', activities: 11, hotels: 7, transfers: 6,
+      tags: [['bed', 'Boutique hotels'], ['boat', 'Halong Bay cruise'], ['bike', 'Motorbike'], ['food', 'Street food'], ['plane', 'Direct flights']],
+      customer: "Prajakta & Sneha's honeymoon", quote: 'From a Halong Bay cruise to lantern-lit Hoi An nights, every single day felt handcrafted just for us.', avatar: cf('1KRVeu7Hv6eXMHjrvIwo6h/ad6802af5abb475b1b4f7354c321bba2/thailand_couples.jpg', 'w=128&q=60&fm=webp'),
       images: [
-        ['3n8hNDrWSt9sW4LeQoM1lU/f58618d738867aeb21a2d265392a85f6/CAN_-_-MoraineLake.png', 'MoraineLake'],
-        ['29X11RG3tE7AlGru2Fh8Zw/3d2aa405c0695689011b479dbf6de449/CAN_-_-Tofino.png', 'Tofino'],
-        ['6nF1n75lzjhRb1XHd6aFrI/739228e337611cf2f36f95e0ac2594a1/CAN_-_-Toronto.png', 'Toronto'],
-        ['25u7uX2j5fvmYLW5DOhwll/373d5c0d3bcff212715742030f115cee/CAN_-_-Ottawa.png', 'Ottawa'],
-        ['71m2PWbnDAnGrseQc401jK/faeb942d0f09bc538885496ee96ddbeb/CAN_-_-Niagara.png', 'Niagara']
+        ['3Z7A5HXNMctqsB6GE2jphI/4cef5ccca7d896a0b4f88281499fec30/Halong_Bucht_Vietnam.jpg', 'HalongBay'],
+        ['1oona4EHxFNonfYfpgKQRu/fd45a84873954f50c0192a904b5c13db/Hoi_An_Vietnam_2.jpg', 'HoiAn'],
+        ['5ujKcctP43Y7HHOFAKvWIU/4e29a70d5c0657d946762c42bd2f1eb5/Sapa_Vietname.jpg', 'Sapa'],
+        ['3qsQDApUiMDejmmNxXcr0g/3bd51ca9fa429966c8ba194946b30cb1/Pagode_Hanoi.png', 'Hanoi'],
+        ['1Tm427NrLOOFiGLG2qNwBX/b525194ba3f361bacdd2938831843a3a/Phu_Quoc_Vietnam.jpg', 'PhuQuoc']
       ]
     }),
     trip({
-      tab: 'Iceland', title: 'Iceland adventure', cta: 'Plan your Iceland trip now',
-      duration: '14 days', stops: '7 stops', transport: 'Rental car', activities: 9, hotels: 6, transfers: 4,
-      tags: [['bed', 'Tiny houses'], ['aurora', 'Northern lights'], ['car', 'Electric vehicle'], ['leaf', 'Vegetarian'], ['plane', 'Direct flights']],
-      customer: 'the Thomas family', quote: 'From the northern lights to our tiny house by the glacier, everything was arranged before we landed. We just enjoyed Iceland.', avatar: cf('7aiJAepiAkFd0fdEi5mPEX/7634da5cd986ad0e63f91d52a3eb9e8d/iceland_couple.jpg', 'w=128&q=60&fm=webp'),
+      tab: 'Sri Lanka', title: 'Sri Lanka family tour', cta: 'Plan your Sri Lanka trip now',
+      duration: '12 days', stops: '6 stops', transport: 'Private driver', activities: 9, hotels: 6, transfers: 5,
+      tags: [['bed', 'Heritage bungalows'], ['safari', 'Leopard safari'], ['leaf', 'Tea country'], ['food', 'Rice & curry'], ['plane', 'Direct flights']],
+      customer: 'the Fernando family', quote: 'Climbing Sigiriya rock at dawn and tea-tasting in the misty hills – the kids still talk about all of it.', avatar: cf('1W5rwBgpzW3Oknz3zEG8lI/1b40a54517258274685f32a3e9f1bb78/usa_family.jpg', 'w=128&q=60&fm=webp'),
       images: [
-        ['gW0adNKiWn5bCjNPojuoU/060852b0731840da58a9bd763f880a7d/ISL_-_-%C3%83_ingvellir.png', 'Þingvellir'],
-        ['31rmk7sbcl3aeEK7VnOwEf/4fae5727dd432b3986ecfd0f3e5cdd49/ISL_-_-Ingo%C3%8C_lfsho%C3%8C_f%C3%83_i.png', 'Ingólfshöfði'],
-        ['1farYVTEZge1ifBnK8SZqN/6d17af9825bf13a860da5193e8d4dcd2/ISL_-_-Polarlichter.png', 'NorthernLights'],
-        ['PAD4UW6QFtDdNuzMX4aPf/b3236ae2fe38a8952cd777dbf3494d4f/ISL_-_-Hochland.png', 'Highlands'],
-        ['7iEFmxlwrvo3XH7fuwOIbu/300a55a0ababf324bd8fcc33126fe045/ISL_-_-Reykjavi%C3%8C_k.png', 'Reykjavík']
+        ['4ty416HtZ5fnIJe5U94pUn/04e383acf72b20230360d6cdeb960993/Sigiriya_Sri_Lanka.jpg', 'Sigiriya'],
+        ['52ZxIJbx0zC3QmeXtTjVpo/b109083307d8ee990f394165679c4ccc/Sri_Lanka__Ella__Neun-Bogen-Br%C3%BCcke.jpg', 'EllaBridge'],
+        ['1tXogJFN76YCthWrqs1rbz/1efdd4d03c76d7608cf6e4f3ba60ca81/Kandy_Sri_Lanka_-_Tempel_der_Zahn.jpg', 'Kandy'],
+        ['4rykn5ApXvQcEXp8oC8cZo/91be5b5717fe6e55ea0dd489b344279d/SriLanka_NuwaraEliya.jpg', 'NuwaraEliya'],
+        ['2Qmktfpd63iN6dIbGQVV5a/a739f37a3d1bd5d3613cbe380b96394d/Hikkaduwa_Sri_Lanka.jpg', 'Hikkaduwa']
       ]
     }),
     trip({
-      tab: 'Thailand', title: 'Thailand with friends', cta: 'Plan your Thailand trip now',
-      duration: '20 days', stops: '11 stops', transport: 'Transfers', activities: 12, hotels: 7, transfers: 10,
+      tab: 'Thailand', title: 'Thailand island escape', cta: 'Plan your Thailand trip now',
+      duration: '14 days', stops: '8 stops', transport: 'Transfers', activities: 10, hotels: 7, transfers: 6,
       tags: [['bed', 'Glamping in the jungle'], ['island', 'Island hopping'], ['bike', 'Motorbike'], ['food', 'Local specialities'], ['plane', 'Stopover in Dubai']],
-      customer: "Marc, Sofie, Oskar & Kira's trip with friends", quote: 'Glamping in the jungle one night, island hopping the next – Hi Tours matched our pace perfectly.', avatar: cf('1KRVeu7Hv6eXMHjrvIwo6h/ad6802af5abb475b1b4f7354c321bba2/thailand_couples.jpg', 'w=128&q=60&fm=webp'),
+      customer: "Marc & Sofie's island escape", quote: 'Glamping in the jungle one night, island hopping the next – Hi Tours matched our pace perfectly.', avatar: cf('7aiJAepiAkFd0fdEi5mPEX/7634da5cd986ad0e63f91d52a3eb9e8d/iceland_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [
         ['A2kAwcfVxbWxQRQIqLVcM/5e25b1e33b9bc306e834fcfe2f8a99b6/THA_-_-KhaoSok.png', 'KhaoSok'],
         ['s0tM0ptUexcdfhU4HTwgh/64c82b916559b0a460fa3fca5ebad20a/THA_-_-Phuket.png', 'Phuket'],
@@ -172,29 +172,29 @@ export const showcase = {
       ]
     }),
     trip({
-      tab: 'Namibia', title: 'Wild Namibia', cta: 'Plan your Namibia trip now',
-      duration: '19 days', stops: '11 stops', transport: 'Rental car', activities: 10, hotels: 7, transfers: 6,
-      tags: [['bed', 'Comfortable lodges'], ['safari', 'Wildlife safari'], ['car', '4x4 SUV'], ['leaf', 'Locally grown'], ['plane', 'Premium economy flights']],
-      customer: "Simone & Thomas's honeymoon", quote: 'Namibia felt made for two. The lodges, the dunes at sunrise – every detail was thought through for us.', avatar: cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=128&q=60&fm=webp'),
+      tab: 'Singapore', title: 'Singapore city break', cta: 'Plan your Singapore trip now',
+      duration: '6 days', stops: '4 stops', transport: 'Metro & transfers', activities: 9, hotels: 4, transfers: 4,
+      tags: [['bed', 'Rooftop-pool hotels'], ['garden', 'Gardens by the Bay'], ['food', 'Hawker feasts'], ['family', 'Family-friendly'], ['plane', 'Direct flights']],
+      customer: "Aditi & Rohan's city break", quote: 'Gardens by the Bay after dark and hawker feasts by day – Singapore packed so much magic into a few days.', avatar: cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [
-        ['6Edh0HETOpLmc1qLXgkfdt/6eee003e3062a9d209d1f38d7ff0591e/NAM_-_-NamibNaukluft.png', 'NamibNaukluft'],
-        ['5M69vhCbfqVmp9iuM0vkd2/eb830409e8d9acf63434aec933d14711/Item-2__4_.png', 'WildlifeSafari'],
-        ['249QBudrmKsgTBJIo9Cq4R/18cc6b82a3218c3a2cc8135d79f94b81/NAM_-_-Etosha.png', 'Etosha'],
-        ['6F7Wq81OqaVqk2n4yBPfYu/1e3384f62d552d300d93e13c3b48c4a0/NAM_-_-Deadvlei.png', 'Deadvlei'],
-        ['2PkNir23oxuYwM3gAcYKm9/37ccb4bdf7a1cb8dcaffd92e584da7e7/NAM_-_-Swakopmund.png', 'Swakopmund']
+        ['4B5tE96BHxRVFYUVJQibEE/efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg', 'MarinaBay'],
+        ['https://images.unsplash.com/photo-1605425183435-25b7e99104a4?crop=entropy&cs=srgb&fm=jpg&q=80&w=900', 'GardensByTheBay'],
+        ['1S1CFngY8la37r0DqH3xb1/8052b7405ea5431391f2be4fba023227/Jalan_Besar_Singapore_2.jpg', 'Chinatown'],
+        ['https://images.unsplash.com/photo-1499359875449-10bbeb21501e?crop=entropy&cs=srgb&fm=jpg&q=80&w=900', 'SupertreeGrove'],
+        ['https://images.unsplash.com/photo-1508597370841-836e72ef6f54?crop=entropy&cs=srgb&fm=jpg&q=80&w=900', 'BayFront']
       ]
     }),
     trip({
-      tab: 'Costa Rica', title: 'Costa Rica Pura Vida', cta: 'Plan your Costa Rica trip now',
-      duration: '26 days', stops: '12 stops', transport: 'Rental car', activities: 14, hotels: 9, transfers: 8,
-      tags: [['bed', 'Guesthouses'], ['leaf', 'Rainforests'], ['car', 'Round trip'], ['food', 'Gluten-free'], ['plane', 'Business class']],
-      customer: "Mike & Ramona's honeymoon", quote: 'Pura Vida from day one. Our expert knew exactly which beaches and rainforest lodges would suit us.', avatar: cf('1VwYM421DcfxO71gvjf7K0/1349a0615821b755ac5b97b886a5b5dd/tanzania_couple.jpg', 'w=128&q=60&fm=webp'),
+      tab: 'Malaysia', title: 'Malaysia discovery', cta: 'Plan your Malaysia trip now',
+      duration: '13 days', stops: '7 stops', transport: 'Rental car', activities: 10, hotels: 7, transfers: 6,
+      tags: [['bed', 'Rainforest lodges'], ['tower', 'Petronas Towers'], ['safari', 'Orangutan sanctuary'], ['food', 'Street markets'], ['plane', 'Direct flights']],
+      customer: "Imran & Zara's honeymoon", quote: 'From the Petronas Towers to orangutans in Borneo, Malaysia surprised us with something new every single day.', avatar: cf('1VwYM421DcfxO71gvjf7K0/1349a0615821b755ac5b97b886a5b5dd/tanzania_couple.jpg', 'w=128&q=60&fm=webp'),
       images: [
-        ['51otFlNM3kkox3VuKTkcja/98eaa82e2241d35681fe41ecaef5a049/colin-meg-yKZZUGBE_0E-unsplash__1_.jpg', 'SantaElena'],
-        ['47N2BAQ0NleQcyi8Ht4hCr/3f4abdd3ec35b50e131fc4583519fb72/CRI_-_-BocaTapada.png', 'Wildlife'],
-        ['7wuRxnSYsJCnmo1364oTQ8/575c6da322c01a8ed5b4462bf7fcdf62/CRI_-_-SanJose%C3%8C_.png', 'LaFortuna'],
-        ['4ATpNdOb9xFBlAERmfN1en/01eaa796669a51e73ddf88da31431d7a/CRI_-_-Pazifikku%C3%83__ste.png', 'PacificCoast'],
-        ['4LS3H9b53tEAQ0XczZcgn4/d155921185a5ab678eb529ef2c1a46cc/patricia-palacin-EitAJO7TDLk-unsplash.jpg', 'ArenalVolcano']
+        ['7v9STD4EzC9uO1vB6vl2SC/2d6be37e8ab85ac375ae2d2ac46ec9b0/Malaysia__Kuala_Lumpur__Petronas_Towers.jpg', 'PetronasTowers'],
+        ['X7b0PdKpWDMzl19jytcJ6/d0aad3d91b3ffaaf161f205c7660fe5f/Malaysia_Ipoh_Tempel.jpg', 'Ipoh'],
+        ['51tkEfILsnNr3oDIU4ElpU/bc3ac3dac83ed5c1f18aa7024e8f1c32/Malaysia__George_Town.jpg', 'GeorgeTown'],
+        ['6tQ0fuewJsT1XGyPtk1feM/46e2bf106f4544461abd40528a72610e/Sonnenaufgang_Wolken_Cameron-Highlands_Malaysia.png', 'CameronHighlands'],
+        ['75OivhbWUIcq5PlUmpmA1j/30161b201b3fd087f637ed6b5cfb5ecd/Malaysia__Sabah__Sepilok-Orang-Utan-Rehabilitationszentrum.jpg', 'Sabah']
       ]
     })
   ]

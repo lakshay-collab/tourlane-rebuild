@@ -103,34 +103,34 @@
 #====================================================================================================
 
 
-user_problem_statement: "Verify content-only change to Destinations section on homepage - should display exactly 5 destination cards (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) with all images loading correctly"
+user_problem_statement: "Verify content-only change to 'This could be your next dream trip' showcase section on homepage - should display exactly 5 trip tabs (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) with complete trip details, stats, quotes, customer info, and photo mosaics. All images must load correctly including Singapore's Unsplash URLs."
 
 frontend:
-  - task: "Destinations Section Content Verification"
+  - task: "Trip Showcase Section Content Verification"
     implemented: true
     working: true
-    file: "/app/frontend/src/components/Destinations.jsx, /app/frontend/src/destinationsData.js"
+    file: "/app/frontend/src/components/TripShowcase.jsx, /app/frontend/src/mock.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
         - working: true
           agent: "testing"
-          comment: "VERIFIED - All requirements met: (1) Section heading renders correctly 'Discover our extraordinary destinations', (2) Exactly 5 destination cards present, (3) Card labels in correct order: Vietnam, Sri Lanka, Thailand, Singapore, Malaysia, (4) All 5 images loaded successfully including Singapore's Unsplash image (520x401px), (5) Desktop layout (1920px) displays 5 columns in single row with md:grid-cols-5 class, (6) Mobile layout (390px) is responsive with grid width 358px (no horizontal overflow), (7) No console errors detected. Card styling consistent with h-[150px] image containers. Screenshots captured at both viewports."
+          comment: "VERIFIED - All requirements met: (1) Section heading correct: 'This could be your next dream trip', (2) Desktop tabs (data-testid='showcase-tabs') display exactly 5 tabs in correct order: Vietnam, Sri Lanka, Thailand, Singapore, Malaysia, (3) Mobile tabs (data-testid='showcase-tabs-mobile') display same 5 tabs in correct order, (4) ALL 5 tabs tested with complete content verified: Vietnam honeymoon (15 days, 7 hotels, 11 activities, 6 transfers), Sri Lanka family tour (12 days, 6 hotels, 9 activities, 5 transfers), Thailand island escape (14 days, 7 hotels, 10 activities, 6 transfers), Singapore city break (6 days, 4 hotels, 9 activities, 4 transfers), Malaysia discovery (13 days, 7 hotels, 10 activities, 6 transfers), (5) Each tab displays: trip title (data-testid='showcase-title'), 4 stat chips (data-testid='showcase-stats'), quote (data-testid='showcase-quote'), customer line (data-testid='showcase-customer'), CTA button (data-testid='showcase-cta'), (6) ALL 25 mosaic images load successfully across all tabs (5 images per tab), (7) Singapore tab: ALL 5 images load correctly including 3 Unsplash URLs (#GardensByTheBay, #SupertreeGrove, #BayFront) and 2 CDN images (#MarinaBay, #Chinatown), (8) Desktop layout (1920px): card dimensions 1360x560px with left info panel + right photo mosaic (data-testid='showcase-mosaic'), desktop mosaic visible, mobile strip hidden, (9) Mobile layout (390px): mobile photo strip visible (data-testid='showcase-mobile-strip'), desktop mosaic hidden, mobile tabs visible, no horizontal overflow (body width 390px), (10) No console errors detected. Screenshots captured: showcase-vietnam-desktop.png, showcase-singapore-desktop.png, showcase-srilanka-desktop.png, showcase-malaysia-desktop.png, showcase-mobile.png"
 
 metadata:
   created_by: "testing_agent"
-  version: "1.0"
-  test_sequence: 1
+  version: "1.1"
+  test_sequence: 2
   run_ui: true
 
 test_plan:
   current_focus:
-    - "Destinations Section Content Verification"
+    - "Trip Showcase Section Content Verification"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "testing"
-      message: "Content verification complete. All 5 destination cards (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) render correctly in the expected order. All images load successfully including the Singapore Unsplash image. Desktop layout shows 5 columns in a single row. Mobile layout is fully responsive without overflow. No console errors. Screenshots captured and saved."
+      message: "Trip Showcase section verification COMPLETE. All 5 trip tabs (Vietnam, Sri Lanka, Thailand, Singapore, Malaysia) render correctly in the expected order on both desktop and mobile. Each tab displays complete trip information: title, 4 stat chips (days/hotels/activities/transfers), quote, customer line, and CTA button. ALL 25 mosaic images load successfully across all 5 tabs, including Singapore's 3 Unsplash URLs which load perfectly. Desktop layout shows correct card height (~560px) with left panel + right mosaic. Mobile layout is fully responsive with horizontal photo strip and mobile tabs, no overflow. No console errors. Content-only change verified successfully."
