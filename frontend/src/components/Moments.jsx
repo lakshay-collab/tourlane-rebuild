@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { moments } from '../mock';
 import Carousel from './Carousel';
-import PlanTripModal from './PlanTripModal';
+import DesignEscapeModal from './egypt/DesignEscapeModal';
+import { destinations } from '../destinationsData';
+
+// Destination options (name + image) for the "Design Your Escape" popup dropdown.
+const DEST_OPTIONS = (() => {
+  const map = new Map();
+  Object.values(destinations).forEach((list) => list.forEach((d) => { if (!map.has(d.name)) map.set(d.name, { name: d.name, image: d.src }); }));
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+})();
 
 export default function Moments() {
   const [planOpen, setPlanOpen] = useState(false);
@@ -38,7 +46,13 @@ export default function Moments() {
         <button className="btn-filled" data-testid="moments-cta" onClick={() => setPlanOpen(true)}>{moments.cta}</button>
       </div>
 
-      <PlanTripModal open={planOpen} onClose={() => setPlanOpen(false)} />
+      <DesignEscapeModal
+        open={planOpen}
+        onClose={() => setPlanOpen(false)}
+        selectable
+        destinationOptions={DEST_OPTIONS}
+        image={DEST_OPTIONS[0] && DEST_OPTIONS[0].image}
+      />
     </section>
   );
 }
