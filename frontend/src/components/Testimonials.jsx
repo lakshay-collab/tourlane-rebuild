@@ -33,10 +33,6 @@ export default function Testimonials() {
             </article>
           ))}
         </Carousel>
-
-        <div className="flex justify-center">
-          <button className="btn-filled" data-testid="testimonials-cta">{testimonials.cta}</button>
-        </div>
       </div>
     </section>
   );

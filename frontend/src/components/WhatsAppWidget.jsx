@@ -8,7 +8,7 @@ const onClick = (e) => {
   const pkg = document.documentElement.dataset.waPackage;
   if (!pkg) return;
   e.preventDefault();
-  window.open(waHref(`Hi, I am interested in your ${pkg}`), '_blank', 'noopener,noreferrer');
+  window.open(waHref(`Hi, I am interested in your "${pkg}" package.`), '_blank', 'noopener,noreferrer');
 };
 
 export const WhatsAppWidget = () => (

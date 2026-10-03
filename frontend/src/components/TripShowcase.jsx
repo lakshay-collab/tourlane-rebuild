@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { BedDouble, Car, CalendarDays, Ticket } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { showcase } from '../mock';
+
+const DEST_ROUTES = {
+  'Vietnam': '/asien/vietnam',
+  'Sri Lanka': '/asien/sri-lanka',
+  'Thailand': '/asien/siam-splendour-thailand',
+  'Singapore': '/asien/singapore',
+  'Malaysia': '/asien/malaysia',
+  'Kazakhstan': '/asien/kazakhstan',
+  'Bhutan': '/asien/bhutan'
+};
 
 const Tile = ({ img, className = '' }) => (
   <div className={`relative overflow-hidden ${className}`}>
@@ -79,7 +90,7 @@ export default function TripShowcase() {
 
       <div className="tl-container mt-6 md:hidden no-scrollbar w-full overflow-x-auto" data-testid="showcase-tabs-mobile"><Tabs mobile /></div>
       <div className="flex justify-center mt-8 md:mt-10">
-        <button className="btn-filled" data-testid="showcase-cta">{trip.cta}</button>
+        <Link to={DEST_ROUTES[trip.tab] || '/'} className="btn-filled inline-flex items-center justify-center text-center" data-testid="showcase-cta">{trip.cta}</Link>
       </div>
     </section>
   );
