@@ -35,6 +35,7 @@ import { planner as kazakhstanPlanner, reviews as kazakhstanReviews } from '../k
 import { kazakhstanBySlug } from '../tours/kazakhstanToursData';
 import { planner as bhutanPlanner, reviews as bhutanReviews } from '../bhutanListingData';
 import { bhutanBySlug } from '../tours/bhutanToursData';
+import { thailandBySlug } from '../tours/thailandToursData';
 
 // Resolve the itinerary's destination (name, planner, reviews) so shared sections adapt automatically.
 const DESTINATIONS = [
@@ -86,7 +87,8 @@ const BY_SLUG = {
   ...malaysiaBySlug,
   ...singaporeBySlug,
   ...kazakhstanBySlug,
-  ...bhutanBySlug
+  ...bhutanBySlug,
+  ...thailandBySlug
 };
 
 const stop = (e) => e.preventDefault();

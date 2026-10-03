@@ -14,6 +14,7 @@ import MalaysiaListing, { MalaysiaHolidays } from './pages/MalaysiaListing';
 import SingaporeListing, { SingaporeHolidays } from './pages/SingaporeListing';
 import KazakhstanListing, { KazakhstanHolidays } from './pages/KazakhstanListing';
 import BhutanListing, { BhutanHolidays } from './pages/BhutanListing';
+import ThailandListing, { ThailandHolidays } from './pages/ThailandListing';
 import TripStyleListing from './pages/TripStyleListing';
 import About from './pages/About';
 import Care from './pages/Care';
@@ -60,6 +61,9 @@ function App() {
           <Route path="/asien/bhutan" element={<BhutanListing />} />
           <Route path="/asien/bhutan/holidays" element={<BhutanHolidays />} />
           <Route path="/asien/bhutan/holidays/:style" element={<BhutanHolidays />} />
+          <Route path="/asien/thailand" element={<ThailandListing />} />
+          <Route path="/asien/thailand/holidays" element={<ThailandHolidays />} />
+          <Route path="/asien/thailand/holidays/:style" element={<ThailandHolidays />} />
           <Route path="/asien/:slug" element={<EgyptDetail />} />
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
           <Route path="/about" element={<About />} />

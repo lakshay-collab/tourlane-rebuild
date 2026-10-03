@@ -61,7 +61,7 @@ export const best = {
   text: 'Handpicked, handcrafted, and unforgettable. Whether you dream of sunrise at the pyramids of Egypt, island-hopping in Thailand, a leopard safari in Sri Lanka, or diving into the historic charm of Vietnam and Japan, our destination experts design personalized travel itineraries just for you.',
   items: [
     { ...pick('Africa', 'Egypt'), href: '/afrika/aegypten' },
-    { ...pick('Asia', 'Thailand'), href: '/asien/siam-splendour-thailand' },
+    { ...pick('Asia', 'Thailand'), href: '/asien/thailand' },
     { ...pick('Asia', 'Sri Lanka'), href: '/asien/sri-lanka' },
     { ...pick('Asia', 'Maldives'), href: '/asien' },
     { ...pick('Asia', 'Vietnam'), href: '/asien/vietnam' },

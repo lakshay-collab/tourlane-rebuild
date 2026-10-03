@@ -20,7 +20,7 @@ export default function Home() {
     <div className="bg-surface text-onsurface" data-testid="home-page">
       <main>
         <div className="relative">
-          <Header overlay />
+          <Header overlay floating />
           <Hero />
         </div>
         <TrustBar />

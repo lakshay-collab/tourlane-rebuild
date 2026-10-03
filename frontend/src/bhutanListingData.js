@@ -157,7 +157,7 @@ const asiaList = [
   ['Cambodia', ct('3zbplvZU8SZYLZqdmaPsZv/c16250ef83321324f10fbf00c9b058a1/Kambodscha_AngkorWat.jpg')],
   ['Maldives', ct('3hsuR5UvfamJlqKCTM81Ii/b43e484beb8b92c43047174a4a3e7be8/Maldiven__Holzsteg.jpg')]
 ];
-const ASIA_HREF = { Vietnam: '/asien/vietnam', 'Sri Lanka': '/asien/sri-lanka', Thailand: '/asien/siam-splendour-thailand', Malaysia: '/asien/malaysia', Singapore: '/asien/singapore', Kazakhstan: '/asien/kazakhstan' };
+const ASIA_HREF = { Vietnam: '/asien/vietnam', 'Sri Lanka': '/asien/sri-lanka', Thailand: '/asien/thailand', Malaysia: '/asien/malaysia', Singapore: '/asien/singapore', Kazakhstan: '/asien/kazakhstan' };
 export const related = { h2: `More destinations in ${destination.continent}`, items: asiaList.map(([title, image]) => ({ title, alt: title, tag: null, href: ASIA_HREF[title] || '#', image })) };
 
 export const bhutan = {

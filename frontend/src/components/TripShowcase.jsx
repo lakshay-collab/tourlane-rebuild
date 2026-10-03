@@ -6,7 +6,7 @@ import { showcase } from '../mock';
 const DEST_ROUTES = {
   'Vietnam': '/asien/vietnam',
   'Sri Lanka': '/asien/sri-lanka',
-  'Thailand': '/asien/siam-splendour-thailand',
+  'Thailand': '/asien/thailand',
   'Singapore': '/asien/singapore',
   'Malaysia': '/asien/malaysia',
   'Kazakhstan': '/asien/kazakhstan',

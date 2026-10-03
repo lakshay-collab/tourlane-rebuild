@@ -152,7 +152,7 @@ export const faq = {
 
 const asiaList = [
   ['Vietnam', ct('6KpaBlYiRchxRrYsS84QgO/dfb8fec25316c0c719d2aa7a5794dc31/NinhBinhProvinz_Tempel.jpg'), '/asien/vietnam'],
-  ['Thailand', ct('27MnAH4RS1zTSFygAmnq5i/97ec55278a94f2ab56c26847396201ba/Thailand_Natur.jpg'), '/asien/siam-splendour-thailand'],
+  ['Thailand', ct('27MnAH4RS1zTSFygAmnq5i/97ec55278a94f2ab56c26847396201ba/Thailand_Natur.jpg'), '/asien/thailand'],
   ['Indonesia', ct('61b5ymnc76Gat5QEm4R7Uv/236a66af31569408e5fba01e2dcb53b1/Kelingking_Beach__Nusa_Penida__Indonesien_NTCG__1_.png'), '#'],
   ['Japan', ct('5E91LAbIo29xmfzemwDnnu/082cd826dbf9b2744cbcf00015005330/Japan_MtFuji.jpg'), '#'],
   ['Maldives', ct('3hsuR5UvfamJlqKCTM81Ii/b43e484beb8b92c43047174a4a3e7be8/Maldiven__Holzsteg.jpg'), '#'],

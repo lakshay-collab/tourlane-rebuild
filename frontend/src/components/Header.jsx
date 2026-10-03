@@ -17,11 +17,13 @@ const LINKS = [
   { label: 'About us', href: '/about' }
 ];
 
-export default function Header({ overlay = false }) {
+export default function Header({ overlay = false, floating = false }) {
   const [open, setOpen] = useState(false);
   const [adviceOpen, setAdviceOpen] = useState(false);
   const [menu, setMenu] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const adviceRef = useRef(null);
+  const adviceRefFloat = useRef(null);
   const hoverTimer = useRef(null);
   const menuTimer = useRef(null);
   const [bannerOpen, setBannerOpen] = useState(() => {
@@ -34,10 +36,20 @@ export default function Header({ overlay = false }) {
   }, [open]);
 
   useEffect(() => {
-    const onDoc = (e) => { if (adviceRef.current && !adviceRef.current.contains(e.target)) setAdviceOpen(false); };
+    const onDoc = (e) => { if (adviceRef.current && !adviceRef.current.contains(e.target) && adviceRefFloat.current && !adviceRefFloat.current.contains(e.target)) setAdviceOpen(false); };
     document.addEventListener('mousedown', onDoc);
     return () => document.removeEventListener('mousedown', onDoc);
   }, []);
+
+  // Home page only: switch to the floating centered nav after the hero is scrolled past.
+  useEffect(() => {
+    if (!floating) return undefined;
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.7);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); };
+  }, [floating]);
 
   const dismissBanner = () => {
     try { sessionStorage.setItem(BANNER_KEY, '1'); } catch (e) { /* noop */ }
@@ -125,6 +137,69 @@ export default function Header({ overlay = false }) {
     </div>
   ) : null;
 
+  const floatingNav = floating ? (
+    <>
+      {/* Desktop: centered floating pill nav (glassmorphism) – home page, after hero */}
+      <div
+        className={`hidden lg:block fixed top-4 left-1/2 -translate-x-1/2 z-[60] transition-all duration-500 ease-out ${scrolled ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-5 pointer-events-none'}`}
+        data-testid="floating-nav"
+      >
+        <nav className="flex items-center gap-1 rounded-full bg-white/70 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_10px_34px_rgba(0,33,49,0.16)] pl-2.5 pr-2 py-1.5">
+          <a href="/" aria-label="Hi Tours" data-testid="floating-logo" className="flex items-center pr-1"><Logo className="h-7 w-auto" /></a>
+          <span className="h-6 w-px bg-onsurface/15 mx-1" />
+          {MENUS.map((m) => (
+            <div key={m.key} className="relative" onMouseEnter={() => openMenu(m.key)} onMouseLeave={closeMenu}>
+              <button
+                onClick={() => setMenu((v) => (v === m.key ? null : m.key))}
+                aria-expanded={menu === m.key}
+                data-testid={`float-nav-${m.key}`}
+                className={`flex items-center gap-1 t-body-md rounded-full px-4 py-2 transition-colors ${menu === m.key ? 'bg-onsurface/[0.07] text-onsurface' : 'text-onsurface hover:bg-onsurface/[0.05]'}`}
+              >
+                {m.label}
+                <ChevronDown size={16} strokeWidth={2} className={`transition-transform duration-200 ${menu === m.key ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          ))}
+          {LINKS.map((l) => (
+            <Link key={l.label} to={l.href} className="t-body-md rounded-full px-4 py-2 text-onsurface hover:bg-onsurface/[0.05] transition-colors whitespace-nowrap" data-testid={`float-nav-${l.label.toLowerCase().replace(/\s/g, '-')}`}>{l.label}</Link>
+          ))}
+          <span className="h-6 w-px bg-onsurface/15 mx-1" />
+          <div className="relative" ref={adviceRefFloat} onMouseEnter={hoverIn} onMouseLeave={hoverOut}>
+            <button onClick={() => setAdviceOpen((v) => !v)} className="flex items-center gap-2 t-body-md rounded-full px-4 py-2 text-onsurface hover:bg-onsurface/[0.05] transition-colors" data-testid="float-nav-phone" aria-expanded={adviceOpen}>
+              <Phone size={18} strokeWidth={1.75} />
+              {nav.phone}
+            </button>
+            {adviceOpen && (
+              <div className="absolute right-0 top-full pt-2 z-[61]" data-testid="float-advice-popover">
+                <div className="w-[340px] bg-surface-low rounded-2xl shadow-[0_8px_24px_rgba(0,33,49,0.18)] overflow-hidden animate-[hi-fade-in_200ms_ease-out]">
+                  <ExpertAdvicePanel />
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
+        {menu && (
+          <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[min(1080px,94vw)]" onMouseEnter={keepMenu} onMouseLeave={closeMenu} data-testid="floating-mega-panel">
+            <div className="bg-surface rounded-2xl border border-outline-variant shadow-[0_16px_40px_rgba(0,33,49,0.18)] overflow-hidden animate-[hi-fade-in_180ms_ease-out]">
+              {menu === 'destinations' && <DestinationsMenu onNavigate={closeNow} />}
+              {menu === 'themes' && <ThemesMenu onNavigate={closeNow} />}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile: compact floating pill with logo + hamburger (keeps the existing drawer) */}
+      <div className={`lg:hidden fixed top-3 left-1/2 -translate-x-1/2 z-[60] transition-all duration-500 ease-out ${scrolled ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-5 pointer-events-none'}`} data-testid="floating-nav-mobile">
+        <div className="flex items-center gap-3 rounded-full bg-white/75 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_10px_30px_rgba(0,33,49,0.16)] pl-4 pr-2 py-1.5">
+          <a href="/" aria-label="Hi Tours"><Logo className="h-6 w-auto" /></a>
+          <button onClick={() => setOpen(true)} aria-label="Open menu" data-testid="floating-mobile-menu" className="w-9 h-9 rounded-full flex items-center justify-center text-onsurface hover:bg-onsurface/[0.06] transition-colors">
+            <Menu size={20} strokeWidth={1.75} />
+          </button>
+        </div>
+      </div>
+    </>
+  ) : null;
+
   return (
     <>
       {overlay ? (
@@ -145,6 +220,7 @@ export default function Header({ overlay = false }) {
         </>
       )}
       <MobileDrawer open={open} onClose={() => setOpen(false)} />
+      {floatingNav}
     </>
   );
 }
