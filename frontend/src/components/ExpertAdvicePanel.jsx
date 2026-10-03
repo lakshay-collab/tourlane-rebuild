@@ -19,12 +19,6 @@ export default function ExpertAdvicePanel({ className = '' }) {
   return (
     <div className={`text-left ${className}`} data-testid="advice-panel">
       <div className="px-6 py-6 flex flex-col gap-3">
-        <Status open />
-        <p className="t-body-lg text-onsurface">{expertAdvice.existing}</p>
-        <a href="#" className="t-body-lg text-primary underline underline-offset-4 self-start" data-testid="advice-portal">{expertAdvice.portal}</a>
-      </div>
-      <hr className="border-outline-variant" />
-      <div className="px-6 py-6 flex flex-col gap-3">
         <Status open={open} />
         <p className="t-body-lg text-onsurface">{expertAdvice.planning}</p>
         <a href={expertAdvice.phoneHref} className="t-body-lg text-primary underline underline-offset-4 self-start" data-testid="advice-phone">{expertAdvice.phone}</a>

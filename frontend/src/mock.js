@@ -21,8 +21,8 @@ export const expertAdvice = {
   existing: 'For questions about an existing trip',
   portal: 'Service portal',
   planning: 'For planning your next trip',
-  phone: '+91 22 6140 1500',
-  phoneHref: 'tel:+912261401500',
+  phone: '+91 89206 06060',
+  phoneHref: 'tel:+918920606060',
   hours: ['Mon – Fri (excl. holidays): 9 am – 8 pm', 'Sat (excl. holidays): 10 am – 6 pm', 'All times IST'],
   schedule: { 1: [9, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [10, 18] },
   cta: 'Plan for free'
