@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { moments } from '../mock';
 import Carousel from './Carousel';
+import PlanTripModal from './PlanTripModal';
 
 export default function Moments() {
+  const [planOpen, setPlanOpen] = useState(false);
   return (
     <section className="pt-16 md:pt-20 overflow-hidden" data-testid="moments-section">
       <div className="tl-container flex flex-col items-center gap-6 text-center">
@@ -33,8 +35,10 @@ export default function Moments() {
       </div>
 
       <div className="flex justify-center mt-8">
-        <button className="btn-filled" data-testid="moments-cta">{moments.cta}</button>
+        <button className="btn-filled" data-testid="moments-cta" onClick={() => setPlanOpen(true)}>{moments.cta}</button>
       </div>
+
+      <PlanTripModal open={planOpen} onClose={() => setPlanOpen(false)} />
     </section>
   );
 }
