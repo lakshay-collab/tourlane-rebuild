@@ -156,9 +156,15 @@ export default function Footer() {
 }
 
 function Socials() {
-  return [Facebook, Instagram, Linkedin, Youtube, Spotify].map((Icon, i) => (
-    <button key={i} className="w-9 h-9 rounded-full bg-onsurface/[0.06] flex items-center justify-center text-onsurface hover:bg-primary hover:text-white transition-colors" aria-label="Social" data-testid="footer-social">
+  const links = [
+    { Icon: Facebook, href: 'https://www.facebook.com/HiToursIN/', label: 'Facebook' },
+    { Icon: Instagram, href: 'https://www.instagram.com/hitours', label: 'Instagram' },
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/hi-tours-group/', label: 'LinkedIn' },
+    { Icon: Youtube, href: 'https://youtube.com/@hitoursgroup?si=EfxsTKBbup36lxiZ', label: 'YouTube' }
+  ];
+  return links.map(({ Icon, href, label }) => (
+    <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-onsurface/[0.06] flex items-center justify-center text-onsurface hover:bg-primary hover:text-white transition-colors" aria-label={label} data-testid={`footer-social-${label.toLowerCase()}`}>
       <Icon size={18} strokeWidth={1.9} className="w-[18px] h-[18px]" />
-    </button>
+    </a>
   ));
 }
