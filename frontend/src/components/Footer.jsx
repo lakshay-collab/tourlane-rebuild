@@ -14,7 +14,8 @@ const FOOTER_HREFS = {
   'Malaysia': '/asien/malaysia',
   'Egypt': '/afrika/aegypten',
   'Kazakhstan': '/asien/kazakhstan',
-  'Bhutan': '/asien/bhutan'
+  'Bhutan': '/asien/bhutan',
+  'Maldives': '/asien/maldives'
 };
 
 const Spotify = (props) => (
@@ -105,7 +106,7 @@ export default function Footer() {
                     ? <Link to={FOOTER_HREFS[l]} className="t-body-md text-onsurface hover:underline text-left" data-testid={`footer-link-${l.toLowerCase().replace(/\s/g, '-')}`}>{l}</Link>
                     : l === 'Reviews'
                       ? <button onClick={() => goToSection('moments')} className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link-reviews">{l}</button>
-                      : l === 'Travel with us' || l === 'More destinations' || l === 'Maldives'
+                      : l === 'Travel with us' || l === 'More destinations'
                         ? <button onClick={() => goToSection('destinations')} className="t-body-md text-onsurface hover:underline text-left" data-testid={`footer-link-${l.toLowerCase().replace(/\s/g, '-')}`}>{l}</button>
                         : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
                 ))}

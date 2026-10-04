@@ -10,7 +10,8 @@ const DEST_ROUTES = {
   'Singapore': '/asien/singapore',
   'Malaysia': '/asien/malaysia',
   'Kazakhstan': '/asien/kazakhstan',
-  'Bhutan': '/asien/bhutan'
+  'Bhutan': '/asien/bhutan',
+  'Maldives': '/asien/maldives'
 };
 
 const Tile = ({ img, className = '' }) => (

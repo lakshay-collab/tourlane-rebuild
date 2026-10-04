@@ -263,5 +263,5 @@ export const footer = {
   ],
   care: { title: 'Hi Tours Care', lines: ['Book worry-free', 'Flexible rebooking and cancellation'], cta: 'Learn more' },
   country: 'India',
-  legal: ['Imprint', 'Privacy', 'Terms & Conditions', 'Travel advice', 'Cookie settings']
+  legal: ['Privacy', 'Terms & Conditions', 'Expert advice']
 };
