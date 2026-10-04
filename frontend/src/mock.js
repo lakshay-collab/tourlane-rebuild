@@ -96,10 +96,10 @@ export const moments = {
   subheading: 'More than 150,000 delighted travellers',
   cta: 'Plan your trip',
   avatars: [
-    cf('1W5rwBgpzW3Oknz3zEG8lI/1b40a54517258274685f32a3e9f1bb78/usa_family.jpg', 'w=64&q=60&fm=webp'),
-    cf('7aiJAepiAkFd0fdEi5mPEX/7634da5cd986ad0e63f91d52a3eb9e8d/iceland_couple.jpg', 'w=64&q=60&fm=webp'),
-    cf('1KRVeu7Hv6eXMHjrvIwo6h/ad6802af5abb475b1b4f7354c321bba2/thailand_couples.jpg', 'w=64&q=60&fm=webp'),
-    cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=64&q=60&fm=webp')
+    '/moments/europe_couple.webp',
+    '/moments/alps.webp',
+    '/moments/family_trip.webp',
+    '/moments/eiffel_family.webp'
   ],
   items: [
     { title: 'Sri Lanka gave our family the perfect escape into nature', name: 'The Sharma Family', image: '/moments/forest_family.webp' },
@@ -137,7 +137,7 @@ export const showcase = {
       tab: 'Vietnam', title: 'Vietnam honeymoon', cta: 'Plan your Vietnam trip now',
       duration: '15 days', stops: '8 stops', transport: 'Private driver', activities: 11, hotels: 7, transfers: 6,
       tags: [['bed', 'Boutique hotels'], ['boat', 'Halong Bay cruise'], ['bike', 'Motorbike'], ['food', 'Street food'], ['plane', 'Direct flights']],
-      customer: "Prajakta & Sneha's honeymoon", quote: 'From a Halong Bay cruise to lantern-lit Hoi An nights, every single day felt handcrafted just for us.', avatar: cf('1KRVeu7Hv6eXMHjrvIwo6h/ad6802af5abb475b1b4f7354c321bba2/thailand_couples.jpg', 'w=128&q=60&fm=webp'),
+      customer: "Prajakta & Sneha's honeymoon", quote: 'From a Halong Bay cruise to lantern-lit Hoi An nights, every single day felt handcrafted just for us.', avatar: '/moments/europe_couple.webp',
       images: [
         ['3Z7A5HXNMctqsB6GE2jphI/4cef5ccca7d896a0b4f88281499fec30/Halong_Bucht_Vietnam.jpg', 'HalongBay'],
         ['1oona4EHxFNonfYfpgKQRu/fd45a84873954f50c0192a904b5c13db/Hoi_An_Vietnam_2.jpg', 'HoiAn'],
@@ -150,7 +150,7 @@ export const showcase = {
       tab: 'Sri Lanka', title: 'Sri Lanka family tour', cta: 'Plan your Sri Lanka trip now',
       duration: '12 days', stops: '6 stops', transport: 'Private driver', activities: 9, hotels: 6, transfers: 5,
       tags: [['bed', 'Heritage bungalows'], ['safari', 'Leopard safari'], ['leaf', 'Tea country'], ['food', 'Rice & curry'], ['plane', 'Direct flights']],
-      customer: 'the Fernando family', quote: 'Climbing Sigiriya rock at dawn and tea-tasting in the misty hills – the kids still talk about all of it.', avatar: cf('1W5rwBgpzW3Oknz3zEG8lI/1b40a54517258274685f32a3e9f1bb78/usa_family.jpg', 'w=128&q=60&fm=webp'),
+      customer: 'the Sharma family', quote: 'Climbing Sigiriya rock at dawn and tea-tasting in the misty hills – the kids still talk about all of it.', avatar: '/moments/family_trip.webp',
       images: [
         ['4ty416HtZ5fnIJe5U94pUn/04e383acf72b20230360d6cdeb960993/Sigiriya_Sri_Lanka.jpg', 'Sigiriya'],
         ['52ZxIJbx0zC3QmeXtTjVpo/b109083307d8ee990f394165679c4ccc/Sri_Lanka__Ella__Neun-Bogen-Br%C3%BCcke.jpg', 'EllaBridge'],
@@ -163,7 +163,7 @@ export const showcase = {
       tab: 'Thailand', title: 'Thailand island escape', cta: 'Plan your Thailand trip now',
       duration: '14 days', stops: '8 stops', transport: 'Transfers', activities: 10, hotels: 7, transfers: 6,
       tags: [['bed', 'Glamping in the jungle'], ['island', 'Island hopping'], ['bike', 'Motorbike'], ['food', 'Local specialities'], ['plane', 'Stopover in Dubai']],
-      customer: "Marc & Sofie's island escape", quote: 'Glamping in the jungle one night, island hopping the next – Hi Tours matched our pace perfectly.', avatar: cf('7aiJAepiAkFd0fdEi5mPEX/7634da5cd986ad0e63f91d52a3eb9e8d/iceland_couple.jpg', 'w=128&q=60&fm=webp'),
+      customer: "Neha & Aryan's island escape", quote: 'Glamping in the jungle one night, island hopping the next – Hi Tours matched our pace perfectly.', avatar: '/moments/alps.webp',
       images: [
         ['A2kAwcfVxbWxQRQIqLVcM/5e25b1e33b9bc306e834fcfe2f8a99b6/THA_-_-KhaoSok.png', 'KhaoSok'],
         ['s0tM0ptUexcdfhU4HTwgh/64c82b916559b0a460fa3fca5ebad20a/THA_-_-Phuket.png', 'Phuket'],
@@ -176,7 +176,7 @@ export const showcase = {
       tab: 'Singapore', title: 'Singapore city break', cta: 'Plan your Singapore trip now',
       duration: '6 days', stops: '4 stops', transport: 'Metro & transfers', activities: 9, hotels: 4, transfers: 4,
       tags: [['bed', 'Rooftop-pool hotels'], ['garden', 'Gardens by the Bay'], ['food', 'Hawker feasts'], ['family', 'Family-friendly'], ['plane', 'Direct flights']],
-      customer: "Aditi & Rohan's city break", quote: 'Gardens by the Bay after dark and hawker feasts by day – Singapore packed so much magic into a few days.', avatar: cf('2lDVEIUref86ek5dIhSQhP/50bf83adc99a8c2bab5e3204b2c4add6/australia_couple.jpg', 'w=128&q=60&fm=webp'),
+      customer: "Aditi & Rohan's city break", quote: 'Gardens by the Bay after dark and hawker feasts by day – Singapore packed so much magic into a few days.', avatar: '/moments/eiffel_family.webp',
       images: [
         ['4B5tE96BHxRVFYUVJQibEE/efeae2ee825eda4d08a95e0717d916fd/Skyline__Singapur.jpg', 'MarinaBay'],
         ['https://images.unsplash.com/photo-1605425183435-25b7e99104a4?crop=entropy&cs=srgb&fm=jpg&q=80&w=900', 'GardensByTheBay'],
@@ -189,7 +189,7 @@ export const showcase = {
       tab: 'Malaysia', title: 'Malaysia discovery', cta: 'Plan your Malaysia trip now',
       duration: '13 days', stops: '7 stops', transport: 'Rental car', activities: 10, hotels: 7, transfers: 6,
       tags: [['bed', 'Rainforest lodges'], ['tower', 'Petronas Towers'], ['safari', 'Orangutan sanctuary'], ['food', 'Street markets'], ['plane', 'Direct flights']],
-      customer: "Imran & Zara's honeymoon", quote: 'From the Petronas Towers to orangutans in Borneo, Malaysia surprised us with something new every single day.', avatar: cf('1VwYM421DcfxO71gvjf7K0/1349a0615821b755ac5b97b886a5b5dd/tanzania_couple.jpg', 'w=128&q=60&fm=webp'),
+      customer: "Imran & Zara's honeymoon", quote: 'From the Petronas Towers to orangutans in Borneo, Malaysia surprised us with something new every single day.', avatar: '/moments/europe_couple.webp',
       images: [
         ['7v9STD4EzC9uO1vB6vl2SC/2d6be37e8ab85ac375ae2d2ac46ec9b0/Malaysia__Kuala_Lumpur__Petronas_Towers.jpg', 'PetronasTowers'],
         ['X7b0PdKpWDMzl19jytcJ6/d0aad3d91b3ffaaf161f205c7660fe5f/Malaysia_Ipoh_Tempel.jpg', 'Ipoh'],
