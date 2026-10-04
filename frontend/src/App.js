@@ -19,6 +19,7 @@ import MaldivesListing, { MaldivesHolidays } from './pages/MaldivesListing';
 import TripStyleListing from './pages/TripStyleListing';
 import About from './pages/About';
 import Care from './pages/Care';
+import { Terms, Privacy } from './pages/Legal';
 
 const StyleRedirect = () => <Navigate to={`/afrika/aegypten/holidays/${useParams().style}`} replace />;
 
@@ -72,6 +73,8 @@ function App() {
           <Route path="/trip-styles/:slug" element={<TripStyleListing />} />
           <Route path="/about" element={<About />} />
           <Route path="/care" element={<Care />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
         </LeadModalProvider>
       </BrowserRouter>
