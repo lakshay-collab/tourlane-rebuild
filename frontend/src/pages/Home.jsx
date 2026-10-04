@@ -27,13 +27,13 @@ export default function Home() {
         <Features />
         <Ambassadors />
         <ComparisonTable />
-        <Moments />
+        <Destinations />
         <Steps />
         <TripShowcase />
         <AdventureCTA />
         <Experts />
         <Testimonials />
-        <Destinations />
+        <Moments />
         <Newsletter />
       </main>
       <Footer />
