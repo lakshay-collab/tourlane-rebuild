@@ -24,7 +24,7 @@ export const expertAdvice = {
   phone: '+91 89206 06060',
   phoneHref: 'tel:+918920606060',
   whatsappHref: `https://wa.me/918920606060?text=${encodeURIComponent('Hi, I’d like to plan my dream trip. Can you help me?')}`,
-  hours: ['Mon – Fri (excl. holidays): 9 am – 8 pm', 'Sat (excl. holidays): 10 am – 6 pm', 'All times IST'],
+  hours: ['Mon – Fri (excl. holidays): 9 am – 8 pm', 'All times IST', 'We are open on WhatsApp chat 24x7, all days, to submit an enquiry'],
   schedule: { 1: [9, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [10, 18] },
   cta: 'Plan for free'
 };
