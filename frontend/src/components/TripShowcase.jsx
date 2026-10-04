@@ -47,7 +47,9 @@ export default function TripShowcase() {
         </div>
       </div>
 
-      <div className="tl-wide mt-8 md:mt-10">
+      <div className="tl-container mt-6 md:hidden no-scrollbar w-full overflow-x-auto" data-testid="showcase-tabs-mobile"><Tabs mobile /></div>
+
+      <div className="tl-wide mt-6 md:mt-10">
         <div className="flex flex-col md:flex-row rounded-xl overflow-hidden md:h-[560px]" data-testid="showcase-card">
           <div className="bg-surface-container md:w-[340px] lg:w-[432px] shrink-0 p-6 md:p-8 flex flex-col">
             <h3 className="t-headline-md md:t-headline-lg text-onsurface whitespace-nowrap md:whitespace-normal" data-testid="showcase-title">{trip.title}</h3>
@@ -89,7 +91,6 @@ export default function TripShowcase() {
         </div>
       </div>
 
-      <div className="tl-container mt-6 md:hidden no-scrollbar w-full overflow-x-auto" data-testid="showcase-tabs-mobile"><Tabs mobile /></div>
       <div className="flex justify-center mt-8 md:mt-10">
         <Link to={DEST_ROUTES[trip.tab] || '/'} className="btn-filled inline-flex items-center justify-center text-center" data-testid="showcase-cta">{trip.cta}</Link>
       </div>
