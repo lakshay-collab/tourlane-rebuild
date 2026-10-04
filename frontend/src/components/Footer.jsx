@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Youtube, ChevronDown } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube, ChevronDown, X } from 'lucide-react';
 import Logo from './Logo';
 import { footer, trust } from '../mock';
 import { BoxStars } from './Rating';
+import ExpertAdvicePanel from './ExpertAdvicePanel';
 
 const FOOTER_HREFS = {
   'About us': '/about',
@@ -70,6 +71,7 @@ const FooterColumn = ({ title, children }) => {
 export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [adviceOpen, setAdviceOpen] = useState(false);
 
   const goToSection = (id) => {
     if (location.pathname === '/') {
@@ -147,11 +149,24 @@ export default function Footer() {
             {footer.legal.map((l) => (
               <li key={l}>{LEGAL_HREFS[l]
                 ? <Link to={LEGAL_HREFS[l]} className="t-body-md text-onsurface hover:underline" data-testid={`footer-legal-${l.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>{l}</Link>
-                : <button className="t-body-md text-onsurface hover:underline" data-testid="footer-legal-link">{l}</button>}</li>
+                : l === 'Expert advice'
+                  ? <button onClick={() => setAdviceOpen(true)} className="t-body-md text-onsurface hover:underline" data-testid="footer-legal-expert-advice">{l}</button>
+                  : <button className="t-body-md text-onsurface hover:underline" data-testid="footer-legal-link">{l}</button>}</li>
             ))}
           </ul>
         </div>
       </div>
+
+      {adviceOpen && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 bg-black/40" onClick={() => setAdviceOpen(false)} data-testid="footer-advice-overlay">
+          <div className="relative w-full max-w-[360px] bg-surface-low rounded-2xl shadow-[0_12px_40px_rgba(0,33,49,0.28)] overflow-hidden animate-[hi-fade-in_200ms_ease-out]" onClick={(e) => e.stopPropagation()} data-testid="footer-advice-modal">
+            <button onClick={() => setAdviceOpen(false)} aria-label="Close" className="absolute right-3 top-3 w-8 h-8 rounded-full flex items-center justify-center text-onsurface hover:bg-onsurface/[0.08] transition-colors z-10" data-testid="footer-advice-close">
+              <X size={18} />
+            </button>
+            <ExpertAdvicePanel />
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

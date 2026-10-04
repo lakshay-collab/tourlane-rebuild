@@ -24,8 +24,8 @@ export const expertAdvice = {
   phone: '+91 89206 06060',
   phoneHref: 'tel:+918920606060',
   whatsappHref: `https://wa.me/918920606060?text=${encodeURIComponent('Hi, I’d like to plan my dream trip. Can you help me?')}`,
-  hours: ['Mon – Fri (excl. holidays): 9 am – 8 pm', 'All times IST', 'We are open on WhatsApp chat 24x7, all days, to submit an enquiry'],
-  schedule: { 1: [9, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: [10, 18] },
+  hours: ['Mon – Fri (excl. holidays): 11 am – 8 pm', 'All times IST', 'We are open on WhatsApp chat 24x7, all days, to submit an enquiry'],
+  schedule: { 1: [11, 20], 2: [11, 20], 3: [11, 20], 4: [11, 20], 5: [11, 20], 6: [10, 18] },
   cta: 'Plan for free'
 };
 
@@ -137,7 +137,7 @@ export const showcase = {
       tab: 'Vietnam', title: 'Vietnam honeymoon', cta: 'Plan your Vietnam trip now',
       duration: '15 days', stops: '8 stops', transport: 'Private driver', activities: 11, hotels: 7, transfers: 6,
       tags: [['bed', 'Boutique hotels'], ['boat', 'Halong Bay cruise'], ['bike', 'Motorbike'], ['food', 'Street food'], ['plane', 'Direct flights']],
-      customer: "Prajakta & Sneha's honeymoon", quote: 'From a Halong Bay cruise to lantern-lit Hoi An nights, every single day felt handcrafted just for us.', avatar: '/moments/europe_couple.webp',
+      customer: "Prajwal & Sneha's honeymoon", quote: 'From a Halong Bay cruise to lantern-lit Hoi An nights, every single day felt handcrafted just for us.', avatar: '/moments/europe_couple.webp',
       images: [
         ['3Z7A5HXNMctqsB6GE2jphI/4cef5ccca7d896a0b4f88281499fec30/Halong_Bucht_Vietnam.jpg', 'HalongBay'],
         ['1oona4EHxFNonfYfpgKQRu/fd45a84873954f50c0192a904b5c13db/Hoi_An_Vietnam_2.jpg', 'HoiAn'],
