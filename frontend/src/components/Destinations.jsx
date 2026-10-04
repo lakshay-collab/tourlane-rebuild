@@ -13,7 +13,7 @@ export default function Destinations() {
   const regionHref = REGION_HREF[active];
 
   return (
-    <section className="pt-16 md:pt-20" data-testid="destinations-section">
+    <section id="destinations" className="pt-16 md:pt-20 scroll-mt-24" data-testid="destinations-section">
       <div className="tl-container flex flex-col items-center gap-8 md:gap-10">
         <h2 className="t-section text-center text-onsurface md:max-w-[700px]">{destinationsHeading}</h2>
 

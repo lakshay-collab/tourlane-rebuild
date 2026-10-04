@@ -57,12 +57,12 @@ export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const goToMoments = () => {
+  const goToSection = (id) => {
     if (location.pathname === '/') {
-      document.getElementById('moments')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     } else {
       navigate('/');
-      setTimeout(() => document.getElementById('moments')?.scrollIntoView({ behavior: 'smooth' }), 400);
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 400);
     }
   };
 
@@ -94,8 +94,10 @@ export default function Footer() {
                   <li key={l}>{FOOTER_HREFS[l]
                     ? <Link to={FOOTER_HREFS[l]} className="t-body-md text-onsurface hover:underline text-left" data-testid={`footer-link-${l.toLowerCase().replace(/\s/g, '-')}`}>{l}</Link>
                     : l === 'Reviews'
-                      ? <button onClick={goToMoments} className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link-reviews">{l}</button>
-                      : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
+                      ? <button onClick={() => goToSection('moments')} className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link-reviews">{l}</button>
+                      : l === 'Travel with us'
+                        ? <button onClick={() => goToSection('destinations')} className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link-travel-with-us">{l}</button>
+                        : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
                 ))}
               </ul>
             </FooterColumn>
