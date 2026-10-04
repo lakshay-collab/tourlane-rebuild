@@ -258,7 +258,7 @@ export const newsletter = {
 export const footer = {
   description: 'Hi Tours creates unforgettable travel experiences and supports you with real expertise and individual service – from inspiration to return.',
   columns: [
-    { title: 'Hi Tours', links: ['About us', 'Travel with us', 'Work with us', 'Partnerships', 'Reviews', 'Press', 'App', 'Service portal'] },
+    { title: 'Hi Tours', links: ['About us', 'Travel with us', 'Reviews', 'Press', 'App', 'Service portal'] },
     { title: 'Destinations', links: ['Costa Rica', 'Iceland', 'South Africa', 'Tanzania', 'Namibia', 'Canada', 'USA', 'Thailand', 'Japan', 'Australia', 'More destinations', 'Travel calendar'] }
   ],
   care: { title: 'Hi Tours Care', lines: ['Book worry-free', 'Flexible rebooking and cancellation'], cta: 'Learn more' },
