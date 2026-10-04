@@ -15,7 +15,8 @@ const FOOTER_HREFS = {
   'Egypt': '/afrika/aegypten',
   'Kazakhstan': '/asien/kazakhstan',
   'Bhutan': '/asien/bhutan',
-  'Maldives': '/asien/maldives'
+  'Maldives': '/asien/maldives',
+  'Press': '/press'
 };
 
 const LEGAL_HREFS = { 'Privacy': '/privacy', 'Terms & Conditions': '/terms' };

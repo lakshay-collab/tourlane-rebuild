@@ -20,6 +20,7 @@ import TripStyleListing from './pages/TripStyleListing';
 import About from './pages/About';
 import Care from './pages/Care';
 import { Terms, Privacy } from './pages/Legal';
+import Press from './pages/Press';
 
 const StyleRedirect = () => <Navigate to={`/afrika/aegypten/holidays/${useParams().style}`} replace />;
 
@@ -75,6 +76,7 @@ function App() {
           <Route path="/care" element={<Care />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/press" element={<Press />} />
         </Routes>
         </LeadModalProvider>
       </BrowserRouter>
