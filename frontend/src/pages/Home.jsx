@@ -26,14 +26,14 @@ export default function Home() {
         <TrustBar />
         <Features />
         <Ambassadors />
-        <ComparisonTable />
+        <Moments />
         <Destinations />
         <Steps />
         <TripShowcase />
         <AdventureCTA />
         <Experts />
         <Testimonials />
-        <Moments />
+        <ComparisonTable />
         <Newsletter />
       </main>
       <Footer />
