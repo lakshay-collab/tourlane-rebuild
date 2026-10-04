@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Youtube, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { footer, trust } from '../mock';
@@ -54,6 +54,18 @@ const FooterColumn = ({ title, children }) => {
 };
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToMoments = () => {
+    if (location.pathname === '/') {
+      document.getElementById('moments')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => document.getElementById('moments')?.scrollIntoView({ behavior: 'smooth' }), 400);
+    }
+  };
+
   return (
     <footer className="bg-surface" data-testid="site-footer">
       <div className="h-px bg-outline-variant/60" data-testid="footer-divider-top" />
@@ -81,7 +93,9 @@ export default function Footer() {
                 {col.links.map((l) => (
                   <li key={l}>{FOOTER_HREFS[l]
                     ? <Link to={FOOTER_HREFS[l]} className="t-body-md text-onsurface hover:underline text-left" data-testid={`footer-link-${l.toLowerCase().replace(/\s/g, '-')}`}>{l}</Link>
-                    : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
+                    : l === 'Reviews'
+                      ? <button onClick={goToMoments} className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link-reviews">{l}</button>
+                      : <button className="t-body-md text-onsurface hover:underline text-left" data-testid="footer-link">{l}</button>}</li>
                 ))}
               </ul>
             </FooterColumn>

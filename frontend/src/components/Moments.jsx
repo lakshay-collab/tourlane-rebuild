@@ -14,7 +14,7 @@ const DEST_OPTIONS = (() => {
 export default function Moments() {
   const [planOpen, setPlanOpen] = useState(false);
   return (
-    <section className="pt-16 md:pt-20 overflow-hidden" data-testid="moments-section">
+    <section id="moments" className="pt-16 md:pt-20 overflow-hidden scroll-mt-24" data-testid="moments-section">
       <div className="tl-container flex flex-col items-center gap-6 text-center">
         <h2 className="t-section text-onsurface">{moments.heading}</h2>
         <div className="flex items-center gap-3" data-testid="moments-subheading">
