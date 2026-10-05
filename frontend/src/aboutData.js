@@ -16,7 +16,7 @@ export const hero = {
 export const welcome = {
   h2: 'Welcome to Hi Tours',
   paragraphs: [
-    'Born in Europe, now planning trips for Americans who want to experience it like a local. Since 2016, we’ve crafted custom, multi-stop trips all across Europe that fit your budget and your travel style.',
+    'Born in India, now planning trips for Americans who want to experience it like a local. Since 2016, we’ve crafted custom, multi-stop trips all across Europe that fit your budget and your travel style.',
     'What makes us different? We bring our European roots and local know-how to to every step. By pairing you with an English-speaking, native-European expert and focusing on the essential needs of U.S. travelers, you get a seamless, authentic experience from start to finish.',
     'Trusted by over 100,000 global travelers, our goal at Hi Tours is simple: Tailored, exclusive journeys and extraordinary experiences that fit your budget.'
   ]
