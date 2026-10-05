@@ -59,13 +59,13 @@ export const detail = {
   routeCodeLabel: 'Route code',
   routeCities: ['Colombo', 'Dambulla', 'Kandy', 'Nuwara Eliya', 'Yala', 'Galle', 'Bentota'],
   tags: ['Culture', 'Beach'],
-  stats: { days: 9, cities: 6, hotels: 6, activities: 14, transfers: 7 },
+  stats: { days: 9, cities: 6, hotels: 6, activities: 16, transfers: 9 },
   gallery: [S1, K3, T3, Y2, B2],
   services: [
     ['6 hotels', 'Accommodation'],
-    ['14 activities', 'Activities'],
-    ['7 transfers', 'Transport'],
-    ['9 meals', 'Meals'],
+    ['16 activities', 'Activities'],
+    ['9 transfers', 'Transport'],
+    ['0 meals', 'Meals'],
     ['24/7 support', '24/7 Support'],
     ['Customisation', 'Customise', 'Expert customisation']
   ],

@@ -43,7 +43,7 @@ const URBAN_ITIN = [
 
 export const packages = [
   {
-    slug: 'sri-lanka-hill-stations-heritage-forts-6d5n', name: 'Sri Lanka Classic: Hill Stations & Heritage Forts', code: '5N/6D Hill Country & Coastal Highlights', days: 6, nights: 5, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'],
+    slug: 'sri-lanka-hill-stations-heritage-forts-6d5n', name: 'Sri Lanka Classic: Hill Stations & Heritage Forts', code: '5N/6D Hill Country & Coastal Highlights', days: 6, nights: 5, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'], included: { hotels: 4, activities: 11, transfers: 6, meals: 10 },
     summary: 'Kandy’s Temple of the Tooth, tea country around Nuwara Eliya, Hakgala Gardens and the Sita Amman Temple, Galle Fort and a Madu River safari from Bentota, then Colombo.',
     stays: [['Kandy', 'Night 1', 'Rivendell Hotel (Standard room, half board)'], ['Nuwara Eliya', 'Night 2', 'Daffodil Hotel (Standard room, half board)'], ['Bentota', 'Nights 3–4', 'Club Bentota (Standard room, half board)'], ['Colombo', 'Night 5', 'Best Western (Standard room, half board)']],
     itinerary: [KANDY_ARRIVAL, KANDY_NUWARA(2), NUWARA_BENTOTA(3), GALLE_DAY(4), BENTOTA_COLOMBO(5), DEPART(6)],
@@ -52,7 +52,7 @@ export const packages = [
     gallery: [IMG.kandyTemple, IMG.hill, IMG.tea, IMG.turtles, IMG.coast], alt: 'Temple of the Sacred Tooth Relic at dusk, Kandy, Sri Lanka'
   },
   {
-    slug: 'sri-lanka-ancient-citadels-coastal-paradises-7d6n', name: 'Sri Lanka Classic: Ancient Citadels to Coastal Paradises', code: '6N/7D Hill Country, Culture & Coastal Highlights', days: 7, nights: 6, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'],
+    slug: 'sri-lanka-ancient-citadels-coastal-paradises-7d6n', name: 'Sri Lanka Classic: Ancient Citadels to Coastal Paradises', code: '6N/7D Hill Country, Culture & Coastal Highlights', days: 7, nights: 6, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'], included: { hotels: 4, activities: 13, transfers: 7, meals: 12 },
     summary: 'Two nights in Kandy with a full-day Sigiriya Rock Fortress and Dambulla Cave Temple excursion, tea country, Bentota beach with Galle Fort and turtles, and Colombo.',
     stays: [['Kandy', 'Nights 1–2', 'Rivendell Hotel (Standard room, half board)'], ['Nuwara Eliya', 'Night 3', 'Daffodil Hotel (Standard room, half board)'], ['Bentota', 'Nights 4–5', 'Club Bentota (Standard room, half board)'], ['Colombo', 'Night 6', 'Best Western (Standard room, half board)']],
     itinerary: [
@@ -65,7 +65,7 @@ export const packages = [
     gallery: [IMG.sigiriya, IMG.kandyTemple, IMG.hill, IMG.coast, IMG.colomboNight], alt: 'Sigiriya Lion Rock at sunset, Sri Lanka'
   },
   {
-    slug: 'sri-lanka-cultural-coastal-journey-6d5n', name: 'Sri Lanka Classic: Cultural & Coastal Journey', code: '5N/6D Culture, Hill Country & Coastal Highlights', days: 6, nights: 5, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'],
+    slug: 'sri-lanka-cultural-coastal-journey-6d5n', name: 'Sri Lanka Classic: Cultural & Coastal Journey', code: '5N/6D Culture, Hill Country & Coastal Highlights', days: 6, nights: 5, tag: 'Culture', styles: ['Culture', 'Family', 'Honeymoon', 'Beach'], included: { hotels: 5, activities: 12, transfers: 6, meals: 10 },
     summary: 'Dambulla Cave Temple and Sigiriya Rock Fortress first, a Matale spice garden, Kandy’s Temple of the Tooth, tea country, Bentota beach and Colombo.',
     stays: [['Dambulla', 'Night 1', 'Nice Place Hotel (Standard room, half board)'], ['Kandy', 'Night 2', 'Rivendell Hotel (Standard room, half board)'], ['Nuwara Eliya', 'Night 3', 'Daffodil Hotel (Standard room, half board)'], ['Bentota', 'Night 4', 'Club Bentota (Standard room, half board)'], ['Colombo', 'Night 5', 'Best Western (Standard room, half board)']],
     itinerary: [
@@ -78,7 +78,7 @@ export const packages = [
     gallery: [IMG.sigiriyaElephant, IMG.pinnawala, IMG.kandyTemple, IMG.tea, IMG.bentota], alt: 'Elephant in front of Sigiriya Rock, Sri Lanka'
   },
   {
-    slug: 'sri-lanka-culture-coast-colonial-charm-5d4n', name: 'Sri Lanka Classic: Culture, Coast & Colonial Charm', code: '4N/5D Sri Lanka Highlights Tour', days: 5, nights: 4, tag: 'Short trips', styles: ['Short trips', 'Beach', 'Family', 'Honeymoon'],
+    slug: 'sri-lanka-culture-coast-colonial-charm-5d4n', name: 'Sri Lanka Classic: Culture, Coast & Colonial Charm', code: '4N/5D Sri Lanka Highlights Tour', days: 5, nights: 4, tag: 'Short trips', styles: ['Short trips', 'Beach', 'Family', 'Honeymoon'], included: { hotels: 3, activities: 8, transfers: 5, meals: 8 },
     summary: 'Kandy and the Temple of the Tooth, the Royal Botanical Gardens at Peradeniya, two nights on Bentota beach with Galle Fort, the Madu River and turtles, then a Colombo city tour.',
     stays: [['Kandy', 'Night 1', 'Rivendell Hotel (Standard room, half board)'], ['Bentota', 'Nights 2–3', 'Club Bentota (Standard room, half board)'], ['Colombo', 'Night 4', 'Best Western (Standard room, half board)']],
     itinerary: [
@@ -94,7 +94,7 @@ export const packages = [
   }
 ,
   {
-    slug: 'sri-lanka-urban-vibes-southern-shores-5d4n', name: 'Sri Lanka Classic: Urban Vibes & Southern Shores', code: '4N/5D Sri Lanka Urban & Coastal Highlights', days: 5, nights: 4, tag: 'Beach', styles: ['Beach', 'Short trips', 'Family', 'Honeymoon'],
+    slug: 'sri-lanka-urban-vibes-southern-shores-5d4n', name: 'Sri Lanka Classic: Urban Vibes & Southern Shores', code: '4N/5D Sri Lanka Urban & Coastal Highlights', days: 5, nights: 4, tag: 'Beach', styles: ['Beach', 'Short trips', 'Family', 'Honeymoon'], included: { hotels: 2, activities: 8, transfers: 5, meals: 8 },
     summary: 'Two nights in Colombo with a city tour and a free day, then two nights on Bentota beach with water sports, Galle Fort, the Madu River safari and the turtle hatchery.',
     stays: [['Colombo', 'Nights 1–2', 'Best Western (Standard room, half board)'], ['Bentota', 'Nights 3–4', 'Club Bentota (Standard room, half board)']],
     itinerary: URBAN_ITIN,
@@ -103,7 +103,7 @@ export const packages = [
     gallery: [IMG.colomboNight, IMG.coast, IMG.turtles, IMG.galle, IMG.bentota], alt: 'Colombo skyline at night, Sri Lanka'
   },
   {
-    slug: 'sri-lanka-premium-urban-explorations-watersports-5d4n', name: 'Sri Lanka Premium: Refined Urban Explorations & Watersports', code: '4N/5D Sri Lanka Urban & Coastal Highlights (Premium)', days: 5, nights: 4, tag: 'Luxury', styles: ['Luxury', 'Beach', 'Short trips', 'Honeymoon'],
+    slug: 'sri-lanka-premium-urban-explorations-watersports-5d4n', name: 'Sri Lanka Premium: Refined Urban Explorations & Watersports', code: '4N/5D Sri Lanka Urban & Coastal Highlights (Premium)', days: 5, nights: 4, tag: 'Luxury', styles: ['Luxury', 'Beach', 'Short trips', 'Honeymoon'], included: { hotels: 2, activities: 7, transfers: 5, meals: 8 },
     summary: 'The premium take on Colombo and Bentota: Morven Hotel in the city, EKHO Surf on the beach, with water sports, Galle Fort, the Madu River and the turtle hatchery.',
     stays: [['Colombo', 'Nights 1–2', 'Morven Hotel (Standard room, half board)'], ['Bentota', 'Nights 3–4', 'EKHO Surf (Standard room, half board)']],
     itinerary: URBAN_ITIN,
