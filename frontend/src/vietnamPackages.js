@@ -42,7 +42,7 @@ export const destination = { name: 'Vietnam', slug: 'vietnam', continent: 'Asia'
 
 export const packages = [
   {
-    slug: 'hanoi-sapa-5d4n', name: 'Hanoi – Sapa: Discovering North Vietnam', code: 'PKG-1', days: 5, nights: 4, tag: 'Culture', styles: ['Family', 'Honeymoon'],
+    slug: 'hanoi-sapa-5d4n', name: 'Hanoi – Sapa: Discovering North Vietnam', code: 'PKG-1', days: 5, nights: 4, tag: 'Culture', styles: ['Family', 'Honeymoon'], included: { hotels: 2, activities: 12, transfers: 5, meals: 8 },
     summary: 'Hanoi’s Old Quarter, the terraced valleys of Sapa, Cat Cat village and the Fansipan cable car to the “Roof of Indochina”.',
     stays: [['Hanoi', 'Day 1', 'La Dolce Vita (Superior room)'], ['Sapa', 'Days 2–3', 'The View (Standard room)'], ['Hanoi', 'Day 4', 'La Dolce Vita (Superior room)']],
     itinerary: [
@@ -59,7 +59,7 @@ export const packages = [
     gallery: [IMG.sapa, IMG.hanoi, IMG.hanoiTrain, IMG.mausoleum], alt: 'Rice terraces around Sapa, Vietnam'
   },
   {
-    slug: 'north-vietnam-ninh-binh-6d5n', name: 'North of Vietnam with Ninh Binh – 6 days 5 nights', code: 'PKG-2', days: 6, nights: 5, tag: 'Nature', styles: STYLES_ALL,
+    slug: 'north-vietnam-ninh-binh-6d5n', name: 'North of Vietnam with Ninh Binh – 6 days 5 nights', code: 'PKG-2', days: 6, nights: 5, tag: 'Nature', styles: STYLES_ALL, included: { hotels: 2, activities: 11, transfers: 6, meals: 10 },
     summary: 'Hanoi city exploration, an overnight Ha Long Bay cruise and a full day in Ninh Binh with Mua Cave, Bich Dong and the Tam Coc boat ride.',
     stays: [['Hanoi', 'Days 1–2', 'Golden Legend Boutique (3★) · Hanoi Pearl (4★) · May de Ville Lakeside (5★)'], ['Ha Long Bay', 'Day 3', 'Mila Cruise (3★) · Verdure Lotus Luxury Cruise (4★) · Peony Cruises (5★)'], ['Hanoi', 'Days 4–5', 'Golden Legend Boutique (3★) · Hanoi Pearl (4★) · May de Ville Lakeside (5★)']],
     itinerary: [
@@ -77,7 +77,7 @@ export const packages = [
     gallery: [IMG.trangan, IMG.halongCover, IMG.hanoi, IMG.halong, IMG.mausoleum], alt: 'Trang An, Ninh Binh, Vietnam'
   },
   {
-    slug: 'north-vietnam-6d5n', name: 'North of Vietnam – 6 days 5 nights', code: 'PKG-3', days: 6, nights: 5, tag: 'Short trips', styles: STYLES_ALL,
+    slug: 'north-vietnam-6d5n', name: 'North of Vietnam – 6 days 5 nights', code: 'PKG-3', days: 6, nights: 5, tag: 'Short trips', styles: STYLES_ALL, included: { hotels: 2, activities: 8, transfers: 5, meals: 9 },
     summary: 'A relaxed northern loop: Hanoi city exploration, an overnight Ha Long Bay cruise and a free day to enjoy the capital at your own pace.',
     stays: [['Hanoi', 'Days 1–2', 'Golden Legend Boutique (3★) · Hanoi Pearl (4★) · May de Ville Lakeside (5★)'], ['Ha Long Bay', 'Day 3', 'Mila Cruise (3★) · Verdure Lotus Luxury Cruise (4★) · Peony Cruises (5★)'], ['Hanoi', 'Days 4–5', 'Golden Legend Boutique (3★) · Hanoi Pearl (4★) · May de Ville Lakeside (5★)']],
     itinerary: [
@@ -95,7 +95,7 @@ export const packages = [
     gallery: [IMG.halongCover, IMG.hanoi, IMG.catba, IMG.hanoiTrain], alt: 'Ha Long Bay from above, Vietnam'
   },
   {
-    slug: 'north-central-vietnam-highlights-6d5n', name: '6D5N North & Central Vietnam Highlights', code: 'PKG-4', days: 6, nights: 5, tag: 'Culture', styles: STYLES_ALL,
+    slug: 'north-central-vietnam-highlights-6d5n', name: '6D5N North & Central Vietnam Highlights', code: 'PKG-4', days: 6, nights: 5, tag: 'Culture', styles: STYLES_ALL, included: { hotels: 2, activities: 10, transfers: 6, meals: 9 },
     summary: 'Ha Long Bay day cruise, Ninh Binh, a Hanoi city tour, then a flight to Da Nang for the Golden Bridge at Ba Na Hills.',
     stays: [['Hanoi', 'Days 1–3', 'La Dolce Vita (Superior room)'], ['Ha Long Bay', 'Day 2 (day cruise)', 'Ambassador day cruise'], ['Da Nang', 'Days 4–5', 'San Marino Hotel (Deluxe room)']],
     itinerary: [
@@ -113,7 +113,7 @@ export const packages = [
     gallery: [IMG.danang, IMG.halongCover, IMG.trangan, IMG.hanoi, IMG.hoianBoats], alt: 'Marble Mountains, Da Nang, Vietnam'
   },
   {
-    slug: 'vietnam-highlights-reverse-halong-8d7n', name: '8D7N Vietnam Highlights in Reverse with Ha Long', code: 'PKG-5', days: 8, nights: 7, tag: 'Culture', styles: STYLES_ALL,
+    slug: 'vietnam-highlights-reverse-halong-8d7n', name: '8D7N Vietnam Highlights in Reverse with Ha Long', code: 'PKG-5', days: 8, nights: 7, tag: 'Culture', styles: STYLES_ALL, included: { hotels: 3, activities: 13, transfers: 8, meals: 12 },
     summary: 'South to north: Saigon’s Chinatown and river bus, Cu Chi Tunnels and the Mekong, Hoi An and Ba Na Hills, Ninh Binh and a 2-day Ha Long overnight cruise.',
     stays: [['Ho Chi Minh City', 'Days 1–2', 'Acnos Hotel (Grand Deluxe room)'], ['Da Nang', 'Days 3–4', 'San Marino Boutique Da Nang (Deluxe room)'], ['Hanoi', 'Days 5–6', 'La Dolce Vita (Deluxe room)'], ['Ha Long Bay', 'Day 7', 'Le Journey Premium Cruise (Deluxe Ocean View)']],
     itinerary: [
@@ -153,7 +153,7 @@ export const packages = [
     gallery: [IMG.phuquocCover, IMG.halongCover, IMG.hoianBoats, IMG.phuquoc, IMG.snorkel], alt: 'Beach on Phu Quoc island, Vietnam'
   },
   {
-    slug: 'vietnam-full-package-9d8n', name: 'Vietnam Full Package: 9 days exploring North, Central & South', code: 'PKG-7', days: 9, nights: 8, tag: 'Culture', styles: STYLES_ALL,
+    slug: 'vietnam-full-package-9d8n', name: 'Vietnam Full Package: 9 days exploring North, Central & South', code: 'PKG-7', days: 9, nights: 8, tag: 'Culture', styles: STYLES_ALL, included: { hotels: 4, activities: 18, transfers: 9, meals: 15 },
     summary: 'The complete country: Hanoi and an overnight Ha Long cruise, Hoi An with Ba Na Hills and Cam Thanh, then Saigon, the Cu Chi Tunnels and the Mekong Delta.',
     stays: [['Hanoi', 'Days 1–2', 'Golden Legend Boutique (3★) · Hanoi Pearl (4★) · May de Ville Lakeside (5★)'], ['Ha Long Bay', 'Day 3', 'Mila Cruise (3★) · Verdure Lotus Luxury Cruise (4★) · Peony Cruises (5★)'], ['Hoi An', 'Days 4–6', 'San Marino Boutique Da Nang (3★) · Stella Maris Beach Da Nang (4★) · Nam An Retreat (5★)'], ['Ho Chi Minh City', 'Days 7–8', 'Elios Hotel (3★) · Northern Charm (4★) · La Siesta Premium (5★)']],
     itinerary: [
